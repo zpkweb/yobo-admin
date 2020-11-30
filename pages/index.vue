@@ -1,65 +1,125 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">yobo-admin</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <el-main>
+      <highchart :options="userChartOptions" />
+    </el-main>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+import { Chart } from '@antv/g2';
 
-export default Vue.extend({})
+export default {
+  // layout: 'index',
+  data() {
+    return {
+      caption: '统计',
+      title: '数据统计',
+      subtitle: '用户统计',
+      points: [10, 0, 8, 2, 6, 4, 5, 5],
+      seriesColor: '',
+      animationDuration: 1000,
+      chartType: '',
+      colorInputIsSupported: null,
+      chartTypes: [],
+      durations: [0, 500, 1000, 2000],
+      seriesName: '用户数量',
+      yAxis: '人数',
+      watchers: undefined,
+      colors: [
+        'Red',
+        'Green',
+        'Blue',
+        'Pink',
+        'Orange',
+        'Brown',
+        'Black',
+        'Purple'
+      ],
+      lastPointClicked: {
+        timestamp: '',
+        x: '',
+        y: ''
+      },
+      sexy: false
+    }
+  },
+  computed: {
+    invertedColor() {
+      return (offset = 0) => '#'
+      + ((parseInt(`0x${this.seriesColor.split('#')[1]}`) ^ 0xffffff) + offset)
+        .toString(16)
+    },
+    userChartOptions() {
+      const ctx = this
+      return {
+        caption: {
+          text: this.caption,
+          style: {
+            color: this.sexy ? this.invertedColor(0) : '#black'
+          },
+        },
+        chart: {
+          backgroundColor: this.sexy ? {
+            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+            stops: [
+                [0, this.seriesColor],
+                [0.5, '#ffffff'],
+                [1, this.seriesColor]
+            ]
+          } : '#ffffff',
+          className: 'my-chart',
+          type: this.chartType.toLowerCase()
+        },
+        plotOptions: {
+          series: {
+            cursor: 'pointer',
+            point: {
+              events: {
+                click() {
+                  ctx.$emit('pointClicked', this)
+                }
+              }
+            }
+          }
+        },
+        yAxis: [{
+          title: {
+            text: this.yAxis,
+            style: {
+              color: '#000000'
+            }
+          }
+        }],
+        title: {
+          style: {
+            color: this.sexy ? this.invertedColor(0) : '#black'
+          },
+          text: `${this.title} ` +
+            (this.lastPointClicked.timestamp !== ''
+              ? `(Point clicked: ${this.lastPointClicked.timestamp})`
+              : '')
+        },
+        subtitle: {
+	        style: {
+            color: this.sexy ? this.invertedColor(0) : '#black'
+          },
+          text: `${this.subtitle}`
+        },
+        legend: {
+          itemStyle: {
+            color: this.sexy ? this.invertedColor(0) : '#black'
+          }
+        },
+        series: [{
+          name: this.seriesName,
+          data: this.points,
+          color: this.seriesColor
+        }]
+      }
+    }
+  },
+}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
