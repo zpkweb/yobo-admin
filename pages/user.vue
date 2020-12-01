@@ -1,31 +1,17 @@
 <template>
   <el-container>
-    <Aside />
-    <Nuxt />
+    <AsideUser />
+    <el-main>
+      <Nuxt />
+    </el-main>
   </el-container>
 </template>
-
 <script>
 export default {
-  data() {
-    return {
-      users: [],
-    }
-  },
-  async fetch() {
-    this.users = await this.$axios.$get('/api/admin/user')
-  },
+  fetch() {
+    console.log("user", this.$route.path)
+  }
 }
 </script>
 
-<style scoped>
-.el-header {
-  background-color: #b3c0d1;
-  color: #333;
-  line-height: 60px;
-}
 
-.el-aside {
-  color: #333;
-}
-</style>

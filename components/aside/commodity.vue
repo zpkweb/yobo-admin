@@ -4,9 +4,9 @@
 
       <el-menu-item index="1"><i class="el-icon-menu"></i>搜索</el-menu-item>
       <el-submenu index="2">
-        <template slot="title"><i class="el-icon-menu"></i>用户</template>
-        <el-menu-item index="2-1">查找用户</el-menu-item>
-        <el-menu-item index="2-2">添加用户</el-menu-item>
+        <template slot="title"><i class="el-icon-menu"></i>商品</template>
+        <el-menu-item index="2-1">查找商品</el-menu-item>
+        <el-menu-item index="2-2">添加商品</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title"><i class="el-icon-menu"></i>客服</template>

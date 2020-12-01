@@ -1,11 +1,11 @@
 <template>
   <el-main>
-      <highchart :options="userChartOptions" />
-    </el-main>
+    <highchart :options="userChartOptions" />
+  </el-main>
 </template>
 
 <script>
-import { Chart } from '@antv/g2';
+import { Chart } from '@antv/g2'
 
 export default {
   // layout: 'index',
@@ -32,21 +32,24 @@ export default {
         'Orange',
         'Brown',
         'Black',
-        'Purple'
+        'Purple',
       ],
       lastPointClicked: {
         timestamp: '',
         x: '',
-        y: ''
+        y: '',
       },
-      sexy: false
+      sexy: false,
     }
   },
   computed: {
     invertedColor() {
-      return (offset = 0) => '#'
-      + ((parseInt(`0x${this.seriesColor.split('#')[1]}`) ^ 0xffffff) + offset)
-        .toString(16)
+      return (offset = 0) =>
+        '#' +
+        (
+          (parseInt(`0x${this.seriesColor.split('#')[1]}`) ^ 0xffffff) +
+          offset
+        ).toString(16)
     },
     userChartOptions() {
       const ctx = this
@@ -54,20 +57,22 @@ export default {
         caption: {
           text: this.caption,
           style: {
-            color: this.sexy ? this.invertedColor(0) : '#black'
+            color: this.sexy ? this.invertedColor(0) : '#black',
           },
         },
         chart: {
-          backgroundColor: this.sexy ? {
-            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-            stops: [
-                [0, this.seriesColor],
-                [0.5, '#ffffff'],
-                [1, this.seriesColor]
-            ]
-          } : '#ffffff',
+          backgroundColor: this.sexy
+            ? {
+                linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                stops: [
+                  [0, this.seriesColor],
+                  [0.5, '#ffffff'],
+                  [1, this.seriesColor],
+                ],
+              }
+            : '#ffffff',
           className: 'my-chart',
-          type: this.chartType.toLowerCase()
+          type: this.chartType.toLowerCase(),
         },
         plotOptions: {
           series: {
@@ -76,50 +81,54 @@ export default {
               events: {
                 click() {
                   ctx.$emit('pointClicked', this)
-                }
-              }
-            }
-          }
+                },
+              },
+            },
+          },
         },
-        yAxis: [{
-          title: {
-            text: this.yAxis,
-            style: {
-              color: '#000000'
-            }
-          }
-        }],
+        yAxis: [
+          {
+            title: {
+              text: this.yAxis,
+              style: {
+                color: '#000000',
+              },
+            },
+          },
+        ],
         title: {
           style: {
-            color: this.sexy ? this.invertedColor(0) : '#black'
+            color: this.sexy ? this.invertedColor(0) : '#black',
           },
-          text: `${this.title} ` +
+          text:
+            `${this.title} ` +
             (this.lastPointClicked.timestamp !== ''
               ? `(Point clicked: ${this.lastPointClicked.timestamp})`
-              : '')
+              : ''),
         },
         subtitle: {
-	        style: {
-            color: this.sexy ? this.invertedColor(0) : '#black'
+          style: {
+            color: this.sexy ? this.invertedColor(0) : '#black',
           },
-          text: `${this.subtitle}`
+          text: `${this.subtitle}`,
         },
         legend: {
           itemStyle: {
-            color: this.sexy ? this.invertedColor(0) : '#black'
-          }
+            color: this.sexy ? this.invertedColor(0) : '#black',
+          },
         },
-        series: [{
-          name: this.seriesName,
-          data: this.points,
-          color: this.seriesColor
-        }]
+        series: [
+          {
+            name: this.seriesName,
+            data: this.points,
+            color: this.seriesColor,
+          },
+        ],
       }
-    }
+    },
   },
 }
 </script>
 
 <style>
-
 </style>

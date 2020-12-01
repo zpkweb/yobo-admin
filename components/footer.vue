@@ -1,11 +1,20 @@
 <template>
-  <div class="footer">
-    底部
-  </div>
+    <NuxtLink class="logo" to="/">
+        <img class="logo-img" src="~/assets/img/logo.png" />
+      </NuxtLink>
 </template>
 
 <style scoped>
-.footer{
-  text-align: center;
+
+.logo{
+  display: flex;
+  width: 150px;
+  height: 60px;
+  margin: 0 auto;
+}
+.logo-img{
+  flex: 1;
+  width: 100%;
+  height: 100%;
 }
 </style>
