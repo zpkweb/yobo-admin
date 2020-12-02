@@ -83,14 +83,16 @@ export default {
       isCreate: true,
       userId: '',
       userCreate: {
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         password: '',
         identity: [],
       },
       rules: {
-        name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+        firstName: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
+        lastName: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
         email: [{ validator: validateEmail, trigger: 'blur' }],
         phone: [{ validator: validatePhone, trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
@@ -191,3 +193,4 @@ export default {
   width: 90%;
 }
 </style>
+

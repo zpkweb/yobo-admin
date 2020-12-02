@@ -24,6 +24,10 @@ export const state = () => ({
       path: '/user/seller',
       subMenu: [{
         icon: 'el-icon-search',
+        name: '申请列表',
+        path: '/user/seller/apply'
+      },{
+        icon: 'el-icon-search',
         name: '查找',
         path: '/user/seller'
       },{
@@ -61,7 +65,7 @@ export const state = () => ({
   },{
     icon: 'el-icon-menu',
     name: '商品管理',
-    path: '/user/ordinary',
+    path: '/commodity/ordinary',
 
   }],
 

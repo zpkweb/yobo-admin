@@ -20,7 +20,8 @@ export default {
   components: [
     '~/components',
     { path: '~/components/aside/', prefix: 'aside' },
-    { path: '~/components/menu/', prefix: 'menu' }
+    { path: '~/components/menu/', prefix: 'menu' },
+    { path: '~/components/table/', prefix: 'table' }
 ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)

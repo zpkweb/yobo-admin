@@ -1,9 +1,10 @@
 <template>
   <div>
+    <h3>艺术家申请</h3>
     <el-form :inline="true" :model="userSearch" class="user-search">
       <el-form-item label="姓名">
         <el-input
-          v-model="userSearch.name"
+          v-model="userSearch.user"
           placeholder="请输入姓名"
           clearable
         ></el-input>
@@ -44,7 +45,7 @@
       </el-form-item>
     </el-form>
 
-    <TableUser :data="user" v-on:remove-user="removeUser" />
+    <TableSeller :data="user.data" />
   </div>
 </template>
 <script>
@@ -53,59 +54,20 @@ export default {
     return {
       user: [],
       userSearch: {
-        name: '',
+        user: '',
         email: '',
         phone: '',
       }
     }
   },
   async fetch() {
-    const userSearch = await this.$axios.$get('/api/admin/user/search',{
-        params: {
-          identity: this.$route.params.identity,
-          name: this.userSearch.name,
-          email: this.userSearch.email,
-          phone: this.userSearch.phone
-        }
-
-      });
-    this.user = userSearch.data;
+    const routePath = this.$route.path;
+      console.log("user _indentity idnex", routePath)
+    this.user = await this.$axios.$get('/api/admin/user')
   },
   methods: {
-    // 查找用户
     async onSubmit() {
-      const user = await this.$axios.$get('/api/admin/user/search',{
-        params: {
-          identity: this.$route.params.identity,
-          name: this.userSearch.name,
-          email: this.userSearch.email,
-          phone: this.userSearch.phone
-        }
-      })
-      this.user = user.data;
-    },
-    // 删除用户
-    async removeUser(index, userId) {
-      console.log("removeUser", userId)
-      const user = await this.$axios.$post('/api/admin/user/remove', {
-        userId
-      })
-      if(user.success){
-        this.user.splice(index, 1);
-
-        this.$message({
-          showClose: true,
-          message: `删除成功！`,
-          type: 'success',
-        })
-
-      }else{
-        this.$message({
-          showClose: true,
-          message: `删除失败!`,
-          type: 'error',
-        })
-      }
+      this.user = await this.$axios.$get('/api/admin/user')
     },
     handleEdit(index, row) {
       console.log(index, row)

@@ -1,12 +1,11 @@
 <template>
-
+  <!-- unique-opened -->
   <el-menu
     :default-active="$route.path"
     class="el-menu-vertical-demo"
     @select="handleSelect"
     @open="handleOpen"
     @close="handleClose"
-    unique-opened
     router
   >
     <template v-for="item in $store.state.menu[0].subMenu">
