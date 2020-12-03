@@ -16,17 +16,17 @@
         </el-checkbox-group>
       </el-form-item> -->
 
-      <el-form-item label="姓名" placeholder="请输入姓名" prop="name">
-        <el-input v-model="userCreate.name"></el-input>
+      <el-form-item label="姓名"  prop="name">
+        <el-input v-model="userCreate.name" placeholder="请输入姓名"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱" placeholder="请输入邮箱" prop="email">
-        <el-input v-model="userCreate.email"></el-input>
+      <el-form-item label="邮箱"  prop="email">
+        <el-input v-model="userCreate.email" placeholder="请输入邮箱"></el-input>
       </el-form-item>
-      <el-form-item label="手机" placeholder="请输入手机" prop="phone">
-        <el-input v-model="userCreate.phone"></el-input>
+      <el-form-item label="手机"  prop="phone">
+        <el-input v-model="userCreate.phone" placeholder="请输入手机"></el-input>
       </el-form-item>
-      <el-form-item label="密码" placeholder="请输入密码" prop="password">
-        <el-input v-model="userCreate.password"></el-input>
+      <el-form-item label="密码"  prop="password">
+        <el-input v-model="userCreate.password" placeholder="请输入密码"></el-input>
       </el-form-item>
 
       <!-- <el-form-item label="活动区域" prop="region">
@@ -107,7 +107,7 @@ export default {
     }
   },
   async fetch() {
-    console.log('fetch this.$refs.userCreate', this.$refs.userCreate)
+    // console.log('fetch this.$refs.userCreate', this.$refs.userCreate)
     // this.$refs.userCreate.resetFields()
 
     if (this.$route.query && this.$route.query.userId) {

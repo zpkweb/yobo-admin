@@ -44,7 +44,28 @@
       </el-form-item>
     </el-form>
 
-    <TableUser :data="user" v-on:remove-user="removeUser" />
+    <el-table :data="user" border >
+      <el-table-column prop="name" label="姓名"> </el-table-column>
+      <el-table-column prop="email" label="邮箱"> </el-table-column>
+      <el-table-column prop="phone" label="手机"> </el-table-column>
+
+      <el-table-column prop="createdDate" label="创建日期"> </el-table-column>
+
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button size="mini" @click="removeUser(scope.$index, scope.row)"
+            >编辑</el-button
+          >
+          <el-button
+            size="mini"
+            type="danger"
+            @click="editUser(scope.$index, scope.row)"
+          >
+            删除
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 <script>
@@ -56,50 +77,48 @@ export default {
         name: '',
         email: '',
         phone: '',
-      }
+      },
     }
   },
   async fetch() {
-    const userSearch = await this.$axios.$get('/api/admin/user/search',{
-        params: {
-          identity: this.$route.params.identity,
-          name: this.userSearch.name,
-          email: this.userSearch.email,
-          phone: this.userSearch.phone
-        }
-
-      });
-    this.user = userSearch.data;
+    const userSearch = await this.$axios.$get('/api/admin/user/search', {
+      params: {
+        identity: this.$route.params.identity,
+        name: this.userSearch.name,
+        email: this.userSearch.email,
+        phone: this.userSearch.phone,
+      },
+    })
+    this.user = userSearch.data
   },
   methods: {
     // 查找用户
     async onSubmit() {
-      const user = await this.$axios.$get('/api/admin/user/search',{
+      const user = await this.$axios.$get('/api/admin/user/search', {
         params: {
           identity: this.$route.params.identity,
           name: this.userSearch.name,
           email: this.userSearch.email,
-          phone: this.userSearch.phone
-        }
+          phone: this.userSearch.phone,
+        },
       })
-      this.user = user.data;
+      this.user = user.data
     },
     // 删除用户
-    async removeUser(index, userId) {
-      console.log("removeUser", userId)
+    async removeUser(index, row) {
+      console.log('removeUser', userId)
       const user = await this.$axios.$post('/api/admin/user/remove', {
-        userId
+        userId: row.userId,
       })
-      if(user.success){
-        this.user.splice(index, 1);
+      if (user.success) {
+        this.user.splice(index, 1)
 
         this.$message({
           showClose: true,
           message: `删除成功！`,
           type: 'success',
         })
-
-      }else{
+      } else {
         this.$message({
           showClose: true,
           message: `删除失败!`,
@@ -107,8 +126,9 @@ export default {
         })
       }
     },
-    handleEdit(index, row) {
+    editUser(index, row) {
       console.log(index, row)
+      this.$router.push(`${this.$route.path}/create?userId=${row.userId}`)
     },
     handleDelete(index, row) {
       console.log(index, row)
