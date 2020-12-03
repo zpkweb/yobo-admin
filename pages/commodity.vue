@@ -1,6 +1,5 @@
 <template>
   <el-container>
-    <!-- <Aside /> -->
     <Nuxt />
   </el-container>
 </template>

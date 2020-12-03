@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-form :inline="true" :model="userSearch" class="user-search">
+    <el-form
+      :inline="true"
+      :model="userSearch"
+      class="user-search"
+      :key="$route.path"
+    >
       <el-form-item label="姓名">
         <el-input
           v-model="userSearch.name"
@@ -22,29 +27,13 @@
           clearable
         ></el-input>
       </el-form-item>
-      <!-- <el-form-item label="身份">
-        <el-select
-          v-model="value"
-          multiple
-          filterable
-          allow-create
-          default-first-option
-          placeholder="请选择身份"
-        >
-          <el-option
-            v-for="item in identity"
-            :key="item.name"
-            :label="item.name"
-            :value="item.name"
-          ></el-option>
-        </el-select>
-      </el-form-item> -->
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
 
-    <el-table :data="user" border >
+    <el-table :data="user" border>
       <el-table-column prop="name" label="姓名"> </el-table-column>
       <el-table-column prop="email" label="邮箱"> </el-table-column>
       <el-table-column prop="phone" label="手机"> </el-table-column>
@@ -53,13 +42,13 @@
 
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="removeUser(scope.$index, scope.row)"
+          <el-button size="mini" @click="editUser(scope.$index, scope.row)"
             >编辑</el-button
           >
           <el-button
             size="mini"
             type="danger"
-            @click="editUser(scope.$index, scope.row)"
+            @click="removeUser(scope.$index, scope.row)"
           >
             删除
           </el-button>
@@ -70,6 +59,9 @@
 </template>
 <script>
 export default {
+  watch: {
+    '$route.query': '$fetch',
+  },
   data() {
     return {
       user: [],
@@ -106,7 +98,6 @@ export default {
     },
     // 删除用户
     async removeUser(index, row) {
-      console.log('removeUser', userId)
       const user = await this.$axios.$post('/api/admin/user/remove', {
         userId: row.userId,
       })

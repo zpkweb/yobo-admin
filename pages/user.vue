@@ -9,8 +9,8 @@
 <script>
 export default {
   fetch() {
-    console.log("user", this.$route.path)
-  }
+    console.log('user', this.$route.path)
+  },
 }
 </script>
 

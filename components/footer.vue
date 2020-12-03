@@ -1,18 +1,17 @@
 <template>
-    <NuxtLink class="logo" to="/">
-        <img class="logo-img" src="~/assets/img/logo.png" />
-      </NuxtLink>
+  <NuxtLink class="logo" to="/">
+    <img class="logo-img" src="~/assets/img/logo.png" />
+  </NuxtLink>
 </template>
 
 <style scoped>
-
-.logo{
+.logo {
   display: flex;
   width: 150px;
   height: 60px;
   margin: 0 auto;
 }
-.logo-img{
+.logo-img {
   flex: 1;
   width: 100%;
   height: 100%;

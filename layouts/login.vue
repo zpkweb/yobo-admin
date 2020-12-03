@@ -13,12 +13,11 @@
   align-items: center;
   text-align: center;
 
-  background: url('~assets/img/login-bg.jpeg')  no-repeat center 0px;
-	background-size: cover;
+  background: url('~assets/img/login-bg.jpeg') no-repeat center 0px;
+  background-size: cover;
 
   background-position: center 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 </style>

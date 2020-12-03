@@ -7,34 +7,27 @@
       label-width="100px"
       class="user-create-form"
     >
-      <!-- <el-form-item label="用户身份" prop="identity">
-        <el-checkbox-group v-model="userCreate.identity">
-          <el-checkbox label="用户" name="identity"></el-checkbox>
-          <el-checkbox label="艺术家" name="identity"></el-checkbox>
-          <el-checkbox label="客服" name="identity"></el-checkbox>
-          <el-checkbox label="管理员" name="identity"></el-checkbox>
-        </el-checkbox-group>
-      </el-form-item> -->
-
-      <el-form-item label="姓名"  prop="name">
+      <el-form-item label="姓名" prop="name">
         <el-input v-model="userCreate.name" placeholder="请输入姓名"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱"  prop="email">
-        <el-input v-model="userCreate.email" placeholder="请输入邮箱"></el-input>
+      <el-form-item label="邮箱" prop="email">
+        <el-input
+          v-model="userCreate.email"
+          placeholder="请输入邮箱"
+        ></el-input>
       </el-form-item>
-      <el-form-item label="手机"  prop="phone">
-        <el-input v-model="userCreate.phone" placeholder="请输入手机"></el-input>
+      <el-form-item label="手机" prop="phone">
+        <el-input
+          v-model="userCreate.phone"
+          placeholder="请输入手机"
+        ></el-input>
       </el-form-item>
-      <el-form-item label="密码"  prop="password">
-        <el-input v-model="userCreate.password" placeholder="请输入密码"></el-input>
+      <el-form-item label="密码" prop="password">
+        <el-input
+          v-model="userCreate.password"
+          placeholder="请输入密码"
+        ></el-input>
       </el-form-item>
-
-      <!-- <el-form-item label="活动区域" prop="region">
-    <el-select v-model="userCreate.region" placeholder="请选择活动区域">
-      <el-option label="区域一" value="shanghai"></el-option>
-      <el-option label="区域二" value="beijing"></el-option>
-    </el-select>
-  </el-form-item> -->
 
       <el-form-item>
         <el-button
@@ -56,6 +49,9 @@
 <script>
 export default {
   watchQuery: ['userId'],
+  watch: {
+    '$route.query': '$fetch',
+  },
   data() {
     var validateEmail = (rule, value, callback) => {
       if (!value && !this.userCreate.phone) {
@@ -91,7 +87,7 @@ export default {
       },
       rules: {
         name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-        email: [{ validator: validateEmail, trigger: 'blur' }],
+        email: [{ required: true, validator: validateEmail, trigger: 'blur' }],
         phone: [{ validator: validatePhone, trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 

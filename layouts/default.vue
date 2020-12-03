@@ -1,17 +1,17 @@
 <template>
-<el-container class="layout-container">
-  <el-header class="layout-header">
-    <Header />
-  </el-header>
-  <Nuxt />
-  <el-footer class="layout-footer">
-    <Footer />
-  </el-footer>
-</el-container>
+  <el-container class="layout-container">
+    <el-header class="layout-header">
+      <Header />
+    </el-header>
+    <Nuxt />
+    <el-footer class="layout-footer">
+      <Footer />
+    </el-footer>
+  </el-container>
 </template>
 
 <style>
-.layout-container{
+.layout-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -24,5 +24,4 @@
   line-height: 60px;
   border-top: solid 1px #e6e6e6;
 }
-
 </style>

@@ -4,8 +4,12 @@ export const state = () => ({
   menu: [{
     icon: 'el-icon-menu',
     name: '用户管理',
-    path: '/user/ordinary',
+    path: '/user',
     subMenu: [{
+      icon: 'el-icon-search',
+      name: '搜索',
+      path: '/user',
+    },{
       icon: 'el-icon-menu',
       name: '普通用户',
       path: '/user/ordinary',
@@ -25,11 +29,15 @@ export const state = () => ({
       subMenu: [{
         icon: 'el-icon-search',
         name: '申请列表',
-        path: '/user/seller/apply'
+        path: '/user/seller/applyList'
       },{
         icon: 'el-icon-search',
         name: '查找',
         path: '/user/seller'
+      },{
+        icon: 'el-icon-circle-plus-outline',
+        name: '用户申请',
+        path: '/user/seller/apply'
       },{
         icon: 'el-icon-circle-plus-outline',
         name: '添加',

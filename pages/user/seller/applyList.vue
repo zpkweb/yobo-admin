@@ -1,59 +1,52 @@
 <template>
   <div>
-    <el-form :inline="true" :model="userSearch" class="user-search">
+    <el-form :inline="true" :model="search" class="user-search">
       <el-form-item label="姓氏">
         <el-input
-          v-model="userSearch.firstname"
+          v-model="search.firstname"
           placeholder="请输入姓氏"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item label="名字">
         <el-input
-          v-model="userSearch.lastname"
+          v-model="search.lastname"
           placeholder="请输入名字"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item label="邮箱">
         <el-input
-          v-model="userSearch.email"
+          v-model="search.email"
           placeholder="请输入邮箱"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item label="手机">
         <el-input
-          v-model="userSearch.phone"
+          v-model="search.phone"
           placeholder="请输入手机"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item label="标签">
         <el-input
-          v-model="userSearch.label"
+          v-model="search.label"
           placeholder="请输入标签"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item label="性别">
         <el-input
-          v-model="userSearch.gender"
+          v-model="search.gender"
           placeholder="请输入性别"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item label="国家">
         <el-input
-          v-model="userSearch.country"
+          v-model="search.country"
           placeholder="请输入国家"
-          clearable
-        ></el-input>
-      </el-form-item>
-      <el-form-item label="状态">
-        <el-input
-          v-model="userSearch.state"
-          placeholder="请输入状态"
           clearable
         ></el-input>
       </el-form-item>
@@ -63,30 +56,33 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="user" border>
+    <el-table :data="seller" border>
       <el-table-column prop="firstname" label="姓氏" width="200">
       </el-table-column>
       <el-table-column prop="lastname" label="名字" width="200">
       </el-table-column>
-      <el-table-column prop="user.email" label="邮箱" width="200">
-      </el-table-column>
-      <el-table-column prop="user.phone" label="手机" width="200">
-      </el-table-column>
+      <el-table-column prop="email" label="邮箱" width="200"> </el-table-column>
+      <el-table-column prop="phone" label="手机" width="200"> </el-table-column>
 
       <el-table-column prop="createdDate" label="创建日期" width="200">
       </el-table-column>
-      <el-table-column prop="state" label="状态" width="200"> </el-table-column>
-      <el-table-column label="操作" width="150">
+
+      <el-table-column label="操作" width="220">
         <template slot-scope="scope">
-          <el-button size="mini" @click="editUser(scope.$index, scope.row)"
+          <el-button size="mini" @click="edit(scope.$index, scope.row)"
             >编辑</el-button
           >
-
+          <el-button
+            size="mini"
+            type="success"
+            @click="agree(scope.$index, scope.row)"
+            >同意</el-button
+          >
           <el-button
             size="mini"
             type="danger"
-            @click="deleteUser(scope.$index, scope.row)"
-            >删除</el-button
+            @click="refuse(scope.$index, scope.row)"
+            >拒绝</el-button
           >
         </template>
       </el-table-column>
@@ -97,8 +93,8 @@
 export default {
   data() {
     return {
-      user: [],
-      userSearch: {
+      seller: [],
+      search: {
         firstname: '',
         lastname: '',
         email: '',
@@ -106,49 +102,55 @@ export default {
         label: '',
         gender: '',
         country: '',
-        state: '',
+        state: '0',
       },
     }
   },
   async fetch() {
-    const userSearch = await this.$axios.$get('/api/admin/user/seller/search', {
-      params: this.userSearch,
+    const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
+      params: this.search,
     })
-    this.user = userSearch.data
+    this.seller = searchData.data
   },
   methods: {
-    // 查找用户
     async onSubmit() {
-      const user = await this.$axios.$get('/api/admin/user/seller/search', {
-        params: this.userSearch,
-      })
-      this.user = user.data
+      const searchData = await this.$axios.$get(
+        '/api/admin/user/seller/search',
+        {
+          params: this.search,
+        }
+      )
+      this.seller = searchData.data
     },
-    // 删除用户
-    async deleteUser(index, row) {
-      console.log('deleteUser', row)
-      const user = await this.$axios.$post('/api/admin/user/remove', {
-        userId: row.user.userId,
-      })
-      if (user.success) {
-        this.user.splice(index, 1)
-
-        this.$message({
-          showClose: true,
-          message: `删除成功！`,
-          type: 'success',
-        })
-      } else {
-        this.$message({
-          showClose: true,
-          message: `删除失败!`,
-          type: 'error',
-        })
-      }
-    },
-    editUser(index, row) {
+    edit(index, row) {
       console.log(index, row)
-      this.$router.push(`${this.$route.path}/create?userId=${row.user.userId}`)
+      this.$router.push(`/user/seller/create?userId=${row.user.userId}`)
+    },
+    async agree(index, row) {
+      console.log(index, row)
+      // setState
+      const seller = await this.$axios.$post(
+        '/api/admin/user/seller/setState',
+        {
+          sellerId: row.sellerId,
+          state: 1,
+        }
+      )
+      console.log('seller', seller)
+      this.seller.splice(index, 1)
+    },
+    async refuse(index, row) {
+      console.log(index, row)
+      // setState
+      const seller = await this.$axios.$post(
+        '/api/admin/user/seller/setState',
+        {
+          sellerId: row.sellerId,
+          state: 2,
+        }
+      )
+      console.log('seller', seller)
+      this.seller.splice(index, 1)
     },
   },
 }

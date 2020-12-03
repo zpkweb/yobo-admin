@@ -58,7 +58,7 @@ export default {
         } else {
           this.$message({
             showClose: true,
-            message: '错了哦，这是一条错误消息',
+            message: `${login.message}`,
             type: 'error',
           })
         }
