@@ -87,7 +87,7 @@ export default {
   },
   async fetch() {
     console.log("moment", this.$moment().format('YYYY'))
-    const identitysData = await this.$axios.$get('/api/admin/identity')
+    const identitysData = await this.$axios.$get('/api/admin/identityList')
     if (identitysData.success) {
       this.identitys = identitysData.data
     }

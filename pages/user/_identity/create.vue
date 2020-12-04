@@ -48,7 +48,7 @@
 </template>
 <script>
 export default {
-  watchQuery: ['userId'],
+  // watchQuery: ['userId','sellerId'],
   watch: {
     '$route.query': '$fetch',
   },
