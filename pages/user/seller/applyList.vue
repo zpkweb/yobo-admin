@@ -52,7 +52,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">查询</el-button>
       </el-form-item>
     </el-form>
 
@@ -64,12 +64,12 @@
       <el-table-column prop="email" label="邮箱" width="200"> </el-table-column>
       <el-table-column prop="phone" label="手机" width="200"> </el-table-column>
 
-      <el-table-column prop="createdDate" label="创建日期" width="200">
+      <el-table-column :formatter="formatterDate" prop="createdDate" label="创建日期" width="200">
       </el-table-column>
 
       <el-table-column label="操作" width="220">
         <template slot-scope="scope">
-          <el-button size="mini" @click="edit(scope.$index, scope.row)"
+          <el-button size="mini" @click="edit(scope.$index, scope.row)" icon="el-icon-edit"
             >编辑</el-button
           >
           <el-button
@@ -124,7 +124,7 @@ export default {
     },
     edit(index, row) {
       console.log(index, row)
-      this.$router.push(`/user/seller/create?userId=${row.user.userId}`)
+      this.$router.push(`/user/seller/create?sellerId=${row.sellerId}`)
     },
     async agree(index, row) {
       console.log(index, row)
@@ -151,6 +151,9 @@ export default {
       )
       console.log('seller', seller)
       this.seller.splice(index, 1)
+    },
+    formatterDate(row, column, cellValue, index) {
+      return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
   },
 }

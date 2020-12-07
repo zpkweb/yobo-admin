@@ -34,14 +34,15 @@
           v-if="isCreate"
           type="primary"
           @click="submitForm('userCreate')"
+          icon="el-icon-circle-plus-outline"
         >
           创建
         </el-button>
 
-        <el-button v-else type="primary" @click="submitForm('userCreate')">
+        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
           更新
         </el-button>
-        <el-button @click="resetForm('userCreate')">清空</el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
       </el-form-item>
     </el-form>
   </div>

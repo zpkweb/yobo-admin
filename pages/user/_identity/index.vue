@@ -29,7 +29,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">查询</el-button>
       </el-form-item>
     </el-form>
 
@@ -38,17 +38,18 @@
       <el-table-column prop="email" label="邮箱"> </el-table-column>
       <el-table-column prop="phone" label="手机"> </el-table-column>
 
-      <el-table-column prop="createdDate" label="创建日期"> </el-table-column>
+      <el-table-column :formatter="formatterDate" prop="createdDate" label="创建日期"> </el-table-column>
 
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="editUser(scope.$index, scope.row)"
+          <el-button size="mini" @click="editUser(scope.$index, scope.row)" icon="el-icon-edit"
             >编辑</el-button
           >
           <el-button
             size="mini"
             type="danger"
             @click="removeUser(scope.$index, scope.row)"
+            icon="el-icon-delete"
           >
             删除
           </el-button>
@@ -123,6 +124,9 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row)
+    },
+    formatterDate(row, column, cellValue, index) {
+      return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
   },
 }

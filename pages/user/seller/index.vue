@@ -15,7 +15,7 @@
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
+      <!-- <el-form-item label="邮箱">
         <el-input
           v-model="userSearch.email"
           placeholder="请输入邮箱"
@@ -28,7 +28,7 @@
           placeholder="请输入手机"
           clearable
         ></el-input>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="标签">
         <el-input
           v-model="userSearch.label"
@@ -59,7 +59,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">查询</el-button>
       </el-form-item>
     </el-form>
 
@@ -73,19 +73,20 @@
       <el-table-column prop="user.phone" label="手机" width="200">
       </el-table-column>
 
-      <el-table-column prop="createdDate" label="创建日期" width="200">
+      <el-table-column :formatter="formatterDate" prop="createdDate" label="创建日期" width="200">
       </el-table-column>
       <el-table-column prop="state" label="状态" width="200"> </el-table-column>
       <el-table-column label="操作" width="150">
         <template slot-scope="scope">
-          <el-button size="mini" @click="editUser(scope.$index, scope.row)"
+          <el-button size="mini" @click="editUser(scope.$index, scope.row)" icon="el-icon-edit"
             >编辑</el-button
           >
 
           <el-button
             size="mini"
             type="danger"
-            @click="deleteUser(scope.$index, scope.row)"
+            @click="deleteSeller(scope.$index, scope.row)"
+            icon="el-icon-delete"
             >删除</el-button
           >
         </template>
@@ -125,10 +126,12 @@ export default {
       this.user = user.data
     },
     // 删除用户
-    async deleteUser(index, row) {
-      console.log('deleteUser', row)
-      const user = await this.$axios.$post('/api/admin/user/remove', {
-        userId: row.user.userId,
+    async deleteSeller(index, row) {
+      console.log('deleteSeller', row)
+      const user = await this.$axios.$get('/api/admin/user/seller/delete', {
+        params: {
+          sellerId: row.sellerId,
+        }
       })
       if (user.success) {
         this.user.splice(index, 1)
@@ -148,7 +151,10 @@ export default {
     },
     editUser(index, row) {
       console.log(index, row)
-      this.$router.push(`${this.$route.path}/create?userId=${row.user.userId}`)
+      this.$router.push(`${this.$route.path}/create?sellerId=${row.sellerId}`)
+    },
+    formatterDate(row, column, cellValue, index) {
+      return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
   },
 }

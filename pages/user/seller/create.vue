@@ -166,21 +166,22 @@
           v-if="isCreate"
           type="primary"
           @click="submitForm('userCreate')"
+          icon="el-icon-circle-plus-outline"
         >
           创建
         </el-button>
 
-        <el-button v-else type="primary" @click="submitForm('userCreate')">
+        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
           更新
         </el-button>
-        <el-button @click="resetForm('userCreate')">清空</el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
 export default {
-  watchQuery: ['userId'],
+  watchQuery: ['sellerId'],
   data() {
     var validateEmail = (rule, value, callback) => {
       if (!value && !this.userCreate.phone) {
@@ -206,7 +207,7 @@ export default {
       type: 'create', // create edit
       typeText: '创建',
       isCreate: true,
-      userId: '',
+      sellerId: '',
       // 状态：0: 审核, 1: 通过, 2: 拒绝, 3: 禁用, 4: 注销
       stateOptions: [
         {
@@ -265,13 +266,13 @@ export default {
     // console.log('fetch this.$refs.userCreate', this.$refs.userCreate)
     // this.$refs.userCreate.resetFields()
 
-    if (this.$route.query && this.$route.query.userId) {
+    if (this.$route.query && this.$route.query.sellerId) {
       console.log('create', this.$route.query)
-      this.userId = this.$route.query.userId
+      this.sellerId = this.$route.query.sellerId
 
       const user = await this.$axios.$get('/api/admin/user/seller', {
         params: {
-          userId: this.userId,
+          sellerId: this.sellerId,
         },
       })
       if (user.success) {
