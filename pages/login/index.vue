@@ -9,8 +9,8 @@
   >
     <h3 class="login-title">yobo 后台管理</h3>
 
-    <el-form-item class="login-item" label="用户名" prop="name">
-      <el-input v-model="userForm.name"></el-input>
+    <el-form-item class="login-item" label="账号" prop="name">
+      <el-input v-model="userForm.name" placeholder="请输入用户名/邮箱/手机"></el-input>
     </el-form-item>
     <el-form-item class="login-item" label="密码" prop="pass">
       <el-input
@@ -31,14 +31,20 @@ export default {
   data() {
     return {
       userForm: {
-        name: 'root',
-        pass: '123456',
+        name: '',
+        pass: '',
       },
       rules: {
-        name: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        name: [{ required: true, message: '请输入用户名/邮箱/手机', trigger: 'blur' }],
         pass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       },
     }
+  },
+  mounted(){
+    window.addEventListener('keydown',this.keyDown)
+  },
+  destroyed(){
+        window.removeEventListener('keydown',this.keyDown,false);
   },
   methods: {
     async submitForm(formName) {
@@ -67,6 +73,12 @@ export default {
         return false
       }
     },
+    keyDown(e){
+        //如果是回车则执行登录方法
+      if(e.keyCode == 13){
+        this.submitForm('userForm');
+      }
+    }
   },
 }
 </script>

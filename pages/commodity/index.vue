@@ -1,5 +1,5 @@
 <template>
-  <el-main>
+  <div>
     <p v-if="$fetchState.pending">Fetching mountains...</p>
     <p v-else-if="$fetchState.error">An error occurred :(</p>
     <div v-else>
@@ -14,7 +14,7 @@
       </el-table>
       <button @click="$fetch">Refresh</button>
     </div>
-  </el-main>
+  </div>
 </template>
 
 <script>

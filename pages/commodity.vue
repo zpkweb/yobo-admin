@@ -1,7 +1,12 @@
 <template>
+
   <el-container>
-    <Nuxt />
+    <AsideCommodity />
+    <el-main>
+      <Nuxt />
+    </el-main>
   </el-container>
+
 </template>
 
 <script>

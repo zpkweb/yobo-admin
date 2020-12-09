@@ -34,6 +34,10 @@
 
     </el-menu>
 
+      <NuxtLink class="version" to="/version">
+        版本
+      </NuxtLink>
+
     <el-dropdown>
       <span class="el-dropdown-link">
         语言
@@ -138,5 +142,12 @@ export default {
 }
 .header-avatar {
   margin: 10px 20px 0 20px;
+}
+
+.version{
+  display: inline-block;
+  line-height: 60px;
+  margin-right: 15px;
+  font-size: 12px;
 }
 </style>

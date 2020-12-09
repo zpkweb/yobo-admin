@@ -73,8 +73,37 @@ export const state = () => ({
   },{
     icon: 'el-icon-menu',
     name: '商品管理',
-    path: '/commodity/ordinary',
-
+    path: '/commodity',
+    subMenu: [{
+      icon: 'el-icon-search',
+      name: '搜索',
+      path: '/commodity',
+    },{
+      icon: 'el-icon-circle-plus-outline',
+      name: '添加',
+      path: '/commodity/create',
+    },{
+      icon: 'el-icon-menu',
+      name: '商品选项',
+      path: '/commodity/options',
+      subMenu: [{
+        icon: 'el-icon-circle-plus-outline',
+        name: '形状',
+        path: '/commodity/options/shape'
+      },{
+        icon: 'el-icon-circle-plus-outline',
+        name: '主题',
+        path: '/commodity/options/theme'
+      },{
+        icon: 'el-icon-circle-plus-outline',
+        name: '类别',
+        path: '/commodity/options/category'
+      },{
+        icon: 'el-icon-circle-plus-outline',
+        name: '手法',
+        path: '/commodity/options/technique'
+      }]
+    }]
   }],
 
 })

@@ -254,10 +254,10 @@ export default {
         profile: '',
       },
       rules: {
-        firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
-        lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
+        // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
+        // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
         email: [{ required: true, validator: validateEmail, trigger: 'blur' }],
-        phone: [{ validator: validatePhone, trigger: 'blur' }],
+        // phone: [{ validator: validatePhone, trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       },
     }
@@ -294,15 +294,23 @@ export default {
       this.$refs[userCreate].validate(async (valid) => {
         if (valid) {
           let data
+          try{
           if (this.isCreate) {
+
+
+
             // 用户申请成为艺术家 /api/user/seller/apply
             // data = await this.$axios.$post('/api/user/seller/apply', this.userCreate)
 
             // 管理员创建艺术家 /api/admin/user/register
+
             data = await this.$axios.$post('/api/admin/user/register', {
               identity: 'seller',
               ...this.userCreate,
-            })
+            }).catch(error => {
+                console.log("error", error)
+
+              })
 
             // data = await this.$axios.$post('/api/user/seller/apply', {
             //   identity: this.$route.params.identity,
@@ -317,23 +325,34 @@ export default {
               this.userCreate
             )
           }
-
-          if (data.success) {
-            this.$message({
+          this.$message({
               showClose: true,
               message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}成功`,
               type: 'success',
             })
-            if (this.isCreate) {
-              this.$refs[userCreate].resetFields()
-            }
-          } else {
+          }catch(error) {
             this.$message({
               showClose: true,
               message: `${this.typeText}失败!${data.message}`,
               type: 'error',
             })
           }
+          // if (data.success) {
+          //   this.$message({
+          //     showClose: true,
+          //     message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}成功`,
+          //     type: 'success',
+          //   })
+          //   if (this.isCreate) {
+          //     this.$refs[userCreate].resetFields()
+          //   }
+          // } else {
+          //   this.$message({
+          //     showClose: true,
+          //     message: `${this.typeText}失败!${data.message}`,
+          //     type: 'error',
+          //   })
+          // }
         } else {
           console.log('error submit!!')
           return false

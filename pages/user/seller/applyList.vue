@@ -67,7 +67,7 @@
       <el-table-column :formatter="formatterDate" prop="createdDate" label="创建日期" width="200">
       </el-table-column>
 
-      <el-table-column label="操作" width="220">
+      <el-table-column label="操作" >
         <template slot-scope="scope">
           <el-button size="mini" @click="edit(scope.$index, scope.row)" icon="el-icon-edit"
             >编辑</el-button
@@ -76,12 +76,14 @@
             size="mini"
             type="success"
             @click="agree(scope.$index, scope.row)"
+            icon="el-icon-check"
             >同意</el-button
           >
           <el-button
             size="mini"
             type="danger"
             @click="refuse(scope.$index, scope.row)"
+            icon="el-icon-close"
             >拒绝</el-button
           >
         </template>

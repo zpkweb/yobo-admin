@@ -87,9 +87,9 @@ export default {
         identity: [],
       },
       rules: {
-        name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+        // name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
         email: [{ required: true, validator: validateEmail, trigger: 'blur' }],
-        phone: [{ validator: validatePhone, trigger: 'blur' }],
+        // phone: [{ validator: validatePhone, trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 
         // identity: [
@@ -138,6 +138,12 @@ export default {
               email: this.userCreate.email,
               phone: this.userCreate.phone,
               password: this.userCreate.password,
+            }).catch((error) => {
+              this.$message({
+                showClose: true,
+                message: `${this.typeText}失败! ${error.response.data.message}`,
+                type: 'error',
+              })
             })
           } else {
             data = await this.$axios.$post('/api/admin/user/update', {
@@ -148,8 +154,7 @@ export default {
               password: this.userCreate.password,
             })
           }
-
-          if (data.success) {
+          if (data.status === 200) {
             this.$message({
               showClose: true,
               message: `${this.userCreate.name}，${this.typeText}成功`,

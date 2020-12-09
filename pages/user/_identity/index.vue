@@ -45,14 +45,32 @@
           <el-button size="mini" @click="editUser(scope.$index, scope.row)" icon="el-icon-edit"
             >编辑</el-button
           >
-          <el-button
-            size="mini"
-            type="danger"
-            @click="removeUser(scope.$index, scope.row)"
-            icon="el-icon-delete"
-          >
-            删除
-          </el-button>
+
+          <el-popover placement="top" v-model="scope.row.visible">
+            <p>您确定要删除当前用户的数据吗？</p>
+            <div style="text-align: right; margin: 0">
+              <el-button
+                size="mini"
+                type="text"
+                @click="scope.row.visible = false"
+                >取消</el-button
+              >
+              <el-button
+                type="primary"
+                size="mini"
+                @click="removeUser(scope.$index, scope.row)"
+                >确定</el-button
+              >
+            </div>
+            <el-button
+              size="mini"
+              type="danger"
+              icon="el-icon-delete"
+              slot="reference"
+              >删除</el-button
+            >
+          </el-popover>
+
         </template>
       </el-table-column>
     </el-table>
@@ -82,7 +100,18 @@ export default {
         phone: this.userSearch.phone,
       },
     })
-    this.user = userSearch.data
+    let userData = userSearch.data.map((item) => {
+      item.visible = false
+      // item.isEdit = false
+      // item.identitys = item.identitys.map((item) => {
+      //   item.identityVisible = false
+      //   return item
+      // })
+      return item
+    })
+    this.user = userData
+
+    // this.user = userSearch.data
   },
   methods: {
     // 查找用户
@@ -99,8 +128,10 @@ export default {
     },
     // 删除用户
     async removeUser(index, row) {
-      const user = await this.$axios.$post('/api/admin/user/remove', {
-        userId: row.userId,
+      const user = await this.$axios.$get('/api/admin/user/remove', {
+        params: {
+          userId: row.userId,
+        }
       })
       if (user.success) {
         this.user.splice(index, 1)
