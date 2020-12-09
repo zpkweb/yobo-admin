@@ -18,6 +18,22 @@
         <el-col :span="4">
           <el-input v-model="item['fr-fr']" :disabled="true"></el-input>
         </el-col>
+
+        <el-col :span="2">
+          <el-button type="primary" @click="addOption">
+            新增
+          </el-button>
+        </el-col>
+        <el-col :span="2">
+           <el-button @click="resetForm('form')">重置</el-button>
+        </el-col>
+
+        <!-- <el-button type="primary" @click="submitForm('form')">创建</el-button>
+        <el-button type="primary" @click="addOption">{{
+          `新增${optionType[$route.params.type]}`
+        }}</el-button>
+        <el-button @click="resetForm('form')">重置</el-button> -->
+
       </el-row>
     </el-form-item>
 
@@ -101,13 +117,13 @@
 
 
 
-    <el-form-item>
+    <!-- <el-form-item>
       <el-button type="primary" @click="submitForm('form')">创建</el-button>
       <el-button @click="addOption">{{
         `新增${optionType[$route.params.type]}`
       }}</el-button>
       <el-button @click="resetForm('form')">重置</el-button>
-    </el-form-item>
+    </el-form-item> -->
   </el-form>
 </template>
 
@@ -238,14 +254,8 @@ export default {
             })
           })
         if (options.success) {
-          this.form.options[index] = options.data
-          this.form.options.splice(index, 1)
-          this.form.options.push(options.data[0], {
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            'fr-fr': '',
-          })
+          this.form.options.splice(index, 1, options.data[0])
+
           this.message('success', '添加成功!')
         } else {
           this.message('error', `添加失败!${options.message}`)
