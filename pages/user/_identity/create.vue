@@ -108,7 +108,7 @@ export default {
     // this.$refs.userCreate.resetFields()
 
     if (this.$route.query && this.$route.query.userId) {
-      console.log('create', this.$route.query)
+
       this.userId = this.$route.query.userId
 
       const user = await this.$axios.$get('/api/admin/user', {
@@ -116,7 +116,7 @@ export default {
           userId: this.userId,
         },
       })
-      console.log('find user', user)
+
       if (user.success) {
         this.userCreate = Object.assign(this.userCreate, user.data)
         this.type = 'edit'

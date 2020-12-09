@@ -25,7 +25,7 @@ export default {
     }
   },
   async fetch() {
-    this.users = await this.$axios.$get('/api/admin/user')
+    // this.users = await this.$axios.$get('/api/admin/user')
   },
 }
 </script>
