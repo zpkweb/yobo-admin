@@ -2,157 +2,285 @@
   <el-form ref="form" :model="form" label-width="88px">
     <el-form-item label="商品名称">
       <el-row :gutter="20">
-        <el-col :span="5"
-          ><el-input v-model="form.name['zh-cn']" placeholder="请输入汉语"></el-input
+        <el-col :span="5">
+          <el-form-item
+            :prop="'name.zh-cn'"
+            :rules="{
+              required: true,
+              message: `汉语名称不能为空`,
+              trigger: 'blur',
+            }"
+          >
+            <el-input
+              v-model="form.name['zh-cn']"
+              placeholder="请输入汉语"
+            ></el-input
+          ></el-form-item>
+        </el-col>
+        <el-col :span="5">
+          <el-form-item
+            :prop="'name.en-us'"
+            :rules="{
+              required: true,
+              message: `英语名称不能为空`,
+              trigger: 'blur',
+            }"
+            ><el-input
+              v-model="form.name['en-us']"
+              placeholder="请输入英语"
+            ></el-input></el-form-item
         ></el-col>
         <el-col :span="5"
-          ><el-input v-model="form.name['en-us']" placeholder="请输入英语"></el-input
+          ><el-form-item
+            :prop="'name.ja-jp'"
+            :rules="{
+              required: true,
+              message: `日语名称不能为空`,
+              trigger: 'blur',
+            }"
+            ><el-input
+              v-model="form.name['ja-jp']"
+              placeholder="请输入日语"
+            ></el-input></el-form-item
         ></el-col>
         <el-col :span="5"
-          ><el-input v-model="form.name['ja-jp']" placeholder="请输入日语"></el-input
-        ></el-col>
-        <el-col :span="5"
-          ><el-input v-model="form.name['fr-fr']" placeholder="请输入法语"></el-input
+          ><el-form-item
+            :prop="'name.fr-fr'"
+            :rules="{
+              required: true,
+              message: `法语名称不能为空`,
+              trigger: 'blur',
+            }"
+            ><el-input
+              v-model="form.name['fr-fr']"
+              placeholder="请输入法语"
+            ></el-input></el-form-item
         ></el-col>
       </el-row>
     </el-form-item>
     <el-form-item label="商品描述">
       <el-row :gutter="20">
+        <el-col :span="5">
+          <el-input
+              type="textarea"
+              v-model="form.desc['zh-cn']"
+              placeholder="请输入汉语描述"
+            ></el-input></el-col>
         <el-col :span="5"
           ><el-input
-            type="textarea"
-            v-model="form.desc['zh-cn']"
-            placeholder="请输入汉语"
-          ></el-input
-        ></el-col>
+              type="textarea"
+              v-model="form.desc['en-us']"
+              placeholder="请输入英语描述"
+            ></el-input></el-col>
         <el-col :span="5"
           ><el-input
-            type="textarea"
-            v-model="form.desc['en-us']"
-            placeholder="请输入英语"
-          ></el-input
-        ></el-col>
+              type="textarea"
+              v-model="form.desc['ja-jp']"
+              placeholder="请输入日语描述"
+            ></el-input></el-col>
         <el-col :span="5"
           ><el-input
-            type="textarea"
-            v-model="form.desc['ja-jp']"
-            placeholder="请输入日语"
-          ></el-input
-        ></el-col>
-        <el-col :span="5"
-          ><el-input
-            type="textarea"
-            v-model="form.desc['fr-fr']"
-            placeholder="请输入法语"
-          ></el-input
-        ></el-col>
+              type="textarea"
+              v-model="form.desc['fr-fr']"
+              placeholder="请输入法语描述"
+            ></el-input></el-col>
       </el-row>
     </el-form-item>
     <el-form-item label="商品价格">
       <el-row :gutter="20">
-        <el-col :span="5"
-          ><el-input v-model="form.price['zh-cn']" placeholder="请输入汉语"></el-input
-        ></el-col>
-        <el-col :span="5"
-          ><el-input v-model="form.price['en-us']" placeholder="请输入英语"></el-input
-        ></el-col>
-        <el-col :span="5"
-          ><el-input v-model="form.price['ja-jp']" placeholder="请输入日语"></el-input
-        ></el-col>
-        <el-col :span="5"
-          ><el-input v-model="form.price['fr-fr']" placeholder="请输入法语"></el-input
-        ></el-col>
+        <el-col :span="5">
+          <el-form-item
+            :prop="'price.zh-cn'"
+            :rules="{
+              required: true,
+              message: `人民币价格不能为空`,
+              trigger: 'blur',
+            }"
+          >
+            <el-input
+              v-model="form.price['zh-cn']"
+              placeholder="请输入人民币价格"
+            >
+              <template slot="append">¥</template>
+            </el-input>
+          </el-form-item></el-col
+        >
+        <el-col :span="5">
+          <el-form-item
+            :prop="'price.zh-cn'"
+            :rules="{
+              required: true,
+              message: `美元价格不能为空`,
+              trigger: 'blur',
+            }"
+            ><el-input
+              v-model="form.price['en-us']"
+              placeholder="请输入美元价格"
+              ><template slot="append">$</template></el-input
+            ></el-form-item
+          ></el-col
+        >
+        <el-col :span="5">
+          <el-form-item
+            :prop="'price.zh-cn'"
+            :rules="{
+              required: true,
+              message: `日元价格不能为空`,
+              trigger: 'blur',
+            }"
+            ><el-input
+              v-model="form.price['ja-jp']"
+              placeholder="请输入日元价格"
+              ><template slot="append">￥</template></el-input
+            ></el-form-item
+          ></el-col
+        >
+
+        <el-col :span="5">
+          <el-form-item
+            :prop="'price.zh-cn'"
+            :rules="{
+              required: true,
+              message: `欧元价格不能为空`,
+              trigger: 'blur',
+            }"
+            ><el-input
+              v-model="form.price['fr-fr']"
+              placeholder="请输入欧元价格"
+              ><template slot="append">€</template></el-input
+            ></el-form-item
+          ></el-col
+        >
+        <!-- <el-col :span="5"
+          ><el-input v-model="form.price['fr-fr']" placeholder="请输入法郎价格"><template slot="append">₣</template></el-input
+        ></el-col> -->
       </el-row>
     </el-form-item>
     <el-form-item label="商品形状">
       <el-row :gutter="20">
         <el-col :span="5">
-          <el-select
-            v-model="form.shape"
-            filterable
-            remote
-            reserve-keyword
-            placeholder="请选择商品形状"
-            :remote-method="remoteMethod"
-            :loading="loading"
+          <el-form-item
+            :prop="'shape'"
+            :rules="{
+              required: true,
+              message: `商品形状不能为空`,
+              trigger: 'change',
+            }"
           >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+            <el-select
+              v-model="form.shape"
+              placeholder="请选择商品形状"
+              clearable
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in options.shape"
+                :key="item.id"
+                :label="item['zh-cn']"
+                :value="item.id"
+              >
+                <span>{{ item['zh-cn'] }}</span>
+                <span>{{ item['en-us'] }}</span>
+                <span>{{ item['ja-jp'] }}</span>
+                <span>{{ item['fr-fr'] }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
         </el-col>
       </el-row>
     </el-form-item>
     <el-form-item label="商品主题">
       <el-row :gutter="20">
         <el-col :span="5">
-          <el-select
-            v-model="form.theme"
-            filterable
-            remote
-            reserve-keyword
-            placeholder="请选择商品主题"
-            :remote-method="remoteMethod"
-            :loading="loading"
+          <el-form-item
+            :prop="'theme'"
+            :rules="{
+              required: true,
+              message: `商品主题不能为空`,
+              trigger: 'change',
+            }"
           >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+            <el-select
+              v-model="form.theme"
+              placeholder="请选择商品主题"
+              clearable
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in options.theme"
+                :key="item.id"
+                :label="item['zh-cn']"
+                :value="item.id"
+              >
+                <span>{{ item['zh-cn'] }}</span>
+                <span>{{ item['en-us'] }}</span>
+                <span>{{ item['ja-jp'] }}</span>
+                <span>{{ item['fr-fr'] }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
         </el-col>
       </el-row>
     </el-form-item>
     <el-form-item label="商品类别">
       <el-row :gutter="20">
         <el-col :span="5">
-          <el-select
-            v-model="form.category"
-            filterable
-            remote
-            reserve-keyword
-            placeholder="请选择商品类别"
-            :remote-method="remoteMethod"
-            :loading="loading"
+          <el-form-item
+            :prop="'theme'"
+            :rules="{
+              required: true,
+              message: `商品类别不能为空`,
+              trigger: 'change',
+            }"
           >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+            <el-select
+              v-model="form.category"
+              placeholder="请选择商品类别"
+              clearable
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in options.category"
+                :key="item.id"
+                :label="item['zh-cn']"
+                :value="item.id"
+              >
+                <span>{{ item['zh-cn'] }}</span>
+                <span>{{ item['en-us'] }}</span>
+                <span>{{ item['ja-jp'] }}</span>
+                <span>{{ item['fr-fr'] }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
         </el-col>
       </el-row>
     </el-form-item>
     <el-form-item label="商品手法">
       <el-row :gutter="20">
         <el-col :span="5">
-          <el-select
-            v-model="form.technique"
-            filterable
-            remote
-            reserve-keyword
-            placeholder="请选择商品手法"
-            :remote-method="remoteMethod"
-            :loading="loading"
+          <el-form-item
+            :prop="'theme'"
+            :rules="{
+              required: true,
+              message: `商品手法不能为空`,
+              trigger: 'change',
+            }"
           >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+            <el-select
+              v-model="form.technique"
+              placeholder="请选择商品手法"
+              clearable
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in options.technique"
+                :key="item.id"
+                :label="item['zh-cn']"
+                :value="item.id"
+              >
+                <span>{{ item['zh-cn'] }}</span>
+                <span>{{ item['en-us'] }}</span>
+                <span>{{ item['ja-jp'] }}</span>
+                <span>{{ item['fr-fr'] }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
         </el-col>
       </el-row>
     </el-form-item>
@@ -160,6 +288,7 @@
       <el-row :gutter="20">
         <el-col :span="5">
           <el-upload
+            v-model="form.photo"
             action="https://jsonplaceholder.typicode.com/posts/"
             list-type="picture-card"
             :on-preview="handlePictureCardPreview"
@@ -175,17 +304,64 @@
     </el-form-item>
     <el-form-item label="商品尺寸">
       <el-row :gutter="20">
-        <el-col :span="5">
-          <el-input type="input" placeholder="请输入商品尺寸" v-model="form.size">
+        <el-col :span="8">
+          <el-form-item
+            :prop="'size[0]'"
+            :rules="{
+              required: true,
+              message: `商品长度不能为空`,
+              trigger: 'blur',
+            }"
+          >
+
+          <el-input
+            type="input"
+            placeholder="请输入商品长度"
+            v-model="form.size[0]"
+          >
+          <template slot="prepend">长</template>
             <template slot="append">cm</template>
           </el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item
+            :prop="'size[1]'"
+            :rules="{
+              required: true,
+              message: `商品高度不能为空`,
+              trigger: 'blur',
+            }"
+          >
+
+          <el-input
+            type="input"
+            placeholder="请输入商品高度"
+            v-model="form.size[1]"
+          >
+          <template slot="prepend">高</template>
+            <template slot="append">cm</template>
+          </el-input>
+          </el-form-item>
         </el-col>
       </el-row>
     </el-form-item>
     <el-form-item label="商品颜色">
       <el-row :gutter="20">
+        <el-col :span="6">
+          从<el-color-picker v-model="form.color[0]"></el-color-picker>到<el-color-picker v-model="form.color[1]"></el-color-picker>
+        </el-col>
+      </el-row>
+    </el-form-item>
+    <el-form-item label="商品状态">
+      <el-row :gutter="20">
         <el-col :span="5">
-          <el-color-picker v-model="form.color"></el-color-picker>
+          <el-radio-group v-model="form.state">
+            <el-radio label="0">无</el-radio>
+            <el-radio label="1">在售中</el-radio>
+            <el-radio label="2">已售卖</el-radio>
+            <el-radio label="3">已下架</el-radio>
+          </el-radio-group>
         </el-col>
       </el-row>
     </el-form-item>
@@ -193,7 +369,7 @@
       <el-row :gutter="20">
         <el-col :span="5">
           <el-select
-            v-model="form.value"
+            v-model="form.seller"
             filterable
             remote
             reserve-keyword
@@ -212,19 +388,9 @@
         </el-col>
       </el-row>
     </el-form-item>
-    <el-form-item label="商品状态">
-      <el-row :gutter="20">
-        <el-col :span="5">
-          <el-radio-group v-model="form.resource">
-            <el-radio label="在售中"></el-radio>
-            <el-radio label="已售卖"></el-radio>
-            <el-radio label="已下架"></el-radio>
-          </el-radio-group>
-        </el-col>
-      </el-row>
-    </el-form-item>
+
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">立即创建</el-button>
+      <el-button type="primary" @click="onSubmit('form')">立即创建</el-button>
       <el-button>取消</el-button>
     </el-form-item>
   </el-form>
@@ -238,33 +404,42 @@ export default {
           'zh-cn': '名称',
           'en-us': 'name',
           'ja-jp': '名前',
-          'fr-fr': 'Nom'
+          'fr-fr': 'Nom',
         },
         desc: {
-          'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'fr-fr': ''
+          'zh-cn': '名称',
+          'en-us': 'name',
+          'ja-jp': '名前',
+          'fr-fr': 'Nom',
         },
         price: {
-          'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'fr-fr': ''
+          'zh-cn': 100,
+          'en-us': 100,
+          'ja-jp': 100,
+          'fr-fr': 100
         },
-        shape: '',
-        color: '',
-        theme: '',
-        category: '',
-        technique: '',
-        size: '',
+        shape: '24',
+        theme: '1',
+        category: '1',
+        technique: '1',
+        photos: [{
+          src: '',
+          name: ''
+        }],
 
+        color: ['#fff','#000'],
+        size: [100, 100],
+        state: '0',
+        seller: '547790132@qq.com',
+      },
+      options: {
+        shape: [],
+        theme: [],
+        category: [],
+        technique: [],
       },
       dialogImageUrl: '',
       dialogVisible: false,
-      options: [],
-      value: [],
-      list: [],
       loading: false,
       states: [
         'Alabama',
@@ -320,14 +495,68 @@ export default {
       ],
     }
   },
+  async fetch() {
+    // 形状
+    const optionsShape = await this.$axios.$get(`/api/commodity/options/shape`)
+    if (optionsShape.data && optionsShape.data.length) {
+      this.options.shape = optionsShape.data
+    }
+    // 主题
+    const optionsTheme = await this.$axios.$get(`/api/commodity/options/theme`)
+    if (optionsTheme.data && optionsTheme.data.length) {
+      this.options.theme = optionsTheme.data
+    }
+    // 类别
+    const optionsCategory = await this.$axios.$get(
+      `/api/commodity/options/category`
+    )
+    if (optionsCategory.data && optionsCategory.data.length) {
+      this.options.category = optionsCategory.data
+    }
+    // 手法
+    const optionsTechnique = await this.$axios.$get(
+      `/api/commodity/options/technique`
+    )
+    if (optionsTechnique.data && optionsTechnique.data.length) {
+      this.options.technique = optionsTechnique.data
+    }
+  },
   mounted() {
     this.list = this.states.map((item) => {
       return { value: `value:${item}`, label: `label:${item}` }
     })
   },
   methods: {
-    onSubmit() {
-      console.log('submit!')
+    onSubmit(formName) {
+      console.log('submit!', this.form)
+      this.$refs[formName].validate(async (valid) => {
+        if (valid) {
+          const data = await this.$axios.$post('/api/admin/commodity/create', this.form).catch((error) => {
+            this.$message({
+              showClose: true,
+              message: `${this.typeText}失败! ${error.response.data.message}`,
+              type: 'error',
+            })
+          })
+          console.log("data", data)
+          if (data.status === 200) {
+            this.$message({
+              showClose: true,
+              message: `${this.userCreate.name}，${this.typeText}成功`,
+              type: 'success',
+            })
+            if (this.isCreate) {
+              this.$refs[userCreate].resetFields()
+            }
+          } else {
+            this.$message({
+              showClose: true,
+              message: `${this.typeText}失败!${data.message}`,
+              type: 'error',
+            })
+          }
+        }
+      })
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)
@@ -352,5 +581,4 @@ export default {
   },
 }
 </script>
-<style scoped>
-</style>
+<style scoped></style>

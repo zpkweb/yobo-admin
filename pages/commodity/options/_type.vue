@@ -163,9 +163,7 @@ export default {
   },
   async fetch() {
     const options = await this.$axios.$get(`/api/commodity/options/${this.$route.params.type}`)
-    console.log('options', options)
     if (options.data && options.data.length) {
-      // this.form.options.unshift(options.data)
       this.form.options = [
         ...options.data,
         {
