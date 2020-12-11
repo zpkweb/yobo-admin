@@ -10,7 +10,7 @@
       <h3>后台添加艺术家</h3>
 
       <el-form-item label="艺术家状态" prop="identity">
-        <el-select  v-model="userCreate.state" placeholder="请选择艺术家状态">
+        <el-select v-model="userCreate.state" placeholder="请选择艺术家状态">
           <el-option
             v-for="item in stateOptions"
             :key="item.value"
@@ -171,10 +171,17 @@
           创建
         </el-button>
 
-        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
+        <el-button
+          v-else
+          type="primary"
+          @click="submitForm('userCreate')"
+          icon="el-icon-check"
+        >
           更新
         </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close"
+          >清空</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
@@ -267,9 +274,7 @@ export default {
     // this.$refs.userCreate.resetFields()
 
     if (this.$route.query && this.$route.query.sellerId) {
-      console.log('create', this.$route.query)
       this.sellerId = this.$route.query.sellerId
-
       const user = await this.$axios.$get('/api/admin/user/seller', {
         params: {
           sellerId: this.sellerId,
@@ -281,7 +286,6 @@ export default {
           ...user.data.seller,
           ...user.data.sellerMetadata,
         })
-
         this.type = 'edit'
         this.typeText = '更新'
         this.isCreate = false
@@ -294,43 +298,41 @@ export default {
       this.$refs[userCreate].validate(async (valid) => {
         if (valid) {
           let data
-          try{
-          if (this.isCreate) {
+          try {
+            if (this.isCreate) {
+              // 用户申请成为艺术家 /api/user/seller/apply
+              // data = await this.$axios.$post('/api/user/seller/apply', this.userCreate)
 
+              // 管理员创建艺术家 /api/admin/user/register
 
+              data = await this.$axios
+                .$post('/api/admin/user/register', {
+                  identity: 'seller',
+                  ...this.userCreate,
+                })
+                .catch((error) => {
+                  console.log('error', error)
+                })
 
-            // 用户申请成为艺术家 /api/user/seller/apply
-            // data = await this.$axios.$post('/api/user/seller/apply', this.userCreate)
-
-            // 管理员创建艺术家 /api/admin/user/register
-
-            data = await this.$axios.$post('/api/admin/user/register', {
-              identity: 'seller',
-              ...this.userCreate,
-            }).catch(error => {
-                console.log("error", error)
-
-              })
-
-            // data = await this.$axios.$post('/api/user/seller/apply', {
-            //   identity: this.$route.params.identity,
-            //   name: this.userCreate.name,
-            //   email: this.userCreate.email,
-            //   phone: this.userCreate.phone,
-            //   password: this.userCreate.password,
-            // })
-          } else {
-            data = await this.$axios.$post(
-              '/api/admin/user/seller/update',
-              this.userCreate
-            )
-          }
-          this.$message({
+              // data = await this.$axios.$post('/api/user/seller/apply', {
+              //   identity: this.$route.params.identity,
+              //   name: this.userCreate.name,
+              //   email: this.userCreate.email,
+              //   phone: this.userCreate.phone,
+              //   password: this.userCreate.password,
+              // })
+            } else {
+              data = await this.$axios.$post(
+                '/api/admin/user/seller/update',
+                this.userCreate
+              )
+            }
+            this.$message({
               showClose: true,
               message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}成功`,
               type: 'success',
             })
-          }catch(error) {
+          } catch (error) {
             this.$message({
               showClose: true,
               message: `${this.typeText}失败!${data.message}`,
