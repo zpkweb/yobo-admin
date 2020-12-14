@@ -19,12 +19,12 @@
           <el-input v-model="item['fr-fr']" :disabled="true"></el-input>
         </el-col>
 
-        <el-col :span="2">
+        <el-col :span="3">
           <el-button type="primary" @click="addOption">
             新增
           </el-button>
         </el-col>
-        <el-col :span="2">
+        <el-col :span="3">
            <el-button @click="resetForm('form')">重置</el-button>
         </el-col>
 
@@ -101,7 +101,7 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="2">
+        <el-col :span="3">
           <el-button @click.prevent="updateOption(item)" v-if="item.id"
             >更新</el-button
           >
@@ -109,7 +109,7 @@
             >添加</el-button
           >
         </el-col>
-        <el-col :span="2">
+        <el-col :span="3">
           <el-button @click.prevent="removeOption(item, index)">删除</el-button>
         </el-col>
       </el-row>
