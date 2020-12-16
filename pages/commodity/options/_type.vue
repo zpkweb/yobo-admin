@@ -162,7 +162,7 @@ export default {
     }
   },
   async fetch() {
-    const options = await this.$axios.$get(`/api/commodity/options/${this.$route.params.type}`)
+    const options = await this.$axios.$get(`/api/admin/commodity/options/${this.$route.params.type}`)
     if (options.data && options.data.length) {
       this.form.options = [
         ...options.data,

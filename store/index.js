@@ -105,7 +105,14 @@ export const state = () => ({
       }]
     }]
   }],
-
+  commodity: {
+    options: {
+      shapes: [],
+      themes: [],
+      categorys: [],
+      techniques: [],
+    },
+  }
 })
 
 export const mutations = {
@@ -113,10 +120,11 @@ export const mutations = {
     state.counter++
   },
   userMenuActive(state, active) {
-    console.log("userMenuActive", active)
     state.userMenuActive = active;
+  },
+  addCommodityOpitons(state, payload) {
+    state.commodity.options[payload.type] = payload.data;
   }
-
 }
 
 
