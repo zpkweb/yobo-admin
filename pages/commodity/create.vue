@@ -377,22 +377,24 @@
     </el-form-item>
 
     <el-form-item label="商品图片">
-      <el-row :gutter="20">
-        <el-col :span="6">
+      <!-- <el-row :gutter="20">
+        <el-col :span="23"> -->
           <el-upload
-            v-model="form.photo"
-            action="https://jsonplaceholder.typicode.com/posts/"
+            :file-list="form.photos"
+            action="http://192.168.0.67:3000/api/upload/images"
+            :data="{ type: 'commodity' }"
             list-type="picture-card"
-            :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove"
+            :on-preview="uploadPreview"
+            :on-remove="uploadRemove"
+            :on-success="uploadSuccess"
           >
             <i class="el-icon-plus"></i>
           </el-upload>
           <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="" />
           </el-dialog>
-        </el-col>
-      </el-row>
+        <!-- </el-col>
+      </el-row> -->
     </el-form-item>
 
     <el-row :gutter="20">
@@ -718,13 +720,7 @@ export default {
         }
       })
     },
-    handleRemove(file, fileList) {
-      console.log(file, fileList)
-    },
-    handlePictureCardPreview(file) {
-      this.dialogImageUrl = file.url
-      this.dialogVisible = true
-    },
+
 
     onMock() {
 
@@ -752,12 +748,7 @@ export default {
         themes: [this.themes[Mock.mock('@integer(0,2)')]],
         categorys: [this.categorys[Mock.mock('@integer(0,2)')]],
         techniques: [this.techniques[Mock.mock('@integer(0,2)')]],
-        photos: [
-          {
-            src: '',
-            name: '',
-          },
-        ],
+        photos: [],
         colors: [{
           name: Mock.mock('@color')
         }],
@@ -844,21 +835,40 @@ export default {
           },
         ],
         photos: [
-          {
-            src: '',
-            name: '',
-          },
-        ],
 
+        ],
         colors: [{
           name: '#fff'
         }],
-          width: '',
-          height: '',
+        width: '',
+        height: '',
         state: 0,
         seller: '547790132@qq.com',
       }
-    }
+    },
+    uploadSuccess(res, file) {
+      console.log(res, file)
+      // this.imageUrl = URL.createObjectURL(file.raw);
+      this.form.photos.push({
+        url: res.data.src,
+        name: file.name
+      })
+      console.log(this.form)
+    },
+    uploadRemove(file, fileList) {
+      console.log(file, fileList)
+      for(let [index,item] of Object.entries(this.form.photos)){
+        console.log(item)
+        if(item.name === file.name){
+          this.form.photos.splice(index, 1)
+        }
+      }
+      console.log(this.form)
+    },
+    uploadPreview(file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
+    },
   },
 }
 </script>

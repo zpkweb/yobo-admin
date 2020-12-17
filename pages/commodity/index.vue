@@ -427,7 +427,20 @@
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="photo" label="图片"> </el-table-column>
+      <el-table-column prop="photo" label="图片" width="180">
+        <template slot-scope="scope">
+          <el-card :body-style="{ padding: '0px' }" v-for="(item, index) of scope.row.photos" :key="index" style="margin:10px;">
+          <img :src="item.src" class="image">
+          <div style="padding: 14px;">
+            <span>{{item.name}}</span>
+            <!-- <div class="bottom clearfix">
+              <time class="time">{{ currentDate }}</time>
+              <el-button type="text" class="button">操作按钮</el-button>
+            </div> -->
+          </div>
+        </el-card>
+        </template>
+      </el-table-column>
 
       <el-table-column prop="width" label="宽度" >
         <template slot-scope="scope">
@@ -730,4 +743,36 @@ export default {
   margin-bottom: 0;
   width: 25%;
 }
+
+
+.time {
+    font-size: 13px;
+    color: #999;
+  }
+
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width: 100%;
+    display: block;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+      display: table;
+      content: "";
+  }
+
+  .clearfix:after {
+      clear: both
+  }
+
 </style>
