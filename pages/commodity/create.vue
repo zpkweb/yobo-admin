@@ -1,6 +1,5 @@
 <template>
   <el-form ref="form" :model="form" label-width="94px">
-
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
@@ -253,13 +252,13 @@
             <el-option
               v-for="(item, index) in shapes"
               :key="index"
-              :label="item.id"
+              :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ item['zh-cn'] }}</span>
-              <span>{{ item['en-us'] }}</span>
-              <span>{{ item['ja-jp'] }}</span>
-              <span>{{ item['fr-fr'] }}</span>
+              <span>中文：{{ item['zh-cn'] }}</span>
+              <span>英文：{{ item['en-us'] }}</span>
+              <span>日语：{{ item['ja-jp'] }}</span>
+              <span>法语：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -282,13 +281,13 @@
             <el-option
               v-for="(item, index) in themes"
               :key="index"
-              :label="item.id"
+              :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ item['zh-cn'] }}</span>
-              <span>{{ item['en-us'] }}</span>
-              <span>{{ item['ja-jp'] }}</span>
-              <span>{{ item['fr-fr'] }}</span>
+              <span>中文：{{ item['zh-cn'] }}</span>
+              <span>英文：{{ item['en-us'] }}</span>
+              <span>日语：{{ item['ja-jp'] }}</span>
+              <span>法语：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -312,13 +311,13 @@
             <el-option
               v-for="(item, index) in categorys"
               :key="index"
-              :label="item.id"
+              :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ item['zh-cn'] }}</span>
-              <span>{{ item['en-us'] }}</span>
-              <span>{{ item['ja-jp'] }}</span>
-              <span>{{ item['fr-fr'] }}</span>
+              <span>中文：{{ item['zh-cn'] }}</span>
+              <span>英文：{{ item['en-us'] }}</span>
+              <span>日语：{{ item['ja-jp'] }}</span>
+              <span>法语：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -341,13 +340,13 @@
             <el-option
               v-for="(item, index) in techniques"
               :key="index"
-              :label="item.id"
+              :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ item['zh-cn'] }}</span>
-              <span>{{ item['en-us'] }}</span>
-              <span>{{ item['ja-jp'] }}</span>
-              <span>{{ item['fr-fr'] }}</span>
+              <span>中文：{{ item['zh-cn'] }}</span>
+              <span>英文：{{ item['en-us'] }}</span>
+              <span>日语：{{ item['ja-jp'] }}</span>
+              <span>法语：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -356,17 +355,18 @@
 
     <el-form-item label="商品颜色">
       <el-row :gutter="10">
-        <el-col :span="2" v-for="(item, index) in form.colors" :key="index" >
+        <el-col :span="2" v-for="(item, index) in form.colors" :key="index">
           <el-form-item
-
-            :prop="'colors.'+index + '.name'"
+            :prop="'colors.' + index + '.name'"
             :rules="{
               required: false,
               message: `商品颜色不能为空`,
               trigger: 'blur',
             }"
           >
-            <el-color-picker v-model="form.colors[index].name"></el-color-picker>
+            <el-color-picker
+              v-model="form.colors[index].name"
+            ></el-color-picker>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset="1">
@@ -379,21 +379,21 @@
     <el-form-item label="商品图片">
       <!-- <el-row :gutter="20">
         <el-col :span="23"> -->
-          <el-upload
-            :file-list="form.photos"
-            action="http://192.168.0.67:3000/api/upload/images"
-            :data="{ type: 'commodity' }"
-            list-type="picture-card"
-            :on-preview="uploadPreview"
-            :on-remove="uploadRemove"
-            :on-success="uploadSuccess"
-          >
-            <i class="el-icon-plus"></i>
-          </el-upload>
-          <el-dialog :visible.sync="dialogVisible">
-            <img width="100%" :src="dialogImageUrl" alt="" />
-          </el-dialog>
-        <!-- </el-col>
+      <el-upload
+        :file-list="form.photos"
+        action="http://192.168.0.67:3000/api/upload/images"
+        :data="{ type: 'commodity' }"
+        list-type="picture-card"
+        :on-preview="uploadPreview"
+        :on-remove="uploadRemove"
+        :on-success="uploadSuccess"
+      >
+        <i class="el-icon-plus"></i>
+      </el-upload>
+      <el-dialog :visible.sync="dialogVisible">
+        <img width="100%" :src="dialogImageUrl" alt="" />
+      </el-dialog>
+      <!-- </el-col>
       </el-row> -->
     </el-form-item>
 
@@ -470,73 +470,7 @@ export default {
       type: '',
       typeText: '创建',
       isCreate: true,
-      form: {
-        // commodityId: '',
-        // name: {
-        //   'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        // },
-        // desc: {
-        //   'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        // },
-        // price: {
-        //   'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        // },
-        // shapes: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        //   },
-        // ],
-        // themes: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        //   },
-        // ],
-        // categorys: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        //   },
-        // ],
-        // techniques: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //   'en-us': '',
-        //   'ja-jp': '',
-        //   'fr-fr': '',
-        //   },
-        // ],
-        // photos: [
-        //   {
-        //     src: '',
-        //     name: '',
-        //   },
-        // ],
-
-        // colors: ['#fff'],
-        // state: 0,
-        // seller: '547790132@qq.com',
-      },
+      form: {},
 
       dialogImageUrl: '',
       dialogVisible: false,
@@ -544,64 +478,64 @@ export default {
     }
   },
   computed: {
-    shapes () {
+    shapes() {
       return this.$store.state.commodity.options.shapes
     },
-    themes () {
+    themes() {
       return this.$store.state.commodity.options.themes
     },
-    categorys () {
+    categorys() {
       return this.$store.state.commodity.options.categorys
     },
-    techniques () {
+    techniques() {
       return this.$store.state.commodity.options.techniques
     },
   },
   async fetch() {
-      this.isCreate = true
-      this.reset();
+    this.isCreate = true
+    this.reset()
 
     // 形状
-    const optionsShape = await this.$axios.$get(`/api/commodity/options/shape`)
+    const optionsShape = await this.$axios.$get(`/api/admin/commodity/options/shape`)
     if (optionsShape.data && optionsShape.data.length) {
       // this.options.shapes = optionsShape.data
       this.$store.commit('addCommodityOpitons', {
         type: 'shapes',
-        data: optionsShape.data
+        data: optionsShape.data,
       })
     }
     // 主题
-    const optionsTheme = await this.$axios.$get(`/api/commodity/options/theme`)
+    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/options/theme`)
     if (optionsTheme.data && optionsTheme.data.length) {
       // this.options.themes = optionsTheme.data
       this.$store.commit('addCommodityOpitons', {
         type: 'themes',
-        data: optionsTheme.data
+        data: optionsTheme.data,
       })
     }
     // 类别
     const optionsCategory = await this.$axios.$get(
-      `/api/commodity/options/category`
+      `/api/admin/commodity/options/category`
     )
     if (optionsCategory.data && optionsCategory.data.length) {
       // this.options.categorys = optionsCategory.data
       this.$store.commit('addCommodityOpitons', {
         type: 'categorys',
-        data: optionsCategory.data
+        data: optionsCategory.data,
       })
     }
     // 手法
     const optionsTechnique = await this.$axios.$get(
-      `/api/commodity/options/technique`
+      `/api/admin/commodity/options/technique`
     )
     if (optionsTechnique.data && optionsTechnique.data.length) {
       // this.options.techniques = optionsTechnique.data
       this.$store.commit('addCommodityOpitons', {
         type: 'techniques',
-        data: optionsTechnique.data
+        data: optionsTechnique.data,
       })
     }
-    console.log('this.$route.query', this.$route.query)
+    // console.log('this.$route.query', this.$route.query)
 
     if (this.$route.query && this.$route.query.commodityId) {
       this.form.commodityId = this.$route.query.commodityId
@@ -621,11 +555,11 @@ export default {
         // this.form.photos = commodity.data.photos;
         // console.log('commodityForm', commodityForm)
 
-        this.form.state = commodityForm.state;
-        this.form.width = commodityForm.width;
-        this.form.height = commodityForm.height;
-        this.form.colors = commodityForm.colors;
-        this.form.seller = commodityForm.seller;
+        this.form.state = commodityForm.state
+        this.form.width = commodityForm.width
+        this.form.height = commodityForm.height
+        this.form.colors = commodityForm.colors
+        this.form.seller = commodityForm.seller
 
         if (commodityForm.name) {
           this.form.name = commodityForm.name
@@ -673,7 +607,7 @@ export default {
   },
   methods: {
     onSubmit(formName) {
-      console.log('submit!', this.form)
+      // console.log('submit!', this.form)
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           let data
@@ -699,7 +633,7 @@ export default {
               })
           }
 
-          console.log('data', data)
+          // console.log('data', data)
           if (data.status === 200) {
             this.$message({
               showClose: true,
@@ -721,9 +655,7 @@ export default {
       })
     },
 
-
     onMock() {
-
       const createCommodityMock = {
         commodityId: this.form.commodityId,
         name: {
@@ -749,15 +681,17 @@ export default {
         categorys: [this.categorys[Mock.mock('@integer(0,2)')]],
         techniques: [this.techniques[Mock.mock('@integer(0,2)')]],
         photos: [],
-        colors: [{
-          name: Mock.mock('@color')
-        }],
-          width: Mock.mock('@natural(100, 300)'),
-          height: Mock.mock('@natural(100, 300)'),
+        colors: [
+          {
+            name: Mock.mock('@color'),
+          },
+        ],
+        width: Mock.mock('@natural(100, 300)'),
+        height: Mock.mock('@natural(100, 300)'),
         state: Mock.mock('@integer(0, 3)'),
         seller: '547790132@qq.com',
       }
-      console.log('createCommodityMock', createCommodityMock)
+      // console.log('createCommodityMock', createCommodityMock)
       this.form = createCommodityMock
 
       this.type = 'create'
@@ -765,16 +699,16 @@ export default {
       this.isCreate = true
     },
     resetForm(formName) {
-      this.reset();
+      this.reset()
       this.type = 'create'
       this.typeText = '添加'
       this.isCreate = true
       this.$refs[formName].clearValidate()
-      console.log(this.form)
+      // console.log(this.form)
     },
     addColors() {
       this.form.colors.push({
-        name: '#fff'
+        name: '#fff',
       })
     },
     reset() {
@@ -802,44 +736,44 @@ export default {
           {
             id: '',
             'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'fr-fr': '',
+            'en-us': '',
+            'ja-jp': '',
+            'fr-fr': '',
           },
         ],
         themes: [
           {
             id: '',
             'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'fr-fr': '',
+            'en-us': '',
+            'ja-jp': '',
+            'fr-fr': '',
           },
         ],
         categorys: [
           {
             id: '',
             'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'fr-fr': '',
+            'en-us': '',
+            'ja-jp': '',
+            'fr-fr': '',
           },
         ],
         techniques: [
           {
             id: '',
             'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'fr-fr': '',
+            'en-us': '',
+            'ja-jp': '',
+            'fr-fr': '',
           },
         ],
-        photos: [
-
+        photos: [],
+        colors: [
+          {
+            name: '#fff',
+          },
         ],
-        colors: [{
-          name: '#fff'
-        }],
         width: '',
         height: '',
         state: 0,
@@ -847,23 +781,22 @@ export default {
       }
     },
     uploadSuccess(res, file) {
-      console.log(res, file)
+      // console.log(res, file)
       // this.imageUrl = URL.createObjectURL(file.raw);
       this.form.photos.push({
         url: res.data.src,
-        name: file.name
+        name: file.name,
       })
-      console.log(this.form)
+      // console.log(this.form)
     },
     uploadRemove(file, fileList) {
-      console.log(file, fileList)
-      for(let [index,item] of Object.entries(this.form.photos)){
-        console.log(item)
-        if(item.name === file.name){
+      // console.log(file, fileList)
+      for (let [index, item] of Object.entries(this.form.photos)) {
+        if (item.name === file.name) {
           this.form.photos.splice(index, 1)
         }
       }
-      console.log(this.form)
+      // console.log(this.form)
     },
     uploadPreview(file) {
       this.dialogImageUrl = file.url

@@ -1,7 +1,9 @@
 <template>
-
   <el-container>
-    <AsideCommodity />
+    <!-- <Aside v-if="$store.state.userMenu.length" :menu="$store.state.userMenu[1]" /> -->
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <Menu v-if="$store.state.userMenu.length" :menu="$store.state.userMenu[1]" />
+    </el-aside>
     <el-main>
       <Nuxt />
     </el-main>

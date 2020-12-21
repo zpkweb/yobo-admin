@@ -13,30 +13,33 @@
       @select="handleSelect"
       router
     >
-      <el-submenu
-        v-for="item in $store.state.menu"
-        :key="item.name"
-        :index="item.path"
-      >
-        <template slot="title">
-          <!-- <NuxtLink class="logo" :to="item.path"> -->
-            <i class="item.icon"></i>{{ item.name }}
-          <!-- </NuxtLink> -->
-        </template>
-        <el-menu-item
-          v-for="asideitem in item.subMenu"
-          :index="asideitem.path"
-          :key="asideitem.name"
+      <template v-for="item in $store.state.userMenu">
+        <el-submenu
+          :key="item.name"
+          :index="item.path"
+          v-if="$store.state.isRoot || item.checked"
         >
-          {{ asideitem.name }}
-        </el-menu-item>
-      </el-submenu>
-
+          <template slot="title">
+            <!-- <NuxtLink class="logo" :to="item.path"> -->
+            <i class="item.icon"></i>{{ item.name }}
+            <!-- </NuxtLink> -->
+          </template>
+          <template v-if="item.subMenu && item.subMenu.length">
+            <template v-for="asideitem in item.subMenu">
+            <el-menu-item
+              :index="asideitem.path"
+              :key="asideitem.name"
+              v-if="$store.state.isRoot || asideitem.checked"
+            >
+              {{ asideitem.name }}
+            </el-menu-item>
+            </template>
+          </template>
+        </el-submenu>
+      </template>
     </el-menu>
 
-      <NuxtLink class="version" to="/version">
-        版本
-      </NuxtLink>
+    <NuxtLink class="version" to="/version"> 版本 </NuxtLink>
 
     <el-dropdown>
       <span class="el-dropdown-link">
@@ -58,10 +61,8 @@
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>个人中心</el-dropdown-item>
         <el-dropdown-item divided>
-          <NuxtLink class="logo" to="/login">
-            登出
-          </NuxtLink>
-          </el-dropdown-item>
+          <NuxtLink class="logo" to="/login"> 登出 </NuxtLink>
+        </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -79,7 +80,8 @@ export default {
   },
   fetch() {
     const routePath = this.$route.path
-    console.log(routePath)
+    // console.log(routePath)
+    // console.log('this.$store.state.userMenu', this.$store.state.userMenu)
     // if(routePath.includes('user')){
     //   console.log("route user")
     //   this.activeIndex = '1-1';
@@ -144,7 +146,7 @@ export default {
   margin: 10px 20px 0 20px;
 }
 
-.version{
+.version {
   display: inline-block;
   line-height: 60px;
   margin-right: 15px;

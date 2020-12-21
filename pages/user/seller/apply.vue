@@ -9,6 +9,24 @@
     >
       <h3>用户申请成为艺术家</h3>
 
+      <el-form-item>
+        <el-button
+          v-if="isCreate"
+          type="primary"
+          @click="submitForm('userCreate')"
+          icon="el-icon-circle-plus-outline"
+        >
+          申请
+        </el-button>
+
+        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
+          更新
+        </el-button>
+        <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
+      </el-form-item>
+
+
       <el-form-item label="姓氏" prop="firstname">
         <el-input
           v-model="userCreate.firstname"
@@ -46,14 +64,14 @@
           placeholder="请输入语言"
         ></el-input>
       </el-form-item>
-
-      <el-form-item prop="findUs">
+      <el-form-item prop="profile">
         <el-input
           type="textarea"
-          v-model="userCreate.findUs"
-          placeholder="您是如何发现我们的"
+          v-model="userCreate.profile"
+          placeholder="用户简介"
         ></el-input>
       </el-form-item>
+
 
       <el-form-item prop="isFullTime">
         <el-input
@@ -135,33 +153,21 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="profile">
+
+      <el-form-item prop="findUs">
         <el-input
           type="textarea"
-          v-model="userCreate.profile"
-          placeholder="用户简介"
+          v-model="userCreate.findUs"
+          placeholder="您是如何发现我们的"
         ></el-input>
       </el-form-item>
 
-      <el-form-item>
-        <el-button
-          v-if="isCreate"
-          type="primary"
-          @click="submitForm('userCreate')"
-          icon="el-icon-circle-plus-outline"
-        >
-          申请
-        </el-button>
 
-        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
-          更新
-        </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
-      </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
+import Mock from 'mockjs';
 export default {
   watchQuery: ['sellerId'],
   data() {
@@ -302,6 +308,30 @@ export default {
     resetForm(userCreate) {
       this.$refs[userCreate].resetFields()
     },
+    onMock() {
+      this.userCreate= {
+        firstname: Mock.mock('@cfirst'),
+        lastname: Mock.mock('@clast'),
+        email: Mock.mock('@email'),
+        phone: '',
+        password: '123',
+        country: Mock.mock('@county(true)'),
+        language: ['中文', '英文', '日语', '法语'][Mock.mock('@integer(0, 2)')],
+        profile: Mock.mock('@cparagraph'),
+        isFullTime: '',
+        onlineSell: '',
+        sold: '',
+        channel: '',
+        gallery: '',
+        medium: '',
+        galleryInfo: '',
+        recommend: '',
+        prize: '',
+        website: '',
+
+        findUs: '',
+      }
+    }
   },
 }
 </script>

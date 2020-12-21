@@ -207,12 +207,16 @@
 
         <el-col :span="3">
           <el-form-item label="开始颜色" prop="colors.start">
-            <el-color-picker v-model="commoditySearch.colors.start"></el-color-picker>
+            <el-color-picker
+              v-model="commoditySearch.colors.start"
+            ></el-color-picker>
           </el-form-item>
         </el-col>
         <el-col :span="3">
           <el-form-item label="结束颜色" prop="colors.end">
-            <el-color-picker v-model="commoditySearch.colors.end"></el-color-picker>
+            <el-color-picker
+              v-model="commoditySearch.colors.end"
+            ></el-color-picker>
           </el-form-item>
         </el-col>
       </el-row>
@@ -278,7 +282,7 @@
               <span>{{ scope.row.price['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item label="中文形状">
+            <el-form-item v-if="form.shapes.length" label="中文形状">
               <span>{{ scope.row.shapes[0]['zh-cn'] }}</span>
             </el-form-item>
             <el-form-item label="英语形状">
@@ -291,22 +295,20 @@
               <span>{{ scope.row.shapes[0]['fr-fr'] }}</span>
             </el-form-item>
 
-
-            <el-form-item label="中文主题">
-              <span>{{ scope.row.shapes[0]['zh-cn'] }}</span>
+            <el-form-item v-if="form.themes.length" label="中文主题">
+              <span>{{ scope.row.themes[0]['zh-cn'] }}</span>
             </el-form-item>
             <el-form-item label="英语主题">
-              <span>{{ scope.row.shapes[0]['en-us'] }}</span>
+              <span>{{ scope.row.themes[0]['en-us'] }}</span>
             </el-form-item>
             <el-form-item label="日语主题">
-              <span>{{ scope.row.shapes[0]['ja-jp'] }}</span>
+              <span>{{ scope.row.themes[0]['ja-jp'] }}</span>
             </el-form-item>
             <el-form-item label="法语主题">
-              <span>{{ scope.row.shapes[0]['fr-fr'] }}</span>
+              <span>{{ scope.row.themes[0]['fr-fr'] }}</span>
             </el-form-item>
 
-
-            <el-form-item label="中文类别">
+            <el-form-item v-if="form.categorys.length" label="中文类别">
               <span>{{ scope.row.categorys[0]['zh-cn'] }}</span>
             </el-form-item>
             <el-form-item label="英语类别">
@@ -319,8 +321,7 @@
               <span>{{ scope.row.categorys[0]['fr-fr'] }}</span>
             </el-form-item>
 
-
-            <el-form-item label="中文手法">
+            <el-form-item v-if="form.techniques.length" label="中文手法">
               <span>{{ scope.row.techniques[0]['zh-cn'] }}</span>
             </el-form-item>
             <el-form-item label="英语手法">
@@ -332,7 +333,6 @@
             <el-form-item label="法语手法">
               <span>{{ scope.row.techniques[0]['fr-fr'] }}</span>
             </el-form-item>
-
           </el-form>
         </template>
       </el-table-column>
@@ -341,8 +341,8 @@
           <el-popover trigger="click" placement="top">
             <p>中文: {{ scope.row.name['zh-cn'] }}</p>
             <p>英文: {{ scope.row.name['en-us'] }}</p>
-            <p>日文: {{ scope.row.name['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.name['fr-fr'] }}</p>
+            <p>日语: {{ scope.row.name['ja-jp'] }}</p>
+            <p>法语: {{ scope.row.name['fr-fr'] }}</p>
             <div slot="reference">
               <el-tag>{{ scope.row.name['zh-cn'] }}</el-tag>
             </div>
@@ -354,8 +354,8 @@
           <el-popover trigger="click" placement="top">
             <p>中文: {{ scope.row.desc['zh-cn'] }}</p>
             <p>英文: {{ scope.row.desc['en-us'] }}</p>
-            <p>日文: {{ scope.row.desc['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.desc['fr-fr'] }}</p>
+            <p>日语: {{ scope.row.desc['ja-jp'] }}</p>
+            <p>法语: {{ scope.row.desc['fr-fr'] }}</p>
             <div slot="reference">
               <span>{{ scope.row.desc['zh-cn'] }}</span>
             </div>
@@ -367,23 +367,24 @@
           <el-popover trigger="click" placement="top">
             <p>中文: {{ scope.row.price['zh-cn'] }}</p>
             <p>英文: {{ scope.row.price['en-us'] }}</p>
-            <p>日文: {{ scope.row.price['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.price['fr-fr'] }}</p>
+            <p>日语: {{ scope.row.price['ja-jp'] }}</p>
+            <p>法语: {{ scope.row.price['fr-fr'] }}</p>
             <div slot="reference">
               <el-tag>{{ scope.row.price['zh-cn'] }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
+
       <el-table-column prop="shapes[0]['zh-cn']" label="形状">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.shapes[0]['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.shapes[0]['en-us'] }}</p>
-            <p>日文: {{ scope.row.shapes[0]['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.shapes[0]['fr-fr'] }}</p>
+            <p>中文: {{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '' }}</p>
+            <p>英文: {{ scope.row.shapes.length ? scope.row.shapes[0]['en-us'] : '' }}</p>
+            <p>日语: {{ scope.row.shapes.length ? scope.row.shapes[0]['ja-jp'] : '' }}</p>
+            <p>法语: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.shapes[0]['zh-cn'] }}</el-tag>
+              <el-tag>{{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '无' }}</el-tag>
             </div>
           </el-popover>
         </template>
@@ -391,12 +392,12 @@
       <el-table-column prop="themes[0]['zh-cn']" label="主题">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.themes[0]['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.themes[0]['en-us'] }}</p>
-            <p>日文: {{ scope.row.themes[0]['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.themes[0]['fr-fr'] }}</p>
+            <p>中文: {{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '' }}</p>
+            <p>英文: {{ scope.row.themes.length ? scope.row.themes[0]['en-us'] : '' }}</p>
+            <p>日语: {{ scope.row.themes.length ? scope.row.themes[0]['ja-jp'] : '' }}</p>
+            <p>法语: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.themes[0]['zh-cn'] }}</el-tag>
+              <el-tag>{{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '无' }}</el-tag>
             </div>
           </el-popover>
         </template>
@@ -404,12 +405,12 @@
       <el-table-column prop="categorys[0]['zh-cn']" label="类别">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.categorys[0]['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.categorys[0]['en-us'] }}</p>
-            <p>日文: {{ scope.row.categorys[0]['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.categorys[0]['fr-fr'] }}</p>
+            <p>中文: {{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '' }}</p>
+            <p>英文: {{ scope.row.categorys.length ? scope.row.categorys[0]['en-us'] : '' }}</p>
+            <p>日语: {{ scope.row.categorys.length ? scope.row.categorys[0]['ja-jp'] : '' }}</p>
+            <p>法语: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.categorys[0]['zh-cn'] }}</el-tag>
+              <el-tag>{{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '无' }}</el-tag>
             </div>
           </el-popover>
         </template>
@@ -417,32 +418,37 @@
       <el-table-column prop="techniques[0]['zh-cn']" label="手法">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.techniques[0]['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.techniques[0]['en-us'] }}</p>
-            <p>日文: {{ scope.row.techniques[0]['ja-jp'] }}</p>
-            <p>法文: {{ scope.row.techniques[0]['fr-fr'] }}</p>
+            <p>中文: {{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '' }}</p>
+            <p>英文: {{ scope.row.techniques.length ? scope.row.techniques[0]['en-us'] : '' }}</p>
+            <p>日语: {{ scope.row.techniques.length ? scope.row.techniques[0]['ja-jp'] : '' }}</p>
+            <p>法语: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.techniques[0]['zh-cn'] }}</el-tag>
+              <el-tag>{{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '无' }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
       <el-table-column prop="photo" label="图片" width="180">
         <template slot-scope="scope">
-          <el-card :body-style="{ padding: '0px' }" v-for="(item, index) of scope.row.photos" :key="index" style="margin:10px;">
-          <img :src="item.src" class="image">
-          <div style="padding: 14px;">
-            <span>{{item.name}}</span>
-            <!-- <div class="bottom clearfix">
+          <el-card
+            :body-style="{ padding: '0px' }"
+            v-for="(item, index) of scope.row.photos"
+            :key="index"
+            style="margin: 10px"
+          >
+            <img :src="item.src" class="image" />
+            <div style="padding: 14px">
+              <span>{{ item.name }}</span>
+              <!-- <div class="bottom clearfix">
               <time class="time">{{ currentDate }}</time>
               <el-button type="text" class="button">操作按钮</el-button>
             </div> -->
-          </div>
-        </el-card>
+            </div>
+          </el-card>
         </template>
       </el-table-column>
 
-      <el-table-column prop="width" label="宽度" >
+      <el-table-column prop="width" label="宽度">
         <template slot-scope="scope">
           {{ scope.row.width }}
         </template>
@@ -463,13 +469,12 @@
             ></div>
           </el-popover> -->
           <el-tag
-            v-for="(item,index) in scope.row.colors"
+            v-for="(item, index) in scope.row.colors"
             :key="index"
             disable-transitions
             style="margin-left: 10px"
             :color="item.name"
             effect="dark"
-
           >
             {{ item.name }}
           </el-tag>
@@ -529,7 +534,7 @@
       :current-page="currentPage"
       :total="total"
       @current-change="changeCurrentPage"
-      >
+    >
     </el-pagination>
     <!-- <button @click="$fetch">Refresh</button> -->
   </div>
@@ -540,7 +545,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 5,
+      pageSize: 8,
       total: 0,
       commodity: [],
       commoditySearch: {
@@ -550,11 +555,11 @@ export default {
           min: '',
           max: '',
         },
-          width: {
+        width: {
           min: '',
           max: '',
         },
-          height: {
+        height: {
           min: '',
           max: '',
         },
@@ -568,8 +573,8 @@ export default {
         news: false,
         colors: {
           start: '#ffffff',
-          end: '#000000'
-        }
+          end: '#000000',
+        },
       },
       options: {
         shapes: [],
@@ -600,22 +605,26 @@ export default {
   },
   async fetch() {
     // 形状
-    const optionsShape = await this.$axios.$get(`/api/commodity/options/shape`)
+    const optionsShape = await this.$axios.$get(`/api/admin/commodity/options/shape`)
     if (optionsShape.data && optionsShape.data.length) {
       this.options.shapes = optionsShape.data
     }
     // 主题
-    const optionsTheme = await this.$axios.$get(`/api/commodity/options/theme`)
+    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/options/theme`)
     if (optionsTheme.data && optionsTheme.data.length) {
       this.options.themes = optionsTheme.data
     }
     // 类别
-    const optionsCategory = await this.$axios.$get(`/api/commodity/options/category`)
+    const optionsCategory = await this.$axios.$get(
+      `/api/admin/commodity/options/category`
+    )
     if (optionsCategory.data && optionsCategory.data.length) {
       this.options.categorys = optionsCategory.data
     }
     // 手法
-    const optionsTechnique = await this.$axios.$get(`/api/commodity/options/technique`)
+    const optionsTechnique = await this.$axios.$get(
+      `/api/admin/commodity/options/technique`
+    )
     if (optionsTechnique.data && optionsTechnique.data.length) {
       this.options.techniques = optionsTechnique.data
     }
@@ -632,12 +641,12 @@ export default {
     //   return item
     // })
     // this.commodity = commodityData
-    await this.onCommoditySearch();
+    await this.onCommoditySearch()
   },
   methods: {
     // 搜索
     async onCommoditySearch() {
-      console.log("onCommoditySearch", JSON.stringify(this.commoditySearch))
+      // console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
       // let isSearch = false
       // for (let [key, value] of Object.entries(this.commoditySearch)) {
       //   if (value) {
@@ -645,22 +654,21 @@ export default {
       //     break
       //   }
       // }
-      let commodityData;
+      let commodityData
       // if (isSearch) {
-        const searchData = await this.$axios.$get('/api/admin/commodity/search', {
-            params: {
-              ...this.commoditySearch,
-              pageSize: this.pageSize,
-              currentPage: this.currentPage
-            }
-          }
-        )
-        console.log('searchData', searchData)
-        this.total = searchData.data.total;
-        commodityData = searchData.data.list.map((item) => {
-          item.visible = false
-          return item
-        })
+      const searchData = await this.$axios.$get('/api/admin/commodity/search', {
+        params: {
+          ...this.commoditySearch,
+          pageSize: this.pageSize,
+          currentPage: this.currentPage,
+        },
+      })
+      // console.log('searchData', searchData)
+      this.total = searchData.data.total
+      commodityData = searchData.data.list.map((item) => {
+        item.visible = false
+        return item
+      })
 
       // } else {
       //   const alldata = await this.$axios.$get('/api/admin/commodity/all', {
@@ -675,7 +683,7 @@ export default {
       //     return item
       //   })
       // }
-      console.log('commodityData', commodityData)
+      // console.log('commodityData', commodityData)
       this.commodity = commodityData
     },
     onCommoditySearchReset() {
@@ -704,16 +712,15 @@ export default {
       }
     },
     commodityEdit(index, row) {
-      console.log(index, row)
       this.$router.push(`/commodity/create?commodityId=${row.commodityId}`)
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
     changeCurrentPage(val) {
-      this.currentPage = val;
+      this.currentPage = val
       this.onCommoditySearch()
-    }
+    },
   },
 }
 </script>
@@ -744,35 +751,33 @@ export default {
   width: 25%;
 }
 
-
 .time {
-    font-size: 13px;
-    color: #999;
-  }
+  font-size: 13px;
+  color: #999;
+}
 
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  }
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+}
 
-  .button {
-    padding: 0;
-    float: right;
-  }
+.button {
+  padding: 0;
+  float: right;
+}
 
-  .image {
-    width: 100%;
-    display: block;
-  }
+.image {
+  width: 100%;
+  display: block;
+}
 
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: '';
+}
 
-  .clearfix:after {
-      clear: both
-  }
-
+.clearfix:after {
+  clear: both;
+}
 </style>

@@ -42,12 +42,15 @@
         <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
           更新
         </el-button>
+        <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
         <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
+import Mock from 'mockjs';
+
 export default {
   // watchQuery: ['userId','sellerId'],
   watch: {
@@ -179,6 +182,13 @@ export default {
     resetForm(userCreate) {
       this.$refs[userCreate].resetFields()
     },
+    onMock() {
+      this.userCreate = {
+        name: Mock.mock('@cname'),
+        email: Mock.mock('@email'),
+        password: '123'
+      }
+    }
   },
 }
 </script>

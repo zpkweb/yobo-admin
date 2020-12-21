@@ -26,15 +26,14 @@ export default {
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
     '~/components',
-    { path: '~/components/aside/', prefix: 'aside' },
-    { path: '~/components/menu/', prefix: 'menu' },
 ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    '@nuxtjs/localforage',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -42,7 +41,8 @@ export default {
     '@nuxtjs/axios',
     'nuxt-i18n',
     'nuxt-highcharts',
-    'moment'
+    '@nuxtjs/moment',
+    '@nuxtjs/localforage'
   ],
 
   highcharts: {

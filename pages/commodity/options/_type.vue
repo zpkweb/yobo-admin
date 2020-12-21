@@ -19,12 +19,13 @@
           <el-input v-model="item['fr-fr']" :disabled="true"></el-input>
         </el-col>
 
-        <el-col :span="3">
+        <el-col :span="2">
           <el-button type="primary" @click="addOption">
             新增
           </el-button>
         </el-col>
-        <el-col :span="3">
+
+        <el-col :span="2" :offset="2">
            <el-button @click="resetForm('form')">重置</el-button>
         </el-col>
 
@@ -101,7 +102,7 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="2">
           <el-button @click.prevent="updateOption(item)" v-if="item.id"
             >更新</el-button
           >
@@ -109,7 +110,12 @@
             >添加</el-button
           >
         </el-col>
-        <el-col :span="3">
+        <el-col :span="2">
+          <el-button @click="onMock(item,index)">
+            填充
+          </el-button>
+        </el-col>
+        <el-col :span="2">
           <el-button @click.prevent="removeOption(item, index)">删除</el-button>
         </el-col>
       </el-row>
@@ -128,6 +134,7 @@
 </template>
 
 <script>
+import Mock from 'mockjs'
 export default {
   watch: {
     '$route.query': '$fetch',
@@ -174,13 +181,12 @@ export default {
         },
       ]
     }
-    console.log(this.form)
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          console.log('submitForm', this.form.options)
+          // console.log('submitForm', this.form.options)
           const options = await this.$axios
             .$post(`/api/admin/commodity/options/${this.$route.params.type}/create`, this.form.options)
             .catch((error) => {
@@ -206,13 +212,13 @@ export default {
             })
           }
         } else {
-          console.log('error submit!!')
+          // console.log('error submit!!')
           return false
         }
       })
     },
     resetForm(formName) {
-      console.log('formName', formName)
+      // console.log('formName', formName)
       this.$refs[formName].resetFields()
       this.$fetch()
     },
@@ -240,7 +246,7 @@ export default {
           }
         }
       )
-      console.log('isValidate', isValidate)
+      // console.log('isValidate', isValidate)
       if (isValidate) {
         const options = await this.$axios
           .$post(`/api/admin/commodity/options/${this.$route.params.type}/create`, [item])
@@ -261,7 +267,7 @@ export default {
       }
     },
     async updateOption(item) {
-      console.log('updateOption', item)
+      // console.log('updateOption', item)
       if (!item.id) {
         this.form.options.splice(index, 1)
         return
@@ -278,7 +284,7 @@ export default {
       }
     },
     async removeOption(item, index) {
-      console.log('removeOption', item)
+      // console.log('removeOption', item)
       if (!item.id) {
         this.form.options.splice(index, 1)
         return
@@ -302,6 +308,19 @@ export default {
         type,
       })
     },
+    onMock(item, index) {
+      const zncn = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+      const enus = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+      const jajp = ["ゼロ", "いち", "に", "さん", "し", "ご", "ろく", "しち", "はち", "きゅう", "じゅう"];
+      const frfr = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"];
+      const mock = {
+          "zh-cn": `${zncn[Mock.mock('@integer(0, 9)')]} ${zncn[Mock.mock('@integer(0, 9)')]} ${zncn[Mock.mock('@integer(0, 9)')]}`,
+          "en-us": `${enus[Mock.mock('@integer(0, 9)')]} ${enus[Mock.mock('@integer(0, 9)')]} ${enus[Mock.mock('@integer(0, 9)')]}`,
+          "ja-jp": `${jajp[Mock.mock('@integer(0, 9)')]} ${jajp[Mock.mock('@integer(0, 9)')]} ${jajp[Mock.mock('@integer(0, 9)')]}`,
+          "fr-fr": `${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]}`
+        }
+      this.form.options.splice(index, 1, mock)
+    }
   },
 }
 </script>

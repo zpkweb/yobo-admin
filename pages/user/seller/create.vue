@@ -8,8 +8,9 @@
       class="user-create-form"
     >
       <h3>后台添加艺术家</h3>
-
-      <el-form-item label="艺术家状态" prop="identity">
+      <el-row :gutter="20">
+        <el-col :span="8">
+          <el-form-item label="艺术家状态" prop="identity">
         <el-select v-model="userCreate.state" placeholder="请选择艺术家状态">
           <el-option
             v-for="item in stateOptions"
@@ -20,31 +21,74 @@
           </el-option>
         </el-select>
       </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="6">
+          <el-button
+          v-if="isCreate"
+          type="primary"
+          @click="submitForm('userCreate')"
+          icon="el-icon-circle-plus-outline"
+        >
+          创建
+        </el-button>
 
-      <el-form-item label="姓氏" prop="firstname">
-        <el-input
-          v-model="userCreate.firstname"
-          placeholder="请输入姓氏"
-        ></el-input>
-      </el-form-item>
-      <el-form-item label="名字" prop="lastname">
-        <el-input
-          v-model="userCreate.lastname"
-          placeholder="请输入名字"
-        ></el-input>
-      </el-form-item>
-      <el-form-item label="邮箱" prop="email">
+        <el-button
+          v-else
+          type="primary"
+          @click="submitForm('userCreate')"
+          icon="el-icon-check"
+        >
+          更新
+        </el-button>
+        <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close"
+          >清空</el-button
+        >
+        </el-col>
+      </el-row>
+
+
+
+
+
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-form-item label="姓氏" prop="firstname">
+            <el-input
+              v-model="userCreate.firstname"
+              placeholder="请输入姓氏"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="名字" prop="lastname">
+            <el-input
+              v-model="userCreate.lastname"
+              placeholder="请输入名字"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-form-item label="邮箱" prop="email">
         <el-input
           v-model="userCreate.email"
           placeholder="请输入邮箱"
         ></el-input>
       </el-form-item>
-      <el-form-item label="电话" prop="phone">
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="电话" prop="phone">
         <el-input
           v-model="userCreate.phone"
           placeholder="请输入电话"
         ></el-input>
       </el-form-item>
+        </el-col>
+      </el-row>
+
       <el-form-item label="密码" prop="password">
         <el-input
           v-model="userCreate.password"
@@ -52,58 +96,70 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="country">
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-form-item prop="country">
         <el-input
           v-model="userCreate.country"
           placeholder="请输入国家"
         ></el-input>
       </el-form-item>
-      <el-form-item prop="language">
+        </el-col>
+        <el-col :span="12">
+          <el-form-item prop="language">
         <el-input
           v-model="userCreate.language"
           placeholder="请输入语言"
         ></el-input>
       </el-form-item>
+        </el-col>
+      </el-row>
 
-      <el-form-item prop="findUs">
+      <el-form-item prop="profile">
         <el-input
           type="textarea"
-          v-model="userCreate.findUs"
-          placeholder="您是如何发现我们的"
+          v-model="userCreate.profile"
+          placeholder="用户简介"
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="isFullTime">
+          <el-form-item prop="isFullTime">
         <el-input
-          type="textarea"
+        type="textarea"
           v-model="userCreate.isFullTime"
           placeholder="您是一个全职的专业艺术家么？"
         ></el-input>
       </el-form-item>
-
-      <el-form-item prop="onlineSell">
+          <el-form-item prop="sold">
+        <el-input
+        type="textarea"
+          v-model="userCreate.sold"
+          placeholder="您在过去一年里售出多少件自己的作品？"
+        ></el-input>
+      </el-form-item>
+          <el-form-item prop="onlineSell">
         <el-input
           type="textarea"
           v-model="userCreate.onlineSell"
           placeholder="售出的作品中，网上售出的比例占多少？"
         ></el-input>
       </el-form-item>
-
-      <el-form-item prop="sold">
-        <el-input
-          type="textarea"
-          v-model="userCreate.sold"
-          placeholder="您在过去一年里售出多少件自己的作品？"
-        ></el-input>
-      </el-form-item>
-
-      <el-form-item prop="channel">
+          <el-form-item prop="channel">
         <el-input
           type="textarea"
           v-model="userCreate.channel"
           placeholder="如果您在网上售出过作品，是通过什么渠道呢？"
         ></el-input>
       </el-form-item>
+
+
+
+
+
+
+
+
+
 
       <el-form-item prop="gallery">
         <el-input
@@ -153,40 +209,19 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="profile">
+      <el-form-item prop="findUs">
         <el-input
           type="textarea"
-          v-model="userCreate.profile"
-          placeholder="用户简介"
+          v-model="userCreate.findUs"
+          placeholder="您是如何发现我们的"
         ></el-input>
       </el-form-item>
 
-      <el-form-item>
-        <el-button
-          v-if="isCreate"
-          type="primary"
-          @click="submitForm('userCreate')"
-          icon="el-icon-circle-plus-outline"
-        >
-          创建
-        </el-button>
-
-        <el-button
-          v-else
-          type="primary"
-          @click="submitForm('userCreate')"
-          icon="el-icon-check"
-        >
-          更新
-        </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close"
-          >清空</el-button
-        >
-      </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
+import Mock from 'mockjs';
 export default {
   watchQuery: ['sellerId'],
   data() {
@@ -364,6 +399,31 @@ export default {
     resetForm(userCreate) {
       this.$refs[userCreate].resetFields()
     },
+    onMock() {
+      this.userCreate= {
+        state: 1,
+        firstname: Mock.mock('@cfirst'),
+        lastname: Mock.mock('@clast'),
+        email: Mock.mock('@email'),
+        phone: '',
+        password: '123',
+        country: Mock.mock('@county(true)'),
+        language: ['中文', '英文', '日语', '法语'][Mock.mock('@integer(0, 2)')],
+        profile: Mock.mock('@cparagraph'),
+        isFullTime: '',
+        onlineSell: '',
+        sold: '',
+        channel: '',
+        gallery: '',
+        medium: '',
+        galleryInfo: '',
+        recommend: '',
+        prize: '',
+        website: '',
+
+        findUs: '',
+      }
+    }
   },
 }
 </script>

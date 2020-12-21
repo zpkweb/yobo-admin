@@ -41,10 +41,11 @@ export default {
     }
   },
   mounted(){
+    this.$localForage.removeItem('user')
     window.addEventListener('keydown',this.keyDown)
   },
   destroyed(){
-        window.removeEventListener('keydown',this.keyDown,false);
+    window.removeEventListener('keydown',this.keyDown,false);
   },
   methods: {
     async submitForm(formName) {
@@ -55,10 +56,14 @@ export default {
           password: this.userForm.pass,
         })
         if (login.success) {
+          // 用户登录 缓存
+          console.log("login", login.data)
+          await this.$localForage.setItem('user', login.data)
           this.$notify({
             title: `欢迎您，${login.data.name}`,
             // message: h('i', { style: 'color: teal'}, '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案'),
             duration: 1500,
+            offset: 70
           })
           this.$router.push('/')
         } else {
