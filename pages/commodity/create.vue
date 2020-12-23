@@ -381,7 +381,7 @@
         <el-col :span="23"> -->
       <el-upload
         :file-list="form.photos"
-        action="http://192.168.0.67:3000/api/upload/images"
+        action="/api/upload/images"
         :data="{ type: 'commodity' }"
         list-type="picture-card"
         :on-preview="uploadPreview"
