@@ -11,7 +11,6 @@
       class="header-menu"
       mode="horizontal"
       @select="handleSelect"
-      router
     >
       <template v-for="item in $store.state.userMenu">
         <el-submenu
@@ -20,9 +19,9 @@
           v-if="$store.state.isRoot || item.checked"
         >
           <template slot="title">
-            <!-- <NuxtLink class="logo" :to="item.path"> -->
-            <i class="item.icon"></i>{{ item.name }}
-            <!-- </NuxtLink> -->
+            <nuxt-link class="nuxt-link" :to="localePath(item.path)">
+            <i class="item.icon"></i>{{ $t(item.name) }}
+            </nuxt-link>
           </template>
           <template v-if="item.subMenu && item.subMenu.length">
             <template v-for="asideitem in item.subMenu">
@@ -31,7 +30,9 @@
               :key="asideitem.name"
               v-if="$store.state.isRoot || asideitem.checked"
             >
-              {{ asideitem.name }}
+            <nuxt-link class="nuxt-link" :to="localePath(asideitem.path)">
+              {{ $t(asideitem.name) }}
+            </nuxt-link>
             </el-menu-item>
             </template>
           </template>
@@ -41,19 +42,31 @@
 
 
     <el-dropdown>
+
+
       <span class="el-dropdown-link">
-        语言
+        {{locale[0].name}}
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>汉语</el-dropdown-item>
-        <el-dropdown-item>英语</el-dropdown-item>
+        <nuxt-link
+          v-for="locale in availableLocales"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)">
+          <el-dropdown-item>{{ locale.name }}</el-dropdown-item>
+
+        </nuxt-link>
+
+        <!-- <el-dropdown-item><nuxt-link :to="switchLocalePath('zh')">汉语</nuxt-link></el-dropdown-item>
+
+        <el-dropdown-item><nuxt-link :to="switchLocalePath('en')">英语</nuxt-link></el-dropdown-item>
+
         <el-dropdown-item>日语</el-dropdown-item>
-        <el-dropdown-item>法语</el-dropdown-item>
+        <el-dropdown-item>法语</el-dropdown-item> -->
       </el-dropdown-menu>
     </el-dropdown>
 
-    <el-dropdown>
+    <el-dropdown v-if="!isLogin">
       <span class="el-dropdown-link header-avatar">
         <el-avatar icon="el-icon-user-solid"></el-avatar>
       </span>
@@ -77,9 +90,28 @@ export default {
       activeIndex: null,
     }
   },
+  computed: {
+    locale() {
+      return this.$i18n.locales.filter(i => i.code == this.$i18n.locale)
+    },
+    availableLocales () {
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+    },
+    isLogin() {
+      const routePath = this.$route.path.split('/');
+      let islogin = false;
+      for(let item of routePath){
+        console.log("item", item)
+        if(item == 'login'){
+          islogin = true;
+        }
+      }
+      return islogin;
+    }
+  },
   fetch() {
     const routePath = this.$route.path
-    // console.log(routePath)
+    console.log(routePath)
     // console.log('this.$store.state.userMenu', this.$store.state.userMenu)
     // if(routePath.includes('user')){
     //   console.log("route user")
@@ -129,6 +161,7 @@ export default {
   cursor: pointer;
   color: #409eff;
   line-height: 60px;
+  margin-right: 20px;
 }
 .el-avatar {
   float: left;
@@ -142,7 +175,7 @@ export default {
   text-align: center;
 }
 .header-avatar {
-  margin: 10px 20px 0 20px;
+  margin: 10px 20px 0 0px;
 }
 
 .version {
@@ -150,5 +183,10 @@ export default {
   line-height: 60px;
   margin-right: 15px;
   font-size: 12px;
+}
+.nuxt-link{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 </style>

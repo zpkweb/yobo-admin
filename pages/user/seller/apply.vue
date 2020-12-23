@@ -7,7 +7,6 @@
       label-width="100px"
       class="user-create-form"
     >
-      <h3>用户申请成为艺术家</h3>
 
       <el-form-item>
         <el-button
@@ -16,68 +15,81 @@
           @click="submitForm('userCreate')"
           icon="el-icon-circle-plus-outline"
         >
-          申请
+          {{$t('content.apply')}}
         </el-button>
 
         <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
-          更新
+          {{$t('content.update')}}
         </el-button>
-        <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
+        <el-button @click="onMock" icon="el-icon-check"> {{$t('content.fill')}} </el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">{{$t('content.clear')}}</el-button>
       </el-form-item>
 
 
-      <el-form-item label="姓氏" prop="firstname">
+      <el-form-item :label="$t('user.firstName')" prop="firstname">
         <el-input
           v-model="userCreate.firstname"
-          placeholder="请输入姓氏"
+          :placeholder="$t('placeholder', { msg: $t('user.firstName') })"
         ></el-input>
       </el-form-item>
-      <el-form-item label="名字" prop="lastname">
+      <el-form-item :label="$t('user.lastName')" prop="lastname">
         <el-input
           v-model="userCreate.lastname"
-          placeholder="请输入名字"
+          :placeholder="$t('placeholder', { msg: $t('user.lastName') })"
         ></el-input>
       </el-form-item>
-      <el-form-item label="邮箱" prop="email">
+      <el-form-item :label="$t('user.email')" prop="email">
         <el-input
           v-model="userCreate.email"
-          placeholder="请输入邮箱"
+          :placeholder="$t('placeholder', { msg: $t('user.email') })"
         ></el-input>
       </el-form-item>
-      <el-form-item label="电话" prop="phone">
+      <el-form-item :label="$t('user.phone')" prop="phone">
         <el-input
           v-model="userCreate.phone"
-          placeholder="请输入电话"
+          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="country">
+      <el-form-item :label="$t('user.password')" prop="password">
+        <el-input
+          v-model="userCreate.password"
+          :placeholder="$t('placeholder', { msg: $t('user.password') })"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item :label="$t('user.gender')" prop="gender">
+        <el-input
+          v-model="userCreate.gender"
+          :placeholder="$t('placeholder', { msg: $t('user.gender') })"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item :label="$t('user.country')" prop="country">
         <el-input
           v-model="userCreate.country"
-          placeholder="请输入国家"
+          :placeholder="$t('placeholder', { msg: $t('user.country') })"
         ></el-input>
       </el-form-item>
-      <el-form-item prop="language">
+      <el-form-item :label="$t('user.language')" prop="language">
         <el-input
           v-model="userCreate.language"
-          placeholder="请输入语言"
+          :placeholder="$t('placeholder', { msg: $t('user.language') })"
         ></el-input>
       </el-form-item>
+
       <el-form-item prop="profile">
         <el-input
           type="textarea"
           v-model="userCreate.profile"
-          placeholder="用户简介"
+          :placeholder="$t('placeholder', { msg: $t('user.profile') })"
         ></el-input>
       </el-form-item>
-
-
       <el-form-item prop="isFullTime">
         <el-input
           type="textarea"
           v-model="userCreate.isFullTime"
-          placeholder="您是一个全职的专业艺术家么？"
+          :placeholder="$t('user.seller.isFullTime')"
         ></el-input>
       </el-form-item>
 
@@ -85,7 +97,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.onlineSell"
-          placeholder="售出的作品中，网上售出的比例占多少？"
+          :placeholder="$t('user.seller.onlineSell')"
         ></el-input>
       </el-form-item>
 
@@ -93,7 +105,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.sold"
-          placeholder="您在过去一年里售出多少件自己的作品？"
+          :placeholder="$t('user.seller.sold')"
         ></el-input>
       </el-form-item>
 
@@ -101,7 +113,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.channel"
-          placeholder="如果您在网上售出过作品，是通过什么渠道呢？"
+          :placeholder="$t('user.seller.channel')"
         ></el-input>
       </el-form-item>
 
@@ -109,7 +121,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.gallery"
-          placeholder="如有其他画廊已合作，是哪一家（方便我们更全面了解您）"
+          :placeholder="$t('user.seller.gallery')"
         ></el-input>
       </el-form-item>
 
@@ -117,7 +129,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.medium"
-          placeholder="主要媒介"
+          :placeholder="$t('user.seller.medium')"
         ></el-input>
       </el-form-item>
 
@@ -125,7 +137,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.galleryInfo"
-          placeholder="您是画廊代表人吗？请告知您的画廊名称，城市，国家"
+          :placeholder="$t('user.seller.galleryInfo')"
         ></el-input>
       </el-form-item>
 
@@ -133,7 +145,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.recommend"
-          placeholder="最值得一看的展览/画廊/机构名称，城市，国家"
+          :placeholder="$t('user.seller.recommend')"
         ></el-input>
       </el-form-item>
 
@@ -141,7 +153,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.prize"
-          placeholder="最引人注目的奖项/奖项名称，获得年份"
+          :placeholder="$t('user.seller.prize')"
         ></el-input>
       </el-form-item>
 
@@ -149,7 +161,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.website"
-          placeholder="连接到网站"
+          :placeholder="$t('user.seller.website')"
         ></el-input>
       </el-form-item>
 
@@ -158,7 +170,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.findUs"
-          placeholder="您是如何发现我们的"
+          :placeholder="$t('user.seller.findUs')"
         ></el-input>
       </el-form-item>
 
@@ -171,29 +183,29 @@ import Mock from 'mockjs';
 export default {
   watchQuery: ['sellerId'],
   data() {
-    var validateEmail = (rule, value, callback) => {
-      if (!value && !this.userCreate.phone) {
-        callback(new Error('邮箱和电话必须输入一项'))
-      } else {
-        if (!this.userCreate.phone) {
-          this.$refs.userCreate.clearValidate('phone')
-        }
-        callback()
-      }
-    }
-    var validatePhone = (rule, value, callback) => {
-      if (!this.userCreate.email && !value) {
-        callback(new Error('邮箱和电话必须输入一项'))
-      } else {
-        if (!this.userCreate.email) {
-          this.$refs.userCreate.clearValidate('email')
-        }
-        callback()
-      }
-    }
+    // var validateEmail = (rule, value, callback) => {
+    //   if (!value && !this.userCreate.phone) {
+    //     callback(new Error('邮箱和电话必须输入一项'))
+    //   } else {
+    //     if (!this.userCreate.phone) {
+    //       this.$refs.userCreate.clearValidate('phone')
+    //     }
+    //     callback()
+    //   }
+    // }
+    // var validatePhone = (rule, value, callback) => {
+    //   if (!this.userCreate.email && !value) {
+    //     callback(new Error('邮箱和电话必须输入一项'))
+    //   } else {
+    //     if (!this.userCreate.email) {
+    //       this.$refs.userCreate.clearValidate('email')
+    //     }
+    //     callback()
+    //   }
+    // }
     return {
       type: 'create', // create edit
-      typeText: '申请',
+      typeText: this.$t('content.apply'),
       isCreate: true,
       sellerId: '',
       userCreate: {
@@ -218,11 +230,11 @@ export default {
         profile: '',
       },
       rules: {
-        firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
-        lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-        email: [{ required: true, validator: validateEmail, trigger: 'blur' }],
-        phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        firstname: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.firstName') }), trigger: 'blur' }],
+        lastname: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.lastName') }), trigger: 'blur' }],
+        email: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
+        // phone: [{ validator: validatePhone, trigger: 'blur' }],
+        password: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
       },
     }
   },
@@ -248,7 +260,7 @@ export default {
         })
 
         this.type = 'edit'
-        this.typeText = '更新'
+        this.typeText = this.$t('content.update')
         this.isCreate = false
         this.rules.password[0].required = false
       }
@@ -286,7 +298,7 @@ export default {
           if (data.success) {
             this.$message({
               showClose: true,
-              message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}成功`,
+              message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}${this.$t('content.success')}`,
               type: 'success',
             })
             if (this.isCreate) {
@@ -295,7 +307,7 @@ export default {
           } else {
             this.$message({
               showClose: true,
-              message: `${this.typeText}失败!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${data.message}`,
               type: 'error',
             })
           }
@@ -316,7 +328,7 @@ export default {
         phone: '',
         password: '123',
         country: Mock.mock('@county(true)'),
-        language: ['中文', '英文', '日语', '法语'][Mock.mock('@integer(0, 2)')],
+        language: this.$i18n.locales.filter(i => i.code == this.$i18n.locale)[0].name,
         profile: Mock.mock('@cparagraph'),
         isFullTime: '',
         onlineSell: '',

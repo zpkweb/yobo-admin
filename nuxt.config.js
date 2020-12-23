@@ -67,21 +67,36 @@ export default {
 
   // 多语言
   i18n: {
-    locales: ['en', 'fr', 'es'],
-    defaultLocale: 'en',
-    vueI18n: {
-      fallbackLocale: 'en',
-      messages: {
-        en: {
-          welcome: 'Welcome'
-        },
-        fr: {
-          welcome: 'Bienvenue'
-        },
-        es: {
-          welcome: 'Bienvenido'
-        }
+    locales: [
+      {
+        code: 'zh',
+        name: '中文',
+        file: 'zh-CN.js'
+      },
+      {
+        code: 'en',
+        name: 'English',
+        file: 'en-US.js'
+      },
+      {
+        code: 'ja',
+        name: 'にほんご',
+        file: 'ja-JP.js'
+      },
+      {
+        code: 'fr',
+        name: 'Français',
+        file: 'fr-FR.js'
       }
+    ],
+    defaultLocale: 'zh',
+    vueI18nLoader: true,
+    lazy: true,
+    langDir: 'lang/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      onlyOnRoot: true,  // recommended
     }
   }
 }

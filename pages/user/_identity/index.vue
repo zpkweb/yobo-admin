@@ -6,60 +6,60 @@
       class="user-search"
       :key="$route.path"
     >
-      <el-form-item label="姓名">
+      <el-form-item :label="$t('user.name')">
         <el-input
           v-model="userSearch.name"
-          placeholder="请输入姓名"
+          :placeholder="$t('placeholder', { msg: $t('content.name') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
+      <el-form-item :label="$t('user.email')">
         <el-input
           v-model="userSearch.email"
-          placeholder="请输入邮箱"
+          :placeholder="$t('placeholder', { msg: $t('user.email') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="手机">
+      <el-form-item :label="$t('user.phone')">
         <el-input
           v-model="userSearch.phone"
-          placeholder="请输入手机"
+          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
           clearable
         ></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit" icon="el-icon-search">查询</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{$t('content.search')}}</el-button>
       </el-form-item>
     </el-form>
 
     <el-table :data="user" border>
-      <el-table-column prop="name" label="姓名"> </el-table-column>
-      <el-table-column prop="email" label="邮箱"> </el-table-column>
-      <el-table-column prop="phone" label="手机"> </el-table-column>
+      <el-table-column prop="name" :label="$t('user.name')"> </el-table-column>
+      <el-table-column prop="email" :label="$t('user.email')"> </el-table-column>
+      <el-table-column prop="phone" :label="$t('user.phone')"> </el-table-column>
 
-      <el-table-column :formatter="formatterDate" prop="createdDate" label="创建日期"> </el-table-column>
+      <el-table-column :formatter="formatterDate" prop="createdDate" :label="$t('content.createdDate')"> </el-table-column>
 
-      <el-table-column label="操作">
+      <el-table-column :label="$t('content.operation')">
         <template slot-scope="scope">
           <el-button size="mini" @click="editUser(scope.$index, scope.row)" icon="el-icon-edit"
-            >编辑</el-button
+            >{{$t('content.edit')}}</el-button
           >
 
           <el-popover placement="top" v-model="scope.row.visible">
-            <p>您确定要删除当前用户的数据吗？</p>
+            <p>{{$t('content.deleteText')}}</p>
             <div style="text-align: right; margin: 0">
               <el-button
                 size="mini"
                 type="text"
                 @click="scope.row.visible = false"
-                >取消</el-button
+                >{{$t('content.cancel')}}</el-button
               >
               <el-button
                 type="primary"
                 size="mini"
                 @click="removeUser(scope.$index, scope.row)"
-                >确定</el-button
+                >{{$t('content.define')}}</el-button
               >
             </div>
             <el-button
@@ -67,7 +67,7 @@
               type="danger"
               icon="el-icon-delete"
               slot="reference"
-              >删除</el-button
+              >{{$t('content.delete')}}</el-button
             >
           </el-popover>
 
@@ -138,13 +138,13 @@ export default {
 
         this.$message({
           showClose: true,
-          message: `删除成功！`,
+          message: `${this.$t('content.delete')}${this.$t('content.success')}！`,
           type: 'success',
         })
       } else {
         this.$message({
           showClose: true,
-          message: `删除失败!`,
+          message: `${this.$t('content.delete')}${this.$t('content.fail')}!`,
           type: 'error',
         })
       }

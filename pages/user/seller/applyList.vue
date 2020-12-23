@@ -1,90 +1,90 @@
 <template>
   <div>
     <el-form :inline="true" :model="search" class="user-search">
-      <el-form-item label="姓氏">
+      <el-form-item :label="$t('user.firstName')">
         <el-input
           v-model="search.firstname"
-          placeholder="请输入姓氏"
+          :placeholder="$t('placeholder', { msg: $t('user.firstName') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="名字">
+      <el-form-item :label="$t('user.lastName')">
         <el-input
           v-model="search.lastname"
-          placeholder="请输入名字"
+          :placeholder="$t('placeholder', { msg: $t('user.lastName') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
+      <el-form-item :label="$t('user.email')">
         <el-input
           v-model="search.email"
-          placeholder="请输入邮箱"
+          :placeholder="$t('placeholder', { msg: $t('user.email') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="手机">
+      <el-form-item :label="$t('user.phone')">
         <el-input
           v-model="search.phone"
-          placeholder="请输入手机"
+          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="标签">
+      <el-form-item :label="$t('user.label')">
         <el-input
           v-model="search.label"
-          placeholder="请输入标签"
+          :placeholder="$t('placeholder', { msg: $t('user.label') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="性别">
+      <el-form-item :label="$t('user.gender')">
         <el-input
           v-model="search.gender"
-          placeholder="请输入性别"
+          :placeholder="$t('placeholder', { msg: $t('user.gender') })"
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="国家">
+      <el-form-item :label="$t('user.country')">
         <el-input
           v-model="search.country"
-          placeholder="请输入国家"
+          :placeholder="$t('placeholder', { msg: $t('user.country') })"
           clearable
         ></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit" icon="el-icon-search">查询</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{$t('content.search')}}</el-button>
       </el-form-item>
     </el-form>
 
     <el-table :data="seller" border>
-      <el-table-column prop="firstname" label="姓氏" width="200">
+      <el-table-column prop="firstname" :label="$t('user.firstName')" width="200">
       </el-table-column>
-      <el-table-column prop="lastname" label="名字" width="200">
+      <el-table-column prop="lastname" :label="$t('user.lastName')" width="200">
       </el-table-column>
-      <el-table-column prop="email" label="邮箱" width="200"> </el-table-column>
-      <el-table-column prop="phone" label="手机" width="200"> </el-table-column>
+      <el-table-column prop="email" :label="$t('user.email')" width="200"> </el-table-column>
+      <el-table-column prop="phone" :label="$t('user.phone')" width="200"> </el-table-column>
 
-      <el-table-column :formatter="formatterDate" prop="createdDate" label="创建日期" width="200">
+      <el-table-column :formatter="formatterDate" prop="createdDate" :label="$t('content.createdDate')" width="200">
       </el-table-column>
 
-      <el-table-column label="操作" >
+      <el-table-column :label="$t('content.operation')" >
         <template slot-scope="scope">
           <el-button size="mini" @click="edit(scope.$index, scope.row)" icon="el-icon-edit"
-            >编辑</el-button
+            >{{$t('content.edit')}}</el-button
           >
           <el-button
             size="mini"
             type="success"
             @click="agree(scope.$index, scope.row)"
             icon="el-icon-check"
-            >同意</el-button
+            >{{$t('content.agree')}}</el-button
           >
           <el-button
             size="mini"
             type="danger"
-            @click="refuse(scope.$index, scope.row)"
+            @click="reject(scope.$index, scope.row)"
             icon="el-icon-close"
-            >拒绝</el-button
+            >{{$t('content.reject')}}</el-button
           >
         </template>
       </el-table-column>
@@ -141,7 +141,7 @@ export default {
       console.log('seller', seller)
       this.seller.splice(index, 1)
     },
-    async refuse(index, row) {
+    async reject(index, row) {
       console.log(index, row)
       // setState
       const seller = await this.$axios.$post(

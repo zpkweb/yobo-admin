@@ -13,7 +13,7 @@
       @check-change="changeNodeCheck"
     >
       <span class="custom-tree-node" slot-scope="{ node, data }">
-        <span><i :class="data.icon"></i>{{ node.label }}</span>
+        <span><i :class="data.icon"></i>{{ $t(node.label) }}</span>
       </span>
     </el-tree>
     <el-button type="primary" @click="onSubmit"> 修改 </el-button>

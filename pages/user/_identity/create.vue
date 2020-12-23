@@ -7,25 +7,25 @@
       label-width="100px"
       class="user-create-form"
     >
-      <el-form-item label="姓名" prop="name">
-        <el-input v-model="userCreate.name" placeholder="请输入姓名"></el-input>
+      <el-form-item :label="$t('user.name')" prop="name">
+        <el-input v-model="userCreate.name" :placeholder="$t('placeholder', { msg: $t('user.name') })"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱" prop="email">
+      <el-form-item :label="$t('user.email')" prop="email">
         <el-input
           v-model="userCreate.email"
-          placeholder="请输入邮箱"
+          :placeholder="$t('placeholder', { msg: $t('user.email') })"
         ></el-input>
       </el-form-item>
-      <el-form-item label="手机" prop="phone">
+      <el-form-item :label="$t('user.phone')" prop="phone">
         <el-input
           v-model="userCreate.phone"
-          placeholder="请输入手机"
+          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
         ></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item :label="$t('user.password')" prop="password">
         <el-input
           v-model="userCreate.password"
-          placeholder="请输入密码"
+          :placeholder="$t('placeholder', { msg: $t('user.password') })"
         ></el-input>
       </el-form-item>
 
@@ -36,14 +36,14 @@
           @click="submitForm('userCreate')"
           icon="el-icon-circle-plus-outline"
         >
-          创建
+          {{$t('content.create')}}
         </el-button>
 
         <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
-          更新
+          {{$t('content.update')}}
         </el-button>
-        <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">清空</el-button>
+        <el-button @click="onMock" icon="el-icon-check"> {{$t('content.fill')}} </el-button>
+        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">{{$t('content.clear')}}</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -57,29 +57,29 @@ export default {
     '$route.query': '$fetch',
   },
   data() {
-    var validateEmail = (rule, value, callback) => {
-      if (!value && !this.userCreate.phone) {
-        callback(new Error('邮箱和手机必须输入一项'))
-      } else {
-        if (!this.userCreate.phone) {
-          this.$refs.userCreate.clearValidate('phone')
-        }
-        callback()
-      }
-    }
-    var validatePhone = (rule, value, callback) => {
-      if (!this.userCreate.email && !value) {
-        callback(new Error('邮箱和手机必须输入一项'))
-      } else {
-        if (!this.userCreate.email) {
-          this.$refs.userCreate.clearValidate('email')
-        }
-        callback()
-      }
-    }
+    // var validateEmail = (rule, value, callback) => {
+    //   if (!value && !this.userCreate.phone) {
+    //     callback(new Error('邮箱和手机必须输入一项'))
+    //   } else {
+    //     if (!this.userCreate.phone) {
+    //       this.$refs.userCreate.clearValidate('phone')
+    //     }
+    //     callback()
+    //   }
+    // }
+    // var validatePhone = (rule, value, callback) => {
+    //   if (!this.userCreate.email && !value) {
+    //     callback(new Error('邮箱和手机必须输入一项'))
+    //   } else {
+    //     if (!this.userCreate.email) {
+    //       this.$refs.userCreate.clearValidate('email')
+    //     }
+    //     callback()
+    //   }
+    // }
     return {
       type: 'create', // create edit
-      typeText: '创建',
+      typeText: this.$t('content.create'),
       isCreate: true,
       userId: '',
       userCreate: {
@@ -91,9 +91,9 @@ export default {
       },
       rules: {
         // name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-        email: [{ required: true, validator: validateEmail, trigger: 'blur' }],
+        email: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        password: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
 
         // identity: [
         //   {
@@ -123,7 +123,7 @@ export default {
       if (user.success) {
         this.userCreate = Object.assign(this.userCreate, user.data)
         this.type = 'edit'
-        this.typeText = '更新'
+        this.typeText = this.$t('content.update')
         this.isCreate = false
         this.rules.password[0].required = false
       }
@@ -144,7 +144,7 @@ export default {
             }).catch((error) => {
               this.$message({
                 showClose: true,
-                message: `${this.typeText}失败! ${error.response.data.message}`,
+                message: `${this.typeText}${this.$t('content.fail')}! ${error.response.data.message}`,
                 type: 'error',
               })
             })
@@ -160,7 +160,7 @@ export default {
           if (data.status === 200) {
             this.$message({
               showClose: true,
-              message: `${this.userCreate.name}，${this.typeText}成功`,
+              message: `${this.userCreate.name}，${this.typeText}${this.$t('content.success')}`,
               type: 'success',
             })
             if (this.isCreate) {
@@ -169,7 +169,7 @@ export default {
           } else {
             this.$message({
               showClose: true,
-              message: `${this.typeText}失败!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${data.message}`,
               type: 'error',
             })
           }

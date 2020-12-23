@@ -7,12 +7,12 @@
     label-width="80px"
     class="login"
   >
-    <h3 class="login-title">yobo 后台管理</h3>
+    <h3 class="login-title">yobo {{$t('login.title')}}</h3>
 
-    <el-form-item class="login-item" label="账号" prop="name">
-      <el-input v-model="userForm.name" placeholder="请输入用户名/邮箱/手机"></el-input>
+    <el-form-item class="login-item" :label="$t('login.name')" prop="name">
+      <el-input v-model="userForm.name" :placeholder="$t('placeholder', { msg: `${$t('user.name')}/${$t('user.email')}` })"></el-input>
     </el-form-item>
-    <el-form-item class="login-item" label="密码" prop="pass">
+    <el-form-item class="login-item" :label="$t('login.pass')" prop="pass">
       <el-input
         type="password"
         v-model="userForm.pass"
@@ -21,7 +21,7 @@
     </el-form-item>
 
     <el-button class="login-btn" @click="submitForm('userForm')"
-      >登录</el-button
+      >{{$t('login.login')}}</el-button
     >
   </el-form>
 </template>

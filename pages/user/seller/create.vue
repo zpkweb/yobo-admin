@@ -7,11 +7,10 @@
       label-width="100px"
       class="user-create-form"
     >
-      <h3>后台添加艺术家</h3>
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-form-item label="艺术家状态" prop="identity">
-        <el-select v-model="userCreate.state" placeholder="请选择艺术家状态">
+          <el-form-item :label="$t('user.state')" prop="identity">
+        <el-select v-model="userCreate.state" :placeholder="$t('content.selectPlaceholder', { msg: $t('user.state') })">
           <el-option
             v-for="item in stateOptions"
             :key="item.value"
@@ -29,7 +28,7 @@
           @click="submitForm('userCreate')"
           icon="el-icon-circle-plus-outline"
         >
-          创建
+          {{$t('content.create')}}
         </el-button>
 
         <el-button
@@ -38,134 +37,112 @@
           @click="submitForm('userCreate')"
           icon="el-icon-check"
         >
-          更新
+          {{$t('content.update')}}
         </el-button>
-        <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
+        <el-button @click="onMock" icon="el-icon-check"> {{$t('content.fill')}} </el-button>
         <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close"
-          >清空</el-button
+          >{{$t('content.clear')}}</el-button
         >
         </el-col>
       </el-row>
 
 
-
-
-
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-form-item label="姓氏" prop="firstname">
-            <el-input
-              v-model="userCreate.firstname"
-              placeholder="请输入姓氏"
-            ></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="名字" prop="lastname">
-            <el-input
-              v-model="userCreate.lastname"
-              placeholder="请输入名字"
-            ></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-form-item label="邮箱" prop="email">
+      <el-form-item :label="$t('user.firstName')" prop="firstname">
+        <el-input
+          v-model="userCreate.firstname"
+          :placeholder="$t('placeholder', { msg: $t('user.firstName') })"
+        ></el-input>
+      </el-form-item>
+      <el-form-item :label="$t('user.lastName')" prop="lastname">
+        <el-input
+          v-model="userCreate.lastname"
+          :placeholder="$t('placeholder', { msg: $t('user.lastName') })"
+        ></el-input>
+      </el-form-item>
+      <el-form-item :label="$t('user.email')" prop="email">
         <el-input
           v-model="userCreate.email"
-          placeholder="请输入邮箱"
+          :placeholder="$t('placeholder', { msg: $t('user.email') })"
         ></el-input>
       </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="电话" prop="phone">
+      <el-form-item :label="$t('user.phone')" prop="phone">
         <el-input
           v-model="userCreate.phone"
-          placeholder="请输入电话"
+          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
         ></el-input>
       </el-form-item>
-        </el-col>
-      </el-row>
 
-      <el-form-item label="密码" prop="password">
+      <el-form-item :label="$t('user.password')" prop="password">
         <el-input
           v-model="userCreate.password"
-          placeholder="请输入密码"
+          :placeholder="$t('placeholder', { msg: $t('user.password') })"
         ></el-input>
       </el-form-item>
 
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-form-item prop="country">
+      <el-form-item :label="$t('user.gender')" prop="gender">
+        <el-input
+          v-model="userCreate.gender"
+          :placeholder="$t('placeholder', { msg: $t('user.gender') })"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item :label="$t('user.country')" prop="country">
         <el-input
           v-model="userCreate.country"
-          placeholder="请输入国家"
+          :placeholder="$t('placeholder', { msg: $t('user.country') })"
         ></el-input>
       </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item prop="language">
+      <el-form-item :label="$t('user.language')" prop="language">
         <el-input
           v-model="userCreate.language"
-          placeholder="请输入语言"
+          :placeholder="$t('placeholder', { msg: $t('user.language') })"
         ></el-input>
       </el-form-item>
-        </el-col>
-      </el-row>
 
       <el-form-item prop="profile">
         <el-input
           type="textarea"
           v-model="userCreate.profile"
-          placeholder="用户简介"
+          :placeholder="$t('placeholder', { msg: $t('user.profile') })"
+        ></el-input>
+      </el-form-item>
+      <el-form-item prop="isFullTime">
+        <el-input
+          type="textarea"
+          v-model="userCreate.isFullTime"
+          :placeholder="$t('user.seller.isFullTime')"
         ></el-input>
       </el-form-item>
 
-          <el-form-item prop="isFullTime">
-        <el-input
-        type="textarea"
-          v-model="userCreate.isFullTime"
-          placeholder="您是一个全职的专业艺术家么？"
-        ></el-input>
-      </el-form-item>
-          <el-form-item prop="sold">
-        <el-input
-        type="textarea"
-          v-model="userCreate.sold"
-          placeholder="您在过去一年里售出多少件自己的作品？"
-        ></el-input>
-      </el-form-item>
-          <el-form-item prop="onlineSell">
+      <el-form-item prop="onlineSell">
         <el-input
           type="textarea"
           v-model="userCreate.onlineSell"
-          placeholder="售出的作品中，网上售出的比例占多少？"
+          :placeholder="$t('user.seller.onlineSell')"
         ></el-input>
       </el-form-item>
-          <el-form-item prop="channel">
+
+      <el-form-item prop="sold">
+        <el-input
+          type="textarea"
+          v-model="userCreate.sold"
+          :placeholder="$t('user.seller.sold')"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item prop="channel">
         <el-input
           type="textarea"
           v-model="userCreate.channel"
-          placeholder="如果您在网上售出过作品，是通过什么渠道呢？"
+          :placeholder="$t('user.seller.channel')"
         ></el-input>
       </el-form-item>
-
-
-
-
-
-
-
-
-
 
       <el-form-item prop="gallery">
         <el-input
           type="textarea"
           v-model="userCreate.gallery"
-          placeholder="如有其他画廊已合作，是哪一家（方便我们更全面了解您）"
+          :placeholder="$t('user.seller.gallery')"
         ></el-input>
       </el-form-item>
 
@@ -173,7 +150,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.medium"
-          placeholder="主要媒介"
+          :placeholder="$t('user.seller.medium')"
         ></el-input>
       </el-form-item>
 
@@ -181,7 +158,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.galleryInfo"
-          placeholder="您是画廊代表人吗？请告知您的画廊名称，城市，国家"
+          :placeholder="$t('user.seller.galleryInfo')"
         ></el-input>
       </el-form-item>
 
@@ -189,7 +166,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.recommend"
-          placeholder="最值得一看的展览/画廊/机构名称，城市，国家"
+          :placeholder="$t('user.seller.recommend')"
         ></el-input>
       </el-form-item>
 
@@ -197,7 +174,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.prize"
-          placeholder="最引人注目的奖项/奖项名称，获得年份"
+          :placeholder="$t('user.seller.prize')"
         ></el-input>
       </el-form-item>
 
@@ -205,15 +182,16 @@
         <el-input
           type="textarea"
           v-model="userCreate.website"
-          placeholder="连接到网站"
+          :placeholder="$t('user.seller.website')"
         ></el-input>
       </el-form-item>
+
 
       <el-form-item prop="findUs">
         <el-input
           type="textarea"
           v-model="userCreate.findUs"
-          placeholder="您是如何发现我们的"
+          :placeholder="$t('user.seller.findUs')"
         ></el-input>
       </el-form-item>
 
@@ -247,30 +225,30 @@ export default {
     }
     return {
       type: 'create', // create edit
-      typeText: '创建',
+      typeText: this.$t('content.create'),
       isCreate: true,
       sellerId: '',
       // 状态：0: 审核, 1: 通过, 2: 拒绝, 3: 禁用, 4: 注销
       stateOptions: [
         {
           value: '0',
-          label: '审核',
+          label: this.$t('content.audit')
         },
         {
           value: '1',
-          label: '通过',
+          label: this.$t('content.agree')
         },
         {
           value: '2',
-          label: '拒绝',
+          label: this.$t('content.reject')
         },
         {
           value: '3',
-          label: '禁用',
+          label: this.$t('content.disable')
         },
         {
           value: '4',
-          label: '注销',
+          label: this.$t('content.logoff')
         },
       ],
       userCreate: {
@@ -298,9 +276,9 @@ export default {
       rules: {
         // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
         // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-        email: [{ required: true, validator: validateEmail, trigger: 'blur' }],
+        email: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        password: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
       },
     }
   },
@@ -322,7 +300,7 @@ export default {
           ...user.data.sellerMetadata,
         })
         this.type = 'edit'
-        this.typeText = '更新'
+        this.typeText = this.$t('content.update')
         this.isCreate = false
         this.rules.password[0].required = false
       }
@@ -364,13 +342,13 @@ export default {
             }
             this.$message({
               showClose: true,
-              message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}成功`,
+              message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}${this.$t('content.success')}`,
               type: 'success',
             })
           } catch (error) {
             this.$message({
               showClose: true,
-              message: `${this.typeText}失败!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${data.message}`,
               type: 'error',
             })
           }
@@ -408,7 +386,7 @@ export default {
         phone: '',
         password: '123',
         country: Mock.mock('@county(true)'),
-        language: ['中文', '英文', '日语', '法语'][Mock.mock('@integer(0, 2)')],
+        language: this.$i18n.locales.filter(i => i.code == this.$i18n.locale)[0].name,
         profile: Mock.mock('@cparagraph'),
         isFullTime: '',
         onlineSell: '',

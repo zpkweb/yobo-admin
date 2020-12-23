@@ -6,7 +6,6 @@
       <Menu v-if="$store.state.userMenu.length" :menu="$store.state.userMenu[2]" />
     </el-aside>
 
-
     <el-main>
       <Nuxt />
     </el-main>
