@@ -39,7 +39,6 @@
       </template>
     </el-menu>
 
-    <NuxtLink class="version" to="/version"> 版本 </NuxtLink>
 
     <el-dropdown>
       <span class="el-dropdown-link">

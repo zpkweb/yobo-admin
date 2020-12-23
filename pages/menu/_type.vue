@@ -51,18 +51,32 @@ export default {
         ename: this.$route.params.type
       }
     })
-    console.log("identity", identity.data.menu)
+    // console.log("identity", identity.data.menu)
 
     if(identity.success){
-      if(identity.data.menu && identity.data.menu != " "){
-        await this.$store.commit("setIdentityMenu", JSON.parse(identity.data.menu))
+
+
+      if(identity.data.menu && identity.data.menu != " ") {
+        // console.log("Object.assign(this.$store.state.defaultMenu, JSON.parse(identity.data.menu)))", deepClone(this.$store.state.defaultMenu, JSON.parse(identity.data.menu)))
+        // console.log("JSON.parse(identity.data.menu)", JSON.parse(identity.data.menu))
+        // console.log("extendIdentityMenu")
+        await this.$store.commit("setIdentityMenu")
+        await this.$store.commit("extendIdentityMenu", {
+          identityMenu: this.$store.state.identityMenu,
+          menu: JSON.parse(identity.data.menu)
+        })
+
       }else{
+        // console.log("setIdentityMenu")
         // this.$store.getters.addRootMenu(this.$store.state.identityMenu)
-        await this.$store.commit("setIdentityMenu", this.$store.state.defaultMenu)
+        await this.$store.commit("setIdentityMenu")
       }
       this.getCheckedNodes(this.$store.state.identityMenu)
       this.$refs.menuTree ? this.$refs.menuTree.setCheckedKeys(this.checkedKeys) : ''
     }
+
+
+
   },
   // 加载完成
   mounted() {
@@ -111,7 +125,7 @@ export default {
         checked
       })
 
-      console.log(this.menuTree)
+      // console.log(this.menuTree)
 
     },
     getCheckedNodes(data){

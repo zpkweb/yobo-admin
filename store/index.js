@@ -101,6 +101,26 @@ export const state = () => ({
           ],
           level: '0-4',
         },
+        {
+          icon: 'el-icon-menu',
+          name: '超级管理员',
+          path: '/user/superAdmin',
+          subMenu: [
+            {
+              icon: 'el-icon-search',
+              name: '查找超级管理员',
+              path: '/user/superAdmin',
+              level: '0-5-0',
+            },
+            {
+              icon: 'el-icon-circle-plus-outline',
+              name: '添加超级管理员',
+              path: '/user/superAdmin/create',
+              level: '0-5-1',
+            },
+          ],
+          level: '0-5',
+        },
       ],
       level: '0',
     },
@@ -183,8 +203,8 @@ export const state = () => ({
           icon: 'el-icon-menu',
           name: '用户身份',
           path: '/menu/identityList',
-          level: '2-3'
-        }
+          level: '2-3',
+        },
       ],
       level: '2',
     },
@@ -236,7 +256,7 @@ export const state = () => ({
       ename: 'thirdParty',
       index: 90,
     },
-  ]
+  ],
 })
 export const getters = {
   addRootMenu: (state, getters) => (data, index) => {
@@ -260,8 +280,21 @@ export const mutations = {
   setMenu(state, payload) {
     state.menu = payload
   },
-  setIdentityMenu(state, payload) {
-    state.identityMenu = payload
+  setIdentityMenu(state) {
+    state.identityMenu = state.defaultMenu
+  },
+  extendIdentityMenu(state, payload) {
+    for (var i = 0; i < payload.identityMenu.length; i++) {
+      if (payload.menu[i]) {
+        payload.identityMenu[i].checked = payload.menu[i].checked
+      }
+      if (payload.identityMenu[i] && payload.identityMenu[i].subMenu) {
+        mutations.extendIdentityMenu(state, {
+          identityMenu: payload.identityMenu[i].subMenu,
+          menu: payload.menu[i] ? payload.menu[i].subMenu : [],
+        })
+      }
+    }
   },
   setUserMenu(state, payload) {
     state.userMenu = payload
@@ -283,6 +316,7 @@ export const mutations = {
       return item
     })
   },
+
   userMenuActive(state, active) {
     state.userMenuActive = active
   },
@@ -303,6 +337,6 @@ export const mutations = {
       }
     }
     checkData.checked = payload.checked
-    console.log(checkData)
+    // console.log(checkData)
   },
 }

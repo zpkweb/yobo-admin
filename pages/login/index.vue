@@ -31,8 +31,8 @@ export default {
   data() {
     return {
       userForm: {
-        name: '',
-        pass: '',
+        name: 'root',
+        pass: '123456'
       },
       rules: {
         name: [{ required: true, message: '请输入用户名/邮箱/手机', trigger: 'blur' }],
