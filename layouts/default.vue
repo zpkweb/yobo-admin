@@ -26,7 +26,7 @@ export default {
         await this.$store.commit("setUserMenu", JSON.parse(user.menu))
       }
     }else{
-      this.$router.push('/login')
+      this.$router.push(this.localePath('/login'))
     }
 
   }

@@ -123,7 +123,7 @@
                 slot="reference"
                 icon="el-icon-delete"
                 style="margin-left: 10px"
-                >{{ item.name }}</el-button
+                >{{ item[$i18n.locale] }}</el-button
               >
             </el-popover>
           </template>
@@ -135,20 +135,20 @@
               disable-transitions
               style="margin-left: 10px"
             >
-              {{ item.name }}
+              {{ item[$i18n.locale] }}
             </el-tag>
           </template>
         </template>
       </el-table-column>
 
-      <el-table-column :label="$t('content.createdDate')">
+      <el-table-column :label="$t('content.operation')">
         <template slot-scope="scope">
           <div v-if="scope.row.isEdit">
             <el-button
               size="mini"
               @click="cancelEditUser(scope.$index, scope.row)"
               icon="el-icon-close"
-              >{{$t('content.delete')}}</el-button
+              >{{$t('content.cancel')}}</el-button
             >
             <span>
               <el-button
@@ -197,12 +197,27 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="pageSize"
+      :current-page="currentPage"
+      :total="total"
+      @current-change="changeCurrentPage"
+      style="margin-top:20px;text-align: center;"
+    >
+    </el-pagination>
+
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      currentPage: 1,
+      pageSize: 8,
+      total: 0,
       user: [],
       userSearch: {
         name: '',
@@ -252,9 +267,13 @@ export default {
         name: this.userSearch.name,
         email: this.userSearch.email,
         phone: this.userSearch.phone,
+        pageSize: this.pageSize,
+        currentPage: this.currentPage,
       },
     })
-    let userData = userSearch.data.map((item) => {
+    console.log("userSearch", userSearch)
+    this.total = userSearch.data.total
+    let userData = userSearch.data.list.map((item) => {
       item.isEdit = false
       item.visible = false
       item.identitys = item.identitys.map((item) => {
@@ -274,9 +293,12 @@ export default {
           name: this.userSearch.name,
           email: this.userSearch.email,
           phone: this.userSearch.phone,
+          pageSize: this.pageSize,
+          currentPage: this.currentPage,
         },
       })
-      let userData = userSearch.data.map((item) => {
+      this.total = userSearch.data.total
+      let userData = userSearch.data.list.map((item) => {
         item.isEdit = false
         return item
       })
@@ -366,6 +388,10 @@ export default {
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
+    },
+    changeCurrentPage(val) {
+      this.currentPage = val
+      this.onSubmit()
     },
   },
 }

@@ -1,9 +1,9 @@
 <template>
   <div id="header" class="header">
     <div class="header-logo">
-      <NuxtLink class="logo" to="/">
+      <nuxt-link class="logo" :to="localePath('/')">
         <img class="logo-img" src="~/assets/img/logo.png" />
-      </NuxtLink>
+      </nuxt-link>
     </div>
 
     <el-menu
@@ -19,9 +19,9 @@
           v-if="$store.state.isRoot || item.checked"
         >
           <template slot="title">
-            <nuxt-link class="nuxt-link" :to="localePath(item.path)">
+            <!-- <nuxt-link class="nuxt-link" :to="localePath(item.path)"> -->
             <i class="item.icon"></i>{{ $t(item.name) }}
-            </nuxt-link>
+            <!-- </nuxt-link> -->
           </template>
           <template v-if="item.subMenu && item.subMenu.length">
             <template v-for="asideitem in item.subMenu">
@@ -73,7 +73,7 @@
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>个人中心</el-dropdown-item>
         <el-dropdown-item divided>
-          <NuxtLink class="logo" to="/login"> 登出 </NuxtLink>
+          <nuxt-link class="logo" :to="localePath('/login')"> 登出 </nuxt-link>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>

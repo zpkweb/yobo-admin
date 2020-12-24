@@ -89,6 +89,16 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="pageSize"
+      :current-page="currentPage"
+      :total="total"
+      @current-change="changeCurrentPage"
+      style="margin-top:20px;text-align: center;"
+    >
+    </el-pagination>
   </div>
 </template>
 <script>
@@ -106,13 +116,17 @@ export default {
         country: '',
         state: '0',
       },
+      currentPage: 1,
+      pageSize: 8,
+      total: 0,
     }
   },
   async fetch() {
     const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
       params: this.search,
     })
-    this.seller = searchData.data
+    this.total = searchData.data.total
+    this.seller = searchData.data.list
   },
   methods: {
     async onSubmit() {
@@ -122,11 +136,12 @@ export default {
           params: this.search,
         }
       )
-      this.seller = searchData.data
+      this.total = searchData.data.total
+      this.seller = searchData.data.list
     },
     edit(index, row) {
       console.log(index, row)
-      this.$router.push(`/user/seller/create?sellerId=${row.sellerId}`)
+      this.$router.push(this.localePath(`/user/seller/create?sellerId=${row.sellerId}`))
     },
     async agree(index, row) {
       console.log(index, row)
@@ -156,6 +171,10 @@ export default {
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
+    },
+    changeCurrentPage(val) {
+      this.currentPage = val
+      this.onSubmit()
     },
   },
 }

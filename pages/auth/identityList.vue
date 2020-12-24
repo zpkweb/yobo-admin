@@ -4,14 +4,24 @@
       :data="identityList"
       style="width: 100%">
       <el-table-column
-        prop="name"
-        :label="$t('content.identityName')"
-        width="180">
+        prop="zh-cn"
+        :label="$t('lang.zh')"
+        width="120">
       </el-table-column>
       <el-table-column
-        prop="ename"
-        :label="$t('content.identitySign')"
-        width="180">
+        prop="en-us"
+        :label="$t('lang.en')"
+        width="120">
+      </el-table-column>
+      <el-table-column
+        prop="ja-jp"
+        :label="$t('lang.ja')"
+        width="120">
+      </el-table-column>
+      <el-table-column
+        prop="fr-fr"
+        :label="$t('lang.fr')"
+        width="120">
       </el-table-column>
       <el-table-column
         prop="index"
@@ -21,7 +31,7 @@
     <el-row :gutter="20">
       <el-col :span="5">
         <el-button type="primary" @click="createIdentityList" v-if="isCreate">
-          创建
+          {{ $t('content.create') }}
         </el-button>
       </el-col>
     </el-row>

@@ -1,6 +1,6 @@
 <i18n>
 {
-  "zh": {
+  "zh-cn": {
     "chart": {
       "user": "用户",
       "commodity": "商品",
@@ -10,9 +10,8 @@
       "module2": "{msg1}{msg2}",
       "module3": "{msg1}{msg2}{msg3}"
     }
-
   },
-  "en": {
+  "en-us": {
     "chart": {
       "user": "User",
       "commodity": "Commodity",
@@ -23,11 +22,27 @@
       "module3": "{msg1}{msg2}{msg3}"
     }
   },
-  "ja": {
-    "hello": "こんにちは、世界!"
+  "ja-jp": {
+    "chart": {
+      "user": "ユーザー",
+      "commodity": "商品",
+      "statistics": "統計",
+      "data": "データ",
+      "number": "量",
+      "module2": "{msg1}{msg2}",
+      "module3": "{msg1}{msg2}{msg3}"
+    }
   },
-  "fr": {
-    "hello": "法语你好世界!"
+  "fr-fr": {
+    "chart": {
+      "user": "utilisateur",
+      "commodity": "marchandise",
+      "statistics": "statistiques",
+      "data": "Les données",
+      "number": "Quantité",
+      "module2": "{msg1}{msg2}",
+      "module3": "{msg1}{msg2}{msg3}"
+    }
   }
 }
 </i18n>

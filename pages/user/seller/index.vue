@@ -95,6 +95,16 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="pageSize"
+      :current-page="currentPage"
+      :total="total"
+      @current-change="changeCurrentPage"
+      style="margin-top:20px;text-align: center;"
+    >
+    </el-pagination>
   </div>
 </template>
 <script>
@@ -112,14 +122,17 @@ export default {
         country: '',
         state: '',
       },
+      currentPage: 1,
+      pageSize: 8,
+      total: 0,
     }
   },
   async fetch() {
-    const userSearch = await this.$axios.$get('/api/admin/user/seller/search', {
+    const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
       params: this.userSearch,
     })
     // this.user = userSearch.data
-    let userData = userSearch.data.map((item) => {
+    let userData = searchData.data.list.map((item) => {
       item.visible = false
       // item.isEdit = false
       // item.identitys = item.identitys.map((item) => {
@@ -128,15 +141,17 @@ export default {
       // })
       return item
     })
-    this.user = userData
+    this.total = searchData.data.total
+    this.user = searchData.data.list
   },
   methods: {
     // 查找用户
     async onSubmit() {
-      const user = await this.$axios.$get('/api/admin/user/seller/search', {
+      const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
         params: this.userSearch,
       })
-      this.user = user.data
+      this.total = searchData.data.total
+      this.user = searchData.data.list
     },
     // 删除用户
     async deleteSeller(index, row) {
@@ -164,10 +179,14 @@ export default {
     },
     editUser(index, row) {
       console.log(index, row)
-      this.$router.push(`${this.$route.path}/create?sellerId=${row.sellerId}`)
+      this.$router.push(this.localePath(`${this.$route.path}/create?sellerId=${row.sellerId}`))
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
+    },
+    changeCurrentPage(val) {
+      this.currentPage = val
+      this.onSubmit()
     },
   },
 }

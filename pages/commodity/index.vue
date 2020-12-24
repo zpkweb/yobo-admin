@@ -534,6 +534,7 @@
       :current-page="currentPage"
       :total="total"
       @current-change="changeCurrentPage"
+      style="margin-top:20px;text-align: center;"
     >
     </el-pagination>
     <!-- <button @click="$fetch">Refresh</button> -->
@@ -712,7 +713,7 @@ export default {
       }
     },
     commodityEdit(index, row) {
-      this.$router.push(`/commodity/create?commodityId=${row.commodityId}`)
+      this.$router.push(this.localePath(`/commodity/create?commodityId=${row.commodityId}`))
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')

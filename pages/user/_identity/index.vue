@@ -74,6 +74,19 @@
         </template>
       </el-table-column>
     </el-table>
+
+        <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="pageSize"
+      :current-page="currentPage"
+      :total="total"
+      @current-change="changeCurrentPage"
+      style="margin-top:20px;text-align: center;"
+    >
+    </el-pagination>
+
+
   </div>
 </template>
 <script>
@@ -89,6 +102,9 @@ export default {
         email: '',
         phone: '',
       },
+      currentPage: 1,
+      pageSize: 8,
+      total: 0,
     }
   },
   async fetch() {
@@ -100,7 +116,8 @@ export default {
         phone: this.userSearch.phone,
       },
     })
-    let userData = userSearch.data.map((item) => {
+    this.total = userSearch.data.total
+    let userData = userSearch.data.list.map((item) => {
       item.visible = false
       // item.isEdit = false
       // item.identitys = item.identitys.map((item) => {
@@ -116,7 +133,7 @@ export default {
   methods: {
     // 查找用户
     async onSubmit() {
-      const user = await this.$axios.$get('/api/admin/user/search', {
+      const userSearch = await this.$axios.$get('/api/admin/user/search', {
         params: {
           identity: this.$route.params.identity,
           name: this.userSearch.name,
@@ -124,7 +141,8 @@ export default {
           phone: this.userSearch.phone,
         },
       })
-      this.user = user.data
+      this.total = userSearch.data.total
+      this.user = userSearch.data.list
     },
     // 删除用户
     async removeUser(index, row) {
@@ -151,13 +169,17 @@ export default {
     },
     editUser(index, row) {
       console.log(index, row)
-      this.$router.push(`${this.$route.path}/create?userId=${row.userId}`)
+      this.$router.push(this.localePath(`${this.$route.path}/create?userId=${row.userId}`))
     },
     handleDelete(index, row) {
       console.log(index, row)
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
+    },
+    changeCurrentPage(val) {
+      this.currentPage = val
+      this.onSubmit()
     },
   },
 }

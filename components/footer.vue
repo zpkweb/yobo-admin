@@ -1,7 +1,7 @@
 <template>
-  <NuxtLink class="logo" to="/">
+  <nuxt-link class="logo" :to="localePath('/')">
     <img class="logo-img" src="~/assets/img/logo.png" />
-  </NuxtLink>
+  </nuxt-link>
 </template>
 
 <style scoped>

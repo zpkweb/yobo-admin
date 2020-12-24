@@ -40,6 +40,9 @@ export default {
       },
     }
   },
+  fetch() {
+    this.$store.commit("setUserMenu", [])
+  },
   mounted(){
     this.$localForage.removeItem('user')
     window.addEventListener('keydown',this.keyDown)
@@ -65,7 +68,7 @@ export default {
             duration: 1500,
             offset: 70
           })
-          this.$router.push('/')
+          this.$router.push(this.localePath('/'))
         } else {
           this.$message({
             showClose: true,
