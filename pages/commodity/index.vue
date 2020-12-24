@@ -9,37 +9,37 @@
     >
       <el-row :gutter="0">
         <el-col :span="6">
-          <el-form-item label="名称" prop="name">
+          <el-form-item :label="$t('commodity.name')" prop="name">
             <el-input
               v-model="commoditySearch.name"
-              placeholder="请输入名称"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.name') })"
               clearable
             ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="描述" prop="desc">
+          <el-form-item :label="$t('commodity.desc')" prop="desc">
             <el-input
               v-model="commoditySearch.desc"
-              placeholder="请输入描述"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.desc') })"
               clearable
             ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="艺术家" prop="sellerId">
+          <el-form-item :label="$t('commodity.seller')" prop="sellerId">
             <el-input
               v-model="commoditySearch.sellerId"
-              placeholder="请输入艺术家"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.seller') })"
               clearable
             ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="状态" prop="state">
+          <el-form-item :label="$t('commodity.state.title')" prop="state">
             <el-select
               v-model="commoditySearch.state"
-              placeholder="请选择状态"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.state.title') })"
               clearable
             >
               <el-option
@@ -56,10 +56,10 @@
 
       <el-row :gutter="0">
         <el-col :span="6">
-          <el-form-item label="形状" prop="shapeId">
+          <el-form-item :label="$t('commodity.shape')" prop="shapeId">
             <el-select
               v-model="commoditySearch.shapeId"
-              placeholder="请选择形状"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.shape') })"
               clearable
             >
               <el-option
@@ -77,10 +77,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="主题" prop="themeId">
+          <el-form-item :label="$t('commodity.theme')" prop="themeId">
             <el-select
               v-model="commoditySearch.themeId"
-              placeholder="请选择主题"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.theme') })"
               clearable
             >
               <el-option
@@ -98,10 +98,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="类别" prop="categoryId">
+          <el-form-item :label="$t('commodity.category')" prop="categoryId">
             <el-select
               v-model="commoditySearch.categoryId"
-              placeholder="请选择类别"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.category') })"
               clearable
             >
               <el-option
@@ -119,10 +119,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="手法" prop="techniqueId">
+          <el-form-item :label="$t('commodity.technique')" prop="techniqueId">
             <el-select
               v-model="commoditySearch.techniqueId"
-              placeholder="请选择手法"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.technique') })"
               clearable
             >
               <el-option
@@ -142,51 +142,51 @@
       </el-row>
       <el-row :gutter="0">
         <el-col :span="8">
-          <el-form-item label="价格" prop="price.min">
+          <el-form-item :label="$t('commodity.price.title')" prop="price.min">
             <el-input
               v-model="commoditySearch.price.min"
-              placeholder="请输入最低价格"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.price.min') })"
               clearable
             ></el-input>
           </el-form-item>
           <el-form-item prop="price.max">
             <el-input
               v-model="commoditySearch.price.max"
-              placeholder="请输入最高价格"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.price.max') })"
               clearable
             ></el-input>
           </el-form-item>
         </el-col>
 
         <el-col :span="8">
-          <el-form-item label="宽度" prop="width.min">
+          <el-form-item :label="$t('commodity.width.title')" prop="width.min">
             <el-input
               v-model="commoditySearch.width.min"
-              placeholder="请输入最小宽度"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.width.min') })"
               clearable
             ></el-input>
           </el-form-item>
           <el-form-item prop="width.max">
             <el-input
               v-model="commoditySearch.width.max"
-              placeholder="请输入最大高度"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.width.max') })"
               clearable
             ></el-input>
           </el-form-item>
         </el-col>
 
         <el-col :span="8">
-          <el-form-item label="高度" prop="height.min">
+          <el-form-item :label="$t('commodity.height.title')" prop="height.min">
             <el-input
               v-model="commoditySearch.height.min"
-              placeholder="请输入最小宽度"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.height.min') })"
               clearable
             ></el-input>
           </el-form-item>
           <el-form-item prop="height.max">
             <el-input
               v-model="commoditySearch.height.max"
-              placeholder="请输入最大高度"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.height.max') })"
               clearable
             ></el-input>
           </el-form-item>
@@ -195,25 +195,25 @@
 
       <el-row :gutter="0">
         <el-col :span="3">
-          <el-form-item label="最热" prop="hots">
+          <el-form-item :label="$t('commodity.hots')" prop="hots">
             <el-switch v-model="commoditySearch.hots"> </el-switch>
           </el-form-item>
         </el-col>
         <el-col :span="3">
-          <el-form-item label="最新" prop="news">
+          <el-form-item :label="$t('commodity.news')" prop="news">
             <el-switch v-model="commoditySearch.news"> </el-switch>
           </el-form-item>
         </el-col>
 
         <el-col :span="3">
-          <el-form-item label="开始颜色" prop="colors.start">
+          <el-form-item :label="$t('commodity.color.start')" prop="colors.start">
             <el-color-picker
               v-model="commoditySearch.colors.start"
             ></el-color-picker>
           </el-form-item>
         </el-col>
         <el-col :span="3">
-          <el-form-item label="结束颜色" prop="colors.end">
+          <el-form-item :label="$t('commodity.color.end')" prop="colors.end">
             <el-color-picker
               v-model="commoditySearch.colors.end"
             ></el-color-picker>
@@ -227,12 +227,12 @@
               type="primary"
               @click="onCommoditySearch"
               icon="el-icon-search"
-              >查询</el-button
+              >{{ $t('content.search') }}</el-button
             >
           </el-form-item>
           <el-form-item>
             <el-button @click="onCommoditySearchReset" icon="el-icon-close"
-              >清空</el-button
+              >{{ $t('content.clear') }}</el-button
             >
           </el-form-item>
         </el-col>
@@ -240,195 +240,195 @@
     </el-form>
 
     <el-table :data="commodity" border>
-      <el-table-column type="expand" label="展开">
+      <el-table-column type="expand" :label="$t('commodity.show')">
         <template slot-scope="scope">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="中文名称">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.name')})">
               <span>{{ scope.row.name['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语名称">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.name')})">
               <span>{{ scope.row.name['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语名称">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.name')})">
               <span>{{ scope.row.name['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语名称">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.name')})">
               <span>{{ scope.row.name['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item label="中文描述">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.desc')})">
               <span>{{ scope.row.desc['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语描述">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.desc')})">
               <span>{{ scope.row.desc['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语描述">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.desc')})">
               <span>{{ scope.row.desc['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语描述">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc')})">
               <span>{{ scope.row.desc['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item label="中文价格">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.price.title')})">
               <span>{{ scope.row.price['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语价格">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.price.title')})">
               <span>{{ scope.row.price['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语价格">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.price.title')})">
               <span>{{ scope.row.price['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语价格">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.price.title')})">
               <span>{{ scope.row.price['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item v-if="form.shapes.length" label="中文形状">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.shape')})">
               <span>{{ scope.row.shapes[0]['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语形状">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.shape')})">
               <span>{{ scope.row.shapes[0]['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语形状">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.shape')})">
               <span>{{ scope.row.shapes[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语形状">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.shape')})">
               <span>{{ scope.row.shapes[0]['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item v-if="form.themes.length" label="中文主题">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.theme')})">
               <span>{{ scope.row.themes[0]['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语主题">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.theme')})">
               <span>{{ scope.row.themes[0]['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语主题">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.theme')})">
               <span>{{ scope.row.themes[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语主题">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.theme')})">
               <span>{{ scope.row.themes[0]['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item v-if="form.categorys.length" label="中文类别">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.category')})">
               <span>{{ scope.row.categorys[0]['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语类别">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.category')})">
               <span>{{ scope.row.categorys[0]['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语类别">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.category')})">
               <span>{{ scope.row.categorys[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语类别">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.category')})">
               <span>{{ scope.row.categorys[0]['fr-fr'] }}</span>
             </el-form-item>
 
-            <el-form-item v-if="form.techniques.length" label="中文手法">
+            <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.technique')})">
               <span>{{ scope.row.techniques[0]['zh-cn'] }}</span>
             </el-form-item>
-            <el-form-item label="英语手法">
+            <el-form-item :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.technique')})">
               <span>{{ scope.row.techniques[0]['en-us'] }}</span>
             </el-form-item>
-            <el-form-item label="日语手法">
+            <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.technique')})">
               <span>{{ scope.row.techniques[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item label="法语手法">
+            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.technique')})">
               <span>{{ scope.row.techniques[0]['fr-fr'] }}</span>
             </el-form-item>
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column prop="name['zh-cn']" label="名称" width="150">
+      <el-table-column prop="name['zh-cn']" :label="$t('commodity.name')" width="150">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.name['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.name['en-us'] }}</p>
-            <p>日语: {{ scope.row.name['ja-jp'] }}</p>
-            <p>法语: {{ scope.row.name['fr-fr'] }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.name['zh-cn'] }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.name['en-us'] }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.name['ja-jp'] }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.name['fr-fr'] }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.name['zh-cn'] }}</el-tag>
+              <el-tag>{{ scope.row.name[$i18n.locale] }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="desc['zh-cn']" label="描述" width="280">
+      <el-table-column prop="desc['zh-cn']" :label="$t('commodity.desc')" width="280">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.desc['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.desc['en-us'] }}</p>
-            <p>日语: {{ scope.row.desc['ja-jp'] }}</p>
-            <p>法语: {{ scope.row.desc['fr-fr'] }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.desc['zh-cn'] }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.desc['en-us'] }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.desc['ja-jp'] }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.desc['fr-fr'] }}</p>
             <div slot="reference">
-              <span>{{ scope.row.desc['zh-cn'] }}</span>
+              <span>{{ scope.row.desc[$i18n.locale] }}</span>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="price['zh-cn']" label="价格">
+      <el-table-column prop="price['zh-cn']" :label="$t('commodity.price.title')">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.price['zh-cn'] }}</p>
-            <p>英文: {{ scope.row.price['en-us'] }}</p>
-            <p>日语: {{ scope.row.price['ja-jp'] }}</p>
-            <p>法语: {{ scope.row.price['fr-fr'] }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.price['zh-cn'] }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.price['en-us'] }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.price['ja-jp'] }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.price['fr-fr'] }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.price['zh-cn'] }}</el-tag>
+              <el-tag>{{ scope.row.price[$i18n.locale] }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
 
-      <el-table-column prop="shapes[0]['zh-cn']" label="形状">
+      <el-table-column prop="shapes[0]['zh-cn']" :label="$t('commodity.shape')">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '' }}</p>
-            <p>英文: {{ scope.row.shapes.length ? scope.row.shapes[0]['en-us'] : '' }}</p>
-            <p>日语: {{ scope.row.shapes.length ? scope.row.shapes[0]['ja-jp'] : '' }}</p>
-            <p>法语: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '' }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['en-us'] : '' }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['ja-jp'] : '' }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '无' }}</el-tag>
+              <el-tag>{{ scope.row.shapes.length ? scope.row.shapes[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="themes[0]['zh-cn']" label="主题">
+      <el-table-column prop="themes[0]['zh-cn']" :label="$t('commodity.theme')">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '' }}</p>
-            <p>英文: {{ scope.row.themes.length ? scope.row.themes[0]['en-us'] : '' }}</p>
-            <p>日语: {{ scope.row.themes.length ? scope.row.themes[0]['ja-jp'] : '' }}</p>
-            <p>法语: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '' }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.themes.length ? scope.row.themes[0]['en-us'] : '' }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.themes.length ? scope.row.themes[0]['ja-jp'] : '' }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '无' }}</el-tag>
+              <el-tag>{{ scope.row.themes.length ? scope.row.themes[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="categorys[0]['zh-cn']" label="类别">
+      <el-table-column prop="categorys[0]['zh-cn']" :label="$t('commodity.category')">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '' }}</p>
-            <p>英文: {{ scope.row.categorys.length ? scope.row.categorys[0]['en-us'] : '' }}</p>
-            <p>日语: {{ scope.row.categorys.length ? scope.row.categorys[0]['ja-jp'] : '' }}</p>
-            <p>法语: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '' }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['en-us'] : '' }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['ja-jp'] : '' }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '无' }}</el-tag>
+              <el-tag>{{ scope.row.categorys.length ? scope.row.categorys[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="techniques[0]['zh-cn']" label="手法">
+      <el-table-column prop="techniques[0]['zh-cn']" :label="$t('commodity.technique')">
         <template slot-scope="scope">
           <el-popover trigger="click" placement="top">
-            <p>中文: {{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '' }}</p>
-            <p>英文: {{ scope.row.techniques.length ? scope.row.techniques[0]['en-us'] : '' }}</p>
-            <p>日语: {{ scope.row.techniques.length ? scope.row.techniques[0]['ja-jp'] : '' }}</p>
-            <p>法语: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '' }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['en-us'] : '' }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['ja-jp'] : '' }}</p>
+            <p>{{$t('lang.fr')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '无' }}</el-tag>
+              <el-tag>{{ scope.row.techniques.length ? scope.row.techniques[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="photo" label="图片" width="180">
+      <el-table-column prop="photo" :label="$t('commodity.photo')" width="180">
         <template slot-scope="scope">
           <el-card
             :body-style="{ padding: '0px' }"
@@ -448,17 +448,17 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="width" label="宽度">
+      <el-table-column prop="width" :label="$t('commodity.width.title')">
         <template slot-scope="scope">
           {{ scope.row.width }}
         </template>
       </el-table-column>
-      <el-table-column prop="width" label="高度">
+      <el-table-column prop="height" :label="$t('commodity.height.title')">
         <template slot-scope="scope">
           {{ scope.row.height }}
         </template>
       </el-table-column>
-      <el-table-column prop="colors" label="颜色" width="100">
+      <el-table-column prop="colors" :label="$t('commodity.color.title')" width="100">
         <template slot-scope="scope">
           <!-- <el-popover trigger="hover" placement="top">
             <p>颜色从: {{ scope.row.colors[0] }}</p>
@@ -480,39 +480,39 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="state" label="状态"> </el-table-column>
-      <el-table-column prop="sellerId" label="艺术家"> </el-table-column>
+      <el-table-column prop="state" :label="$t('commodity.state.title')"> </el-table-column>
+      <el-table-column prop="sellerId" :label="$t('commodity.seller')"> </el-table-column>
       <el-table-column
         prop="createdDate"
         :formatter="formatterDate"
-        label="创建日期"
+        :label="$t('content.createdDate')"
         width="160"
       >
       </el-table-column>
 
-      <el-table-column label="操作" width="180">
+      <el-table-column :label="$t('content.operation')" width="180">
         <template slot-scope="scope">
           <el-button
             size="mini"
             icon="el-icon-edit"
             @click="commodityEdit(scope.$index, scope.row)"
-            >编辑</el-button
+            >{{$t('content.edit')}}</el-button
           >
 
           <el-popover placement="top" v-model="scope.row.visible">
-            <p>您确定要删除当前商品吗？</p>
+            <p>{{$t('content.deleteText')}}</p>
             <div style="text-align: right; margin: 0">
               <el-button
                 size="mini"
                 type="text"
                 @click="scope.row.visible = false"
-                >取消</el-button
+                >{{$t('content.cancel')}}</el-button
               >
               <el-button
                 type="primary"
                 size="mini"
                 @click="commodityDelete(scope.$index, scope.row)"
-                >确定</el-button
+                >{{$t('content.define')}}</el-button
               >
             </div>
 
@@ -521,7 +521,7 @@
               type="danger"
               icon="el-icon-delete"
               slot="reference"
-              >删除</el-button
+              >{{$t('content.delete')}}</el-button
             >
           </el-popover>
         </template>
@@ -585,19 +585,19 @@ export default {
         state: [
           {
             index: 0,
-            name: '已添加',
+            name: this.$t('commodity.state.added')
           },
           {
             index: 1,
-            name: '售卖中',
+            name: this.$t('commodity.state.onsale')
           },
           {
             index: 2,
-            name: '已售卖',
+            name: this.$t('commodity.state.sold')
           },
           {
             index: 3,
-            name: '已下架',
+            name: this.$t('commodity.state.offline')
           },
         ],
       },
@@ -700,13 +700,13 @@ export default {
         this.commodity.splice(index, 1)
         this.$message({
           showClose: true,
-          message: `删除成功！`,
+          message: `${this.$t('content.delete')}${this.$t('content.success')}！`,
           type: 'success',
         })
       } else {
         this.$message({
           showClose: true,
-          message: `删除失败!`,
+          message: `${this.$t('content.delete')}${this.$t('content.fail')}!`,
           type: 'error',
         })
       }

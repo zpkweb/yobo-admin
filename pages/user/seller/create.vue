@@ -10,7 +10,7 @@
       <el-row :gutter="20">
         <el-col :span="8">
           <el-form-item :label="$t('user.state')" prop="identity">
-        <el-select v-model="userCreate.state" :placeholder="$t('content.selectPlaceholder', { msg: $t('user.state') })">
+        <el-select v-model="userCreate.state" :placeholder="$t('form.selectPlaceholder', { msg: $t('user.state') })">
           <el-option
             v-for="item in stateOptions"
             :key="item.value"
@@ -50,52 +50,52 @@
       <el-form-item :label="$t('user.firstName')" prop="firstname">
         <el-input
           v-model="userCreate.firstname"
-          :placeholder="$t('placeholder', { msg: $t('user.firstName') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.firstName') })"
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.lastName')" prop="lastname">
         <el-input
           v-model="userCreate.lastname"
-          :placeholder="$t('placeholder', { msg: $t('user.lastName') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.lastName') })"
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.email')" prop="email">
         <el-input
           v-model="userCreate.email"
-          :placeholder="$t('placeholder', { msg: $t('user.email') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.phone')" prop="phone">
         <el-input
           v-model="userCreate.phone"
-          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
         ></el-input>
       </el-form-item>
 
       <el-form-item :label="$t('user.password')" prop="password">
         <el-input
           v-model="userCreate.password"
-          :placeholder="$t('placeholder', { msg: $t('user.password') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.password') })"
         ></el-input>
       </el-form-item>
 
       <el-form-item :label="$t('user.gender')" prop="gender">
         <el-input
           v-model="userCreate.gender"
-          :placeholder="$t('placeholder', { msg: $t('user.gender') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.gender') })"
         ></el-input>
       </el-form-item>
 
       <el-form-item :label="$t('user.country')" prop="country">
         <el-input
           v-model="userCreate.country"
-          :placeholder="$t('placeholder', { msg: $t('user.country') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.country') })"
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.language')" prop="language">
         <el-input
           v-model="userCreate.language"
-          :placeholder="$t('placeholder', { msg: $t('user.language') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.language') })"
         ></el-input>
       </el-form-item>
 
@@ -103,7 +103,7 @@
         <el-input
           type="textarea"
           v-model="userCreate.profile"
-          :placeholder="$t('placeholder', { msg: $t('user.profile') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.profile') })"
         ></el-input>
       </el-form-item>
       <el-form-item prop="isFullTime">
@@ -276,9 +276,9 @@ export default {
       rules: {
         // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
         // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-        email: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
+        email: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
+        password: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
       },
     }
   },

@@ -9,21 +9,21 @@
       <el-form-item :label="$t('user.name')">
         <el-input
           v-model="userSearch.name"
-          :placeholder="$t('placeholder', { msg: $t('content.name') })"
+          :placeholder="$t('form.placeholder', { msg: $t('content.name') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.email')">
         <el-input
           v-model="userSearch.email"
-          :placeholder="$t('placeholder', { msg: $t('user.email') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.phone')">
         <el-input
           v-model="userSearch.phone"
-          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
           clearable
         ></el-input>
       </el-form-item>

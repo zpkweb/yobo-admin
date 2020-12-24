@@ -3,140 +3,140 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          label="汉语名称"
+          :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.name') })"
           :prop="'name.zh-cn'"
           :rules="{
             required: true,
-            message: `汉语名称不能为空`,
+            message: `${$t('lang.zh')}${$t('commodity.name')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
         >
           <el-input
             v-model="form.name['zh-cn']"
-            placeholder="请输入汉语"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.zh') })"
           ></el-input
         ></el-form-item>
       </el-col>
       <el-col :span="6">
         <el-form-item
-          label="英语名称"
+          :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.name') })"
           :prop="'name.en-us'"
           :rules="{
             required: true,
-            message: `英语名称不能为空`,
+            message: `${$t('lang.en')}${$t('commodity.name')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
           ><el-input
             v-model="form.name['en-us']"
-            placeholder="请输入英语"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.en') })"
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          label="日语名称"
+          :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.name') })"
           :prop="'name.ja-jp'"
           :rules="{
             required: true,
-            message: `日语名称不能为空`,
+            message: `${$t('lang.ja')}${$t('commodity.name')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
           ><el-input
             v-model="form.name['ja-jp']"
-            placeholder="请输入日语"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          label="法语名称"
+          :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.name') })"
           :prop="'name.fr-fr'"
           :rules="{
             required: true,
-            message: `法语名称不能为空`,
+            message: `${$t('lang.fr')}${$t('commodity.name')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
           ><el-input
             v-model="form.name['fr-fr']"
-            placeholder="请输入法语"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
           ></el-input></el-form-item
       ></el-col>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          label="汉语描述"
+          :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.desc') })"
           :prop="'desc.zh-cn'"
           :rules="{
             required: true,
-            message: `汉语描述不能为空`,
+            message: `${$t('lang.zh')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
         >
           <el-input
             type="textarea"
             v-model="form.desc['zh-cn']"
-            placeholder="请输入汉语描述"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.zh') })"
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          label="汉语描述"
+          :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.desc') })"
           :prop="'desc.en-us'"
           :rules="{
             required: true,
-            message: `英语描述不能为空`,
+            message: `${$t('lang.en')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
           ><el-input
             type="textarea"
             v-model="form.desc['en-us']"
-            placeholder="请输入英语描述"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.en') })"
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          label="日语描述"
+          :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.desc') })"
           :prop="'desc.ja-jp'"
           :rules="{
             required: true,
-            message: `日语描述不能为空`,
+            message: `${$t('lang.ja')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
           ><el-input
             type="textarea"
             v-model="form.desc['ja-jp']"
-            placeholder="请输入日语描述"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          label="法语描述"
+          :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc') })"
           :prop="'desc.fr-fr'"
           :rules="{
             required: true,
-            message: `法语描述不能为空`,
+            message: `${$t('lang.fr')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
           ><el-input
             type="textarea"
             v-model="form.desc['fr-fr']"
-            placeholder="请输入法语描述"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
           ></el-input></el-form-item
       ></el-col>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          label="人民币价格"
+          :label="$t('langname', { lang: $t('lang.price.zh'), name: $t('commodity.price.title') })"
           :prop="'price.zh-cn'"
           :rules="{
             required: true,
-            message: `人民币价格不能为空`,
+            message: `${$t('lang.price.zh')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
         >
           <el-input
             v-model="form.price['zh-cn']"
-            placeholder="请输入人民币价格"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.price.zh') })"
           >
             <template slot="append">¥</template>
           </el-input>
@@ -144,28 +144,33 @@
       >
       <el-col :span="6">
         <el-form-item
-          label="美元价格"
+          :label="$t('langname', { lang: $t('lang.price.en'), name: $t('commodity.price.title') })"
           :prop="'price.en-us'"
           :rules="{
             required: true,
-            message: `美元价格不能为空`,
+            message: `${$t('lang.price.en')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
-          ><el-input v-model="form.price['en-us']" placeholder="请输入美元价格"
+          >
+          <el-input
+          v-model="form.price['en-us']"
+          :placeholder="$t('form.placeholder', { msg: $t('lang.price.en') })"
             ><template slot="append">$</template></el-input
           ></el-form-item
         ></el-col
       >
       <el-col :span="6">
         <el-form-item
-          label="日元价格"
+          :label="$t('langname', { lang: $t('lang.price.ja'), name: $t('commodity.price.title') })"
           :prop="'price.ja-jp'"
           :rules="{
             required: true,
-            message: `日元价格不能为空`,
+            message: `${$t('lang.price.ja')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
-          ><el-input v-model="form.price['ja-jp']" placeholder="请输入日元价格"
+          ><el-input
+          v-model="form.price['ja-jp']"
+          :placeholder="$t('form.placeholder', { msg: $t('lang.price.ja') })"
             ><template slot="append">￥</template></el-input
           ></el-form-item
         ></el-col
@@ -173,14 +178,16 @@
 
       <el-col :span="6">
         <el-form-item
-          label="欧元价格"
+          :label="$t('langname', { lang: $t('lang.price.fr'), name: $t('commodity.price.title') })"
           :prop="'price.fr-fr'"
           :rules="{
             required: true,
-            message: `欧元价格不能为空`,
+            message: `${$t('lang.price.fr')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
-          ><el-input v-model="form.price['fr-fr']" placeholder="请输入欧元价格"
+          ><el-input
+          v-model="form.price['fr-fr']"
+          :placeholder="$t('form.placeholder', { msg: $t('lang.price.fr') })"
             ><template slot="append">€</template></el-input
           ></el-form-item
         ></el-col
@@ -193,40 +200,38 @@
     <el-row :gutter="20">
       <el-col :span="10">
         <el-form-item
-          label="商品宽度"
+          :label="$t('commodity.width.title')"
           :prop="'width'"
           :rules="{
             required: true,
-            message: `商品宽度不能为空`,
+            message: `${$t('commodity.width.title')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
         >
           <el-input
             type="input"
-            placeholder="请输入商品宽度"
+            :placeholder="$t('form.placeholder', { msg: $t('commodity.width.title') })"
             v-model="form.width"
           >
-            <template slot="prepend">宽</template>
             <template slot="append">cm</template>
           </el-input>
         </el-form-item>
       </el-col>
       <el-col :span="10">
         <el-form-item
-          label="商品高度"
+          :label="$t('commodity.height.title')"
           :prop="'height'"
           :rules="{
             required: true,
-            message: `商品高度不能为空`,
+            message: `${$t('commodity.height.title')}${$t('form.noEmpty')}`,
             trigger: 'blur',
           }"
         >
           <el-input
             type="input"
-            placeholder="请输入商品高度"
+            :placeholder="$t('form.placeholder', { msg: $t('commodity.height.title') })"
             v-model="form.height"
           >
-            <template slot="prepend">高</template>
             <template slot="append">cm</template>
           </el-input>
         </el-form-item>
@@ -236,17 +241,17 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          label="商品形状"
+          :label="$t('commodity.shape')"
           :prop="'shapes[0].id'"
           :rules="{
             required: false,
-            message: `商品形状不能为空`,
+            message: `${$t('commodity.shape')}${$t('form.noEmpty')}`,
             trigger: 'change',
           }"
         >
           <el-select
             v-model="form.shapes[0].id"
-            placeholder="请选择商品形状"
+            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.shape') })"
             clearable
           >
             <el-option
@@ -255,27 +260,27 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>中文：{{ item['zh-cn'] }}</span>
-              <span>英文：{{ item['en-us'] }}</span>
-              <span>日语：{{ item['ja-jp'] }}</span>
-              <span>法语：{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
+              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
+              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
+              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
       </el-col>
       <el-col :span="6">
         <el-form-item
-          label="商品主题"
+          :label="$t('commodity.theme')"
           :prop="'themes[0].id'"
           :rules="{
             required: false,
-            message: `商品主题不能为空`,
+            message: `${$t('commodity.theme')}${$t('form.noEmpty')}`,
             trigger: 'change',
           }"
         >
           <el-select
             v-model="form.themes[0].id"
-            placeholder="请选择商品主题"
+            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.theme') })"
             clearable
           >
             <el-option
@@ -284,10 +289,10 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>中文：{{ item['zh-cn'] }}</span>
-              <span>英文：{{ item['en-us'] }}</span>
-              <span>日语：{{ item['ja-jp'] }}</span>
-              <span>法语：{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
+              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
+              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
+              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -295,17 +300,17 @@
 
       <el-col :span="6">
         <el-form-item
-          label="商品类别"
+          :label="$t('commodity.category')"
           :prop="'categorys[0].id'"
           :rules="{
             required: false,
-            message: `商品类别不能为空`,
+            message: `${$t('commodity.category')}${$t('form.noEmpty')}`,
             trigger: 'change',
           }"
         >
           <el-select
             v-model="form.categorys[0].id"
-            placeholder="请选择商品类别"
+            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.category') })"
             clearable
           >
             <el-option
@@ -314,27 +319,27 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>中文：{{ item['zh-cn'] }}</span>
-              <span>英文：{{ item['en-us'] }}</span>
-              <span>日语：{{ item['ja-jp'] }}</span>
-              <span>法语：{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
+              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
+              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
+              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
       </el-col>
       <el-col :span="6">
         <el-form-item
-          label="商品手法"
+          :label="$t('commodity.technique')"
           :prop="'techniques[0].id'"
           :rules="{
             required: false,
-            message: `商品手法不能为空`,
+            message: `${$t('commodity.technique')}${$t('form.noEmpty')}`,
             trigger: 'change',
           }"
         >
           <el-select
             v-model="form.techniques[0].id"
-            placeholder="请选择商品手法"
+            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.technique') })"
             clearable
           >
             <el-option
@@ -343,24 +348,24 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>中文：{{ item['zh-cn'] }}</span>
-              <span>英文：{{ item['en-us'] }}</span>
-              <span>日语：{{ item['ja-jp'] }}</span>
-              <span>法语：{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
+              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
+              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
+              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
       </el-col>
     </el-row>
 
-    <el-form-item label="商品颜色">
+    <el-form-item :label="$t('commodity.color.title')">
       <el-row :gutter="10">
         <el-col :span="2" v-for="(item, index) in form.colors" :key="index">
           <el-form-item
             :prop="'colors.' + index + '.name'"
             :rules="{
               required: false,
-              message: `商品颜色不能为空`,
+              message: `${$t('commodity.color.title')}${$t('form.noEmpty')}`,
               trigger: 'blur',
             }"
           >
@@ -376,7 +381,7 @@
       </el-row>
     </el-form-item>
 
-    <el-form-item label="商品图片">
+    <el-form-item :label="$t('commodity.photo')">
       <!-- <el-row :gutter="20">
         <el-col :span="23"> -->
       <el-upload
@@ -399,18 +404,18 @@
 
     <el-row :gutter="20">
       <el-col :span="6">
-        <el-form-item label="商品状态" :prop="'state'">
+        <el-form-item :label="$t('commodity.state.title')" :prop="'state'">
           <el-radio-group v-model="form.state">
-            <el-radio :label="0">无</el-radio>
-            <el-radio :label="1">在售中</el-radio>
-            <el-radio :label="2">已售卖</el-radio>
-            <el-radio :label="3">已下架</el-radio>
+            <el-radio :label="0">{{$t('commodity.state.added')}}</el-radio>
+            <el-radio :label="1">{{$t('commodity.state.onsale')}}</el-radio>
+            <el-radio :label="2">{{$t('commodity.state.sold')}}</el-radio>
+            <el-radio :label="3">{{$t('commodity.state.offline')}}</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-col>
     </el-row>
 
-    <el-form-item label="关联艺术家">
+    <el-form-item :label="$t('commodity.seller')">
       <el-row :gutter="20">
         <el-col :span="8">
           <el-select
@@ -418,7 +423,7 @@
             filterable
             remote
             reserve-keyword
-            placeholder="请输入艺术家邮箱"
+            :placeholder="$t('form.placeholder', { msg: $t('commodity.seller') })"
           >
             <!-- <el-option
               v-for="item in options"
@@ -439,7 +444,7 @@
         @click="onSubmit('form')"
         icon="el-icon-circle-plus-outline"
       >
-        创建
+        {{ $t('content.create') }}
       </el-button>
 
       <el-button
@@ -448,11 +453,11 @@
         @click="onSubmit('form')"
         icon="el-icon-check"
       >
-        更新
+        {{ $t('content.update') }}
       </el-button>
-      <el-button @click="onMock" icon="el-icon-check"> 填充 </el-button>
+      <el-button @click="onMock" icon="el-icon-check"> {{ $t('content.fill') }} </el-button>
       <el-button @click="resetForm('form')" icon="el-icon-circle-close"
-        >清空</el-button
+        >{{ $t('content.clear') }}</el-button
       >
     </el-form-item>
   </el-form>
@@ -468,7 +473,7 @@ export default {
   data() {
     return {
       type: '',
-      typeText: '创建',
+      typeText: this.$t('content.create'),
       isCreate: true,
       form: {},
 
@@ -595,7 +600,7 @@ export default {
         // this.form = commodityForm;
 
         this.type = 'edit'
-        this.typeText = '更新'
+        this.typeText = this.$t('content.update')
         this.isCreate = false
       }
     }
@@ -617,7 +622,7 @@ export default {
               .catch((error) => {
                 this.$message({
                   showClose: true,
-                  message: `${this.typeText}失败! ${error.response.data.message}`,
+                  message: `${this.typeText}${ this.$t('content.fail') }! ${error.response.data.message}`,
                   type: 'error',
                 })
               })
@@ -627,7 +632,7 @@ export default {
               .catch((error) => {
                 this.$message({
                   showClose: true,
-                  message: `${this.typeText}失败! ${error.response.data.message}`,
+                  message: `${this.typeText}${ this.$t('content.fail') }! ${error.response.data.message}`,
                   type: 'error',
                 })
               })
@@ -637,7 +642,7 @@ export default {
           if (data.status === 200) {
             this.$message({
               showClose: true,
-              message: `${this.typeText}成功`,
+              message: `${this.typeText}${ this.$t('content.success') }`,
               type: 'success',
             })
             if (this.isCreate) {
@@ -647,7 +652,7 @@ export default {
           } else {
             this.$message({
               showClose: true,
-              message: `${this.typeText}失败!${data.message}`,
+              message: `${this.typeText}${ this.$t('content.fail') }!${data.message}`,
               type: 'error',
             })
           }
@@ -660,15 +665,15 @@ export default {
         commodityId: this.form.commodityId,
         name: {
           'zh-cn': Mock.mock('@ctitle(2, 8)'),
-          'en-us': Mock.mock('@ctitle(2, 8)'),
-          'ja-jp': Mock.mock('@ctitle(2, 8)'),
-          'fr-fr': Mock.mock('@ctitle(2, 8)'),
+          'en-us': Mock.mock('@title(2, 8)'),
+          'ja-jp': "ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう",
+          'fr-fr': "zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix"
         },
         desc: {
-          'zh-cn': Mock.mock('@cparagraph'),
-          'en-us': Mock.mock('@cparagraph'),
-          'ja-jp': Mock.mock('@cparagraph'),
-          'fr-fr': Mock.mock('@cparagraph'),
+          'zh-cn': Mock.mock('@cparagraph(1,3)'),
+          'en-us': Mock.mock('@paragraph(1,3)'),
+          'ja-jp': "ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう",
+          'fr-fr': "zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix"
         },
         price: {
           'zh-cn': Mock.mock('@integer(60, 100)'),
@@ -695,13 +700,13 @@ export default {
       this.form = createCommodityMock
 
       this.type = 'create'
-      this.typeText = '添加'
+      this.typeText = this.$t('content.create')
       this.isCreate = true
     },
     resetForm(formName) {
       this.reset()
       this.type = 'create'
-      this.typeText = '添加'
+      this.typeText = this.$t('content.create')
       this.isCreate = true
       this.$refs[formName].clearValidate()
       // console.log(this.form)

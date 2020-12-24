@@ -10,7 +10,7 @@
     <h3 class="login-title">yobo {{$t('login.title')}}</h3>
 
     <el-form-item class="login-item" :label="$t('login.name')" prop="name">
-      <el-input v-model="userForm.name" :placeholder="$t('placeholder', { msg: `${$t('user.name')}/${$t('user.email')}` })"></el-input>
+      <el-input v-model="userForm.name" :placeholder="$t('form.placeholder', { msg: `${$t('user.name')}/${$t('user.email')}` })"></el-input>
     </el-form-item>
     <el-form-item class="login-item" :label="$t('login.pass')" prop="pass">
       <el-input

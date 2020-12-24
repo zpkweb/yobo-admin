@@ -4,26 +4,26 @@
       <el-form-item :label="$t('user.name')">
         <el-input
           v-model="userSearch.name"
-          :placeholder="$t('placeholder', { msg: $t('user.name') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.email')">
         <el-input
           v-model="userSearch.email"
-          :placeholder="$t('placeholder', { msg: $t('user.email') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.phone')">
         <el-input
           v-model="userSearch.phone"
-          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.identity')">
-        <el-select v-model="userSearch.identity" :placeholder="$t('content.selectPlaceholder', { msg: $t('user.identity') })">
+        <el-select v-model="userSearch.identity" :placeholder="$t('form.selectPlaceholder', { msg: $t('user.identity') })">
           <el-option
             v-for="item in identityOptions"
             :key="item.ename"
@@ -45,7 +45,7 @@
         <template slot-scope="scope">
           <el-input
             v-model="scope.row.name"
-            :placeholder="$t('placeholder', { msg: $t('user.name') })"
+            :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
             clearable
             v-if="scope.row.isEdit"
           ></el-input>
@@ -58,7 +58,7 @@
         <template slot-scope="scope">
           <el-input
             v-model="scope.row.email"
-            :placeholder="$t('placeholder', { msg: $t('user.email') })"
+            :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
             clearable
             v-if="scope.row.isEdit"
           ></el-input>
@@ -71,7 +71,7 @@
         <template slot-scope="scope">
           <el-input
             v-model="scope.row.phone"
-            :placeholder="$t('placeholder', { msg: $t('user.phone') })"
+            :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
             clearable
             v-if="scope.row.isEdit"
           ></el-input>

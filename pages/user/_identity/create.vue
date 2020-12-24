@@ -8,24 +8,24 @@
       class="user-create-form"
     >
       <el-form-item :label="$t('user.name')" prop="name">
-        <el-input v-model="userCreate.name" :placeholder="$t('placeholder', { msg: $t('user.name') })"></el-input>
+        <el-input v-model="userCreate.name" :placeholder="$t('form.placeholder', { msg: $t('user.name') })"></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.email')" prop="email">
         <el-input
           v-model="userCreate.email"
-          :placeholder="$t('placeholder', { msg: $t('user.email') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.phone')" prop="phone">
         <el-input
           v-model="userCreate.phone"
-          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.password')" prop="password">
         <el-input
           v-model="userCreate.password"
-          :placeholder="$t('placeholder', { msg: $t('user.password') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.password') })"
         ></el-input>
       </el-form-item>
 
@@ -91,9 +91,9 @@ export default {
       },
       rules: {
         // name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-        email: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
+        email: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: this.$t('placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
+        password: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
 
         // identity: [
         //   {

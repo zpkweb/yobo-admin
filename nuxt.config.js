@@ -69,27 +69,27 @@ export default {
   i18n: {
     locales: [
       {
-        code: 'zh',
+        code: 'zh-cn',
         name: '中文',
         file: 'zh-CN.js'
       },
       {
-        code: 'en',
+        code: 'en-us',
         name: 'English',
         file: 'en-US.js'
       },
       {
-        code: 'ja',
+        code: 'ja-jp',
         name: 'にほんご',
         file: 'ja-JP.js'
       },
       {
-        code: 'fr',
+        code: 'fr-fr',
         name: 'Français',
         file: 'fr-FR.js'
       }
     ],
-    defaultLocale: 'zh',
+    defaultLocale: 'zh-cn',
     vueI18nLoader: true,
     lazy: true,
     langDir: 'lang/',

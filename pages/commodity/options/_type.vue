@@ -2,7 +2,7 @@
   <el-form :model="form" ref="form" label-width="100px" class="form">
     <el-form-item
       v-for="item in form.optionsExamples"
-      :label="`添加${optionType[$route.params.type]}示例`"
+      :label="`${ $t('content.create') }${optionType[$route.params.type]}${ $t('content.example') }`"
       :key="item['zh-cn']"
     >
       <el-row :gutter="20">
@@ -21,12 +21,12 @@
 
         <el-col :span="2">
           <el-button type="primary" @click="addOption">
-            新增
+            {{ $t('content.create') }}
           </el-button>
         </el-col>
 
         <el-col :span="2" :offset="2">
-           <el-button @click="resetForm('form')">重置</el-button>
+           <el-button @click="resetForm('form')">{{ $t('content.clear') }}</el-button>
         </el-col>
 
         <!-- <el-button type="primary" @click="submitForm('form')">创建</el-button>
@@ -49,11 +49,11 @@
             :prop="'options.' + index + '.zh-cn'"
             :rules="{
               required: true,
-              message: `汉语${optionType[$route.params.type]}不能为空`,
+              message: `${ $t('lang.zh') }${optionType[$route.params.type]}${ $t('form.noEmpty') }`,
               trigger: 'blur',
             }"
           >
-            <el-input v-model="item['zh-cn']" placeholder="请输入汉语">
+            <el-input v-model="item['zh-cn']" :placeholder="$t('form.placeholder', { msg: $t('lang.zh') })">
             </el-input>
           </el-form-item>
         </el-col>
@@ -62,13 +62,13 @@
             :prop="'options.' + index + '.en-us'"
             :rules="{
               required: true,
-              message: `英语${optionType[$route.params.type]}不能为空`,
+              message: `${ $t('lang.en') }${optionType[$route.params.type]}${ $t('form.noEmpty') }`,
               trigger: 'blur',
             }"
           >
             <el-input
               v-model="item['en-us']"
-              placeholder="请输入英语"
+              :placeholder="$t('form.placeholder', { msg: $t('lang.en') })"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -77,13 +77,13 @@
             :prop="'options.' + index + '.ja-jp'"
             :rules="{
               required: true,
-              message: `日语${optionType[$route.params.type]}不能为空`,
+              message: `${ $t('lang.ja') }${optionType[$route.params.type]}${ $t('form.noEmpty') }`,
               trigger: 'blur',
             }"
           >
             <el-input
               v-model="item['ja-jp']"
-              placeholder="请输入日语"
+              :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -92,31 +92,31 @@
             :prop="'options.' + index + '.fr-fr'"
             :rules="{
               required: true,
-              message: `法语${optionType[$route.params.type]}不能为空`,
+              message: `${ $t('lang.fr') }${optionType[$route.params.type]}${ $t('form.noEmpty') }`,
               trigger: 'blur',
             }"
           >
             <el-input
               v-model="item['fr-fr']"
-              placeholder="请输入法语"
+              :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
             ></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2">
           <el-button @click.prevent="updateOption(item)" v-if="item.id"
-            >更新</el-button
+            >{{$t('content.update')}}</el-button
           >
           <el-button @click.prevent="createOption(item, index)" v-else
-            >添加</el-button
+            >{{$t('content.create')}}</el-button
           >
         </el-col>
         <el-col :span="2">
           <el-button @click="onMock(item,index)">
-            填充
+            {{$t('content.fill')}}
           </el-button>
         </el-col>
         <el-col :span="2">
-          <el-button @click.prevent="removeOption(item, index)">删除</el-button>
+          <el-button @click.prevent="removeOption(item, index)">{{$t('content.delete')}}</el-button>
         </el-col>
       </el-row>
     </el-form-item>
@@ -143,10 +143,10 @@ export default {
     return {
       lang: ['zh-cn', 'en-us', 'ja-jp', 'fr-fr'],
       optionType: {
-        shape: '形状',
-        theme: '主题',
-        category: '类别',
-        technique: '手法',
+        shape: this.$t('commodity.shape'),
+        theme: this.$t('commodity.theme'),
+        category: this.$t('commodity.category'),
+        technique: this.$t('commodity.technique')
       },
       form: {
         options: [
@@ -194,20 +194,20 @@ export default {
                 showClose: true,
                 message: `${
                   this.optionType[this.$route.params.type]
-                }，创建失败!`,
+                }，${ this.$t('content.create') }${ this.$t('content.fail') }!`,
                 type: 'error',
               })
             })
           if (options.success) {
             this.$message({
               showClose: true,
-              message: `${this.optionType[this.$route.params.type]}，创建成功`,
+              message: `${this.optionType[this.$route.params.type]}，${ this.$t('content.create') }${ this.$t('content.success') }`,
               type: 'success',
             })
           } else {
             this.$message({
               showClose: true,
-              message: `${this.optionType[this.$route.params.type]}，创建失败!`,
+              message: `${this.optionType[this.$route.params.type]}，${ this.$t('content.create') }${ this.$t('content.fail') }!`,
               type: 'error',
             })
           }
@@ -253,16 +253,16 @@ export default {
           .catch((error) => {
             this.$message({
               showClose: true,
-              message: `${this.typeText}失败! ${error.response.data.message}`,
+              message: `${this.typeText}${ this.$t('content.fail') }! ${error.response.data.message}`,
               type: 'error',
             })
           })
         if (options.success) {
           this.form.options.splice(index, 1, options.data[0])
 
-          this.message('success', '添加成功!')
+          this.message('success', `${ this.$t('content.create') }${ this.$t('content.success') }!`)
         } else {
-          this.message('error', `添加失败!${options.message}`)
+          this.message('error', `${ this.$t('content.create') }${ this.$t('content.fail') }!${options.message}`)
         }
       }
     },
@@ -278,9 +278,9 @@ export default {
           this.message('error', `${error.response.data.message}`)
         })
       if (options.success) {
-        this.message('success', '更新成功!')
+        this.message('success', `${ this.$t('content.update') }${ this.$t('content.success') }!`)
       } else {
-        this.message('error', '更新失败!')
+        this.message('error', `${ this.$t('content.update') }${ this.$t('content.fail') }!`)
       }
     },
     async removeOption(item, index) {
@@ -296,9 +296,9 @@ export default {
         })
       if (options.success) {
         this.form.options.splice(index, 1)
-        this.message('success', '，删除成功!')
+        this.message('success', `${ this.$t('content.delete') }${ this.$t('content.success') }!`)
       } else {
-        this.message('error', '删除失败!')
+        this.message('error', `${ this.$t('content.delete') }${ this.$t('content.fail') }!`)
       }
     },
     message(type, msg) {

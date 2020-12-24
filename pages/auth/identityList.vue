@@ -5,17 +5,17 @@
       style="width: 100%">
       <el-table-column
         prop="name"
-        label="名称"
+        :label="$t('content.identityName')"
         width="180">
       </el-table-column>
       <el-table-column
         prop="ename"
-        label="英文"
+        :label="$t('content.identitySign')"
         width="180">
       </el-table-column>
       <el-table-column
         prop="index"
-        label="序号">
+        :label="$t('content.identityCode')">
       </el-table-column>
     </el-table>
     <el-row :gutter="20">

@@ -1,10 +1,12 @@
 
 export default {
+  "langname": "{lang}{name}",
+  "langnamePlaceholder": "{lang}{name}{placeholder}",
+  "all": "所有",
   "menu": {
     "user": {
       "title": "用户管理",
       "search": "搜索",
-
       "ordinary": {
         "title": "普通用户",
         "search": "查找普通用户",
@@ -59,10 +61,13 @@ export default {
     "pass": "密码",
     "login": "登录",
   },
-  "all": "所有",
-  "placeholder": "请输入{msg}",
+  "form": {
+    "placeholder": "请输入{msg}",
+    "noEmpty": "不能为空",
+    "validate": "{msg}必填！",
+    "selectPlaceholder": "请选择{msg}",
+  },
   "user": {
-
     "name": "姓名",
     "firstName": "姓氏",
     "lastName": "名字",
@@ -111,9 +116,63 @@ export default {
     "disable": "禁用",
     "logoff": "注销",
     "deleteText": "您确定要删除吗?",
-    "selectPlaceholder": "请选择{msg}",
-    "validate": "{msg}必填！",
-
+    "identityName": "身份名称",
+    "identitySign": "身份标记",
+    "identityCode": "身份序号",
+    "example": "示例"
+  },
+  "commodity": {
+    "name": "名称",
+    "desc": "描述",
+    "seller": "艺术家",
+    "shape": "形状",
+    "theme": "主题",
+    "category": "类别",
+    "technique": "手法",
+    "price": {
+      "title": "价格",
+      "min": "最低价格",
+      "max": "最高价格",
+    },
+    "width": {
+      "title": "宽度",
+      "min": "最小宽度",
+      "max": "最大宽度",
+    },
+    "height": {
+      "title": "高度",
+      "min": "最小高度",
+      "max": "最大高度",
+    },
+    "hots": "最热",
+    "news": "最新",
+    "color": {
+      "title": "颜色",
+      "start": "开始颜色",
+      "end": "结束颜色",
+    },
+    "show": "展开",
+    "photo": "图片",
+    "state": {
+      "title": "状态",
+      "added": "已添加",
+      "onsale": "售卖中",
+      "sold": "已售卖",
+      "offline": "已下架"
+    },
+    "nothing": "暂无"
+  },
+  "lang": {
+    "zh": "中文",
+    "en": "英文",
+    "ja": "日语",
+    "fr": "法语",
+    "price": {
+      "zh": "人命币",
+      "en": "美元",
+      "ja": "日元",
+      "fr": "欧元",
+    }
   }
 
 

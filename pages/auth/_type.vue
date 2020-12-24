@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>修改{{ type[$route.params.type] }}权限</h3>
     <el-tree
       ref="menuTree"
       :data="menuTree"
@@ -16,7 +15,7 @@
         <span><i :class="data.icon"></i>{{ $t(node.label) }}</span>
       </span>
     </el-tree>
-    <el-button type="primary" @click="onSubmit"> 修改 </el-button>
+    <el-button type="primary" @click="onSubmit"> {{ $t('content.update') }} </el-button>
   </div>
 </template>
 <script>
@@ -26,11 +25,6 @@ export default {
   },
   data() {
     return {
-      type: {
-        customerService: '客服',
-        admin: '管理员',
-        superAdmin: '超级管理员',
-      },
       // data: this.$store.state.menu,
       defaultProps: {
         children: 'subMenu',
@@ -93,7 +87,7 @@ export default {
         .catch((error) => {
           this.$message({
             showClose: true,
-            message: `更新失败! ${error.response.data.message}`,
+            message: `${this.$t('content.update')}${this.$t('content.fail')}! ${error.response.data.message}`,
             type: 'error',
           })
         })
@@ -101,13 +95,13 @@ export default {
       if (identityListUpdate.success) {
         this.$message({
           showClose: true,
-          message: `更新成功`,
+          message: `${this.$t('content.update')}${this.$t('content.success')}`,
           type: 'success',
         })
       } else {
         this.$message({
           showClose: true,
-          message: `更新失败!${identityListUpdate.message}`,
+          message: `${this.$t('content.update')}${this.$t('content.fail')}!${identityListUpdate.message}`,
           type: 'error',
         })
       }

@@ -4,49 +4,49 @@
       <el-form-item :label="$t('user.firstName')">
         <el-input
           v-model="search.firstname"
-          :placeholder="$t('placeholder', { msg: $t('user.firstName') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.firstName') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.lastName')">
         <el-input
           v-model="search.lastname"
-          :placeholder="$t('placeholder', { msg: $t('user.lastName') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.lastName') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.email')">
         <el-input
           v-model="search.email"
-          :placeholder="$t('placeholder', { msg: $t('user.email') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.phone')">
         <el-input
           v-model="search.phone"
-          :placeholder="$t('placeholder', { msg: $t('user.phone') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.label')">
         <el-input
           v-model="search.label"
-          :placeholder="$t('placeholder', { msg: $t('user.label') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.label') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.gender')">
         <el-input
           v-model="search.gender"
-          :placeholder="$t('placeholder', { msg: $t('user.gender') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.gender') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.country')">
         <el-input
           v-model="search.country"
-          :placeholder="$t('placeholder', { msg: $t('user.country') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.country') })"
           clearable
         ></el-input>
       </el-form-item>

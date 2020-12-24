@@ -4,42 +4,42 @@
       <el-form-item :label="$t('user.firstName')">
         <el-input
           v-model="userSearch.firstname"
-          :placeholder="$t('placeholder', { msg: $t('user.firstName') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.firstName') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.lastName')">
         <el-input
           v-model="userSearch.lastname"
-          :placeholder="$t('placeholder', { msg: $t('user.lastName') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.lastName') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.label')">
         <el-input
           v-model="userSearch.label"
-          :placeholder="$t('placeholder', { msg: $t('user.label') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.label') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.gender')">
         <el-input
           v-model="userSearch.gender"
-          :placeholder="$t('placeholder', { msg: $t('user.gender') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.gender') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.country')">
         <el-input
           v-model="userSearch.country"
-          :placeholder="$t('placeholder', { msg: $t('user.country') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.country') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.state')">
         <el-input
           v-model="userSearch.state"
-          :placeholder="$t('placeholder', { msg: $t('user.state') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.state') })"
           clearable
         ></el-input>
       </el-form-item>
