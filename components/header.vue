@@ -110,8 +110,8 @@ export default {
     }
   },
   fetch() {
-    console.log("this.$i18n", this.$i18n, this.$i18n.locales, this.$i18n.locale)
-    console.log("this.$route", this.$route)
+    // console.log("this.$i18n", this.$i18n, this.$i18n.locales, this.$i18n.locale)
+    // console.log("this.$route", this.$route)
     const routePath = this.$route.path
     // console.log('this.$store.state.userMenu', this.$store.state.userMenu)
     // if(routePath.includes('user')){

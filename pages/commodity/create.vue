@@ -3,11 +3,15 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.name') })"
+          :label="
+            $t('langname', { lang: $t('lang.zh'), name: $t('commodity.name') })
+          "
           :prop="'name.zh-cn'"
           :rules="{
             required: true,
-            message: `${$t('lang.zh')}${$t('commodity.name')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.zh')}${$t('commodity.name')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
         >
@@ -19,11 +23,15 @@
       </el-col>
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.name') })"
+          :label="
+            $t('langname', { lang: $t('lang.en'), name: $t('commodity.name') })
+          "
           :prop="'name.en-us'"
           :rules="{
             required: true,
-            message: `${$t('lang.en')}${$t('commodity.name')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.en')}${$t('commodity.name')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
@@ -33,11 +41,15 @@
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.name') })"
+          :label="
+            $t('langname', { lang: $t('lang.ja'), name: $t('commodity.name') })
+          "
           :prop="'name.ja-jp'"
           :rules="{
             required: true,
-            message: `${$t('lang.ja')}${$t('commodity.name')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.ja')}${$t('commodity.name')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
@@ -47,11 +59,15 @@
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.name') })"
+          :label="
+            $t('langname', { lang: $t('lang.fr'), name: $t('commodity.name') })
+          "
           :prop="'name.fr-fr'"
           :rules="{
             required: true,
-            message: `${$t('lang.fr')}${$t('commodity.name')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.fr')}${$t('commodity.name')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
@@ -63,11 +79,15 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.desc') })"
+          :label="
+            $t('langname', { lang: $t('lang.zh'), name: $t('commodity.desc') })
+          "
           :prop="'desc.zh-cn'"
           :rules="{
             required: true,
-            message: `${$t('lang.zh')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.zh')}${$t('commodity.desc')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
         >
@@ -79,11 +99,15 @@
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          :label="$t('langname', { lang: $t('lang.en'), name: $t('commodity.desc') })"
+          :label="
+            $t('langname', { lang: $t('lang.en'), name: $t('commodity.desc') })
+          "
           :prop="'desc.en-us'"
           :rules="{
             required: true,
-            message: `${$t('lang.en')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.en')}${$t('commodity.desc')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
@@ -94,11 +118,15 @@
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.desc') })"
+          :label="
+            $t('langname', { lang: $t('lang.ja'), name: $t('commodity.desc') })
+          "
           :prop="'desc.ja-jp'"
           :rules="{
             required: true,
-            message: `${$t('lang.ja')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.ja')}${$t('commodity.desc')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
@@ -109,11 +137,15 @@
       ></el-col>
       <el-col :span="6"
         ><el-form-item
-          :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc') })"
+          :label="
+            $t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc') })
+          "
           :prop="'desc.fr-fr'"
           :rules="{
             required: true,
-            message: `${$t('lang.fr')}${$t('commodity.desc')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.fr')}${$t('commodity.desc')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
@@ -126,11 +158,18 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.price.zh'), name: $t('commodity.price.title') })"
+          :label="
+            $t('langname', {
+              lang: $t('lang.price.zh'),
+              name: $t('commodity.price.title'),
+            })
+          "
           :prop="'price.zh-cn'"
           :rules="{
             required: true,
-            message: `${$t('lang.price.zh')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.price.zh')}${$t('commodity.price.title')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
         >
@@ -144,33 +183,47 @@
       >
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.price.en'), name: $t('commodity.price.title') })"
+          :label="
+            $t('langname', {
+              lang: $t('lang.price.en'),
+              name: $t('commodity.price.title'),
+            })
+          "
           :prop="'price.en-us'"
           :rules="{
             required: true,
-            message: `${$t('lang.price.en')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.price.en')}${$t('commodity.price.title')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
-          >
+        >
           <el-input
-          v-model="form.price['en-us']"
-          :placeholder="$t('form.placeholder', { msg: $t('lang.price.en') })"
+            v-model="form.price['en-us']"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.price.en') })"
             ><template slot="append">$</template></el-input
           ></el-form-item
         ></el-col
       >
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.price.ja'), name: $t('commodity.price.title') })"
+          :label="
+            $t('langname', {
+              lang: $t('lang.price.ja'),
+              name: $t('commodity.price.title'),
+            })
+          "
           :prop="'price.ja-jp'"
           :rules="{
             required: true,
-            message: `${$t('lang.price.ja')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.price.ja')}${$t('commodity.price.title')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
-          v-model="form.price['ja-jp']"
-          :placeholder="$t('form.placeholder', { msg: $t('lang.price.ja') })"
+            v-model="form.price['ja-jp']"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.price.ja') })"
             ><template slot="append">￥</template></el-input
           ></el-form-item
         ></el-col
@@ -178,16 +231,23 @@
 
       <el-col :span="6">
         <el-form-item
-          :label="$t('langname', { lang: $t('lang.price.fr'), name: $t('commodity.price.title') })"
+          :label="
+            $t('langname', {
+              lang: $t('lang.price.fr'),
+              name: $t('commodity.price.title'),
+            })
+          "
           :prop="'price.fr-fr'"
           :rules="{
             required: true,
-            message: `${$t('lang.price.fr')}${$t('commodity.price.title')}${$t('form.noEmpty')}`,
+            message: `${$t('lang.price.fr')}${$t('commodity.price.title')}${$t(
+              'form.noEmpty'
+            )}`,
             trigger: 'blur',
           }"
           ><el-input
-          v-model="form.price['fr-fr']"
-          :placeholder="$t('form.placeholder', { msg: $t('lang.price.fr') })"
+            v-model="form.price['fr-fr']"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.price.fr') })"
             ><template slot="append">€</template></el-input
           ></el-form-item
         ></el-col
@@ -210,7 +270,9 @@
         >
           <el-input
             type="input"
-            :placeholder="$t('form.placeholder', { msg: $t('commodity.width.title') })"
+            :placeholder="
+              $t('form.placeholder', { msg: $t('commodity.width.title') })
+            "
             v-model="form.width"
           >
             <template slot="append">cm</template>
@@ -229,7 +291,9 @@
         >
           <el-input
             type="input"
-            :placeholder="$t('form.placeholder', { msg: $t('commodity.height.title') })"
+            :placeholder="
+              $t('form.placeholder', { msg: $t('commodity.height.title') })
+            "
             v-model="form.height"
           >
             <template slot="append">cm</template>
@@ -251,7 +315,9 @@
         >
           <el-select
             v-model="form.shapes[0].id"
-            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.shape') })"
+            :placeholder="
+              $t('form.selectPlaceholder', { msg: $t('commodity.shape') })
+            "
             clearable
           >
             <el-option
@@ -280,7 +346,9 @@
         >
           <el-select
             v-model="form.themes[0].id"
-            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.theme') })"
+            :placeholder="
+              $t('form.selectPlaceholder', { msg: $t('commodity.theme') })
+            "
             clearable
           >
             <el-option
@@ -310,7 +378,9 @@
         >
           <el-select
             v-model="form.categorys[0].id"
-            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.category') })"
+            :placeholder="
+              $t('form.selectPlaceholder', { msg: $t('commodity.category') })
+            "
             clearable
           >
             <el-option
@@ -339,7 +409,9 @@
         >
           <el-select
             v-model="form.techniques[0].id"
-            :placeholder="$t('form.selectPlaceholder', { msg: $t('commodity.technique') })"
+            :placeholder="
+              $t('form.selectPlaceholder', { msg: $t('commodity.technique') })
+            "
             clearable
           >
             <el-option
@@ -403,13 +475,13 @@
     </el-form-item>
 
     <el-row :gutter="20">
-      <el-col :span="6">
+      <el-col :span="24">
         <el-form-item :label="$t('commodity.state.title')" :prop="'state'">
           <el-radio-group v-model="form.state">
-            <el-radio :label="0">{{$t('commodity.state.added')}}</el-radio>
-            <el-radio :label="1">{{$t('commodity.state.onsale')}}</el-radio>
-            <el-radio :label="2">{{$t('commodity.state.sold')}}</el-radio>
-            <el-radio :label="3">{{$t('commodity.state.offline')}}</el-radio>
+            <el-radio :label="0">{{ $t('commodity.state.added') }}</el-radio>
+            <el-radio :label="1">{{ $t('commodity.state.onsale') }}</el-radio>
+            <el-radio :label="2">{{ $t('commodity.state.sold') }}</el-radio>
+            <el-radio :label="3">{{ $t('commodity.state.offline') }}</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-col>
@@ -423,7 +495,9 @@
             filterable
             remote
             reserve-keyword
-            :placeholder="$t('form.placeholder', { msg: $t('commodity.seller') })"
+            :placeholder="
+              $t('form.placeholder', { msg: $t('commodity.seller') })
+            "
           >
             <!-- <el-option
               v-for="item in options"
@@ -455,10 +529,12 @@
       >
         {{ $t('content.update') }}
       </el-button>
-      <el-button @click="onMock" icon="el-icon-check"> {{ $t('content.fill') }} </el-button>
-      <el-button @click="resetForm('form')" icon="el-icon-circle-close"
-        >{{ $t('content.clear') }}</el-button
-      >
+      <el-button @click="onMock" icon="el-icon-check">
+        {{ $t('content.fill') }}
+      </el-button>
+      <el-button @click="resetForm('form')" icon="el-icon-circle-close">{{
+        $t('content.clear')
+      }}</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -501,7 +577,9 @@ export default {
     this.reset()
 
     // 形状
-    const optionsShape = await this.$axios.$get(`/api/admin/commodity/options/shape`)
+    const optionsShape = await this.$axios.$get(
+      `/api/admin/commodity/options/shape`
+    )
     if (optionsShape.data && optionsShape.data.length) {
       // this.options.shapes = optionsShape.data
       this.$store.commit('addCommodityOpitons', {
@@ -510,7 +588,9 @@ export default {
       })
     }
     // 主题
-    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/options/theme`)
+    const optionsTheme = await this.$axios.$get(
+      `/api/admin/commodity/options/theme`
+    )
     if (optionsTheme.data && optionsTheme.data.length) {
       // this.options.themes = optionsTheme.data
       this.$store.commit('addCommodityOpitons', {
@@ -622,7 +702,9 @@ export default {
               .catch((error) => {
                 this.$message({
                   showClose: true,
-                  message: `${this.typeText}${ this.$t('content.fail') }! ${error.response.data.message}`,
+                  message: `${this.typeText}${this.$t('content.fail')}! ${
+                    error.response.data.message
+                  }`,
                   type: 'error',
                 })
               })
@@ -632,7 +714,9 @@ export default {
               .catch((error) => {
                 this.$message({
                   showClose: true,
-                  message: `${this.typeText}${ this.$t('content.fail') }! ${error.response.data.message}`,
+                  message: `${this.typeText}${this.$t('content.fail')}! ${
+                    error.response.data.message
+                  }`,
                   type: 'error',
                 })
               })
@@ -642,7 +726,7 @@ export default {
           if (data.status === 200) {
             this.$message({
               showClose: true,
-              message: `${this.typeText}${ this.$t('content.success') }`,
+              message: `${this.typeText}${this.$t('content.success')}`,
               type: 'success',
             })
             if (this.isCreate) {
@@ -652,7 +736,9 @@ export default {
           } else {
             this.$message({
               showClose: true,
-              message: `${this.typeText}${ this.$t('content.fail') }!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${
+                data.message
+              }`,
               type: 'error',
             })
           }
@@ -666,14 +752,14 @@ export default {
         name: {
           'zh-cn': Mock.mock('@ctitle(2, 8)'),
           'en-us': Mock.mock('@title(2, 8)'),
-          'ja-jp': "ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう",
-          'fr-fr': "zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix"
+          'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
+          'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
         desc: {
           'zh-cn': Mock.mock('@cparagraph(1,3)'),
           'en-us': Mock.mock('@paragraph(1,3)'),
-          'ja-jp': "ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう",
-          'fr-fr': "zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix"
+          'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
+          'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
         price: {
           'zh-cn': Mock.mock('@integer(60, 100)'),
@@ -681,10 +767,20 @@ export default {
           'ja-jp': Mock.mock('@integer(60, 100)'),
           'fr-fr': Mock.mock('@integer(60, 100)'),
         },
-        shapes: [this.shapes[Mock.mock('@integer(0,2)')]],
-        themes: [this.themes[Mock.mock('@integer(0,2)')]],
-        categorys: [this.categorys[Mock.mock('@integer(0,2)')]],
-        techniques: [this.techniques[Mock.mock('@integer(0,2)')]],
+        shapes: [
+          this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)],
+        ],
+        themes: [
+          this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)],
+        ],
+        categorys: [
+          this.categorys[Mock.mock(`@integer(0,${this.categorys.length - 1})`)],
+        ],
+        techniques: [
+          this.techniques[
+            Mock.mock(`@integer(0,${this.techniques.length - 1})`)
+          ],
+        ],
         photos: [],
         colors: [
           {

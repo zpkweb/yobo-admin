@@ -36,15 +36,15 @@ export default {
       }
     },
     "commodity": {
-      "title": "商品管理",
-      "search": "搜索商品",
-      "create": "添加商品",
+      "title": "艺术品管理",
+      "search": "搜索艺术品",
+      "create": "添加艺术品",
       "options": {
-        "title": "商品选项",
-        "shape": "商品形状",
-        "theme": "商品主题",
-        "category": "商品类别",
-        "technique": "商品手法"
+        "title": "艺术品选项",
+        "shape": "艺术品形状",
+        "theme": "艺术品主题",
+        "category": "艺术品类别",
+        "technique": "艺术品手法"
       }
     },
     "auth": {

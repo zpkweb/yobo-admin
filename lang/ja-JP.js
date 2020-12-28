@@ -36,15 +36,15 @@ export default {
       }
     },
     "commodity": {
-      "title": "商品管理",
-      "search": "製品を検索する",
-      "create": "商品の追加",
+      "title": "アートマネジメント",
+      "search": "アートワークを検索",
+      "create": "アートワークの作成",
       "options": {
-        "title": "商品オプション",
-        "shape": "製品形状",
-        "theme": "製品テーマ",
-        "category": "製品カテゴリ",
-        "technique": "商品アプローチ"
+        "title": "アートワークオプション",
+        "shape": "アートワークの形",
+        "theme": "アートワークのテーマ",
+        "category": "アートカテゴリー",
+        "technique": "アートテクニック"
       }
     },
     "auth": {

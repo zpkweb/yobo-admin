@@ -35,15 +35,15 @@ export default {
       }
     },
     "commodity": {
-      "title": "Commodity Management",
-      "search": "Search products",
-      "create": "Add product",
+      "title": "Art management",
+      "search": "Search artwork",
+      "create": "Artwork creation",
       "options": {
-        "title": "Product Options",
-        "shape": "Commodity shape",
-        "theme": "Commodity theme",
-        "category": "Product Category",
-        "technique": "Commodity technique"
+        "title": "Artwork options",
+        "shape": "Artwork shape",
+        "theme": "Artwork theme",
+        "category": "Art category",
+        "technique": "Art technique"
       }
     },
     "auth": {

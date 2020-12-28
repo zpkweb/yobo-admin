@@ -42,14 +42,12 @@ export default {
     // console.log("this.$route", this.$route)
     const identity = await this.$axios.$get('/api/admin/identityList', {
       params: {
-        ename: this.$route.params.type
+        'en-us': this.$route.params.type
       }
     })
     // console.log("identity", identity.data.menu)
 
     if(identity.success){
-
-
       if(identity.data.menu && identity.data.menu != " ") {
         // console.log("Object.assign(this.$store.state.defaultMenu, JSON.parse(identity.data.menu)))", deepClone(this.$store.state.defaultMenu, JSON.parse(identity.data.menu)))
         // console.log("JSON.parse(identity.data.menu)", JSON.parse(identity.data.menu))
@@ -59,7 +57,6 @@ export default {
           identityMenu: this.$store.state.identityMenu,
           menu: JSON.parse(identity.data.menu)
         })
-
       }else{
         // console.log("setIdentityMenu")
         // this.$store.getters.addRootMenu(this.$store.state.identityMenu)
@@ -68,9 +65,6 @@ export default {
       this.getCheckedNodes(this.$store.state.identityMenu)
       this.$refs.menuTree ? this.$refs.menuTree.setCheckedKeys(this.checkedKeys) : ''
     }
-
-
-
   },
   // 加载完成
   mounted() {
@@ -81,7 +75,7 @@ export default {
       console.log("JSON.stringify(this.menuTree)", JSON.stringify(this.menuTree))
       const identityListUpdate = await this.$axios
         .$post('/api/admin/identityList/update', {
-          ename: this.$route.params.type,
+          'en-us': this.$route.params.type,
           menu: JSON.stringify(this.menuTree),
         })
         .catch((error) => {

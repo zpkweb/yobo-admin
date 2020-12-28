@@ -3,7 +3,7 @@
   "zh-cn": {
     "chart": {
       "user": "用户",
-      "commodity": "商品",
+      "commodity": "艺术品",
       "statistics": "统计",
       "data": "数据",
       "number": "数量",
@@ -14,7 +14,7 @@
   "en-us": {
     "chart": {
       "user": "User",
-      "commodity": "Commodity",
+      "commodity": "artwork",
       "statistics": "Statistics",
       "data": "Data",
       "number": "Number",
@@ -25,7 +25,7 @@
   "ja-jp": {
     "chart": {
       "user": "ユーザー",
-      "commodity": "商品",
+      "commodity": "アートワーク",
       "statistics": "統計",
       "data": "データ",
       "number": "量",
@@ -36,7 +36,7 @@
   "fr-fr": {
     "chart": {
       "user": "utilisateur",
-      "commodity": "marchandise",
+      "commodity": "ouvrages d'art",
       "statistics": "statistiques",
       "data": "Les données",
       "number": "Quantité",

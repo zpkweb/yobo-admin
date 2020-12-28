@@ -336,22 +336,22 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column prop="name['zh-cn']" :label="$t('commodity.name')" width="150">
+      <el-table-column prop="name['zh-cn']" :label="$t('commodity.name')">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.name['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.name['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.name['ja-jp'] }}</p>
             <p>{{$t('lang.fr')}}: {{ scope.row.name['fr-fr'] }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.name[$i18n.locale] }}</el-tag>
+              {{ scope.row.name[$i18n.locale] }}
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="desc['zh-cn']" :label="$t('commodity.desc')" width="280">
+      <el-table-column prop="desc['zh-cn']" :label="$t('commodity.desc')" width="300">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.desc['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.desc['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.desc['ja-jp'] }}</p>
@@ -364,13 +364,13 @@
       </el-table-column>
       <el-table-column prop="price['zh-cn']" :label="$t('commodity.price.title')">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.price['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.price['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.price['ja-jp'] }}</p>
             <p>{{$t('lang.fr')}}: {{ scope.row.price['fr-fr'] }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.price[$i18n.locale] }}</el-tag>
+              {{ scope.row.price[$i18n.locale] }}
             </div>
           </el-popover>
         </template>
@@ -378,52 +378,52 @@
 
       <el-table-column prop="shapes[0]['zh-cn']" :label="$t('commodity.shape')">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['ja-jp'] : '' }}</p>
             <p>{{$t('lang.fr')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.shapes.length ? scope.row.shapes[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
+              {{ scope.row.shapes.length ? scope.row.shapes[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
           </el-popover>
         </template>
       </el-table-column>
       <el-table-column prop="themes[0]['zh-cn']" :label="$t('commodity.theme')">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.themes.length ? scope.row.themes[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.themes.length ? scope.row.themes[0]['ja-jp'] : '' }}</p>
             <p>{{$t('lang.fr')}}: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.themes.length ? scope.row.themes[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
+              {{ scope.row.themes.length ? scope.row.themes[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
           </el-popover>
         </template>
       </el-table-column>
       <el-table-column prop="categorys[0]['zh-cn']" :label="$t('commodity.category')">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['ja-jp'] : '' }}</p>
             <p>{{$t('lang.fr')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.categorys.length ? scope.row.categorys[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
+              {{ scope.row.categorys.length ? scope.row.categorys[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
           </el-popover>
         </template>
       </el-table-column>
       <el-table-column prop="techniques[0]['zh-cn']" :label="$t('commodity.technique')">
         <template slot-scope="scope">
-          <el-popover trigger="click" placement="top">
+          <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['ja-jp'] : '' }}</p>
             <p>{{$t('lang.fr')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p>
             <div slot="reference">
-              <el-tag>{{ scope.row.techniques.length ? scope.row.techniques[0][$i18n.locale] : $t('commodity.nothing') }}</el-tag>
+              {{ scope.row.techniques.length ? scope.row.techniques[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
           </el-popover>
         </template>

@@ -35,15 +35,15 @@ export default {
       }
     },
     "commodity": {
-      "title": "Commodity Management",
-      "search": "Rechercher des produits",
-      "create": "Ajouter un produit",
+      "title": "Gestion artistique",
+      "search": "Rechercher une œuvre d'art",
+      "create": "Création d'œuvres d'art",
       "options": {
-        "title": "Options du produit",
-        "shape": "Forme du produit",
-        "theme": "Thème produit",
-        "category": "Catégorie de produit",
-        "technique": "Technique des produits de base"
+        "title": "Options d'illustration",
+        "shape": "Forme de l'oeuvre",
+        "theme": "Thème de l'oeuvre",
+        "category": "Catégorie d'art",
+        "technique": "Technique artistique"
       }
     },
     "auth": {
