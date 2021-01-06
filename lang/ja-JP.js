@@ -81,6 +81,7 @@ export default {
     "language": "言語",
     "profile": "個人プロフィール",
     "state": "状態",
+    "type": "タイプ",
     "seller": {
       "isFullTime": "あなたはフルタイムのプロのアーティストですか？",
       "onlineSell": "オンラインで販売された作品の何パーセントが占めていますか？",
@@ -92,7 +93,11 @@ export default {
       "recommend": "最も見る価値のある展示会/ギャラリー/組織名、都市、国",
       "prize": "最も注目すべき賞/賞の名前、取得年",
       "website": "ウェブサイトに接続する",
-      "findUs": "どのようにして私たちを発見しましたか"
+      "findUs": "どのようにして私たちを発見しましたか",
+      "typeOptions": {
+        "painter": "画家",
+        "sculptor": "彫刻家"
+      }
     }
   },
   "content": {

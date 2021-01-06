@@ -79,7 +79,7 @@
               <el-button
                 type="primary"
                 size="mini"
-                @click="removeUser(scope.$index, scope.row)"
+                @click="deleteSeller(scope.$index, scope.row)"
                 >{{$t('content.define')}}</el-button
               >
             </div>

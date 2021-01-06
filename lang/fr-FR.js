@@ -80,6 +80,7 @@ export default {
     "language": "Language",
     "profile": "Profil personnel",
     "state": "State",
+    "type": "Type",
     "seller": {
       "isFullTime": "Êtes-vous un artiste professionnel à plein temps?",
       "onlineSell": "Parmi les œuvres vendues, quel pourcentage vendez-vous en ligne?",
@@ -91,7 +92,11 @@ export default {
       "recommend": "Le nom de l'exposition / galerie / organisation, ville, pays le plus intéressant à voir",
       "prize": "Le nom du prix / prix le plus notable, année d'acquisition",
       "website": "Se connecter au site Web",
-      "findUs": "Comment nous avez-vous trouvés"
+      "findUs": "Comment nous avez-vous trouvés",
+      "typeOptions": {
+        "painter": "Peintre",
+        "sculptor": "Sculpteur"
+      }
     }
   },
   "content": {

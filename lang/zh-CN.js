@@ -68,6 +68,7 @@ export default {
     "selectPlaceholder": "请选择{msg}",
   },
   "user": {
+    "avatar": "头像",
     "name": "姓名",
     "firstName": "姓氏",
     "lastName": "名字",
@@ -81,6 +82,7 @@ export default {
     "language": "语言",
     "profile": "个人简介",
     "state": "状态",
+    "type": "类型",
     "seller": {
       "isFullTime": "您是一个全职的专业艺术家么？",
       "onlineSell": "售出的作品中，网上售出的比例占多少？",
@@ -92,7 +94,11 @@ export default {
       "recommend": "最值得一看的展览/画廊/机构名称，城市，国家",
       "prize": "最引人注目的奖项/奖项名称，获得年份",
       "website": "连接到网站",
-      "findUs": "您是如何发现我们的"
+      "findUs": "您是如何发现我们的",
+      "typeOptions": {
+        "painter": "画家",
+        "sculptor": "雕塑家"
+      }
     }
   },
   "content": {

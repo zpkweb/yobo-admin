@@ -1,51 +1,96 @@
 <template>
   <div class="user-create">
     <el-form
+      ref="userCreate"
       :model="userCreate"
       :rules="rules"
-      ref="userCreate"
       label-width="100px"
       class="user-create-form"
     >
       <el-row :gutter="20">
         <el-col :span="8">
           <el-form-item :label="$t('user.state')" prop="identity">
-        <el-select v-model="userCreate.state" :placeholder="$t('form.selectPlaceholder', { msg: $t('user.state') })">
-          <el-option
-            v-for="item in stateOptions"
-            :key="item.value"
-            :label="`${item.value} ${item.label}`"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
-      </el-form-item>
+            <el-select
+              v-model="userCreate.state"
+              :placeholder="
+                $t('form.selectPlaceholder', { msg: $t('user.state') })
+              "
+            >
+              <el-option
+                v-for="item in stateOptions"
+                :key="item.value"
+                :label="`${item.value} ${item.label}`"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
         </el-col>
-        <el-col :span="9" :offset="6">
+        <el-col :span="8">
+          <el-form-item :label="$t('user.type')" prop="identity">
+            <el-select
+              v-model="userCreate.type"
+              :placeholder="
+                $t('form.selectPlaceholder', { msg: $t('user.type') })
+              "
+            >
+              <el-option
+                v-for="item in typeOptions"
+                :key="item.value"
+                :label="`${item.value} ${item.label}`"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
           <el-button
-          v-if="isCreate"
-          type="primary"
-          @click="submitForm('userCreate')"
-          icon="el-icon-circle-plus-outline"
-        >
-          {{$t('content.create')}}
-        </el-button>
+            v-if="isCreate"
+            type="primary"
+            icon="el-icon-circle-plus-outline"
+            @click="submitForm('userCreate')"
+          >
+            {{ $t('content.create') }}
+          </el-button>
 
-        <el-button
-          v-else
-          type="primary"
-          @click="submitForm('userCreate')"
-          icon="el-icon-check"
-        >
-          {{$t('content.update')}}
-        </el-button>
-        <el-button @click="onMock" icon="el-icon-check"> {{$t('content.fill')}} </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close"
-          >{{$t('content.clear')}}</el-button
-        >
+          <el-button
+            v-else
+            type="primary"
+            icon="el-icon-check"
+            @click="submitForm('userCreate')"
+          >
+            {{ $t('content.update') }}
+          </el-button>
+          <el-button icon="el-icon-check" @click="onMock">
+            {{ $t('content.fill') }}
+          </el-button>
+          <el-button
+            icon="el-icon-circle-close"
+            @click="resetForm('userCreate')"
+            >{{ $t('content.clear') }}</el-button
+          >
         </el-col>
       </el-row>
 
+      <el-form-item :label="$t('user.avatar')" prop="avatar">
+        <el-upload
+          v-model="userCreate.avatar"
+          class="avatar-uploader"
+          action="/api/upload/images"
+          :data="{ type: 'avatar' }"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+          <img
+            v-if="userCreate.avatar"
+            :src="userCreate.avatar"
+            class="avatar"
+          />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </el-form-item>
 
       <el-form-item :label="$t('user.firstName')" prop="firstname">
         <el-input
@@ -186,7 +231,6 @@
         ></el-input>
       </el-form-item>
 
-
       <el-form-item prop="findUs">
         <el-input
           type="textarea"
@@ -194,12 +238,11 @@
           :placeholder="$t('user.seller.findUs')"
         ></el-input>
       </el-form-item>
-
     </el-form>
   </div>
 </template>
 <script>
-import Mock from 'mockjs';
+import Mock from 'mockjs'
 export default {
   watchQuery: ['sellerId'],
   data() {
@@ -232,27 +275,39 @@ export default {
       stateOptions: [
         {
           value: '0',
-          label: this.$t('content.audit')
+          label: this.$t('content.audit'),
         },
         {
           value: '1',
-          label: this.$t('content.agree')
+          label: this.$t('content.agree'),
         },
         {
           value: '2',
-          label: this.$t('content.reject')
+          label: this.$t('content.reject'),
         },
         {
           value: '3',
-          label: this.$t('content.disable')
+          label: this.$t('content.disable'),
         },
         {
           value: '4',
-          label: this.$t('content.logoff')
+          label: this.$t('content.logoff'),
+        },
+      ],
+      typeOptions: [
+        {
+          value: '0',
+          label: this.$t('user.seller.typeOptions.painter'),
+        },
+        {
+          value: '1',
+          label: this.$t('user.seller.typeOptions.sculptor'),
         },
       ],
       userCreate: {
         state: 1,
+        type: 0,
+        avatar: '',
         firstname: '',
         lastname: '',
         email: '',
@@ -276,9 +331,25 @@ export default {
       rules: {
         // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
         // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-        email: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
+        email: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.email'),
+            }),
+            trigger: 'blur',
+          },
+        ],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
+        password: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.password'),
+            }),
+            trigger: 'blur',
+          },
+        ],
       },
     }
   },
@@ -321,6 +392,7 @@ export default {
               data = await this.$axios
                 .$post('/api/admin/user/register', {
                   identity: 'seller',
+                  typeName: this.typeOptions[this.userCreate.type].label,
                   ...this.userCreate,
                 })
                 .catch((error) => {
@@ -335,20 +407,24 @@ export default {
               //   password: this.userCreate.password,
               // })
             } else {
-              data = await this.$axios.$post(
-                '/api/admin/user/seller/update',
-                this.userCreate
-              )
+              data = await this.$axios.$post('/api/admin/user/seller/update', {
+                typeName: this.typeOptions[this.userCreate.type].label,
+                ...this.userCreate,
+              })
             }
             this.$message({
               showClose: true,
-              message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}${this.$t('content.success')}`,
+              message: `${this.userCreate.firstname}${
+                this.userCreate.lastname
+              }，${this.typeText}${this.$t('content.success')}`,
               type: 'success',
             })
           } catch (error) {
             this.$message({
               showClose: true,
-              message: `${this.typeText}${this.$t('content.fail')}!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${
+                data.message
+              }`,
               type: 'error',
             })
           }
@@ -378,15 +454,19 @@ export default {
       this.$refs[userCreate].resetFields()
     },
     onMock() {
-      this.userCreate= {
+      this.userCreate = {
+        avatar: '',
         state: 1,
+        type: 0,
         firstname: Mock.mock('@cfirst'),
         lastname: Mock.mock('@clast'),
         email: Mock.mock('@email'),
         phone: '',
         password: '123',
         country: Mock.mock('@county(true)'),
-        language: this.$i18n.locales.filter(i => i.code == this.$i18n.locale)[0].name,
+        language: this.$i18n.locales.filter(
+          (i) => i.code == this.$i18n.locale
+        )[0].name,
         profile: Mock.mock('@cparagraph'),
         isFullTime: '',
         onlineSell: '',
@@ -401,7 +481,24 @@ export default {
 
         findUs: '',
       }
-    }
+    },
+    handleAvatarSuccess(res, file) {
+      // this.userCreate.avatar = URL.createObjectURL(file.raw);
+      this.userCreate.avatar = res.data.src
+    },
+    beforeAvatarUpload(file) {
+      // const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2
+
+      // if (!isJPG) {
+      //   this.$message.error('上传头像图片只能是 JPG 格式!');
+      // }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+      // return isJPG && isLt2M;
+      return isLt2M
+    },
   },
 }
 </script>
@@ -414,6 +511,30 @@ export default {
 }
 .user-create-form {
   width: 90%;
+}
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
 }
 </style>
 

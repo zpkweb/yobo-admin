@@ -1,12 +1,31 @@
 <template>
   <div class="user-create">
     <el-form
+      ref="userCreate"
       :model="userCreate"
       :rules="rules"
-      ref="userCreate"
       label-width="100px"
       class="user-create-form"
     >
+      <el-form-item :label="$t('user.avatar')" prop="avatar">
+        <el-upload
+          v-model="userCreate.avatar"
+          class="avatar-uploader"
+          action="/api/upload/images"
+          :data="{ type: 'avatar' }"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+          <img
+            v-if="userCreate.avatar"
+            :src="userCreate.avatar"
+            class="avatar"
+          />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </el-form-item>
+
       <el-form-item :label="$t('user.name')" prop="name">
         <el-input v-model="userCreate.name" :placeholder="$t('form.placeholder', { msg: $t('user.name') })"></el-input>
       </el-form-item>
@@ -52,9 +71,28 @@
 import Mock from 'mockjs';
 
 export default {
-  // watchQuery: ['userId','sellerId'],
-  watch: {
-    '$route.query': '$fetch',
+  async fetch() {
+    // console.log('fetch this.$refs.userCreate', this.$refs.userCreate)
+    // this.$refs.userCreate.resetFields()
+
+    if (this.$route.query && this.$route.query.userId) {
+
+      this.userId = this.$route.query.userId
+
+      const user = await this.$axios.$get('/api/admin/user', {
+        params: {
+          userId: this.userId,
+        },
+      })
+
+      if (user.success) {
+        this.userCreate = Object.assign(this.userCreate, user.data)
+        this.type = 'edit'
+        this.typeText = this.$t('content.update')
+        this.isCreate = false
+        this.rules.password[0].required = false
+      }
+    }
   },
   data() {
     // var validateEmail = (rule, value, callback) => {
@@ -83,6 +121,7 @@ export default {
       isCreate: true,
       userId: '',
       userCreate: {
+        avatar: '',
         name: '',
         email: '',
         phone: '',
@@ -91,9 +130,25 @@ export default {
       },
       rules: {
         // name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-        email: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
+        email: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.email'),
+            }),
+            trigger: 'blur',
+          },
+        ],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
+        password: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.password'),
+            }),
+            trigger: 'blur',
+          },
+        ],
 
         // identity: [
         //   {
@@ -106,28 +161,9 @@ export default {
       },
     }
   },
-  async fetch() {
-    // console.log('fetch this.$refs.userCreate', this.$refs.userCreate)
-    // this.$refs.userCreate.resetFields()
-
-    if (this.$route.query && this.$route.query.userId) {
-
-      this.userId = this.$route.query.userId
-
-      const user = await this.$axios.$get('/api/admin/user', {
-        params: {
-          userId: this.userId,
-        },
-      })
-
-      if (user.success) {
-        this.userCreate = Object.assign(this.userCreate, user.data)
-        this.type = 'edit'
-        this.typeText = this.$t('content.update')
-        this.isCreate = false
-        this.rules.password[0].required = false
-      }
-    }
+  // watchQuery: ['userId','sellerId'],
+  watch: {
+    '$route.query': '$fetch',
   },
   methods: {
     submitForm(userCreate) {
@@ -135,22 +171,28 @@ export default {
         if (valid) {
           let data
           if (this.isCreate) {
-            data = await this.$axios.$post('/api/admin/user/register', {
-              identity: this.$route.params.identity,
-              name: this.userCreate.name,
-              email: this.userCreate.email,
-              phone: this.userCreate.phone,
-              password: this.userCreate.password,
-            }).catch((error) => {
-              this.$message({
-                showClose: true,
-                message: `${this.typeText}${this.$t('content.fail')}! ${error.response.data.message}`,
-                type: 'error',
+            data = await this.$axios
+              .$post('/api/admin/user/register', {
+                identity: this.$route.params.identity,
+                avatar: this.userCreate.avatar,
+                name: this.userCreate.name,
+                email: this.userCreate.email,
+                phone: this.userCreate.phone,
+                password: this.userCreate.password,
               })
-            })
+              .catch((error) => {
+                this.$message({
+                  showClose: true,
+                  message: `${this.typeText}${this.$t('content.fail')}! ${
+                    error.response.data.message
+                  }`,
+                  type: 'error',
+                })
+              })
           } else {
             data = await this.$axios.$post('/api/admin/user/update', {
               userId: this.userId,
+              avatar: this.userCreate.avatar,
               name: this.userCreate.name,
               email: this.userCreate.email,
               phone: this.userCreate.phone,
@@ -184,11 +226,29 @@ export default {
     },
     onMock() {
       this.userCreate = {
+        avatar: '',
         name: Mock.mock('@cname'),
         email: Mock.mock('@email'),
-        password: '123'
+        password: '123',
       }
-    }
+    },
+    handleAvatarSuccess(res, file) {
+      // this.userCreate.avatar = URL.createObjectURL(file.raw);
+      this.userCreate.avatar = res.data.src
+    },
+    beforeAvatarUpload(file) {
+      // const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2
+
+      // if (!isJPG) {
+      //   this.$message.error('上传头像图片只能是 JPG 格式!');
+      // }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+      // return isJPG && isLt2M;
+      return isLt2M
+    },
   },
 }
 </script>
@@ -201,5 +261,29 @@ export default {
 }
 .user-create-form {
   width: 90%;
+}
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
 }
 </style>

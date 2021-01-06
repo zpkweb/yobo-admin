@@ -92,8 +92,8 @@
           }"
         >
           <el-input
-            type="textarea"
             v-model="form.desc['zh-cn']"
+            type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.zh') })"
           ></el-input></el-form-item
       ></el-col>
@@ -111,8 +111,8 @@
             trigger: 'blur',
           }"
           ><el-input
-            type="textarea"
             v-model="form.desc['en-us']"
+            type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.en') })"
           ></el-input></el-form-item
       ></el-col>
@@ -130,8 +130,8 @@
             trigger: 'blur',
           }"
           ><el-input
-            type="textarea"
             v-model="form.desc['ja-jp']"
+            type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
           ></el-input></el-form-item
       ></el-col>
@@ -149,8 +149,8 @@
             trigger: 'blur',
           }"
           ><el-input
-            type="textarea"
             v-model="form.desc['fr-fr']"
+            type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
           ></el-input></el-form-item
       ></el-col>
@@ -269,11 +269,11 @@
           }"
         >
           <el-input
+            v-model="form.width"
             type="input"
             :placeholder="
               $t('form.placeholder', { msg: $t('commodity.width.title') })
             "
-            v-model="form.width"
           >
             <template slot="append">cm</template>
           </el-input>
@@ -290,11 +290,11 @@
           }"
         >
           <el-input
+            v-model="form.height"
             type="input"
             :placeholder="
               $t('form.placeholder', { msg: $t('commodity.height.title') })
             "
-            v-model="form.height"
           >
             <template slot="append">cm</template>
           </el-input>
@@ -432,7 +432,7 @@
 
     <el-form-item :label="$t('commodity.color.title')">
       <el-row :gutter="10">
-        <el-col :span="2" v-for="(item, index) in form.colors" :key="index">
+        <el-col v-for="(item, index) in form.colors" :key="index" :span="2">
           <el-form-item
             :prop="'colors.' + index + '.name'"
             :rules="{
@@ -447,15 +447,13 @@
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset="1">
-          <el-button @click="addColors" icon="el-icon-circle-plus-outline">
+          <el-button icon="el-icon-circle-plus-outline" @click="addColors">
           </el-button>
         </el-col>
       </el-row>
     </el-form-item>
 
     <el-form-item :label="$t('commodity.photo')">
-      <!-- <el-row :gutter="20">
-        <el-col :span="23"> -->
       <el-upload
         :file-list="form.photos"
         action="/api/upload/images"
@@ -470,8 +468,6 @@
       <el-dialog :visible.sync="dialogVisible">
         <img width="100%" :src="dialogImageUrl" alt="" />
       </el-dialog>
-      <!-- </el-col>
-      </el-row> -->
     </el-form-item>
 
     <el-row :gutter="20">
@@ -490,23 +486,24 @@
     <el-form-item :label="$t('commodity.seller')">
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-select
-            v-model="form.seller"
+          <el-input v-model="form.sellerId" type="text"></el-input>
+          <!-- <el-select
+            v-model="form.sellerId"
             filterable
             remote
             reserve-keyword
             :placeholder="
-              $t('form.placeholder', { msg: $t('commodity.seller') })
+              $t('form.placeholder', { msg: $t('commodity.sellerId') })
             "
-          >
-            <!-- <el-option
+          > -->
+          <!-- <el-option
               v-for="item in options"
               :key="item.value"
               :label="item.label"
               :value="item.value"
             >
             </el-option> -->
-          </el-select>
+          <!-- </el-select> -->
         </el-col>
       </el-row>
     </el-form-item>
@@ -515,8 +512,8 @@
       <el-button
         v-if="isCreate"
         type="primary"
-        @click="onSubmit('form')"
         icon="el-icon-circle-plus-outline"
+        @click="onSubmit('form')"
       >
         {{ $t('content.create') }}
       </el-button>
@@ -524,15 +521,15 @@
       <el-button
         v-else
         type="primary"
-        @click="onSubmit('form')"
         icon="el-icon-check"
+        @click="onSubmit('form')"
       >
         {{ $t('content.update') }}
       </el-button>
-      <el-button @click="onMock" icon="el-icon-check">
+      <el-button icon="el-icon-check" @click="onMock">
         {{ $t('content.fill') }}
       </el-button>
-      <el-button @click="resetForm('form')" icon="el-icon-circle-close">{{
+      <el-button icon="el-icon-circle-close" @click="resetForm('form')">{{
         $t('content.clear')
       }}</el-button>
     </el-form-item>
@@ -542,36 +539,6 @@
 import Mock from 'mockjs'
 
 export default {
-  watch: {
-    '$route.query': '$fetch',
-  },
-  watchQuery: ['commodityId'],
-  data() {
-    return {
-      type: '',
-      typeText: this.$t('content.create'),
-      isCreate: true,
-      form: {},
-
-      dialogImageUrl: '',
-      dialogVisible: false,
-      loading: false,
-    }
-  },
-  computed: {
-    shapes() {
-      return this.$store.state.commodity.options.shapes
-    },
-    themes() {
-      return this.$store.state.commodity.options.themes
-    },
-    categorys() {
-      return this.$store.state.commodity.options.categorys
-    },
-    techniques() {
-      return this.$store.state.commodity.options.techniques
-    },
-  },
   async fetch() {
     this.isCreate = true
     this.reset()
@@ -632,7 +599,7 @@ export default {
       })
 
       if (commodity.success) {
-        let commodityForm = Object.assign({}, this.form, commodity.data)
+        const commodityForm = Object.assign({}, this.form, commodity.data)
         // this.form = Object.assign(this.form, commodity.data)
         // this.form.name = commodity.data.name;
         // this.form.desc = commodity.data.desc;
@@ -644,7 +611,7 @@ export default {
         this.form.width = commodityForm.width
         this.form.height = commodityForm.height
         this.form.colors = commodityForm.colors
-        this.form.seller = commodityForm.seller
+        this.form.sellerId = commodityForm.sellerId
 
         if (commodityForm.name) {
           this.form.name = commodityForm.name
@@ -685,6 +652,36 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      type: '',
+      typeText: this.$t('content.create'),
+      isCreate: true,
+      form: {},
+
+      dialogImageUrl: '',
+      dialogVisible: false,
+      loading: false,
+    }
+  },
+  computed: {
+    shapes() {
+      return this.$store.state.commodity.options.shapes
+    },
+    themes() {
+      return this.$store.state.commodity.options.themes
+    },
+    categorys() {
+      return this.$store.state.commodity.options.categorys
+    },
+    techniques() {
+      return this.$store.state.commodity.options.techniques
+    },
+  },
+  watch: {
+    '$route.query': '$fetch',
+  },
+  watchQuery: ['commodityId'],
   mounted() {
     // this.list = this.states.map((item) => {
     //   return { value: `value:${item}`, label: `label:${item}` }
@@ -751,7 +748,7 @@ export default {
         commodityId: this.form.commodityId,
         name: {
           'zh-cn': Mock.mock('@ctitle(2, 8)'),
-          'en-us': Mock.mock('@title(2, 8)'),
+          'en-us': Mock.mock('@title(2)'),
           'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
           'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
@@ -790,7 +787,7 @@ export default {
         width: Mock.mock('@natural(100, 300)'),
         height: Mock.mock('@natural(100, 300)'),
         state: Mock.mock('@integer(0, 3)'),
-        seller: '547790132@qq.com',
+        sellerId: '',
       }
       // console.log('createCommodityMock', createCommodityMock)
       this.form = createCommodityMock
@@ -878,7 +875,7 @@ export default {
         width: '',
         height: '',
         state: 0,
-        seller: '547790132@qq.com',
+        sellerId: '',
       }
     },
     uploadSuccess(res, file) {
@@ -890,9 +887,10 @@ export default {
       })
       // console.log(this.form)
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     uploadRemove(file, fileList) {
       // console.log(file, fileList)
-      for (let [index, item] of Object.entries(this.form.photos)) {
+      for (const [index, item] of Object.entries(this.form.photos)) {
         if (item.name === file.name) {
           this.form.photos.splice(index, 1)
         }
