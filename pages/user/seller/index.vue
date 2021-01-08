@@ -129,7 +129,11 @@ export default {
   },
   async fetch() {
     const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
-      params: this.userSearch,
+      params: {
+        ...this.userSearch,
+        currentPage: this.currentPage,
+        pageSize: this.pageSize
+      }
     })
     // this.user = userSearch.data
     let userData = searchData.data.list.map((item) => {
@@ -148,7 +152,11 @@ export default {
     // 查找用户
     async onSubmit() {
       const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
-        params: this.userSearch,
+        params: {
+          ...this.userSearch,
+          currentPage: this.currentPage,
+          pageSize: this.pageSize
+        }
       })
       this.total = searchData.data.total
       this.user = searchData.data.list

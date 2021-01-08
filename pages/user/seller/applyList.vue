@@ -123,7 +123,11 @@ export default {
   },
   async fetch() {
     const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
-      params: this.search,
+      params: {
+        ...this.search,
+        currentPage: this.currentPage,
+        pageSize: this.pageSize
+      }
     })
     this.total = searchData.data.total
     this.seller = searchData.data.list
@@ -133,7 +137,11 @@ export default {
       const searchData = await this.$axios.$get(
         '/api/admin/user/seller/search',
         {
-          params: this.search,
+          params: {
+            ...this.search,
+            currentPage: this.currentPage,
+            pageSize: this.pageSize
+          }
         }
       )
       this.total = searchData.data.total
