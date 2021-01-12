@@ -1,11 +1,12 @@
 module.exports = {
   apps: [
     {
-      name: 'NuxtAppName',
-      exec_mode: 'cluster',
-      instances: 'max', // Or a number of instances
+      name: 'yobo-admin',
+      // exec_mode: 'cluster',
+      // instances: 'max', // Or a number of instances
       script: './node_modules/nuxt/bin/nuxt.js',
-      args: 'start'
-    }
-  ]
+      args: 'start',
+      port: '3080',
+    },
+  ],
 }

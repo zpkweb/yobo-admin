@@ -67,12 +67,15 @@
     </el-dropdown>
 
     <el-dropdown v-if="!isLogin">
-      <span class="el-dropdown-link header-avatar">
+      <!-- <span class="el-dropdown-link header-avatar">
         <el-avatar icon="el-icon-user-solid"></el-avatar>
+      </span> -->
+      <span class="el-dropdown-link">
+        {{ user.name }}
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>个人中心</el-dropdown-item>
-        <el-dropdown-item divided>
+        <!-- <el-dropdown-item divided></el-dropdown-item> -->
+        <el-dropdown-item >
           <nuxt-link class="logo" :to="localePath('/login')"> 登出 </nuxt-link>
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -88,6 +91,7 @@ export default {
   data() {
     return {
       activeIndex: null,
+      username: ''
     }
   },
   computed: {
@@ -101,12 +105,14 @@ export default {
       const routePath = this.$route.path.split('/');
       let islogin = false;
       for(let item of routePath){
-        console.log("item", item)
         if(item == 'login'){
           islogin = true;
         }
       }
       return islogin;
+    },
+    user() {
+      return this.$store.state.user || '';
     }
   },
   fetch() {
@@ -124,6 +130,9 @@ export default {
     //   console.log("route /")
     //   this.activeIndex = null;
     // }
+  },
+  async created() {
+    this.username = 'ssss'
   },
   methods: {
     handleSelect(key, keyPath) {

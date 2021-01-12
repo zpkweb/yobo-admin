@@ -62,6 +62,7 @@ export default {
           // 用户登录 缓存
           console.log("login", login.data)
           await this.$localForage.setItem('user', login.data)
+          this.$store.commit('setUser', login.data)
           this.$notify({
             title: `欢迎您，${login.data.name}`,
             // message: h('i', { style: 'color: teal'}, '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案'),

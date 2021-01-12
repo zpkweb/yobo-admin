@@ -14,8 +14,10 @@ export default {
 
   async mounted() {
     let user = await this.$localForage.getItem('user')
+
     if(user){
-      if(user.name == 'root') {
+    this.$store.commit('setUser', user)
+    if(user.name == 'root') {
         // console.log(this.$store.getters.addRootMenu())
         // this.$store.commit("setUserMenu", this.$store.getters.addRootMenu())
         await this.$store.commit("setRoot", true)

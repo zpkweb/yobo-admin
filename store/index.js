@@ -172,7 +172,7 @@ export const state = () => ({
           icon: 'el-icon-menu',
           // name: '艺术品选项',
           name: 'menu.commodity.options.title',
-          path: '/commodity/options',
+          path: '/commodity/options/shape',
           subMenu: [
             {
               icon: 'el-icon-circle-plus-outline',
@@ -294,6 +294,7 @@ export const state = () => ({
       index: 90,
     },
   ],
+  user: null
 })
 export const getters = {
   addRootMenu: (state, getters) => (data, index) => {
@@ -308,6 +309,9 @@ export const getters = {
   },
 }
 export const mutations = {
+  setUser(state, payload) {
+    state.user = payload;
+  },
   increment(state) {
     state.counter++
   },
