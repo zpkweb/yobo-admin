@@ -543,6 +543,7 @@
 
 <script>
 export default {
+  name: 'Commodity',
   data() {
     return {
       currentPage: 1,

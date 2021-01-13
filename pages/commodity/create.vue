@@ -326,10 +326,10 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
-              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
-              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
-              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -357,10 +357,10 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
-              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
-              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
-              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -389,10 +389,10 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
-              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
-              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
-              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -420,10 +420,10 @@
               :label="item['zh-cn']"
               :value="item.id"
             >
-              <span>{{ $t('lang.zh') }}{{ item['zh-cn'] }}</span>
-              <span>{{ $t('lang.en') }}{{ item['en-us'] }}</span>
-              <span>{{ $t('lang.ja') }}{{ item['ja-jp'] }}</span>
-              <span>{{ $t('lang.fr') }}{{ item['fr-fr'] }}</span>
+              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -744,6 +744,19 @@ export default {
     },
 
     onMock() {
+      if (
+        !this.shapes.length ||
+        !this.themes.length ||
+        !this.categorys.length ||
+        !this.techniques.length
+      ) {
+        this.$message({
+          showClose: true,
+          message: '请先添加艺术品选项',
+          type: 'error',
+        })
+        return
+      }
       const createCommodityMock = {
         commodityId: this.form.commodityId,
         name: {

@@ -1,8 +1,10 @@
 <template>
-  <el-form :model="form" ref="form" label-width="100px" class="form">
+  <el-form ref="form" :model="form" label-width="100px" class="form">
     <el-form-item
       v-for="item in form.optionsExamples"
-      :label="`${ $t('content.create') }${optionType[$route.params.type]}${ $t('content.example') }`"
+      :label="`${$t('content.create')}${optionType[$route.params.type]}${$t(
+        'content.example'
+      )}`"
       :key="item['zh-cn']"
     >
       <el-row :gutter="20">
@@ -21,7 +23,7 @@
 
         <el-col :span="2">
           <el-button type="primary" @click="addOption">
-            {{ $t('content.create') }}
+            {{ $t('content.add') }}
           </el-button>
         </el-col>
 
@@ -38,13 +40,37 @@
       </el-row>
     </el-form-item>
 
-    <el-form-item
+    <!-- <el-form-item
       v-for="(item, index) in form.options"
       :label="`${optionType[$route.params.type]}${index + 1}`"
+      :key="item['zh-cn']"
+    > -->
+    <el-form-item
+      v-for="(item, index) in form.options"
       :key="item['zh-cn']"
     >
       <el-row :gutter="20">
         <el-col :span="4">
+          <el-form-item  :prop="'options.' + index + '.img'">
+            <el-upload
+              v-model="item.img"
+              class="avatar-uploader"
+              action="/api/upload/images"
+              :data="{ type: optionType[$route.params.type], index }"
+              :show-file-list="false"
+              :on-success="handleAvatarSuccess"
+              :before-upload="beforeAvatarUpload"
+            >
+              <img
+                v-if="item.img"
+                :src="item.img"
+                class="avatar"
+              />
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
           <el-form-item
             :prop="'options.' + index + '.zh-cn'"
             :rules="{
@@ -57,7 +83,7 @@
             </el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="3">
           <el-form-item
             :prop="'options.' + index + '.en-us'"
             :rules="{
@@ -72,7 +98,7 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="3">
           <el-form-item
             :prop="'options.' + index + '.ja-jp'"
             :rules="{
@@ -87,7 +113,7 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="3">
           <el-form-item
             :prop="'options.' + index + '.fr-fr'"
             :rules="{
@@ -102,22 +128,22 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="2">
-          <el-button @click.prevent="updateOption(item)" v-if="item.id"
+        <el-col :span="5">
+          <el-button @click.prevent="updateOption(item, index)" v-if="item.id"
             >{{$t('content.update')}}</el-button
           >
           <el-button @click.prevent="createOption(item, index)" v-else
             >{{$t('content.create')}}</el-button
           >
-        </el-col>
-        <el-col :span="2">
+
           <el-button @click="onMock(item,index)">
             {{$t('content.fill')}}
           </el-button>
-        </el-col>
-        <el-col :span="2">
+
+
           <el-button @click.prevent="removeOption(item, index)">{{$t('content.delete')}}</el-button>
         </el-col>
+
       </el-row>
     </el-form-item>
 
@@ -131,11 +157,13 @@
       <el-button @click="resetForm('form')">重置</el-button>
     </el-form-item> -->
   </el-form>
+
 </template>
 
 <script>
 import Mock from 'mockjs'
 export default {
+  name: 'CommodityOption',
   watch: {
     '$route.query': '$fetch',
   },
@@ -151,6 +179,7 @@ export default {
       form: {
         options: [
           {
+            img: '',
             'zh-cn': '',
             'en-us': '',
             'ja-jp': '',
@@ -159,6 +188,7 @@ export default {
         ],
         optionsExamples: [
           {
+            img: '',
             'zh-cn': '其他',
             'en-us': 'other',
             'ja-jp': 'その他',
@@ -174,6 +204,7 @@ export default {
       this.form.options = [
         ...options.data,
         {
+          img: '',
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
@@ -225,6 +256,7 @@ export default {
 
     addOption() {
       this.form.options.push({
+        img: '',
         'zh-cn': '',
         'en-us': '',
         'ja-jp': '',
@@ -232,6 +264,7 @@ export default {
       })
     },
     async createOption(item, index) {
+      console.log("createOptions", item)
       let isValidate = true
       this.$refs['form'].validateField(
         [
@@ -248,6 +281,8 @@ export default {
       )
       // console.log('isValidate', isValidate)
       if (isValidate) {
+
+
         const options = await this.$axios
           .$post(`/api/admin/commodity/options/${this.$route.params.type}/create`, [item])
           .catch((error) => {
@@ -267,7 +302,7 @@ export default {
       }
     },
     async updateOption(item) {
-      // console.log('updateOption', item)
+      console.log('updateOption', item)
       if (!item.id) {
         this.form.options.splice(index, 1)
         return
@@ -314,13 +349,61 @@ export default {
       const jajp = ["ゼロ", "いち", "に", "さん", "し", "ご", "ろく", "しち", "はち", "きゅう", "じゅう"];
       const frfr = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"];
       const mock = {
+          img: '',
           "zh-cn": `${zncn[Mock.mock('@integer(0, 9)')]} ${zncn[Mock.mock('@integer(0, 9)')]} ${zncn[Mock.mock('@integer(0, 9)')]}`,
           "en-us": `${enus[Mock.mock('@integer(0, 9)')]} ${enus[Mock.mock('@integer(0, 9)')]} ${enus[Mock.mock('@integer(0, 9)')]}`,
           "ja-jp": `${jajp[Mock.mock('@integer(0, 9)')]} ${jajp[Mock.mock('@integer(0, 9)')]} ${jajp[Mock.mock('@integer(0, 9)')]}`,
           "fr-fr": `${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]}`
         }
       this.form.options.splice(index, 1, mock)
-    }
+    },
+    handleAvatarSuccess(res, file, fileList) {
+      console.log("handleAvatarSuccess", res, file, fileList)
+      // this.userCreate.avatar = URL.createObjectURL(file.raw);
+      // this.form.options.avatar = res.data.src
+      this.form.options[res.data.index].img = res.data.src;
+      console.log(this.form)
+    },
+    beforeAvatarUpload(file, index) {
+      console.log("beforeAvatarUpload", file, index)
+      // const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2
+
+      // if (!isJPG) {
+      //   this.$message.error('上传头像图片只能是 JPG 格式!');
+      // }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+      // return isJPG && isLt2M;
+      return isLt2M
+    },
   },
 }
 </script>
+
+<style scoped>
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+</style>

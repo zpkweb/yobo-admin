@@ -110,6 +110,7 @@ export default {
     "edit": "編集",
     "delete": "削除",
     "create": "作成する",
+    "add": "add",
     "fill": "充填",
     "clear": "空の",
     "fail": "失敗",

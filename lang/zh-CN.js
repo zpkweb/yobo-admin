@@ -111,6 +111,7 @@ export default {
     "edit": "编辑",
     "delete": "删除",
     "create": "创建",
+    "add": "添加",
     "fill": "填充",
     "clear": "清空",
     "fail": "失败",

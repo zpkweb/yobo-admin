@@ -109,6 +109,7 @@ export default {
     "edit": "Edit",
     "delete": "Delete",
     "create": "Create",
+    "add": "add",
     "fill": "Fill",
     "clear": "clear",
     "fail": "Failed",
