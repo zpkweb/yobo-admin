@@ -50,6 +50,14 @@
     </el-form>
 
     <el-table :data="user" border>
+      <el-table-column prop="sellerId" :label="$t('user.sellerId')" width="200">
+      </el-table-column>
+      <el-table-column prop="user.avatar" :label="$t('user.avatar')" width="200">
+        <template slot-scope="scope">
+            <img :src="scope.row.user.avatar" class="image" />
+
+        </template>
+      </el-table-column>
       <el-table-column prop="firstname" :label="$t('user.firstName')" width="200">
       </el-table-column>
       <el-table-column prop="lastname" :label="$t('user.lastName')" width="200">

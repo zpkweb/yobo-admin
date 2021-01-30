@@ -174,6 +174,7 @@ export default {
     "en": "English",
     "ja": "Japanese",
     "fr": "French",
+    "es": "Spanish",
     "price": {
       "zh": "Life Coin",
       "en": "USD",

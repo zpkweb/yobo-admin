@@ -17,8 +17,11 @@
         <el-col :span="4">
           <el-input v-model="item['ja-jp']" :disabled="true"></el-input>
         </el-col>
-        <el-col :span="4">
+        <!-- <el-col :span="4">
           <el-input v-model="item['fr-fr']" :disabled="true"></el-input>
+        </el-col> -->
+        <el-col :span="4">
+          <el-input v-model="item['es-es']" :disabled="true"></el-input>
         </el-col>
 
         <el-col :span="2">
@@ -114,7 +117,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="3">
-          <el-form-item
+          <!-- <el-form-item
             :prop="'options.' + index + '.fr-fr'"
             :rules="{
               required: true,
@@ -125,6 +128,19 @@
             <el-input
               v-model="item['fr-fr']"
               :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
+            ></el-input>
+          </el-form-item> -->
+          <el-form-item
+            :prop="'options.' + index + '.es-es'"
+            :rules="{
+              required: true,
+              message: `${ $t('lang.es') }${optionType[$route.params.type]}${ $t('form.noEmpty') }`,
+              trigger: 'blur',
+            }"
+          >
+            <el-input
+              v-model="item['es-es']"
+              :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -169,7 +185,8 @@ export default {
   },
   data() {
     return {
-      lang: ['zh-cn', 'en-us', 'ja-jp', 'fr-fr'],
+      // lang: ['zh-cn', 'en-us', 'ja-jp', 'fr-fr'],
+      lang: ['zh-cn', 'en-us', 'ja-jp', 'es-es'],
       optionType: {
         shape: this.$t('commodity.shape'),
         theme: this.$t('commodity.theme'),
@@ -183,7 +200,8 @@ export default {
             'zh-cn': '',
             'en-us': '',
             'ja-jp': '',
-            'fr-fr': '',
+            // 'fr-fr': '',
+            'es-es': '',
           },
         ],
         optionsExamples: [
@@ -192,7 +210,8 @@ export default {
             'zh-cn': '其他',
             'en-us': 'other',
             'ja-jp': 'その他',
-            'fr-fr': 'Autres',
+            // 'fr-fr': 'Autres',
+            'es-es': 'Español',
           },
         ],
       },
@@ -208,7 +227,8 @@ export default {
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
-          'fr-fr': '',
+          // 'fr-fr': '',
+          'es-es': '',
         },
       ]
     }
@@ -260,7 +280,8 @@ export default {
         'zh-cn': '',
         'en-us': '',
         'ja-jp': '',
-        'fr-fr': '',
+        // 'fr-fr': '',
+        'es-es': '',
       })
     },
     async createOption(item, index) {
@@ -271,7 +292,8 @@ export default {
           'options.' + index + '.zh-cn',
           'options.' + index + '.en-us',
           'options.' + index + '.ja-jp',
-          'options.' + index + '.fr-fr',
+          // 'options.' + index + '.fr-fr',
+          'options.' + index + '.es-es',
         ],
         (valid) => {
           if (valid) {
@@ -347,13 +369,15 @@ export default {
       const zncn = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
       const enus = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
       const jajp = ["ゼロ", "いち", "に", "さん", "し", "ご", "ろく", "しち", "はち", "きゅう", "じゅう"];
-      const frfr = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"];
+      // const frfr = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"];
+      const eses = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"];
       const mock = {
           img: '',
           "zh-cn": `${zncn[Mock.mock('@integer(0, 9)')]} ${zncn[Mock.mock('@integer(0, 9)')]} ${zncn[Mock.mock('@integer(0, 9)')]}`,
           "en-us": `${enus[Mock.mock('@integer(0, 9)')]} ${enus[Mock.mock('@integer(0, 9)')]} ${enus[Mock.mock('@integer(0, 9)')]}`,
           "ja-jp": `${jajp[Mock.mock('@integer(0, 9)')]} ${jajp[Mock.mock('@integer(0, 9)')]} ${jajp[Mock.mock('@integer(0, 9)')]}`,
-          "fr-fr": `${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]}`
+          // "fr-fr": `${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]} ${frfr[Mock.mock('@integer(0, 9)')]}`
+          "es-es": `${eses[Mock.mock('@integer(0, 9)')]} ${eses[Mock.mock('@integer(0, 9)')]} ${eses[Mock.mock('@integer(0, 9)')]}`
         }
       this.form.options.splice(index, 1, mock)
     },

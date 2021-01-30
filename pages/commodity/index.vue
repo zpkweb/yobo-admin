@@ -71,7 +71,8 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['fr-fr'] }}</span>
+                <!-- <span>{{ item['fr-fr'] }}</span> -->
+                <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
           </el-form-item>
@@ -92,7 +93,8 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['fr-fr'] }}</span>
+                <!-- <span>{{ item['fr-fr'] }}</span> -->
+                <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
           </el-form-item>
@@ -113,7 +115,8 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['fr-fr'] }}</span>
+                <!-- <span>{{ item['fr-fr'] }}</span> -->
+                <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
           </el-form-item>
@@ -134,7 +137,8 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['fr-fr'] }}</span>
+                <!-- <span>{{ item['fr-fr'] }}</span> -->
+                <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
           </el-form-item>
@@ -252,8 +256,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.name')})">
               <span>{{ scope.row.name['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.name')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.name')})">
               <span>{{ scope.row.name['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.name')})">
+              <span>{{ scope.row.name['es-es'] }}</span>
             </el-form-item>
 
             <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.desc')})">
@@ -265,8 +272,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.desc')})">
               <span>{{ scope.row.desc['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc')})">
               <span>{{ scope.row.desc['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.desc')})">
+              <span>{{ scope.row.desc['es-es'] }}</span>
             </el-form-item>
 
             <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.price.title')})">
@@ -278,8 +288,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.price.title')})">
               <span>{{ scope.row.price['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.price.title')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.price.title')})">
               <span>{{ scope.row.price['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.price.title')})">
+              <span>{{ scope.row.price['es-es'] }}</span>
             </el-form-item>
 
             <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.shape')})">
@@ -291,8 +304,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.shape')})">
               <span>{{ scope.row.shapes[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.shape')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.shape')})">
               <span>{{ scope.row.shapes[0]['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.shape')})">
+              <span>{{ scope.row.shapes[0]['es-es'] }}</span>
             </el-form-item>
 
             <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.theme')})">
@@ -304,8 +320,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.theme')})">
               <span>{{ scope.row.themes[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.theme')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.theme')})">
               <span>{{ scope.row.themes[0]['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.theme')})">
+              <span>{{ scope.row.themes[0]['es-es'] }}</span>
             </el-form-item>
 
             <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.category')})">
@@ -317,8 +336,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.category')})">
               <span>{{ scope.row.categorys[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.category')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.category')})">
               <span>{{ scope.row.categorys[0]['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.category')})">
+              <span>{{ scope.row.categorys[0]['es-es'] }}</span>
             </el-form-item>
 
             <el-form-item :label="$t('langname', { lang: $t('lang.zh'), name: $t('commodity.technique')})">
@@ -330,8 +352,11 @@
             <el-form-item :label="$t('langname', { lang: $t('lang.ja'), name: $t('commodity.technique')})">
               <span>{{ scope.row.techniques[0]['ja-jp'] }}</span>
             </el-form-item>
-            <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.technique')})">
+            <!-- <el-form-item :label="$t('langname', { lang: $t('lang.fr'), name: $t('commodity.technique')})">
               <span>{{ scope.row.techniques[0]['fr-fr'] }}</span>
+            </el-form-item> -->
+            <el-form-item :label="$t('langname', { lang: $t('lang.es'), name: $t('commodity.technique')})">
+              <span>{{ scope.row.techniques[0]['es-es'] }}</span>
             </el-form-item>
           </el-form>
         </template>
@@ -342,7 +367,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.name['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.name['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.name['ja-jp'] }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.name['fr-fr'] }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.name['fr-fr'] }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.name['es-es'] }}</p>
             <div slot="reference">
               {{ scope.row.name[$i18n.locale] }}
             </div>
@@ -355,7 +381,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.desc['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.desc['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.desc['ja-jp'] }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.desc['fr-fr'] }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.desc['fr-fr'] }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.desc['es-es'] }}</p>
             <div slot="reference">
               <span>{{ scope.row.desc[$i18n.locale] }}</span>
             </div>
@@ -368,7 +395,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.price['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.price['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.price['ja-jp'] }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.price['fr-fr'] }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.price['fr-fr'] }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.price['es-es'] }}</p>
             <div slot="reference">
               {{ scope.row.price[$i18n.locale] }}
             </div>
@@ -382,7 +410,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['ja-jp'] : '' }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.shapes.length ? scope.row.shapes[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
@@ -395,7 +424,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.themes.length ? scope.row.themes[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.themes.length ? scope.row.themes[0]['ja-jp'] : '' }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.themes.length ? scope.row.themes[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.themes.length ? scope.row.themes[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
@@ -408,7 +438,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['ja-jp'] : '' }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.categorys.length ? scope.row.categorys[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
@@ -421,7 +452,8 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['ja-jp'] : '' }}</p>
-            <p>{{$t('lang.fr')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.techniques.length ? scope.row.techniques[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
@@ -481,7 +513,19 @@
         </template>
       </el-table-column>
       <el-table-column prop="state" :label="$t('commodity.state.title')"> </el-table-column>
-      <el-table-column prop="sellerId" :label="$t('commodity.seller')"> </el-table-column>
+      <el-table-column :label="$t('commodity.seller')">
+        <template slot-scope="scope">
+          <el-popover trigger="hover" placement="top">
+            <p>姓名 : {{ scope.row.seller ? `${scope.row.seller.firstname} ${scope.row.seller.lastname}` : '' }}</p>
+            <p>Id: {{ scope.row.seller ? scope.row.seller.sellerId : '' }}</p>
+            <p>国家: {{ scope.row.seller ? scope.row.seller.country : '' }}</p>
+            <p>类型: {{ scope.row.seller ? scope.row.seller.typeName : '' }}</p>
+            <div slot="reference">
+              {{ scope.row.seller ? `${scope.row.seller.firstname} ${scope.row.seller.lastname}` : '' }}
+            </div>
+          </el-popover>
+        </template>
+      </el-table-column>
       <el-table-column
         prop="createdDate"
         :formatter="formatterDate"

@@ -54,6 +54,10 @@ export default {
       "superAdmin": "超级管理员权限",
       "identityList": "用户身份列表"
     },
+    "page": {
+      "title": "页面管理",
+      "banner": "轮播图"
+    }
   },
   "login": {
     "title": "后台管理",
@@ -126,7 +130,10 @@ export default {
     "identityName": "身份名称",
     "identitySign": "身份标记",
     "identityCode": "身份序号",
-    "example": "示例"
+    "example": "示例",
+    "title": "标题",
+    "subTitle": "子标题",
+    "desc": "详情"
   },
   "commodity": {
     "name": "名称",
@@ -174,13 +181,16 @@ export default {
     "en": "英文",
     "ja": "日语",
     "fr": "法语",
+    "es": "西班牙语",
     "price": {
       "zh": "人命币",
       "en": "美元",
       "ja": "日元",
       "fr": "欧元",
+      "es": "欧元",
     }
-  }
+  },
+
 
 
 }

@@ -18,9 +18,14 @@
         :label="$t('lang.ja')"
         width="120">
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="fr-fr"
         :label="$t('lang.fr')"
+        width="120">
+      </el-table-column> -->
+      <el-table-column
+        prop="es-es"
+        :label="$t('lang.es')"
         width="120">
       </el-table-column>
       <el-table-column

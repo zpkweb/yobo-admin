@@ -86,10 +86,15 @@ export default {
         name: 'にほんご',
         file: 'ja-JP.js'
       },
+      // {
+      //   code: 'fr-fr',
+      //   name: 'Français',
+      //   file: 'fr-FR.js'
+      // }
       {
-        code: 'fr-fr',
-        name: 'Français',
-        file: 'fr-FR.js'
+        code: 'es-es',
+        name: 'Español',
+        file: 'es-ES.js'
       }
     ],
     defaultLocale: 'zh-cn',

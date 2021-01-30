@@ -245,6 +245,22 @@ export const state = () => ({
       ],
       level: '2',
     },
+    {
+      icon: 'el-icon-menu',
+      // name: '界面管理',
+      name: 'menu.page.title',
+      path: '/page',
+      subMenu: [
+        {
+          icon: 'el-icon-menu',
+          // name: '轮播图权限',
+          name: 'menu.page.banner',
+          path: '/page/banner',
+          level: '3-0',
+        },
+      ],
+      level: '3',
+    },
   ],
 
   userMenu: [],

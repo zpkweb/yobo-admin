@@ -33,13 +33,13 @@
       "module3": "{msg1}{msg2}{msg3}"
     }
   },
-  "fr-fr": {
+  "es-es": {
     "chart": {
-      "user": "utilisateur",
-      "commodity": "ouvrages d'art",
-      "statistics": "statistiques",
-      "data": "Les données",
-      "number": "Quantité",
+      "user": "usuario",
+      "commodity": "obra de arte",
+      "statistics": "Estadísticas",
+      "data": "datos",
+      "number": "Cantidad",
       "module2": "{msg1}{msg2}",
       "module3": "{msg1}{msg2}{msg3}"
     }
@@ -69,6 +69,21 @@
       />
   </el-main>
 </template>
+<script>
+// "fr-fr": {
+  //   "chart": {
+  //     "user": "utilisateur",
+  //     "commodity": "ouvrages d'art",
+  //     "statistics": "statistiques",
+  //     "data": "Les données",
+  //     "number": "Quantité",
+  //     "module2": "{msg1}{msg2}",
+  //     "module3": "{msg1}{msg2}{msg3}"
+  //   }
+  // }
+export default {
 
+}
+</script>
 <style>
 </style>

@@ -92,6 +92,29 @@
         </el-upload>
       </el-form-item>
 
+
+      <el-form-item :label="$t('user.tags')" prop="tags">
+        <el-tag
+          :key="tag"
+          v-for="tag in userCreate.tags"
+          closable
+          :disable-transitions="false"
+          @close="handleClose(tag)">
+          {{tag}}
+        </el-tag>
+        <el-input
+          class="input-new-tag"
+          v-if="inputVisible"
+          v-model="inputValue"
+          ref="saveTagInput"
+          size="small"
+          @keyup.enter.native="handleInputConfirm"
+          @blur="handleInputConfirm"
+        >
+        </el-input>
+        <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+      </el-form-item>
+
       <el-form-item :label="$t('user.firstName')" prop="firstname">
         <el-input
           v-model="userCreate.firstname"
@@ -268,6 +291,8 @@ export default {
     }
     return {
       type: 'create', // create edit
+      inputVisible: false,
+      inputValue: '',
       typeText: this.$t('content.create'),
       isCreate: true,
       sellerId: '',
@@ -308,6 +333,7 @@ export default {
         state: 1,
         type: 0,
         avatar: '',
+        tags: [],
         firstname: '',
         lastname: '',
         email: '',
@@ -367,8 +393,8 @@ export default {
       if (user.success) {
         this.userCreate = Object.assign(this.userCreate, {
           ...user.data,
-          ...user.data.seller,
-          ...user.data.sellerMetadata,
+          ...user.data.user,
+          ...user.data.metadata,
         })
         this.type = 'edit'
         this.typeText = this.$t('content.update')
@@ -395,9 +421,6 @@ export default {
                   typeName: this.typeOptions[this.userCreate.type].label,
                   ...this.userCreate,
                 })
-                .catch((error) => {
-                  console.log('error', error)
-                })
 
               // data = await this.$axios.$post('/api/user/seller/apply', {
               //   identity: this.$route.params.identity,
@@ -412,19 +435,30 @@ export default {
                 ...this.userCreate,
               })
             }
-            this.$message({
+            if(data.success) {
+              this.$message({
+                showClose: true,
+                message: `${this.userCreate.firstname}${
+                  this.userCreate.lastname
+                }，${this.typeText}${this.$t('content.success')}`,
+                type: 'success',
+              })
+              if (this.isCreate) {
+                this.$refs[userCreate].resetFields()
+              }
+            }else{
+              this.$message({
               showClose: true,
-              message: `${this.userCreate.firstname}${
-                this.userCreate.lastname
-              }，${this.typeText}${this.$t('content.success')}`,
-              type: 'success',
+              message: `${this.typeText}${this.$t('content.fail')}`,
+              type: 'error',
             })
+            }
+
           } catch (error) {
+            console.log("error", error)
             this.$message({
               showClose: true,
-              message: `${this.typeText}${this.$t('content.fail')}!${
-                data.message
-              }`,
+              message: `${this.typeText}${this.$t('content.fail')}`,
               type: 'error',
             })
           }
@@ -458,6 +492,7 @@ export default {
         avatar: '',
         state: 1,
         type: 0,
+        tags: [],
         firstname: Mock.mock('@cfirst'),
         lastname: Mock.mock('@clast'),
         email: Mock.mock('@email'),
@@ -499,6 +534,25 @@ export default {
       // return isJPG && isLt2M;
       return isLt2M
     },
+    handleClose(tag) {
+        this.userCreate.tags.splice(this.userCreate.tags.indexOf(tag), 1);
+      },
+
+      showInput() {
+        this.inputVisible = true;
+        this.$nextTick(_ => {
+          this.$refs.saveTagInput.$refs.input.focus();
+        });
+      },
+
+      handleInputConfirm() {
+        let inputValue = this.inputValue;
+        if (inputValue) {
+          this.userCreate.tags.push(inputValue);
+        }
+        this.inputVisible = false;
+        this.inputValue = '';
+      }
   },
 }
 </script>
@@ -536,5 +590,20 @@ export default {
   height: 178px;
   display: block;
 }
+.el-tag + .el-tag {
+    margin-left: 10px;
+  }
+  .button-new-tag {
+    margin-left: 10px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .input-new-tag {
+    width: 90px;
+    margin-left: 10px;
+    vertical-align: bottom;
+  }
 </style>
 

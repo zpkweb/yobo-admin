@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :model="form" label-width="94px">
+  <el-form ref="form" :model="form" label-width="108px">
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
@@ -58,7 +58,8 @@
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
-        ><el-form-item
+        >
+        <!-- <el-form-item
           :label="
             $t('langname', { lang: $t('lang.fr'), name: $t('commodity.name') })
           "
@@ -70,10 +71,29 @@
             )}`,
             trigger: 'blur',
           }"
-          ><el-input
+          >
+          <el-input
             v-model="form.name['fr-fr']"
             :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
-          ></el-input></el-form-item
+          ></el-input> -->
+          <el-form-item
+          :label="
+            $t('langname', { lang: $t('lang.es'), name: $t('commodity.name') })
+          "
+          :prop="'name.es-es'"
+          :rules="{
+            required: true,
+            message: `${$t('lang.es')}${$t('commodity.name')}${$t(
+              'form.noEmpty'
+            )}`,
+            trigger: 'blur',
+          }"
+          >
+          <el-input
+            v-model="form.name['es-es']"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
+          ></el-input>
+          </el-form-item
       ></el-col>
     </el-row>
     <el-row :gutter="20">
@@ -136,7 +156,8 @@
           ></el-input></el-form-item
       ></el-col>
       <el-col :span="6"
-        ><el-form-item
+        >
+        <!-- <el-form-item
           :label="
             $t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc') })
           "
@@ -148,11 +169,31 @@
             )}`,
             trigger: 'blur',
           }"
-          ><el-input
+          >
+          <el-input
             v-model="form.desc['fr-fr']"
             type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
-          ></el-input></el-form-item
+          ></el-input> -->
+          <el-form-item
+          :label="
+            $t('langname', { lang: $t('lang.es'), name: $t('commodity.desc') })
+          "
+          :prop="'desc.es-es'"
+          :rules="{
+            required: true,
+            message: `${$t('lang.es')}${$t('commodity.desc')}${$t(
+              'form.noEmpty'
+            )}`,
+            trigger: 'blur',
+          }"
+          >
+          <el-input
+            v-model="form.desc['es-es']"
+            type="textarea"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
+          ></el-input>
+          </el-form-item
       ></el-col>
     </el-row>
     <el-row :gutter="20">
@@ -230,7 +271,7 @@
       >
 
       <el-col :span="6">
-        <el-form-item
+        <!-- <el-form-item
           :label="
             $t('langname', {
               lang: $t('lang.price.fr'),
@@ -249,7 +290,29 @@
             v-model="form.price['fr-fr']"
             :placeholder="$t('form.placeholder', { msg: $t('lang.price.fr') })"
             ><template slot="append">€</template></el-input
-          ></el-form-item
+          > -->
+
+          <el-form-item
+          :label="
+            $t('langname', {
+              lang: $t('lang.price.es'),
+              name: $t('commodity.price.title'),
+            })
+          "
+          :prop="'price.es-es'"
+          :rules="{
+            required: true,
+            message: `${$t('lang.price.es')}${$t('commodity.price.title')}${$t(
+              'form.noEmpty'
+            )}`,
+            trigger: 'blur',
+          }"
+          ><el-input
+            v-model="form.price['es-es']"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.price.es') })"
+            ><template slot="append">€</template></el-input
+          >
+          </el-form-item
         ></el-col
       >
       <!-- <el-col :span="6"
@@ -329,7 +392,8 @@
               <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
               <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
               <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
+              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -360,7 +424,8 @@
               <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
               <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
               <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
+              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -392,7 +457,8 @@
               <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
               <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
               <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
+              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -423,7 +489,8 @@
               <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
               <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
               <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span>
+              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -486,7 +553,7 @@
     <el-form-item :label="$t('commodity.seller')">
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input v-model="form.sellerId" type="text"></el-input>
+          <el-input v-model="form.seller.sellerId" type="text"></el-input>
           <!-- <el-select
             v-model="form.sellerId"
             filterable
@@ -611,7 +678,6 @@ export default {
         this.form.width = commodityForm.width
         this.form.height = commodityForm.height
         this.form.colors = commodityForm.colors
-        this.form.sellerId = commodityForm.sellerId
 
         if (commodityForm.name) {
           this.form.name = commodityForm.name
@@ -624,7 +690,12 @@ export default {
         }
 
         if (commodityForm.photos) {
-          this.form.photos = commodityForm.photos
+          // console.log("commodityForm.photos", commodityForm.photos)
+          const photos = commodityForm.photos.map((item) => {
+            item.url = item.src
+            return item
+          })
+          this.form.photos = photos
         }
 
         if (commodityForm.shapes) {
@@ -642,7 +713,9 @@ export default {
         if (commodityForm.techniques) {
           this.form.techniques = commodityForm.techniques
         }
-
+        if (commodityForm.seller) {
+          this.form.seller = commodityForm.seller
+        }
         // console.log('this.form', this.form)
         // this.form = commodityForm;
 
@@ -763,19 +836,22 @@ export default {
           'zh-cn': Mock.mock('@ctitle(2, 8)'),
           'en-us': Mock.mock('@title(2)'),
           'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
-          'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+          // 'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+          'es-es': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
         desc: {
           'zh-cn': Mock.mock('@cparagraph(1,3)'),
           'en-us': Mock.mock('@paragraph(1,3)'),
           'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
-          'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+          // 'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+          'es-es': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
         price: {
           'zh-cn': Mock.mock('@integer(60, 100)'),
           'en-us': Mock.mock('@integer(60, 100)'),
           'ja-jp': Mock.mock('@integer(60, 100)'),
-          'fr-fr': Mock.mock('@integer(60, 100)'),
+          // 'fr-fr': Mock.mock('@integer(60, 100)'),
+          'es-es': Mock.mock('@integer(60, 100)'),
         },
         shapes: [
           this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)],
@@ -800,7 +876,7 @@ export default {
         width: Mock.mock('@natural(100, 300)'),
         height: Mock.mock('@natural(100, 300)'),
         state: Mock.mock('@integer(0, 3)'),
-        sellerId: '',
+        seller: '',
       }
       // console.log('createCommodityMock', createCommodityMock)
       this.form = createCommodityMock
@@ -829,19 +905,22 @@ export default {
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
-          'fr-fr': '',
+          // 'fr-fr': '',
+          'es-es': '',
         },
         desc: {
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
-          'fr-fr': '',
+          // 'fr-fr': '',
+          'es-es': '',
         },
         price: {
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
-          'fr-fr': '',
+          // 'fr-fr': '',
+          'es-es': '',
         },
         shapes: [
           {
@@ -849,7 +928,8 @@ export default {
             'zh-cn': '',
             'en-us': '',
             'ja-jp': '',
-            'fr-fr': '',
+            // 'fr-fr': '',
+            'es-es': '',
           },
         ],
         themes: [
@@ -858,7 +938,8 @@ export default {
             'zh-cn': '',
             'en-us': '',
             'ja-jp': '',
-            'fr-fr': '',
+            // 'fr-fr': '',
+            'es-es': '',
           },
         ],
         categorys: [
@@ -867,7 +948,8 @@ export default {
             'zh-cn': '',
             'en-us': '',
             'ja-jp': '',
-            'fr-fr': '',
+            // 'fr-fr': '',
+            'es-es': '',
           },
         ],
         techniques: [
@@ -876,7 +958,8 @@ export default {
             'zh-cn': '',
             'en-us': '',
             'ja-jp': '',
-            'fr-fr': '',
+            // 'fr-fr': '',
+            'es-es': '',
           },
         ],
         photos: [],
@@ -888,19 +971,19 @@ export default {
         width: '',
         height: '',
         state: 0,
-        sellerId: '',
+        seller: '',
       }
     },
     uploadSuccess(res, file) {
       // console.log(res, file)
       // this.imageUrl = URL.createObjectURL(file.raw);
       this.form.photos.push({
+        src: res.data.src,
         url: res.data.src,
         name: file.name,
       })
       // console.log(this.form)
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     uploadRemove(file, fileList) {
       // console.log(file, fileList)
       for (const [index, item] of Object.entries(this.form.photos)) {
@@ -908,7 +991,6 @@ export default {
           this.form.photos.splice(index, 1)
         }
       }
-      // console.log(this.form)
     },
     uploadPreview(file) {
       this.dialogImageUrl = file.url
