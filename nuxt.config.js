@@ -1,5 +1,9 @@
 export default {
   buildDir: 'dist',
+  env: {
+    baseUrl: process.env.ORIGIN || 'http://localhost:7001'
+  },
+  dev: process.env.NODE_ENV !== 'prod',
   server: {
     port: 3080, // default: 3000
     host: '0.0.0.0' // default: localhost
@@ -59,7 +63,7 @@ export default {
 
   proxy: {
     '/api': {
-      target: 'http://127.0.0.1:7001/',
+      target: process.env.ORIGIN || 'http://localhost:7001'
     }
   },
 
