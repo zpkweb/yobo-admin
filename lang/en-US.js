@@ -82,6 +82,7 @@ export default {
     "state": "State",
     "type": "Type",
     "seller": {
+      "id": "Artist Id",
       "isFullTime": "Are you a full-time professional artist?",
       "onlineSell": "Of the works sold, what percentage do you sell online?",
       "sold": "How many of your works have you sold in the past year?",

@@ -88,6 +88,7 @@ export default {
     "state": "estado",
     "type": "Tipos de",
     "seller": {
+      "id": "artista Id",
       "isFullTime": "¿Eres un artista profesional a tiempo completo?",
       "onlineSell": "¿Para qué porcentaje de las obras vendidas en línea?",
       "sold": "¿Cuántas piezas de su propio trabajo vendió el año pasado?",

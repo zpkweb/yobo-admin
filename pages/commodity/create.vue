@@ -553,7 +553,8 @@
     <el-form-item :label="$t('commodity.seller')">
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input v-model="form.seller.sellerId" type="text"></el-input>
+          <el-input v-model="form.sellerId" :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })" ></el-input>
+
           <!-- <el-select
             v-model="form.sellerId"
             filterable
@@ -714,7 +715,7 @@ export default {
           this.form.techniques = commodityForm.techniques
         }
         if (commodityForm.seller) {
-          this.form.seller = commodityForm.seller
+          this.form.sellerId = commodityForm.seller
         }
         // console.log('this.form', this.form)
         // this.form = commodityForm;
@@ -876,7 +877,7 @@ export default {
         width: Mock.mock('@natural(100, 300)'),
         height: Mock.mock('@natural(100, 300)'),
         state: Mock.mock('@integer(0, 3)'),
-        seller: '',
+        sellerId: '',
       }
       // console.log('createCommodityMock', createCommodityMock)
       this.form = createCommodityMock
@@ -971,7 +972,7 @@ export default {
         width: '',
         height: '',
         state: 0,
-        seller: '',
+        sellerId: '',
       }
     },
     uploadSuccess(res, file) {

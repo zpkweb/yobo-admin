@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     async bannerCreate(item) {
-      console.log("bannerCreate", item)
       const banners = await this.$axios.$post(
       `/api/admin/page/banner`, {
         src: item.src,
@@ -105,7 +104,13 @@ export default {
       )
       if(banners.success) {
         item.state = 1;
-        this.form.banners.push(this.defaultBanner);
+        this.form.banners.push({
+        state: 0,
+        src: '',
+        title: '',
+        subTitle: '',
+        desc: ''
+      });
         this.$message({
           showClose: true,
           message: `${this.$t('content.create')}${this.$t('content.success')}`,
@@ -118,11 +123,8 @@ export default {
           type: 'error',
         })
       }
-      console.log("banners", banners)
-
     },
     async bannerUpdate(item) {
-      console.log("bannerUpdate", item)
       const banners = await this.$axios.$post(
       `/api/admin/page/banner/update`, item
       )
@@ -142,7 +144,6 @@ export default {
       }
     },
     async bannerDelete(item) {
-      console.log("bannerDelete", item)
       const banners = await this.$axios.$post(
       `/api/admin/page/banner/delete`, {
         bannerId: item.bannerId

@@ -498,7 +498,7 @@ export default {
         email: Mock.mock('@email'),
         phone: '',
         password: '123',
-        country: Mock.mock('@county(true)'),
+        country: Mock.mock('@province'),
         language: this.$i18n.locales.filter(
           (i) => i.code == this.$i18n.locale
         )[0].name,
