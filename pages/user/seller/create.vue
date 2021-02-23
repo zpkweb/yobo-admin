@@ -93,7 +93,7 @@
       </el-form-item>
 
 
-      <el-form-item :label="$t('user.tags')" prop="tags">
+      <el-form-item :label="$t('user.label')" prop="tags">
         <el-tag
           :key="tag"
           v-for="tag in userCreate.tags"
@@ -580,14 +580,14 @@ export default {
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
+  width: 88px;
+  height: 88px;
+  line-height: 88px;
   text-align: center;
 }
 .avatar {
-  width: 178px;
-  height: 178px;
+  width: 88px;
+  height: 88px;
   display: block;
 }
 .el-tag + .el-tag {

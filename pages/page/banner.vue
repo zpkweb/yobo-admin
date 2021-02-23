@@ -23,7 +23,10 @@
           <el-col :span="3">
             <el-button  v-if="item.state" @click="bannerUpdate(item)">{{ $t('content.update') }}</el-button>
             <el-button  v-else @click="bannerCreate(item)">{{ $t('content.create') }}</el-button>
+
+            <el-button   @click="bannerDelete(item)">{{ $t('content.delete') }}</el-button>
           </el-col>
+
           <el-col :span="4">
             <el-upload
               class="avatar-uploader"
@@ -37,17 +40,15 @@
             </el-upload>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.title" :placeholder="$t('form.placeholder', { msg: $t('content.title') })"></el-input>
+            <el-input v-model="item.title" type="textarea" :placeholder="$t('form.placeholder', { msg: $t('content.title') })"></el-input>
           </el-col>
           <el-col :span="4">
-            <el-input v-model="item.subTitle" :placeholder="$t('form.placeholder', { msg: $t('content.subTitle') })"></el-input>
+            <el-input v-model="item.subTitle" type="textarea" :placeholder="$t('form.placeholder', { msg: $t('content.subTitle') })"></el-input>
           </el-col>
           <el-col :span="4">
             <el-input v-model="item.desc" type="textarea" :placeholder="$t('form.placeholder', { msg: $t('content.desc') })"></el-input>
           </el-col>
-          <el-col :span="3">
-            <el-button   @click="bannerDelete(item)">{{ $t('content.delete') }}</el-button>
-          </el-col>
+
         </el-row>
 
 
@@ -221,13 +222,13 @@ export default {
     font-size: 28px;
     color: #8c939d;
     width: 178px;
-    height: 178px;
-    line-height: 178px;
+    height: 78px;
+    line-height: 78px;
     text-align: center;
   }
   .avatar {
     width: 178px;
-    height: 178px;
+    height: 78px;
     display: block;
   }
 </style>

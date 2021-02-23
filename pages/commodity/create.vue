@@ -715,7 +715,7 @@ export default {
           this.form.techniques = commodityForm.techniques
         }
         if (commodityForm.seller) {
-          this.form.sellerId = commodityForm.seller
+          this.form.sellerId = commodityForm.seller.sellerId
         }
         // console.log('this.form', this.form)
         // this.form = commodityForm;
