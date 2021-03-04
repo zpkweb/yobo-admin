@@ -7,7 +7,7 @@
     label-width="80px"
     class="login"
   >
-    <h3 class="login-title">yobo {{$t('login.title')}} !?</h3>
+    <h3 class="login-title">yobo {{$t('login.title')}} !!</h3>
 
     <el-form-item class="login-item" :label="$t('login.name')" prop="name">
       <el-input v-model="userForm.name" :placeholder="$t('form.placeholder', { msg: `${$t('user.name')}/${$t('user.email')}` })"></el-input>
