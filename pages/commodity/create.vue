@@ -1,5 +1,32 @@
 <template>
   <el-form ref="form" :model="form" label-width="108px">
+    <el-form-item>
+      <el-button
+        v-if="isCreate"
+        type="primary"
+        icon="el-icon-circle-plus-outline"
+        @click="onSubmit('form')"
+      >
+        {{ $t('content.create') }}
+      </el-button>
+
+      <el-button
+        v-else
+        type="primary"
+        icon="el-icon-check"
+        @click="onSubmit('form')"
+      >
+        {{ $t('content.update') }}
+      </el-button>
+      <el-button icon="el-icon-check" @click="onMock">
+        {{ $t('content.fill') }}
+      </el-button>
+      <el-button icon="el-icon-circle-close" @click="resetForm('form')">{{
+        $t('content.clear')
+      }}</el-button>
+    </el-form-item>
+
+
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
@@ -365,41 +392,288 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="20">
-      <el-col :span="6">
-        <el-form-item
-          :label="$t('commodity.shape')"
-          :prop="'shapes[0].id'"
-          :rules="{
-            required: false,
-            message: `${$t('commodity.shape')}${$t('form.noEmpty')}`,
-            trigger: 'change',
-          }"
+
+    <!-- "category": "类别", -->
+    <el-form-item
+      :label="$t('commodity.category')"
+      :prop="'categorys[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.category')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.categorys[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.category') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in categorys"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
         >
-          <el-select
-            v-model="form.shapes[0].id"
-            :placeholder="
-              $t('form.selectPlaceholder', { msg: $t('commodity.shape') })
-            "
-            clearable
-          >
-            <el-option
-              v-for="(item, index) in shapes"
-              :key="index"
-              :label="item['zh-cn']"
-              :value="item.id"
-            >
-              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
-              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-            </el-option>
-          </el-select>
-        </el-form-item>
-      </el-col>
-      <el-col :span="6">
-        <el-form-item
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "classification": "分类", -->
+    <el-form-item
+      :label="$t('commodity.classification')"
+      :prop="'classifications[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.classification')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.classifications[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.classification') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in classifications"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "material": "材质", -->
+    <el-form-item
+      :label="$t('commodity.material')"
+      :prop="'materials[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.material')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.materials[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.material') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in materials"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "model": "款式", -->
+    <el-form-item
+      :label="$t('commodity.model')"
+      :prop="'models[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.model')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.models[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.model') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in models"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "place": "摆放", -->
+    <el-form-item
+      :label="$t('commodity.place')"
+      :prop="'places[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.place')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.places[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.place') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in places"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "shape": "形状", -->
+    <el-form-item
+      :label="$t('commodity.shape')"
+      :prop="'shapes[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.shape')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.shapes[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.shape') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in shapes"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "specification": "规格", -->
+    <el-form-item
+      :label="$t('commodity.specification')"
+      :prop="'specifications[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.specification')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.specifications[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.specification') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in specifications"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "style": "风格", -->
+    <el-form-item
+      :label="$t('commodity.style')"
+      :prop="'styles[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.style')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.styles[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.style') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in styles"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "technique": "手法", -->
+    <el-form-item
+      :label="$t('commodity.technique')"
+      :prop="'techniques[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.technique')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.techniques[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.technique') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in techniques"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "theme": "主题", -->
+    <el-form-item
           :label="$t('commodity.theme')"
           :prop="'themes[0].id'"
           :rules="{
@@ -429,73 +703,70 @@
             </el-option>
           </el-select>
         </el-form-item>
-      </el-col>
+    <!-- "type": "类型", -->
+    <el-form-item
+      :label="$t('commodity.type')"
+      :prop="'types[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.type')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.types[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.type') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in types"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <!-- "use": "用途", -->
+    <el-form-item
+      :label="$t('commodity.use')"
+      :prop="'uses[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.use')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.uses[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.use') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in uses"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
 
-      <el-col :span="6">
-        <el-form-item
-          :label="$t('commodity.category')"
-          :prop="'categorys[0].id'"
-          :rules="{
-            required: false,
-            message: `${$t('commodity.category')}${$t('form.noEmpty')}`,
-            trigger: 'change',
-          }"
-        >
-          <el-select
-            v-model="form.categorys[0].id"
-            :placeholder="
-              $t('form.selectPlaceholder', { msg: $t('commodity.category') })
-            "
-            clearable
-          >
-            <el-option
-              v-for="(item, index) in categorys"
-              :key="index"
-              :label="item['zh-cn']"
-              :value="item.id"
-            >
-              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
-              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-            </el-option>
-          </el-select>
-        </el-form-item>
-      </el-col>
-      <el-col :span="6">
-        <el-form-item
-          :label="$t('commodity.technique')"
-          :prop="'techniques[0].id'"
-          :rules="{
-            required: false,
-            message: `${$t('commodity.technique')}${$t('form.noEmpty')}`,
-            trigger: 'change',
-          }"
-        >
-          <el-select
-            v-model="form.techniques[0].id"
-            :placeholder="
-              $t('form.selectPlaceholder', { msg: $t('commodity.technique') })
-            "
-            clearable
-          >
-            <el-option
-              v-for="(item, index) in techniques"
-              :key="index"
-              :label="item['zh-cn']"
-              :value="item.id"
-            >
-              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
-              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-            </el-option>
-          </el-select>
-        </el-form-item>
-      </el-col>
-    </el-row>
+
 
     <el-form-item :label="$t('commodity.color.title')">
       <el-row :gutter="10">
@@ -576,31 +847,7 @@
       </el-row>
     </el-form-item>
 
-    <el-form-item>
-      <el-button
-        v-if="isCreate"
-        type="primary"
-        icon="el-icon-circle-plus-outline"
-        @click="onSubmit('form')"
-      >
-        {{ $t('content.create') }}
-      </el-button>
 
-      <el-button
-        v-else
-        type="primary"
-        icon="el-icon-check"
-        @click="onSubmit('form')"
-      >
-        {{ $t('content.update') }}
-      </el-button>
-      <el-button icon="el-icon-check" @click="onMock">
-        {{ $t('content.fill') }}
-      </el-button>
-      <el-button icon="el-icon-circle-close" @click="resetForm('form')">{{
-        $t('content.clear')
-      }}</el-button>
-    </el-form-item>
   </el-form>
 </template>
 <script>
@@ -611,50 +858,128 @@ export default {
     this.isCreate = true
     this.reset()
 
-    // 形状
-    const optionsShape = await this.$axios.$get(
-      `/api/admin/commodity/options/shape`
-    )
-    if (optionsShape.data && optionsShape.data.length) {
-      // this.options.shapes = optionsShape.data
-      this.$store.commit('addCommodityOpitons', {
-        type: 'shapes',
-        data: optionsShape.data,
-      })
-    }
-    // 主题
-    const optionsTheme = await this.$axios.$get(
-      `/api/admin/commodity/options/theme`
-    )
-    if (optionsTheme.data && optionsTheme.data.length) {
-      // this.options.themes = optionsTheme.data
-      this.$store.commit('addCommodityOpitons', {
-        type: 'themes',
-        data: optionsTheme.data,
-      })
-    }
-    // 类别
+    // "category": "类别",
     const optionsCategory = await this.$axios.$get(
-      `/api/admin/commodity/options/category`
+      `/api/admin/commodity/retrieve/category`
     )
     if (optionsCategory.data && optionsCategory.data.length) {
-      // this.options.categorys = optionsCategory.data
       this.$store.commit('addCommodityOpitons', {
         type: 'categorys',
         data: optionsCategory.data,
       })
     }
-    // 手法
+    // "classification": "分类",
+    const optionsClassification = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/classification`
+    )
+    if (optionsClassification.data && optionsClassification.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'classifications',
+        data: optionsClassification.data,
+      })
+    }
+    // "material": "材质",
+    const optionsMaterial = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/material`
+    )
+    if (optionsMaterial.data && optionsMaterial.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'materials',
+        data: optionsMaterial.data,
+      })
+    }
+    // "model": "款式",
+    const optionsModel = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/model`
+    )
+    if (optionsModel.data && optionsModel.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'models',
+        data: optionsModel.data,
+      })
+    }
+    // "place": "摆放",
+    const optionsPlace = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/place`
+    )
+    if (optionsPlace.data && optionsPlace.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'places',
+        data: optionsPlace.data,
+      })
+    }
+    // "shape": "形状",
+    const optionsShape = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/shape`
+    )
+    if (optionsShape.data && optionsShape.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'shapes',
+        data: optionsShape.data,
+      })
+    }
+    // "specification": "规格",
+    const optionsSpecification = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/specification`
+    )
+    if (optionsSpecification.data && optionsSpecification.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'specifications',
+        data: optionsSpecification.data,
+      })
+    }
+    // "style": "风格",
+    const optionsStyle = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/style`
+    )
+    if (optionsStyle.data && optionsStyle.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'styles',
+        data: optionsStyle.data,
+      })
+    }
+    // "technique": "手法",
     const optionsTechnique = await this.$axios.$get(
-      `/api/admin/commodity/options/technique`
+      `/api/admin/commodity/retrieve/technique`
     )
     if (optionsTechnique.data && optionsTechnique.data.length) {
-      // this.options.techniques = optionsTechnique.data
       this.$store.commit('addCommodityOpitons', {
         type: 'techniques',
         data: optionsTechnique.data,
       })
     }
+    // "theme": "主题",
+    const optionsTheme = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/theme`
+    )
+    if (optionsTheme.data && optionsTheme.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'themes',
+        data: optionsTheme.data,
+      })
+    }
+    // "type": "类型",
+    const optionsType = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/type`
+    )
+    if (optionsType.data && optionsType.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'types',
+        data: optionsType.data,
+      })
+    }
+    // "use": "用途",
+    const optionsUse = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/use`
+    )
+    if (optionsUse.data && optionsUse.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'uses',
+        data: optionsUse.data,
+      })
+    }
+
+
     // console.log('this.$route.query', this.$route.query)
 
     if (this.$route.query && this.$route.query.commodityId) {
@@ -668,12 +993,6 @@ export default {
 
       if (commodity.success) {
         const commodityForm = Object.assign({}, this.form, commodity.data)
-        // this.form = Object.assign(this.form, commodity.data)
-        // this.form.name = commodity.data.name;
-        // this.form.desc = commodity.data.desc;
-        // this.form.price = commodity.data.price;
-        // this.form.photos = commodity.data.photos;
-        // console.log('commodityForm', commodityForm)
 
         this.form.state = commodityForm.state
         this.form.width = commodityForm.width
@@ -691,7 +1010,6 @@ export default {
         }
 
         if (commodityForm.photos) {
-          // console.log("commodityForm.photos", commodityForm.photos)
           const photos = commodityForm.photos.map((item) => {
             item.url = item.src
             return item
@@ -699,21 +1017,58 @@ export default {
           this.form.photos = photos
         }
 
-        if (commodityForm.shapes) {
-          this.form.shapes = commodityForm.shapes
-        }
-
-        if (commodityForm.themes) {
-          this.form.themes = commodityForm.themes
-        }
-
+        // "category": "类别",
         if (commodityForm.categorys) {
           this.form.categorys = commodityForm.categorys
         }
-
+        // "classification": "分类",
+        if (commodityForm.classifications) {
+          this.form.classifications = commodityForm.classifications
+        }
+        // "material": "材质",
+        if (commodityForm.materials) {
+          this.form.materials = commodityForm.materials
+        }
+        // "model": "款式",
+        if (commodityForm.models) {
+          this.form.models = commodityForm.models
+        }
+        // "place": "摆放",
+        if (commodityForm.places) {
+          this.form.places = commodityForm.places
+        }
+        // "shape": "形状",
+        if (commodityForm.shapes) {
+          this.form.shapes = commodityForm.shapes
+        }
+        // "specification": "规格",
+        if (commodityForm.specifications) {
+          this.form.specifications = commodityForm.specifications
+        }
+        // "style": "风格",
+        if (commodityForm.styles) {
+          this.form.styles = commodityForm.styles
+        }
+        // "technique": "手法",
         if (commodityForm.techniques) {
           this.form.techniques = commodityForm.techniques
         }
+        // "theme": "主题",
+        if (commodityForm.themes) {
+          this.form.themes = commodityForm.themes
+        }
+        // "type": "类型",
+        if (commodityForm.types) {
+          this.form.types = commodityForm.types
+        }
+        // "use": "用途",
+        if (commodityForm.uses) {
+          this.form.uses = commodityForm.uses
+        }
+
+
+
+
         if (commodityForm.seller) {
           this.form.sellerId = commodityForm.seller.sellerId
         }
@@ -739,17 +1094,53 @@ export default {
     }
   },
   computed: {
-    shapes() {
-      return this.$store.state.commodity.options.shapes
-    },
-    themes() {
-      return this.$store.state.commodity.options.themes
-    },
+    // "category": "类别",
     categorys() {
       return this.$store.state.commodity.options.categorys
     },
+    // "classification": "分类",
+    classifications() {
+      return this.$store.state.commodity.options.classifications
+    },
+    // "material": "材质",
+    materials() {
+      return this.$store.state.commodity.options.materials
+    },
+    // "model": "款式",
+    models() {
+      return this.$store.state.commodity.options.models
+    },
+    // "place": "摆放",
+    places() {
+      return this.$store.state.commodity.options.places
+    },
+    // "shape": "形状",
+    shapes() {
+      return this.$store.state.commodity.options.shapes
+    },
+    // "specification": "规格",
+    specifications() {
+      return this.$store.state.commodity.options.specifications
+    },
+    // "style": "风格",
+    styles() {
+      return this.$store.state.commodity.options.styles
+    },
+    // "technique": "手法",
     techniques() {
       return this.$store.state.commodity.options.techniques
+    },
+    // "theme": "主题",
+    themes() {
+      return this.$store.state.commodity.options.themes
+    },
+    // "type": "类型",
+    types() {
+      return this.$store.state.commodity.options.types
+    },
+    // "use": "用途",
+    uses() {
+      return this.$store.state.commodity.options.uses
     },
   },
   watch: {
@@ -819,10 +1210,18 @@ export default {
 
     onMock() {
       if (
-        !this.shapes.length ||
-        !this.themes.length ||
         !this.categorys.length ||
-        !this.techniques.length
+        !this.classifications.length ||
+        !this.materials.length ||
+        !this.models.length ||
+        !this.places.length ||
+        !this.shapes.length ||
+        !this.specifications.length ||
+        !this.styles.length ||
+        !this.techniques.length ||
+        !this.themes.length ||
+        !this.types.length ||
+        !this.uses.length
       ) {
         this.$message({
           showClose: true,
@@ -854,20 +1253,55 @@ export default {
           // 'fr-fr': Mock.mock('@integer(60, 100)'),
           'es-es': Mock.mock('@integer(60, 100)'),
         },
-        shapes: [
-          this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)],
-        ],
-        themes: [
-          this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)],
-        ],
+        // "category": "类别",
         categorys: [
           this.categorys[Mock.mock(`@integer(0,${this.categorys.length - 1})`)],
         ],
-        techniques: [
-          this.techniques[
-            Mock.mock(`@integer(0,${this.techniques.length - 1})`)
-          ],
+        // "classification": "分类",
+        classifications: [
+          this.classifications[Mock.mock(`@integer(0,${this.classifications.length - 1})`)],
         ],
+        // "material": "材质",
+        materials: [
+          this.materials[Mock.mock(`@integer(0,${this.materials.length - 1})`)],
+        ],
+        // "model": "款式",
+        models: [
+          this.models[Mock.mock(`@integer(0,${this.models.length - 1})`)],
+        ],
+        // "place": "摆放",
+        places: [
+          this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)],
+        ],
+        // "shape": "形状",
+        shapes: [
+          this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)],
+        ],
+        // "specification": "规格",
+        specifications: [
+          this.specifications[Mock.mock(`@integer(0,${this.specifications.length - 1})`)],
+        ],
+        // "style": "风格",
+        styles: [
+          this.styles[Mock.mock(`@integer(0,${this.styles.length - 1})`)],
+        ],
+        // "technique": "手法",
+        techniques: [
+          this.techniques[Mock.mock(`@integer(0,${this.techniques.length - 1})`)],
+        ],
+        // "theme": "主题",
+        themes: [
+          this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)],
+        ],
+        // "type": "类型",
+        types: [
+          this.types[Mock.mock(`@integer(0,${this.types.length - 1})`)],
+        ],
+        // "use": "用途",
+        uses: [
+          this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)],
+        ],
+
         photos: [],
         colors: [
           {
@@ -923,26 +1357,7 @@ export default {
           // 'fr-fr': '',
           'es-es': '',
         },
-        shapes: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
-        themes: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // "category": "类别",
         categorys: [
           {
             id: '',
@@ -953,6 +1368,84 @@ export default {
             'es-es': '',
           },
         ],
+        // "classification": "分类",
+        classifications: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "material": "材质",
+        materials: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "model": "款式",
+        models: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "place": "摆放",
+        places: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "shape": "形状",
+        shapes: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "specification": "规格",
+        specifications: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "style": "风格",
+        styles: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "technique": "手法",
         techniques: [
           {
             id: '',
@@ -963,6 +1456,40 @@ export default {
             'es-es': '',
           },
         ],
+        // "theme": "主题",
+        themes: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "type": "类型",
+        types: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "use": "用途",
+        uses: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+
         photos: [],
         colors: [
           {

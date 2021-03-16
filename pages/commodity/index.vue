@@ -651,25 +651,25 @@ export default {
   },
   async fetch() {
     // 形状
-    const optionsShape = await this.$axios.$get(`/api/admin/commodity/options/shape`)
+    const optionsShape = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`)
     if (optionsShape.data && optionsShape.data.length) {
       this.options.shapes = optionsShape.data
     }
     // 主题
-    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/options/theme`)
+    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`)
     if (optionsTheme.data && optionsTheme.data.length) {
       this.options.themes = optionsTheme.data
     }
     // 类别
     const optionsCategory = await this.$axios.$get(
-      `/api/admin/commodity/options/category`
+      `/api/admin/commodity/retrieve/category`
     )
     if (optionsCategory.data && optionsCategory.data.length) {
       this.options.categorys = optionsCategory.data
     }
     // 手法
     const optionsTechnique = await this.$axios.$get(
-      `/api/admin/commodity/options/technique`
+      `/api/admin/commodity/retrieve/technique`
     )
     if (optionsTechnique.data && optionsTechnique.data.length) {
       this.options.techniques = optionsTechnique.data

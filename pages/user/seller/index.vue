@@ -50,7 +50,7 @@
     </el-form>
 
     <el-table :data="user" border>
-      <el-table-column prop="sellerId" :label="$t('user.sellerId')" width="200">
+      <el-table-column prop="sellerId" :label="$t('user.seller.id')" width="200">
       </el-table-column>
       <el-table-column prop="user.avatar" :label="$t('user.avatar')" width="200">
         <template slot-scope="scope">

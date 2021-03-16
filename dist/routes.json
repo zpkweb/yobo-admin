@@ -9,18 +9,15 @@
         "name": "auth-identityList___zh-cn",
         "path": "identityList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/identityList.vue",
-        "chunkName": "pages/auth/identityList",
-        "_name": "_10929447"
+        "chunkName": "pages/auth/identityList"
       },
       {
         "name": "auth-type___zh-cn",
         "path": ":type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/_type.vue",
-        "chunkName": "pages/auth/_type",
-        "_name": "_2ba4705e"
+        "chunkName": "pages/auth/_type"
       }
-    ],
-    "_name": "_a83835d8"
+    ]
   },
   {
     "path": "/commodity",
@@ -31,53 +28,45 @@
         "name": "commodity___zh-cn",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/index.vue",
-        "chunkName": "pages/commodity/index",
-        "_name": "_0bed34b4"
+        "chunkName": "pages/commodity/index"
       },
       {
         "name": "commodity-create___zh-cn",
         "path": "create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/create.vue",
-        "chunkName": "pages/commodity/create",
-        "_name": "_cd24a6ec"
+        "chunkName": "pages/commodity/create"
       },
       {
         "name": "commodity-options-type___zh-cn",
         "path": "options/:type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/options/_type.vue",
-        "chunkName": "pages/commodity/options/_type",
-        "_name": "_1ef38c4a"
+        "chunkName": "pages/commodity/options/_type"
       }
-    ],
-    "_name": "_ddf1321e"
+    ]
   },
   {
     "name": "index___en-us",
     "path": "/en-us",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_4c03d416"
+    "chunkName": "pages/index"
   },
   {
     "name": "index___es-es",
     "path": "/es-es",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_4c03d416"
+    "chunkName": "pages/index"
   },
   {
     "name": "index___ja-jp",
     "path": "/ja-jp",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_4c03d416"
+    "chunkName": "pages/index"
   },
   {
     "name": "login___zh-cn",
     "path": "/login",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/login/index.vue",
-    "chunkName": "pages/login/index",
-    "_name": "_4f3b27f0"
+    "chunkName": "pages/login/index"
   },
   {
     "name": "page___zh-cn",
@@ -89,11 +78,9 @@
         "name": "page-banner___zh-cn",
         "path": "banner",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/page/banner.vue",
-        "chunkName": "pages/page/banner",
-        "_name": "_9abde820"
+        "chunkName": "pages/page/banner"
       }
-    ],
-    "_name": "_ec80c30a"
+    ]
   },
   {
     "path": "/user",
@@ -104,53 +91,45 @@
         "name": "user___zh-cn",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/index.vue",
-        "chunkName": "pages/user/index",
-        "_name": "_44414afa"
+        "chunkName": "pages/user/index"
       },
       {
         "name": "user-seller___zh-cn",
         "path": "seller",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/index.vue",
-        "chunkName": "pages/user/seller/index",
-        "_name": "_a0438d6c"
+        "chunkName": "pages/user/seller/index"
       },
       {
         "name": "user-seller-apply___zh-cn",
         "path": "seller/apply",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/apply.vue",
-        "chunkName": "pages/user/seller/apply",
-        "_name": "_6447e5e6"
+        "chunkName": "pages/user/seller/apply"
       },
       {
         "name": "user-seller-applyList___zh-cn",
         "path": "seller/applyList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/applyList.vue",
-        "chunkName": "pages/user/seller/applyList",
-        "_name": "_0aa924a4"
+        "chunkName": "pages/user/seller/applyList"
       },
       {
         "name": "user-seller-create___zh-cn",
         "path": "seller/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/create.vue",
-        "chunkName": "pages/user/seller/create",
-        "_name": "_739d3ab4"
+        "chunkName": "pages/user/seller/create"
       },
       {
         "name": "user-identity___zh-cn",
         "path": ":identity",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/index.vue",
-        "chunkName": "pages/user/_identity/index",
-        "_name": "_9d3a04f0"
+        "chunkName": "pages/user/_identity/index"
       },
       {
         "name": "user-identity-create___zh-cn",
         "path": ":identity/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/create.vue",
-        "chunkName": "pages/user/_identity/create",
-        "_name": "_ba9e0394"
+        "chunkName": "pages/user/_identity/create"
       }
-    ],
-    "_name": "_46a329b7"
+    ]
   },
   {
     "name": "auth___en-us",
@@ -162,18 +141,15 @@
         "name": "auth-identityList___en-us",
         "path": "identityList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/identityList.vue",
-        "chunkName": "pages/auth/identityList",
-        "_name": "_10929447"
+        "chunkName": "pages/auth/identityList"
       },
       {
         "name": "auth-type___en-us",
         "path": ":type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/_type.vue",
-        "chunkName": "pages/auth/_type",
-        "_name": "_2ba4705e"
+        "chunkName": "pages/auth/_type"
       }
-    ],
-    "_name": "_a83835d8"
+    ]
   },
   {
     "path": "/en-us/commodity",
@@ -184,32 +160,27 @@
         "name": "commodity___en-us",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/index.vue",
-        "chunkName": "pages/commodity/index",
-        "_name": "_0bed34b4"
+        "chunkName": "pages/commodity/index"
       },
       {
         "name": "commodity-create___en-us",
         "path": "create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/create.vue",
-        "chunkName": "pages/commodity/create",
-        "_name": "_cd24a6ec"
+        "chunkName": "pages/commodity/create"
       },
       {
         "name": "commodity-options-type___en-us",
         "path": "options/:type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/options/_type.vue",
-        "chunkName": "pages/commodity/options/_type",
-        "_name": "_1ef38c4a"
+        "chunkName": "pages/commodity/options/_type"
       }
-    ],
-    "_name": "_ddf1321e"
+    ]
   },
   {
     "name": "login___en-us",
     "path": "/en-us/login",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/login/index.vue",
-    "chunkName": "pages/login/index",
-    "_name": "_4f3b27f0"
+    "chunkName": "pages/login/index"
   },
   {
     "name": "page___en-us",
@@ -221,11 +192,9 @@
         "name": "page-banner___en-us",
         "path": "banner",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/page/banner.vue",
-        "chunkName": "pages/page/banner",
-        "_name": "_9abde820"
+        "chunkName": "pages/page/banner"
       }
-    ],
-    "_name": "_ec80c30a"
+    ]
   },
   {
     "path": "/en-us/user",
@@ -236,53 +205,45 @@
         "name": "user___en-us",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/index.vue",
-        "chunkName": "pages/user/index",
-        "_name": "_44414afa"
+        "chunkName": "pages/user/index"
       },
       {
         "name": "user-seller___en-us",
         "path": "seller",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/index.vue",
-        "chunkName": "pages/user/seller/index",
-        "_name": "_a0438d6c"
+        "chunkName": "pages/user/seller/index"
       },
       {
         "name": "user-seller-apply___en-us",
         "path": "seller/apply",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/apply.vue",
-        "chunkName": "pages/user/seller/apply",
-        "_name": "_6447e5e6"
+        "chunkName": "pages/user/seller/apply"
       },
       {
         "name": "user-seller-applyList___en-us",
         "path": "seller/applyList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/applyList.vue",
-        "chunkName": "pages/user/seller/applyList",
-        "_name": "_0aa924a4"
+        "chunkName": "pages/user/seller/applyList"
       },
       {
         "name": "user-seller-create___en-us",
         "path": "seller/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/create.vue",
-        "chunkName": "pages/user/seller/create",
-        "_name": "_739d3ab4"
+        "chunkName": "pages/user/seller/create"
       },
       {
         "name": "user-identity___en-us",
         "path": ":identity",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/index.vue",
-        "chunkName": "pages/user/_identity/index",
-        "_name": "_9d3a04f0"
+        "chunkName": "pages/user/_identity/index"
       },
       {
         "name": "user-identity-create___en-us",
         "path": ":identity/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/create.vue",
-        "chunkName": "pages/user/_identity/create",
-        "_name": "_ba9e0394"
+        "chunkName": "pages/user/_identity/create"
       }
-    ],
-    "_name": "_46a329b7"
+    ]
   },
   {
     "name": "auth___es-es",
@@ -294,18 +255,15 @@
         "name": "auth-identityList___es-es",
         "path": "identityList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/identityList.vue",
-        "chunkName": "pages/auth/identityList",
-        "_name": "_10929447"
+        "chunkName": "pages/auth/identityList"
       },
       {
         "name": "auth-type___es-es",
         "path": ":type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/_type.vue",
-        "chunkName": "pages/auth/_type",
-        "_name": "_2ba4705e"
+        "chunkName": "pages/auth/_type"
       }
-    ],
-    "_name": "_a83835d8"
+    ]
   },
   {
     "path": "/es-es/commodity",
@@ -316,32 +274,27 @@
         "name": "commodity___es-es",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/index.vue",
-        "chunkName": "pages/commodity/index",
-        "_name": "_0bed34b4"
+        "chunkName": "pages/commodity/index"
       },
       {
         "name": "commodity-create___es-es",
         "path": "create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/create.vue",
-        "chunkName": "pages/commodity/create",
-        "_name": "_cd24a6ec"
+        "chunkName": "pages/commodity/create"
       },
       {
         "name": "commodity-options-type___es-es",
         "path": "options/:type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/options/_type.vue",
-        "chunkName": "pages/commodity/options/_type",
-        "_name": "_1ef38c4a"
+        "chunkName": "pages/commodity/options/_type"
       }
-    ],
-    "_name": "_ddf1321e"
+    ]
   },
   {
     "name": "login___es-es",
     "path": "/es-es/login",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/login/index.vue",
-    "chunkName": "pages/login/index",
-    "_name": "_4f3b27f0"
+    "chunkName": "pages/login/index"
   },
   {
     "name": "page___es-es",
@@ -353,11 +306,9 @@
         "name": "page-banner___es-es",
         "path": "banner",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/page/banner.vue",
-        "chunkName": "pages/page/banner",
-        "_name": "_9abde820"
+        "chunkName": "pages/page/banner"
       }
-    ],
-    "_name": "_ec80c30a"
+    ]
   },
   {
     "path": "/es-es/user",
@@ -368,53 +319,45 @@
         "name": "user___es-es",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/index.vue",
-        "chunkName": "pages/user/index",
-        "_name": "_44414afa"
+        "chunkName": "pages/user/index"
       },
       {
         "name": "user-seller___es-es",
         "path": "seller",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/index.vue",
-        "chunkName": "pages/user/seller/index",
-        "_name": "_a0438d6c"
+        "chunkName": "pages/user/seller/index"
       },
       {
         "name": "user-seller-apply___es-es",
         "path": "seller/apply",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/apply.vue",
-        "chunkName": "pages/user/seller/apply",
-        "_name": "_6447e5e6"
+        "chunkName": "pages/user/seller/apply"
       },
       {
         "name": "user-seller-applyList___es-es",
         "path": "seller/applyList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/applyList.vue",
-        "chunkName": "pages/user/seller/applyList",
-        "_name": "_0aa924a4"
+        "chunkName": "pages/user/seller/applyList"
       },
       {
         "name": "user-seller-create___es-es",
         "path": "seller/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/create.vue",
-        "chunkName": "pages/user/seller/create",
-        "_name": "_739d3ab4"
+        "chunkName": "pages/user/seller/create"
       },
       {
         "name": "user-identity___es-es",
         "path": ":identity",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/index.vue",
-        "chunkName": "pages/user/_identity/index",
-        "_name": "_9d3a04f0"
+        "chunkName": "pages/user/_identity/index"
       },
       {
         "name": "user-identity-create___es-es",
         "path": ":identity/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/create.vue",
-        "chunkName": "pages/user/_identity/create",
-        "_name": "_ba9e0394"
+        "chunkName": "pages/user/_identity/create"
       }
-    ],
-    "_name": "_46a329b7"
+    ]
   },
   {
     "name": "auth___ja-jp",
@@ -426,18 +369,15 @@
         "name": "auth-identityList___ja-jp",
         "path": "identityList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/identityList.vue",
-        "chunkName": "pages/auth/identityList",
-        "_name": "_10929447"
+        "chunkName": "pages/auth/identityList"
       },
       {
         "name": "auth-type___ja-jp",
         "path": ":type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth/_type.vue",
-        "chunkName": "pages/auth/_type",
-        "_name": "_2ba4705e"
+        "chunkName": "pages/auth/_type"
       }
-    ],
-    "_name": "_a83835d8"
+    ]
   },
   {
     "path": "/ja-jp/commodity",
@@ -448,32 +388,27 @@
         "name": "commodity___ja-jp",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/index.vue",
-        "chunkName": "pages/commodity/index",
-        "_name": "_0bed34b4"
+        "chunkName": "pages/commodity/index"
       },
       {
         "name": "commodity-create___ja-jp",
         "path": "create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/create.vue",
-        "chunkName": "pages/commodity/create",
-        "_name": "_cd24a6ec"
+        "chunkName": "pages/commodity/create"
       },
       {
         "name": "commodity-options-type___ja-jp",
         "path": "options/:type?",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/options/_type.vue",
-        "chunkName": "pages/commodity/options/_type",
-        "_name": "_1ef38c4a"
+        "chunkName": "pages/commodity/options/_type"
       }
-    ],
-    "_name": "_ddf1321e"
+    ]
   },
   {
     "name": "login___ja-jp",
     "path": "/ja-jp/login",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/login/index.vue",
-    "chunkName": "pages/login/index",
-    "_name": "_4f3b27f0"
+    "chunkName": "pages/login/index"
   },
   {
     "name": "page___ja-jp",
@@ -485,11 +420,9 @@
         "name": "page-banner___ja-jp",
         "path": "banner",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/page/banner.vue",
-        "chunkName": "pages/page/banner",
-        "_name": "_9abde820"
+        "chunkName": "pages/page/banner"
       }
-    ],
-    "_name": "_ec80c30a"
+    ]
   },
   {
     "path": "/ja-jp/user",
@@ -500,59 +433,50 @@
         "name": "user___ja-jp",
         "path": "",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/index.vue",
-        "chunkName": "pages/user/index",
-        "_name": "_44414afa"
+        "chunkName": "pages/user/index"
       },
       {
         "name": "user-seller___ja-jp",
         "path": "seller",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/index.vue",
-        "chunkName": "pages/user/seller/index",
-        "_name": "_a0438d6c"
+        "chunkName": "pages/user/seller/index"
       },
       {
         "name": "user-seller-apply___ja-jp",
         "path": "seller/apply",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/apply.vue",
-        "chunkName": "pages/user/seller/apply",
-        "_name": "_6447e5e6"
+        "chunkName": "pages/user/seller/apply"
       },
       {
         "name": "user-seller-applyList___ja-jp",
         "path": "seller/applyList",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/applyList.vue",
-        "chunkName": "pages/user/seller/applyList",
-        "_name": "_0aa924a4"
+        "chunkName": "pages/user/seller/applyList"
       },
       {
         "name": "user-seller-create___ja-jp",
         "path": "seller/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/seller/create.vue",
-        "chunkName": "pages/user/seller/create",
-        "_name": "_739d3ab4"
+        "chunkName": "pages/user/seller/create"
       },
       {
         "name": "user-identity___ja-jp",
         "path": ":identity",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/index.vue",
-        "chunkName": "pages/user/_identity/index",
-        "_name": "_9d3a04f0"
+        "chunkName": "pages/user/_identity/index"
       },
       {
         "name": "user-identity-create___ja-jp",
         "path": ":identity/create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/create.vue",
-        "chunkName": "pages/user/_identity/create",
-        "_name": "_ba9e0394"
+        "chunkName": "pages/user/_identity/create"
       }
-    ],
-    "_name": "_46a329b7"
+    ]
   },
   {
     "name": "index___zh-cn",
     "path": "/",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_4c03d416"
+    "chunkName": "pages/index"
   }
 ]
