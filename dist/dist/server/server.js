@@ -48106,46 +48106,52 @@ const state = () => ({
         level: '1-2-4'
       }, {
         icon: 'el-icon-circle-plus-outline',
+        // name: '艺术品瑞物',
+        name: 'menu.commodity.options.ruiwu',
+        path: '/commodity/options/ruiwu',
+        level: '1-2-5'
+      }, {
+        icon: 'el-icon-circle-plus-outline',
         // name: '艺术品形状',
         name: 'menu.commodity.options.shape',
         path: '/commodity/options/shape',
-        level: '1-2-5'
+        level: '1-2-6'
       }, {
         icon: 'el-icon-circle-plus-outline',
         // name: '艺术品规格',
         name: 'menu.commodity.options.specification',
         path: '/commodity/options/specification',
-        level: '1-2-6'
+        level: '1-2-7'
       }, {
         icon: 'el-icon-circle-plus-outline',
         // name: '艺术品风格',
         name: 'menu.commodity.options.style',
         path: '/commodity/options/style',
-        level: '1-2-7'
+        level: '1-2-8'
       }, {
         icon: 'el-icon-circle-plus-outline',
         // name: '艺术品手法',
         name: 'menu.commodity.options.technique',
         path: '/commodity/options/technique',
-        level: '1-2-8'
+        level: '1-2-9'
       }, {
         icon: 'el-icon-circle-plus-outline',
         // name: '艺术品主题',
         name: 'menu.commodity.options.theme',
         path: '/commodity/options/theme',
-        level: '1-2-9'
+        level: '1-2-10'
       }, {
         icon: 'el-icon-circle-plus-outline',
         // name: '艺术品类型',
         name: 'menu.commodity.options.type',
         path: '/commodity/options/type',
-        level: '1-2-10'
+        level: '1-2-11'
       }, {
         icon: 'el-icon-circle-plus-outline',
         // name: '艺术品用途',
         name: 'menu.commodity.options.use',
         path: '/commodity/options/use',
-        level: '1-2-11'
+        level: '1-2-12'
       }],
       level: '1-2'
     }],
@@ -48199,10 +48205,19 @@ const state = () => ({
   identityMenu: [],
   commodity: {
     options: {
-      shapes: [],
-      themes: [],
       categorys: [],
-      techniques: []
+      classifications: [],
+      materials: [],
+      models: [],
+      places: [],
+      ruiwus: [],
+      shapes: [],
+      specifications: [],
+      styles: [],
+      techniques: [],
+      themes: [],
+      types: [],
+      uses: []
     }
   },
   identityList: [{

@@ -8,7 +8,7 @@ exports.modules = {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=template&id=66783c3e&scoped=true&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=template&id=1dbfe1ff&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-form',{ref:"form",attrs:{"model":_vm.form,"label-width":"108px"}},[_c('el-form-item',[(_vm.isCreate)?_c('el-button',{attrs:{"type":"primary","icon":"el-icon-circle-plus-outline"},on:{"click":function($event){return _vm.onSubmit('form')}}},[_vm._v("\n      "+_vm._s(_vm.$t('content.create'))+"\n    ")]):_c('el-button',{attrs:{"type":"primary","icon":"el-icon-check"},on:{"click":function($event){return _vm.onSubmit('form')}}},[_vm._v("\n      "+_vm._s(_vm.$t('content.update'))+"\n    ")]),_vm._v(" "),_c('el-button',{attrs:{"icon":"el-icon-check"},on:{"click":_vm.onMock}},[_vm._v("\n      "+_vm._s(_vm.$t('content.fill'))+"\n    ")]),_vm._v(" "),_c('el-button',{attrs:{"icon":"el-icon-circle-close"},on:{"click":function($event){return _vm.resetForm('form')}}},[_vm._v(_vm._s(_vm.$t('content.clear')))])],1),_vm._v(" "),_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":6}},[_c('el-form-item',{attrs:{"label":_vm.$t('langname', { lang: _vm.$t('lang.zh'), name: _vm.$t('commodity.name') }),"prop":'name.zh-cn',"rules":{
           required: true,
           message: ("" + (_vm.$t('lang.zh')) + (_vm.$t('commodity.name')) + (_vm.$t(
@@ -121,7 +121,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       required: false,
       message: ("" + (_vm.$t('commodity.place')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-select',{attrs:{"placeholder":_vm.$t('form.selectPlaceholder', { msg: _vm.$t('commodity.place') }),"clearable":""},model:{value:(_vm.form.places[0].id),callback:function ($$v) {_vm.$set(_vm.form.places[0], "id", $$v)},expression:"form.places[0].id"}},_vm._l((_vm.places),function(item,index){return _c('el-option',{key:index,attrs:{"label":item['zh-cn'],"value":item.id}},[_c('span',[_vm._v(_vm._s(_vm.$t('lang.zh'))+"："+_vm._s(item['zh-cn'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.en'))+"："+_vm._s(item['en-us'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.ja'))+"："+_vm._s(item['ja-jp'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.es'))+"："+_vm._s(item['es-es']))])])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.shape'),"prop":'shapes[0].id',"rules":{
+    }}},[_c('el-select',{attrs:{"placeholder":_vm.$t('form.selectPlaceholder', { msg: _vm.$t('commodity.place') }),"clearable":""},model:{value:(_vm.form.places[0].id),callback:function ($$v) {_vm.$set(_vm.form.places[0], "id", $$v)},expression:"form.places[0].id"}},_vm._l((_vm.places),function(item,index){return _c('el-option',{key:index,attrs:{"label":item['zh-cn'],"value":item.id}},[_c('span',[_vm._v(_vm._s(_vm.$t('lang.zh'))+"："+_vm._s(item['zh-cn'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.en'))+"："+_vm._s(item['en-us'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.ja'))+"："+_vm._s(item['ja-jp'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.es'))+"："+_vm._s(item['es-es']))])])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.ruiwu'),"prop":'ruiwus[0].id',"rules":{
+      required: false,
+      message: ("" + (_vm.$t('commodity.ruiwu')) + (_vm.$t('form.noEmpty'))),
+      trigger: 'change',
+    }}},[_c('el-select',{attrs:{"placeholder":_vm.$t('form.selectPlaceholder', { msg: _vm.$t('commodity.ruiwu') }),"clearable":""},model:{value:(_vm.form.ruiwus[0].id),callback:function ($$v) {_vm.$set(_vm.form.ruiwus[0], "id", $$v)},expression:"form.ruiwus[0].id"}},_vm._l((_vm.ruiwus),function(item,index){return _c('el-option',{key:index,attrs:{"label":item['zh-cn'],"value":item.id}},[_c('span',[_vm._v(_vm._s(_vm.$t('lang.zh'))+"："+_vm._s(item['zh-cn'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.en'))+"："+_vm._s(item['en-us'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.ja'))+"："+_vm._s(item['ja-jp'])+"，")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.$t('lang.es'))+"："+_vm._s(item['es-es']))])])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.shape'),"prop":'shapes[0].id',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.shape')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
@@ -157,13 +161,44 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/commodity/create.vue?vue&type=template&id=66783c3e&scoped=true&
+// CONCATENATED MODULE: ./pages/commodity/create.vue?vue&type=template&id=1dbfe1ff&scoped=true&
 
 // EXTERNAL MODULE: external "mockjs"
 var external_mockjs_ = __webpack_require__(116);
 var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs_);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1069,6 +1104,16 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
         type: 'places',
         data: optionsPlace.data
       });
+    } // "ruiwu": "瑞物",
+
+
+    const optionsRuiwu = await this.$axios.$get(`/api/admin/commodity/retrieve/ruiwu`);
+
+    if (optionsRuiwu.data && optionsRuiwu.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'ruiwus',
+        data: optionsRuiwu.data
+      });
     } // "shape": "形状",
 
 
@@ -1200,6 +1245,11 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
 
         if (commodityForm.places) {
           this.form.places = commodityForm.places;
+        } // "ruiwu": "瑞物",
+
+
+        if (commodityForm.ruiwus) {
+          this.form.ruiwus = commodityForm.ruiwus;
         } // "shape": "形状",
 
 
@@ -1286,6 +1336,11 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
     // "place": "摆放",
     places() {
       return this.$store.state.commodity.options.places;
+    },
+
+    // "ruiwu": "瑞物",
+    ruiwus() {
+      return this.$store.state.commodity.options.ruiwus;
     },
 
     // "shape": "形状",
@@ -1383,7 +1438,7 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
     },
 
     onMock() {
-      if (!this.categorys.length || !this.classifications.length || !this.materials.length || !this.models.length || !this.places.length || !this.shapes.length || !this.specifications.length || !this.styles.length || !this.techniques.length || !this.themes.length || !this.types.length || !this.uses.length) {
+      if (!this.categorys.length || !this.classifications.length || !this.materials.length || !this.models.length || !this.places.length || !this.ruiwus.length || !this.shapes.length || !this.specifications.length || !this.styles.length || !this.techniques.length || !this.themes.length || !this.types.length || !this.uses.length) {
         this.$message({
           showClose: true,
           message: '请先添加艺术品选项',
@@ -1425,6 +1480,8 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
         models: [this.models[external_mockjs_default.a.mock(`@integer(0,${this.models.length - 1})`)]],
         // "place": "摆放",
         places: [this.places[external_mockjs_default.a.mock(`@integer(0,${this.places.length - 1})`)]],
+        // "ruiwu": "瑞物",
+        ruiwus: [this.ruiwus[external_mockjs_default.a.mock(`@integer(0,${this.ruiwus.length - 1})`)]],
         // "shape": "形状",
         shapes: [this.shapes[external_mockjs_default.a.mock(`@integer(0,${this.shapes.length - 1})`)]],
         // "specification": "规格",
@@ -1531,6 +1588,15 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
         }],
         // "place": "摆放",
         places: [{
+          id: '',
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': ''
+        }],
+        // "ruiwu": "瑞物",
+        ruiwus: [{
           id: '',
           'zh-cn': '',
           'en-us': '',
@@ -1660,7 +1726,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   injectStyles,
-  "66783c3e",
+  "1dbfe1ff",
   "d8dc875a"
   
 )
