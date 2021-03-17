@@ -548,6 +548,37 @@
         </el-option>
       </el-select>
     </el-form-item>
+    <!-- "ruiwu": "瑞物", -->
+    <el-form-item
+      :label="$t('commodity.ruiwu')"
+      :prop="'ruiwus[0].id'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.ruiwu')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-select
+        v-model="form.ruiwus[0].id"
+        :placeholder="
+          $t('form.selectPlaceholder', { msg: $t('commodity.ruiwu') })
+        "
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in ruiwus"
+          :key="index"
+          :label="item['zh-cn']"
+          :value="item.id"
+        >
+          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
+          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
+          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
+          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
+          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
+        </el-option>
+      </el-select>
+    </el-form-item>
     <!-- "shape": "形状", -->
     <el-form-item
       :label="$t('commodity.shape')"
@@ -908,6 +939,16 @@ export default {
         data: optionsPlace.data,
       })
     }
+    // "ruiwu": "瑞物",
+    const optionsRuiwu = await this.$axios.$get(
+      `/api/admin/commodity/retrieve/ruiwu`
+    )
+    if (optionsRuiwu.data && optionsRuiwu.data.length) {
+      this.$store.commit('addCommodityOpitons', {
+        type: 'ruiwus',
+        data: optionsRuiwu.data,
+      })
+    }
     // "shape": "形状",
     const optionsShape = await this.$axios.$get(
       `/api/admin/commodity/retrieve/shape`
@@ -1037,6 +1078,10 @@ export default {
         if (commodityForm.places) {
           this.form.places = commodityForm.places
         }
+        // "ruiwu": "瑞物",
+        if (commodityForm.ruiwus) {
+          this.form.ruiwus = commodityForm.ruiwus
+        }
         // "shape": "形状",
         if (commodityForm.shapes) {
           this.form.shapes = commodityForm.shapes
@@ -1113,6 +1158,10 @@ export default {
     // "place": "摆放",
     places() {
       return this.$store.state.commodity.options.places
+    },
+    // "ruiwu": "瑞物",
+    ruiwus() {
+      return this.$store.state.commodity.options.ruiwus
     },
     // "shape": "形状",
     shapes() {
@@ -1215,6 +1264,7 @@ export default {
         !this.materials.length ||
         !this.models.length ||
         !this.places.length ||
+        !this.ruiwus.length ||
         !this.shapes.length ||
         !this.specifications.length ||
         !this.styles.length ||
@@ -1272,6 +1322,10 @@ export default {
         // "place": "摆放",
         places: [
           this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)],
+        ],
+        // "ruiwu": "瑞物",
+        ruiwus: [
+          this.ruiwus[Mock.mock(`@integer(0,${this.ruiwus.length - 1})`)],
         ],
         // "shape": "形状",
         shapes: [
@@ -1403,6 +1457,17 @@ export default {
         ],
         // "place": "摆放",
         places: [
+          {
+            id: '',
+            'zh-cn': '',
+            'en-us': '',
+            'ja-jp': '',
+            // 'fr-fr': '',
+            'es-es': '',
+          },
+        ],
+        // "ruiwu": "瑞物",
+        ruiwus: [
           {
             id: '',
             'zh-cn': '',

@@ -1,11 +1,11 @@
 <template>
   <el-form ref="form" :model="form" label-width="100px" class="form">
     <el-form-item
-      v-for="item in form.optionsExamples"
+      v-for="(item, index) in form.optionsExamples"
       :label="`${$t('content.create')}${optionType[$route.params.type]}${$t(
         'content.example'
       )}`"
-      :key="item['zh-cn']"
+      :key="index"
     >
       <el-row :gutter="20">
         <el-col :span="4">
@@ -49,7 +49,7 @@
       :label="`${optionType[$route.params.type]}${index + 1}`"
       :key="item['zh-cn']"
     > -->
-    <el-form-item v-for="(item, index) in form.options" :key="item['zh-cn']">
+    <el-form-item v-for="(item, index) in form.options" :key="index">
       <el-row :gutter="20">
         <el-col :span="4">
           <el-form-item :prop="'options.' + index + '.img'">
@@ -85,6 +85,9 @@
             </el-input>
           </el-form-item>
         </el-col>
+
+
+
         <el-col :span="3">
           <el-form-item
             :prop="'options.' + index + '.en-us'"
@@ -197,6 +200,7 @@ export default {
         material: this.$t('commodity.material'),
         model: this.$t('commodity.model'),
         place: this.$t('commodity.place'),
+        ruiwu: this.$t('commodity.ruiwu'),
         shape: this.$t('commodity.shape'),
         specification: this.$t('commodity.specification'),
         style: this.$t('commodity.style'),
