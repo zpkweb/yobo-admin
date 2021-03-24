@@ -202,7 +202,7 @@ export default {
     "fr": "francés",
     "es": "Español",
     "price": {
-      "zh": "Moneda de vida",
+      "zh": "Renminbi",
       "en": "Dólar estadounidense",
       "ja": "Guay",
       "fr": "EUR",

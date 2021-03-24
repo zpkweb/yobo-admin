@@ -9,7 +9,7 @@
       <el-form-item :label="$t('user.name')">
         <el-input
           v-model="userSearch.name"
-          :placeholder="$t('form.placeholder', { msg: $t('content.name') })"
+          :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
           clearable
         ></el-input>
       </el-form-item>

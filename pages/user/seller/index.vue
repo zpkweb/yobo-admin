@@ -43,6 +43,13 @@
           clearable
         ></el-input>
       </el-form-item>
+      <el-form-item :label="$t('user.seller.id')">
+        <el-input
+          v-model="userSearch.sellerId"
+          :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })"
+          clearable
+        ></el-input>
+      </el-form-item>
 
       <el-form-item>
         <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{$t('content.search')}}</el-button>
@@ -52,10 +59,9 @@
     <el-table :data="user" border>
       <el-table-column prop="sellerId" :label="$t('user.seller.id')" width="200">
       </el-table-column>
-      <el-table-column prop="user.avatar" :label="$t('user.avatar')" width="200">
+      <el-table-column prop="user.avatar" :label="$t('user.avatar') " width="200">
         <template slot-scope="scope">
             <img :src="scope.row.user.avatar" class="image" />
-
         </template>
       </el-table-column>
       <el-table-column prop="firstname" :label="$t('user.firstName')" width="200">
@@ -143,6 +149,7 @@ export default {
         pageSize: this.pageSize
       }
     })
+
     // this.user = userSearch.data
     let userData = searchData.data.list.map((item) => {
       item.visible = false
@@ -153,6 +160,7 @@ export default {
       // })
       return item
     })
+    console.log("searchData", searchData)
     this.total = searchData.data.total
     this.user = searchData.data.list
   },

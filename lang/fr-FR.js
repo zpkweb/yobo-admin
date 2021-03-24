@@ -178,7 +178,7 @@ export default {
     "fr": "Français",
     "es": "Espagnol",
     "price": {
-      "zh": "Life Coin",
+      "zh": "Renminbi",
       "en": "USD",
       "ja": "Yen japonais",
       "fr": "Euro",
