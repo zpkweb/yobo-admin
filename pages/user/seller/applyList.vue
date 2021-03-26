@@ -61,8 +61,9 @@
       </el-table-column>
       <el-table-column prop="lastname" :label="$t('user.lastName')" width="200">
       </el-table-column>
-      <el-table-column prop="email" :label="$t('user.email')" width="200"> </el-table-column>
-      <el-table-column prop="phone" :label="$t('user.phone')" width="200"> </el-table-column>
+      <el-table-column prop="user.name" :label="$t('user.name')" width="200"> </el-table-column>
+      <el-table-column prop="user.email" :label="$t('user.email')" width="200"> </el-table-column>
+      <el-table-column prop="user.phone" :label="$t('user.phone')" width="200"> </el-table-column>
 
       <el-table-column :formatter="formatterDate" prop="createdDate" :label="$t('content.createdDate')" width="200">
       </el-table-column>

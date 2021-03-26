@@ -88,7 +88,7 @@
       >
       </el-table-column>
 
-      <el-table-column prop="identitys" :label="$t('user.identity')">
+      <!-- <el-table-column prop="identitys" :label="$t('user.identity')">
         <template slot-scope="scope">
           <template v-if="scope.row.isEdit">
             <el-popover
@@ -114,9 +114,7 @@
                   >{{$t('content.define')}}</el-button
                 >
               </div>
-              <!-- <el-button size="mini" type="danger" slot="reference" style="margin-left: 10px"
-                >{{ item.name }}</el-button
-              > -->
+
               <el-button
                 size="mini"
                 type="danger"
@@ -139,7 +137,7 @@
             </el-tag>
           </template>
         </template>
-      </el-table-column>
+      </el-table-column> -->
 
       <el-table-column :label="$t('content.operation')">
         <template slot-scope="scope">
