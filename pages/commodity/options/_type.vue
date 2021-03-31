@@ -56,7 +56,7 @@
             <el-upload
               v-model="item.img"
               class="avatar-uploader"
-              action="/api/upload/images"
+              :action="`${$config.origin}/api/upload/images`"
               :data="{ type: optionType[$route.params.type], index }"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
@@ -504,7 +504,7 @@ export default {
         this.$message.error('上传头像图片大小不能超过 2MB!')
       }
       // return isJPG && isLt2M;
-      return isLt2M
+      // return isLt2M
     },
   },
 }

@@ -4,9 +4,18 @@ export default {
     baseUrl: process.env.ORIGIN || 'http://localhost:7001'
   },
   dev: process.env.NODE_ENV !== 'prod',
+  publicRuntimeConfig: {
+    origin: process.env.ORIGIN ||  'http://localhost:7001'
+  },
   server: {
     port: 3080, // default: 3000
     host: '0.0.0.0' // default: localhost
+  },
+  proxy: {
+    '/api': {
+      target: process.env.ORIGIN || 'http://localhost:7001',
+      changeOrigin: true,
+    }
   },
   // router: {
   //   base: '/admin/'
@@ -61,11 +70,7 @@ export default {
     proxy: true
   },
 
-  proxy: {
-    '/api': {
-      target: process.env.ORIGIN || 'http://localhost:7001'
-    }
-  },
+
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

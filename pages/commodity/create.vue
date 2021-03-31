@@ -825,7 +825,7 @@
     <el-form-item :label="$t('commodity.photo')">
       <el-upload
         :file-list="form.photos"
-        action="/api/upload/images"
+        :action="`${$config.origin}/api/upload/images`"
         :data="{ type: 'commodity' }"
         list-type="picture-card"
         :on-preview="uploadPreview"
@@ -1034,7 +1034,7 @@ export default {
 
       if (commodity.success) {
         const commodityForm = Object.assign({}, this.form, commodity.data)
-
+        console.log("commodityForm", commodityForm)
         this.form.state = commodityForm.state
         this.form.width = commodityForm.width
         this.form.height = commodityForm.height
@@ -1059,55 +1059,55 @@ export default {
         }
 
         // "category": "类别",
-        if (commodityForm.categorys) {
+        if (commodityForm.categorys && commodityForm.categorys.length) {
           this.form.categorys = commodityForm.categorys
         }
         // "classification": "分类",
-        if (commodityForm.classifications) {
+        if (commodityForm.classifications && commodityForm.classifications.length) {
           this.form.classifications = commodityForm.classifications
         }
         // "material": "材质",
-        if (commodityForm.materials) {
+        if (commodityForm.materials && commodityForm.materials.length) {
           this.form.materials = commodityForm.materials
         }
         // "model": "款式",
-        if (commodityForm.models) {
+        if (commodityForm.models && commodityForm.models.length) {
           this.form.models = commodityForm.models
         }
         // "place": "摆放",
-        if (commodityForm.places) {
+        if (commodityForm.places && commodityForm.places.length) {
           this.form.places = commodityForm.places
         }
         // "ruiwu": "瑞物",
-        if (commodityForm.ruiwus) {
+        if (commodityForm.ruiwus && commodityForm.ruiwus.length) {
           this.form.ruiwus = commodityForm.ruiwus
         }
         // "shape": "形状",
-        if (commodityForm.shapes) {
+        if (commodityForm.shapes && commodityForm.shapes.length) {
           this.form.shapes = commodityForm.shapes
         }
         // "specification": "规格",
-        if (commodityForm.specifications) {
+        if (commodityForm.specifications && commodityForm.specifications.length) {
           this.form.specifications = commodityForm.specifications
         }
         // "style": "风格",
-        if (commodityForm.styles) {
+        if (commodityForm.styles && commodityForm.styles.length) {
           this.form.styles = commodityForm.styles
         }
         // "technique": "手法",
-        if (commodityForm.techniques) {
+        if (commodityForm.techniques && commodityForm.techniques.length) {
           this.form.techniques = commodityForm.techniques
         }
         // "theme": "主题",
-        if (commodityForm.themes) {
+        if (commodityForm.themes && commodityForm.themes.length) {
           this.form.themes = commodityForm.themes
         }
         // "type": "类型",
-        if (commodityForm.types) {
+        if (commodityForm.types && commodityForm.types.length) {
           this.form.types = commodityForm.types
         }
         // "use": "用途",
-        if (commodityForm.uses) {
+        if (commodityForm.uses && commodityForm.uses.length) {
           this.form.uses = commodityForm.uses
         }
 
@@ -1119,7 +1119,7 @@ export default {
         }
         // console.log('this.form', this.form)
         // this.form = commodityForm;
-
+        console.log("this.form", this.form)
         this.type = 'edit'
         this.typeText = this.$t('content.update')
         this.isCreate = false

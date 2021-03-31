@@ -761,6 +761,7 @@ export default {
       this.$router.push(this.localePath(`/commodity/create?commodityId=${row.commodityId}`))
     },
     formatterDate(row, column, cellValue, index) {
+
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
     changeCurrentPage(val) {

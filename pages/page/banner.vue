@@ -15,7 +15,6 @@
     <el-dialog :visible.sync="dialogVisible">
       <img width="100%" :src="dialogImageUrl" alt="" />
     </el-dialog> -->
-
     <el-form ref="form" :model="form" >
 
       <el-form-item v-for="(item, index) in form.banners" :key="index">
@@ -28,9 +27,10 @@
           </el-col>
 
           <el-col :span="4">
+
             <el-upload
               class="avatar-uploader"
-              action="/api/upload/images"
+              :action="`${$config.origin}/api/upload/images`"
               :data="{ type: 'banner', index }"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"

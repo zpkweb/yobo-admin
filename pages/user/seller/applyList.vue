@@ -57,18 +57,18 @@
     </el-form>
 
     <el-table :data="seller" border>
-      <el-table-column prop="firstname" :label="$t('user.firstName')" width="200">
+      <el-table-column prop="firstname" :label="$t('user.firstName')">
       </el-table-column>
-      <el-table-column prop="lastname" :label="$t('user.lastName')" width="200">
+      <el-table-column prop="lastname" :label="$t('user.lastName')">
       </el-table-column>
-      <el-table-column prop="user.name" :label="$t('user.name')" width="200"> </el-table-column>
-      <el-table-column prop="user.email" :label="$t('user.email')" width="200"> </el-table-column>
-      <el-table-column prop="user.phone" :label="$t('user.phone')" width="200"> </el-table-column>
+      <el-table-column prop="user.name" :label="$t('user.name')" > </el-table-column>
+      <el-table-column prop="user.email" :label="$t('user.email')"> </el-table-column>
+      <el-table-column prop="user.phone" :label="$t('user.phone')" > </el-table-column>
 
-      <el-table-column :formatter="formatterDate" prop="createdDate" :label="$t('content.createdDate')" width="200">
+      <el-table-column :formatter="formatterDate" prop="user.createdDate" :label="$t('content.createdDate')">
       </el-table-column>
 
-      <el-table-column :label="$t('content.operation')" >
+      <el-table-column :label="$t('content.operation')"  width="300">
         <template slot-scope="scope">
           <el-button size="mini" @click="edit(scope.$index, scope.row)" icon="el-icon-edit"
             >{{$t('content.edit')}}</el-button

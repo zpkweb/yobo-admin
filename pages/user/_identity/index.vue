@@ -193,6 +193,7 @@ export default {
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formatterDate(row, column, cellValue, index) {
+
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
     changeCurrentPage(val) {

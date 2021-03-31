@@ -73,7 +73,7 @@
       <el-table-column prop="user.phone" :label="$t('user.phone')" width="200">
       </el-table-column>
 
-      <el-table-column :formatter="formatterDate" prop="createdDate" :label="$t('content.createdDate')" width="200">
+      <el-table-column :formatter="formatterDate" prop="user.createdDate" :label="$t('content.createdDate')" width="200">
       </el-table-column>
       <el-table-column prop="state" :label="$t('user.state')" width="200"> </el-table-column>
       <el-table-column :label="$t('content.operation')">
@@ -142,7 +142,7 @@ export default {
     }
   },
   async fetch() {
-    const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
+    let searchData = await this.$axios.$get('/api/admin/user/seller/search', {
       params: {
         ...this.userSearch,
         currentPage: this.currentPage,
@@ -151,18 +151,22 @@ export default {
     })
 
     // this.user = userSearch.data
-    let userData = searchData.data.list.map((item) => {
+    let userData = []
+    searchData.data.list.forEach((item) => {
       item.visible = false
       // item.isEdit = false
       // item.identitys = item.identitys.map((item) => {
       //   item.identityVisible = false
       //   return item
       // })
-      return item
+      if(item.user){
+        userData.push(item);
+      }
+
     })
-    console.log("searchData", searchData)
+    // console.log("searchData", userData)
     this.total = searchData.data.total
-    this.user = searchData.data.list
+    this.user = userData
   },
   methods: {
     // 查找用户
