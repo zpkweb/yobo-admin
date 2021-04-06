@@ -153,6 +153,13 @@
     "_name": "_46a329b7"
   },
   {
+    "name": "yobo___zh-cn",
+    "path": "/yobo",
+    "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/yobo.vue",
+    "chunkName": "pages/yobo",
+    "_name": "_0d461fcf"
+  },
+  {
     "name": "auth___en-us",
     "path": "/en-us/auth",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth.vue",
@@ -283,6 +290,13 @@
       }
     ],
     "_name": "_46a329b7"
+  },
+  {
+    "name": "yobo___en-us",
+    "path": "/en-us/yobo",
+    "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/yobo.vue",
+    "chunkName": "pages/yobo",
+    "_name": "_0d461fcf"
   },
   {
     "name": "auth___es-es",
@@ -417,6 +431,13 @@
     "_name": "_46a329b7"
   },
   {
+    "name": "yobo___es-es",
+    "path": "/es-es/yobo",
+    "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/yobo.vue",
+    "chunkName": "pages/yobo",
+    "_name": "_0d461fcf"
+  },
+  {
     "name": "auth___ja-jp",
     "path": "/ja-jp/auth",
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/auth.vue",
@@ -547,6 +568,13 @@
       }
     ],
     "_name": "_46a329b7"
+  },
+  {
+    "name": "yobo___ja-jp",
+    "path": "/ja-jp/yobo",
+    "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/yobo.vue",
+    "chunkName": "pages/yobo",
+    "_name": "_0d461fcf"
   },
   {
     "name": "index___zh-cn",

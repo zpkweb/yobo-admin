@@ -146,6 +146,9 @@ export default {
     "desc": "详情"
   },
   "commodity": {
+    "id": "id",
+    "commodityId": "艺术品id",
+    "sellerId": "艺术家Id",
     "name": "名称",
     "desc": "描述",
     "seller": "艺术家",

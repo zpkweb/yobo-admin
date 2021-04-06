@@ -67,6 +67,7 @@
       :yAxis="$t('chart.commodity')"
       :points='[10, 0, 8, 2, 6, 4, 5, 5]'
       />
+
   </el-main>
 </template>
 <script>

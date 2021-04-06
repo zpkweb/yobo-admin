@@ -22,6 +22,7 @@ const _0aa924a4 = () => interopDefault(import('../pages/user/seller/applyList.vu
 const _739d3ab4 = () => interopDefault(import('../pages/user/seller/create.vue' /* webpackChunkName: "pages/user/seller/create" */))
 const _9d3a04f0 = () => interopDefault(import('../pages/user/_identity/index.vue' /* webpackChunkName: "pages/user/_identity/index" */))
 const _ba9e0394 = () => interopDefault(import('../pages/user/_identity/create.vue' /* webpackChunkName: "pages/user/_identity/create" */))
+const _0d461fcf = () => interopDefault(import('../pages/yobo.vue' /* webpackChunkName: "pages/yobo" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -126,6 +127,10 @@ export const routerOptions = {
       name: "user-identity-create___zh-cn"
     }]
   }, {
+    path: "/yobo",
+    component: _0d461fcf,
+    name: "yobo___zh-cn"
+  }, {
     path: "/en-us/auth",
     component: _a83835d8,
     name: "auth___en-us",
@@ -199,6 +204,10 @@ export const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___en-us"
     }]
+  }, {
+    path: "/en-us/yobo",
+    component: _0d461fcf,
+    name: "yobo___en-us"
   }, {
     path: "/es-es/auth",
     component: _a83835d8,
@@ -274,6 +283,10 @@ export const routerOptions = {
       name: "user-identity-create___es-es"
     }]
   }, {
+    path: "/es-es/yobo",
+    component: _0d461fcf,
+    name: "yobo___es-es"
+  }, {
     path: "/ja-jp/auth",
     component: _a83835d8,
     name: "auth___ja-jp",
@@ -347,6 +360,10 @@ export const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___ja-jp"
     }]
+  }, {
+    path: "/ja-jp/yobo",
+    component: _0d461fcf,
+    name: "yobo___ja-jp"
   }, {
     path: "/",
     component: _4c03d416,

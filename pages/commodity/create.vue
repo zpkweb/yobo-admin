@@ -396,15 +396,21 @@
     <!-- "category": "类别", -->
     <el-form-item
       :label="$t('commodity.category')"
-      :prop="'categorys[0].id'"
+      :prop="'category'"
       :rules="{
         required: false,
         message: `${$t('commodity.category')}${$t('form.noEmpty')}`,
         trigger: 'change',
       }"
     >
-      <el-select
-        v-model="form.categorys[0].id"
+    <el-checkbox-group v-model="form.categorys">
+      <el-checkbox name="type" v-for="(item, index) in categorys" :key="index" :label="item" :value="item['zh-cn']">
+        {{item['zh-cn']}}
+      </el-checkbox>
+    </el-checkbox-group>
+
+      <!-- <el-select
+        v-model="form.categorys"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.category') })
         "
@@ -419,15 +425,14 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "classification": "分类", -->
     <el-form-item
       :label="$t('commodity.classification')"
-      :prop="'classifications[0].id'"
+      :prop="'classifications'"
       :rules="{
         required: false,
         message: `${$t('commodity.classification')}${$t('form.noEmpty')}`,
@@ -435,7 +440,7 @@
       }"
     >
       <el-select
-        v-model="form.classifications[0].id"
+        v-model="form.classifications"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.classification') })
         "
@@ -458,7 +463,7 @@
     <!-- "material": "材质", -->
     <el-form-item
       :label="$t('commodity.material')"
-      :prop="'materials[0].id'"
+      :prop="'materials'"
       :rules="{
         required: false,
         message: `${$t('commodity.material')}${$t('form.noEmpty')}`,
@@ -466,7 +471,7 @@
       }"
     >
       <el-select
-        v-model="form.materials[0].id"
+        v-model="form.materials"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.material') })
         "
@@ -489,7 +494,7 @@
     <!-- "model": "款式", -->
     <el-form-item
       :label="$t('commodity.model')"
-      :prop="'models[0].id'"
+      :prop="'models'"
       :rules="{
         required: false,
         message: `${$t('commodity.model')}${$t('form.noEmpty')}`,
@@ -497,7 +502,7 @@
       }"
     >
       <el-select
-        v-model="form.models[0].id"
+        v-model="form.models"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.model') })
         "
@@ -520,7 +525,7 @@
     <!-- "place": "摆放", -->
     <el-form-item
       :label="$t('commodity.place')"
-      :prop="'places[0].id'"
+      :prop="'places'"
       :rules="{
         required: false,
         message: `${$t('commodity.place')}${$t('form.noEmpty')}`,
@@ -528,7 +533,7 @@
       }"
     >
       <el-select
-        v-model="form.places[0].id"
+        v-model="form.places"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.place') })
         "
@@ -551,7 +556,7 @@
     <!-- "ruiwu": "瑞物", -->
     <el-form-item
       :label="$t('commodity.ruiwu')"
-      :prop="'ruiwus[0].id'"
+      :prop="'ruiwus'"
       :rules="{
         required: false,
         message: `${$t('commodity.ruiwu')}${$t('form.noEmpty')}`,
@@ -559,7 +564,7 @@
       }"
     >
       <el-select
-        v-model="form.ruiwus[0].id"
+        v-model="form.ruiwus"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.ruiwu') })
         "
@@ -582,7 +587,7 @@
     <!-- "shape": "形状", -->
     <el-form-item
       :label="$t('commodity.shape')"
-      :prop="'shapes[0].id'"
+      :prop="'shapes'"
       :rules="{
         required: false,
         message: `${$t('commodity.shape')}${$t('form.noEmpty')}`,
@@ -590,7 +595,7 @@
       }"
     >
       <el-select
-        v-model="form.shapes[0].id"
+        v-model="form.shapes"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.shape') })
         "
@@ -613,7 +618,7 @@
     <!-- "specification": "规格", -->
     <el-form-item
       :label="$t('commodity.specification')"
-      :prop="'specifications[0].id'"
+      :prop="'specifications'"
       :rules="{
         required: false,
         message: `${$t('commodity.specification')}${$t('form.noEmpty')}`,
@@ -621,7 +626,7 @@
       }"
     >
       <el-select
-        v-model="form.specifications[0].id"
+        v-model="form.specifications"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.specification') })
         "
@@ -644,7 +649,7 @@
     <!-- "style": "风格", -->
     <el-form-item
       :label="$t('commodity.style')"
-      :prop="'styles[0].id'"
+      :prop="'styles'"
       :rules="{
         required: false,
         message: `${$t('commodity.style')}${$t('form.noEmpty')}`,
@@ -652,7 +657,7 @@
       }"
     >
       <el-select
-        v-model="form.styles[0].id"
+        v-model="form.styles"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.style') })
         "
@@ -675,7 +680,7 @@
     <!-- "technique": "手法", -->
     <el-form-item
       :label="$t('commodity.technique')"
-      :prop="'techniques[0].id'"
+      :prop="'techniques'"
       :rules="{
         required: false,
         message: `${$t('commodity.technique')}${$t('form.noEmpty')}`,
@@ -683,7 +688,7 @@
       }"
     >
       <el-select
-        v-model="form.techniques[0].id"
+        v-model="form.techniques"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.technique') })
         "
@@ -706,7 +711,7 @@
     <!-- "theme": "主题", -->
     <el-form-item
           :label="$t('commodity.theme')"
-          :prop="'themes[0].id'"
+          :prop="'themes'"
           :rules="{
             required: false,
             message: `${$t('commodity.theme')}${$t('form.noEmpty')}`,
@@ -714,7 +719,7 @@
           }"
         >
           <el-select
-            v-model="form.themes[0].id"
+            v-model="form.themes"
             :placeholder="
               $t('form.selectPlaceholder', { msg: $t('commodity.theme') })
             "
@@ -737,7 +742,7 @@
     <!-- "type": "类型", -->
     <el-form-item
       :label="$t('commodity.type')"
-      :prop="'types[0].id'"
+      :prop="'types'"
       :rules="{
         required: false,
         message: `${$t('commodity.type')}${$t('form.noEmpty')}`,
@@ -745,7 +750,7 @@
       }"
     >
       <el-select
-        v-model="form.types[0].id"
+        v-model="form.types"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.type') })
         "
@@ -768,7 +773,7 @@
     <!-- "use": "用途", -->
     <el-form-item
       :label="$t('commodity.use')"
-      :prop="'uses[0].id'"
+      :prop="'uses'"
       :rules="{
         required: false,
         message: `${$t('commodity.use')}${$t('form.noEmpty')}`,
@@ -776,7 +781,7 @@
       }"
     >
       <el-select
-        v-model="form.uses[0].id"
+        v-model="form.uses"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.use') })
         "
@@ -1059,57 +1064,31 @@ export default {
         }
 
         // "category": "类别",
-        if (commodityForm.categorys && commodityForm.categorys.length) {
-          this.form.categorys = commodityForm.categorys
-        }
+        this.form.categorys = commodityForm.categorys && commodityForm.categorys.length ? commodityForm.categorys : [];
         // "classification": "分类",
-        if (commodityForm.classifications && commodityForm.classifications.length) {
-          this.form.classifications = commodityForm.classifications
-        }
+        this.form.classifications = commodityForm.classifications && commodityForm.classifications.length ? commodityForm.classifications[0].id : '';
         // "material": "材质",
-        if (commodityForm.materials && commodityForm.materials.length) {
-          this.form.materials = commodityForm.materials
-        }
+        this.form.materials = commodityForm.materials && commodityForm.materials.length ? commodityForm.materials[0].id : '';
         // "model": "款式",
-        if (commodityForm.models && commodityForm.models.length) {
-          this.form.models = commodityForm.models
-        }
+        this.form.models = commodityForm.models && commodityForm.models.length ? commodityForm.models[0].id : '';
         // "place": "摆放",
-        if (commodityForm.places && commodityForm.places.length) {
-          this.form.places = commodityForm.places
-        }
+        this.form.places = commodityForm.places && commodityForm.places.length ? commodityForm.places[0].id : '';
         // "ruiwu": "瑞物",
-        if (commodityForm.ruiwus && commodityForm.ruiwus.length) {
-          this.form.ruiwus = commodityForm.ruiwus
-        }
+        this.form.ruiwus = commodityForm.ruiwus && commodityForm.ruiwus.length ? commodityForm.ruiwus[0].id : '';
         // "shape": "形状",
-        if (commodityForm.shapes && commodityForm.shapes.length) {
-          this.form.shapes = commodityForm.shapes
-        }
+        this.form.shapes = commodityForm.shapes && commodityForm.shapes.length ? commodityForm.shapes[0].id : '';
         // "specification": "规格",
-        if (commodityForm.specifications && commodityForm.specifications.length) {
-          this.form.specifications = commodityForm.specifications
-        }
+        this.form.specifications = commodityForm.specifications && commodityForm.specifications.length ? commodityForm.specifications[0].id : '';
         // "style": "风格",
-        if (commodityForm.styles && commodityForm.styles.length) {
-          this.form.styles = commodityForm.styles
-        }
+        this.form.styles = commodityForm.styles && commodityForm.styles.length ? commodityForm.styles[0].id : '';
         // "technique": "手法",
-        if (commodityForm.techniques && commodityForm.techniques.length) {
-          this.form.techniques = commodityForm.techniques
-        }
+        this.form.techniques = commodityForm.techniques && commodityForm.techniques.length ? commodityForm.techniques[0].id : '';
         // "theme": "主题",
-        if (commodityForm.themes && commodityForm.themes.length) {
-          this.form.themes = commodityForm.themes
-        }
+        this.form.themes = commodityForm.themes && commodityForm.themes.length ? commodityForm.themes[0].id : '';
         // "type": "类型",
-        if (commodityForm.types && commodityForm.types.length) {
-          this.form.types = commodityForm.types
-        }
+        this.form.types = commodityForm.types && commodityForm.types.length ? commodityForm.types[0].id : '';
         // "use": "用途",
-        if (commodityForm.uses && commodityForm.uses.length) {
-          this.form.uses = commodityForm.uses
-        }
+        this.form.uses = commodityForm.uses && commodityForm.uses.length ? commodityForm.uses[0].id : '';
 
 
 
@@ -1117,14 +1096,15 @@ export default {
         if (commodityForm.seller) {
           this.form.sellerId = commodityForm.seller.sellerId
         }
-        // console.log('this.form', this.form)
+
         // this.form = commodityForm;
-        console.log("this.form", this.form)
         this.type = 'edit'
         this.typeText = this.$t('content.update')
         this.isCreate = false
       }
+
     }
+    console.log('this.form', this.form)
   },
   data() {
     return {
@@ -1203,7 +1183,7 @@ export default {
   },
   methods: {
     onSubmit(formName) {
-      // console.log('submit!', this.form)
+      console.log('submit!', this.form)
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           let data
@@ -1303,58 +1283,33 @@ export default {
           // 'fr-fr': Mock.mock('@integer(60, 100)'),
           'es-es': Mock.mock('@integer(60, 100)'),
         },
+
         // "category": "类别",
-        categorys: [
-          this.categorys[Mock.mock(`@integer(0,${this.categorys.length - 1})`)],
-        ],
+        categorys: [this.categorys[Mock.mock(`@integer(0,${this.categorys.length - 1})`)]],
         // "classification": "分类",
-        classifications: [
-          this.classifications[Mock.mock(`@integer(0,${this.classifications.length - 1})`)],
-        ],
+        classifications: this.classifications[Mock.mock(`@integer(0,${this.classifications.length - 1})`)].id,
         // "material": "材质",
-        materials: [
-          this.materials[Mock.mock(`@integer(0,${this.materials.length - 1})`)],
-        ],
+        materials: this.materials[Mock.mock(`@integer(0,${this.materials.length - 1})`)].id,
         // "model": "款式",
-        models: [
-          this.models[Mock.mock(`@integer(0,${this.models.length - 1})`)],
-        ],
+        models: this.models[Mock.mock(`@integer(0,${this.models.length - 1})`)].id,
         // "place": "摆放",
-        places: [
-          this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)],
-        ],
+        places: this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)].id,
         // "ruiwu": "瑞物",
-        ruiwus: [
-          this.ruiwus[Mock.mock(`@integer(0,${this.ruiwus.length - 1})`)],
-        ],
+        ruiwus: this.ruiwus[Mock.mock(`@integer(0,${this.ruiwus.length - 1})`)].id,
         // "shape": "形状",
-        shapes: [
-          this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)],
-        ],
+        shapes: this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)].id,
         // "specification": "规格",
-        specifications: [
-          this.specifications[Mock.mock(`@integer(0,${this.specifications.length - 1})`)],
-        ],
+        specifications: this.specifications[Mock.mock(`@integer(0,${this.specifications.length - 1})`)].id,
         // "style": "风格",
-        styles: [
-          this.styles[Mock.mock(`@integer(0,${this.styles.length - 1})`)],
-        ],
+        styles: this.styles[Mock.mock(`@integer(0,${this.styles.length - 1})`)].id,
         // "technique": "手法",
-        techniques: [
-          this.techniques[Mock.mock(`@integer(0,${this.techniques.length - 1})`)],
-        ],
+        techniques: this.techniques[Mock.mock(`@integer(0,${this.techniques.length - 1})`)].id,
         // "theme": "主题",
-        themes: [
-          this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)],
-        ],
+        themes: this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)].id,
         // "type": "类型",
-        types: [
-          this.types[Mock.mock(`@integer(0,${this.types.length - 1})`)],
-        ],
+        types: this.types[Mock.mock(`@integer(0,${this.types.length - 1})`)].id,
         // "use": "用途",
-        uses: [
-          this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)],
-        ],
+        uses: this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)].id,
 
         photos: [],
         colors: [
@@ -1367,7 +1322,7 @@ export default {
         state: Mock.mock('@integer(0, 3)'),
         sellerId: '',
       }
-      // console.log('createCommodityMock', createCommodityMock)
+      console.log('createCommodityMock', createCommodityMock)
       this.form = createCommodityMock
 
       this.type = 'create'
@@ -1412,148 +1367,161 @@ export default {
           'es-es': '',
         },
         // "category": "类别",
-        categorys: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // categorys: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        categorys: [],
         // "classification": "分类",
-        classifications: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // classifications: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        classifications: "",
         // "material": "材质",
-        materials: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // materials: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        materials: "",
         // "model": "款式",
-        models: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // models: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        models: "",
         // "place": "摆放",
-        places: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // places: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        places: "",
         // "ruiwu": "瑞物",
-        ruiwus: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // ruiwus: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        ruiwus: "",
         // "shape": "形状",
-        shapes: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // shapes: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        shapes: "",
         // "specification": "规格",
-        specifications: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // specifications: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        specifications: "",
         // "style": "风格",
-        styles: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // styles: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        styles: "",
         // "technique": "手法",
-        techniques: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // techniques: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        techniques: "",
         // "theme": "主题",
-        themes: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // themes: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        themes: "",
         // "type": "类型",
-        types: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // types: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        types: "",
         // "use": "用途",
-        uses: [
-          {
-            id: '',
-            'zh-cn': '',
-            'en-us': '',
-            'ja-jp': '',
-            // 'fr-fr': '',
-            'es-es': '',
-          },
-        ],
+        // uses: [
+        //   {
+        //     id: '',
+        //     'zh-cn': '',
+        //     'en-us': '',
+        //     'ja-jp': '',
+        //     // 'fr-fr': '',
+        //     'es-es': '',
+        //   },
+        // ],
+        uses: "",
 
         photos: [],
         colors: [
@@ -1589,6 +1557,7 @@ export default {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
     },
+
   },
 }
 </script>

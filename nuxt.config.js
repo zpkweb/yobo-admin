@@ -5,6 +5,7 @@ export default {
   },
   dev: process.env.NODE_ENV !== 'prod',
   publicRuntimeConfig: {
+    v: "v0.31",
     origin: process.env.ORIGIN ||  'http://localhost:7001'
   },
   server: {

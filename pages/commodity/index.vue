@@ -9,6 +9,41 @@
     >
       <el-row :gutter="0">
         <el-col :span="6">
+          <el-form-item :label="$t('commodity.id')" prop="id">
+
+            <el-input
+              v-model="commoditySearch.id"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.id') })"
+              clearable
+            ></el-input>
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
+          <el-form-item :label="$t('commodity.commodityId')" prop="commodityId">
+
+            <el-input
+              v-model="commoditySearch.commodityId"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.commodityId') })"
+              clearable
+            ></el-input>
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
+          <el-form-item :label="$t('commodity.sellerId')" prop="sellerId">
+
+            <el-input
+              v-model="commoditySearch.sellerId"
+              :placeholder="$t('form.placeholder', { msg: $t('commodity.sellerId') })"
+              clearable
+            ></el-input>
+          </el-form-item>
+        </el-col>
+
+      </el-row>
+      <el-row :gutter="0">
+        <el-col :span="6">
           <el-form-item :label="$t('commodity.name')" prop="name">
             <el-input
               v-model="commoditySearch.name"
@@ -22,15 +57,6 @@
             <el-input
               v-model="commoditySearch.desc"
               :placeholder="$t('form.placeholder', { msg: $t('commodity.desc') })"
-              clearable
-            ></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item :label="$t('commodity.seller')" prop="sellerId">
-            <el-input
-              v-model="commoditySearch.sellerId"
-              :placeholder="$t('form.placeholder', { msg: $t('commodity.seller') })"
               clearable
             ></el-input>
           </el-form-item>
@@ -71,7 +97,6 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <!-- <span>{{ item['fr-fr'] }}</span> -->
                 <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
@@ -93,7 +118,6 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <!-- <span>{{ item['fr-fr'] }}</span> -->
                 <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
@@ -101,7 +125,12 @@
         </el-col>
         <el-col :span="6">
           <el-form-item :label="$t('commodity.category')" prop="categoryId">
-            <el-select
+            <el-checkbox-group v-model="commoditySearch.categorys">
+      <el-checkbox name="type" v-for="(item, index) in options.categorys" :key="index" :label="item.id" :value="item['zh-cn']">
+        {{item['zh-cn']}}
+      </el-checkbox>
+    </el-checkbox-group>
+            <!-- <el-select
               v-model="commoditySearch.categoryId"
               :placeholder="$t('form.placeholder', { msg: $t('commodity.category') })"
               clearable
@@ -115,10 +144,9 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <!-- <span>{{ item['fr-fr'] }}</span> -->
                 <span>{{ item['es-es'] }}</span>
               </el-option>
-            </el-select>
+            </el-select> -->
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -137,7 +165,6 @@
                 <span>{{ item['zh-cn'] }}</span>
                 <span>{{ item['en-us'] }}</span>
                 <span>{{ item['ja-jp'] }}</span>
-                <!-- <span>{{ item['fr-fr'] }}</span> -->
                 <span>{{ item['es-es'] }}</span>
               </el-option>
             </el-select>
@@ -145,7 +172,8 @@
         </el-col>
       </el-row>
       <el-row :gutter="0">
-        <el-col :span="8">
+        <el-col :span="5">
+
           <el-form-item :label="$t('commodity.price.title')" prop="price.min">
             <el-input
               v-model="commoditySearch.price.min"
@@ -153,6 +181,8 @@
               clearable
             ></el-input>
           </el-form-item>
+        </el-col>
+        <el-col :span="3">
           <el-form-item prop="price.max">
             <el-input
               v-model="commoditySearch.price.max"
@@ -162,7 +192,7 @@
           </el-form-item>
         </el-col>
 
-        <el-col :span="8">
+        <el-col :span="5">
           <el-form-item :label="$t('commodity.width.title')" prop="width.min">
             <el-input
               v-model="commoditySearch.width.min"
@@ -170,6 +200,8 @@
               clearable
             ></el-input>
           </el-form-item>
+        </el-col>
+        <el-col :span="3">
           <el-form-item prop="width.max">
             <el-input
               v-model="commoditySearch.width.max"
@@ -179,7 +211,7 @@
           </el-form-item>
         </el-col>
 
-        <el-col :span="8">
+        <el-col :span="5">
           <el-form-item :label="$t('commodity.height.title')" prop="height.min">
             <el-input
               v-model="commoditySearch.height.min"
@@ -187,6 +219,8 @@
               clearable
             ></el-input>
           </el-form-item>
+        </el-col>
+        <el-col :span="3">
           <el-form-item prop="height.max">
             <el-input
               v-model="commoditySearch.height.max"
@@ -223,6 +257,8 @@
             ></el-color-picker>
           </el-form-item>
         </el-col>
+
+
       </el-row>
       <el-row :gutter="0" type="flex" justify="center">
         <el-col :span="6">
@@ -375,20 +411,27 @@
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="desc['zh-cn']" :label="$t('commodity.desc')" width="300">
+
+      <el-table-column prop="state" :label="$t('commodity.state.title')">
+        <template slot-scope="scope">
+          {{ options.state[scope.row.state].name }}
+        </template>
+      </el-table-column>
+
+      <el-table-column :label="$t('commodity.seller')">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
-            <p>{{$t('lang.zh')}}: {{ scope.row.desc['zh-cn'] }}</p>
-            <p>{{$t('lang.en')}}: {{ scope.row.desc['en-us'] }}</p>
-            <p>{{$t('lang.ja')}}: {{ scope.row.desc['ja-jp'] }}</p>
-            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.desc['fr-fr'] }}</p> -->
-            <p>{{$t('lang.es')}}: {{ scope.row.desc['es-es'] }}</p>
+            <p>姓名 : {{ scope.row.seller ? `${scope.row.seller.firstname} ${scope.row.seller.lastname}` : '' }}</p>
+            <p>Id: {{ scope.row.seller ? scope.row.seller.sellerId : '' }}</p>
+            <p>国家: {{ scope.row.seller ? scope.row.seller.country : '' }}</p>
+            <p>类型: {{ scope.row.seller ? scope.row.seller.typeName : '' }}</p>
             <div slot="reference">
-              <span>{{ scope.row.desc[$i18n.locale] }}</span>
+              {{ scope.row.seller ? `${scope.row.seller.firstname} ${scope.row.seller.lastname}` : '' }}
             </div>
           </el-popover>
         </template>
       </el-table-column>
+
       <el-table-column prop="price['zh-cn']" :label="$t('commodity.price.title')">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
@@ -460,7 +503,7 @@
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column prop="photo" :label="$t('commodity.photo')" width="180">
+      <el-table-column prop="photo" :label="$t('commodity.photo')" width="123">
         <template slot-scope="scope">
           <el-card
             :body-style="{ padding: '0px' }"
@@ -468,14 +511,10 @@
             :key="index"
             style="margin: 10px"
           >
-            <img :src="item.src" class="image" />
-            <div style="padding: 14px">
+            <img :src="item.src" class="image" width="80px" height="80px" />
+            <!-- <div style="padding: 14px">
               <span>{{ item.name }}</span>
-              <!-- <div class="bottom clearfix">
-              <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">操作按钮</el-button>
             </div> -->
-            </div>
           </el-card>
         </template>
       </el-table-column>
@@ -512,20 +551,22 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="state" :label="$t('commodity.state.title')"> </el-table-column>
-      <el-table-column :label="$t('commodity.seller')">
+      <el-table-column prop="desc['zh-cn']" :label="$t('commodity.desc')" width="200">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
-            <p>姓名 : {{ scope.row.seller ? `${scope.row.seller.firstname} ${scope.row.seller.lastname}` : '' }}</p>
-            <p>Id: {{ scope.row.seller ? scope.row.seller.sellerId : '' }}</p>
-            <p>国家: {{ scope.row.seller ? scope.row.seller.country : '' }}</p>
-            <p>类型: {{ scope.row.seller ? scope.row.seller.typeName : '' }}</p>
+            <p>{{$t('lang.zh')}}: {{ scope.row.desc['zh-cn'] }}</p>
+            <p>{{$t('lang.en')}}: {{ scope.row.desc['en-us'] }}</p>
+            <p>{{$t('lang.ja')}}: {{ scope.row.desc['ja-jp'] }}</p>
+            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.desc['fr-fr'] }}</p> -->
+            <p>{{$t('lang.es')}}: {{ scope.row.desc['es-es'] }}</p>
             <div slot="reference">
-              {{ scope.row.seller ? `${scope.row.seller.firstname} ${scope.row.seller.lastname}` : '' }}
+              <span class="ellipsis" style="display:inline-block; width: 179px">{{ scope.row.desc[$i18n.locale] }}</span>
             </div>
           </el-popover>
         </template>
       </el-table-column>
+
+
       <el-table-column
         prop="createdDate"
         :formatter="formatterDate"
@@ -595,6 +636,7 @@ export default {
       total: 0,
       commodity: [],
       commoditySearch: {
+        id: '',
         name: '',
         desc: '',
         price: {
@@ -612,7 +654,7 @@ export default {
         sellerId: '',
         shapeId: '',
         themeId: '',
-        categoryId: '',
+        categorys: [],
         techniqueId: '',
         state: '',
         hots: false,
@@ -692,7 +734,7 @@ export default {
   methods: {
     // 搜索
     async onCommoditySearch() {
-      // console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
+      console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
       // let isSearch = false
       // for (let [key, value] of Object.entries(this.commoditySearch)) {
       //   if (value) {
@@ -705,6 +747,7 @@ export default {
       const searchData = await this.$axios.$get('/api/admin/commodity/search', {
         params: {
           ...this.commoditySearch,
+          categorys: this.commoditySearch.categorys.length ? JSON.stringify(this.commoditySearch.categorys) : this.commoditySearch.categorys,
           pageSize: this.pageSize,
           currentPage: this.currentPage,
         },
@@ -826,5 +869,12 @@ export default {
 
 .clearfix:after {
   clear: both;
+}
+
+.ellipsis {
+  width: 100%;    /*根据自己项目进行定义宽度*/
+	overflow: hidden;     /*设置超出的部分进行影藏*/
+	text-overflow: ellipsis;     /*设置超出部分使用省略号*/
+	white-space:nowrap ;
 }
 </style>
