@@ -80,97 +80,8 @@
         </el-col>
       </el-row>
 
-      <el-row :gutter="0">
-        <el-col :span="6">
-          <el-form-item :label="$t('commodity.shape')" prop="shapeId">
-            <el-select
-              v-model="commoditySearch.shapeId"
-              :placeholder="$t('form.placeholder', { msg: $t('commodity.shape') })"
-              clearable
-            >
-              <el-option
-                v-for="item in options.shapes"
-                :key="item.id"
-                :label="item['zh-cn']"
-                :value="item.id"
-              >
-                <span>{{ item['zh-cn'] }}</span>
-                <span>{{ item['en-us'] }}</span>
-                <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['es-es'] }}</span>
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item :label="$t('commodity.theme')" prop="themeId">
-            <el-select
-              v-model="commoditySearch.themeId"
-              :placeholder="$t('form.placeholder', { msg: $t('commodity.theme') })"
-              clearable
-            >
-              <el-option
-                v-for="item in options.themes"
-                :key="item.id"
-                :label="item['zh-cn']"
-                :value="item.id"
-              >
-                <span>{{ item['zh-cn'] }}</span>
-                <span>{{ item['en-us'] }}</span>
-                <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['es-es'] }}</span>
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item :label="$t('commodity.category')" prop="categoryId">
-            <el-checkbox-group v-model="commoditySearch.categorys">
-      <el-checkbox name="type" v-for="(item, index) in options.categorys" :key="index" :label="item.id" :value="item['zh-cn']">
-        {{item['zh-cn']}}
-      </el-checkbox>
-    </el-checkbox-group>
-            <!-- <el-select
-              v-model="commoditySearch.categoryId"
-              :placeholder="$t('form.placeholder', { msg: $t('commodity.category') })"
-              clearable
-            >
-              <el-option
-                v-for="item in options.categorys"
-                :key="item.id"
-                :label="item['zh-cn']"
-                :value="item.id"
-              >
-                <span>{{ item['zh-cn'] }}</span>
-                <span>{{ item['en-us'] }}</span>
-                <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['es-es'] }}</span>
-              </el-option>
-            </el-select> -->
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item :label="$t('commodity.technique')" prop="techniqueId">
-            <el-select
-              v-model="commoditySearch.techniqueId"
-              :placeholder="$t('form.placeholder', { msg: $t('commodity.technique') })"
-              clearable
-            >
-              <el-option
-                v-for="item in options.techniques"
-                :key="item.id"
-                :label="item['zh-cn']"
-                :value="item.id"
-              >
-                <span>{{ item['zh-cn'] }}</span>
-                <span>{{ item['en-us'] }}</span>
-                <span>{{ item['ja-jp'] }}</span>
-                <span>{{ item['es-es'] }}</span>
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
+
+
       <el-row :gutter="0">
         <el-col :span="5">
 
@@ -230,6 +141,149 @@
           </el-form-item>
         </el-col>
       </el-row>
+
+
+      <el-row>
+        <el-form-item :label="$t('commodity.category')">
+          <el-checkbox-group v-model="commoditySearch.categorys">
+            <el-checkbox name="type" v-for="(item, index) in options.category" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+          <!-- <el-select
+            v-model="commoditySearch.categoryId"
+            :placeholder="$t('form.placeholder', { msg: $t('commodity.category') })"
+            clearable
+          >
+            <el-option
+              v-for="item in options.categorys"
+              :key="item.id"
+              :label="item['zh-cn']"
+              :value="item.id"
+            >
+              <span>{{ item['zh-cn'] }}</span>
+              <span>{{ item['en-us'] }}</span>
+              <span>{{ item['ja-jp'] }}</span>
+              <span>{{ item['es-es'] }}</span>
+            </el-option>
+          </el-select> -->
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.classification')">
+          <el-checkbox-group v-model="commoditySearch.classifications">
+            <el-checkbox name="type" v-for="(item, index) in options.classification" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.material')">
+          <el-checkbox-group v-model="commoditySearch.materials">
+            <el-checkbox name="type" v-for="(item, index) in options.material" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.model')">
+          <el-checkbox-group v-model="commoditySearch.models">
+            <el-checkbox name="type" v-for="(item, index) in options.model" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.place')">
+          <el-checkbox-group v-model="commoditySearch.places">
+            <el-checkbox name="type" v-for="(item, index) in options.place" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.ruiwu')">
+          <el-checkbox-group v-model="commoditySearch.ruiwus">
+            <el-checkbox name="type" v-for="(item, index) in options.ruiwu" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.shape')">
+          <el-checkbox-group v-model="commoditySearch.shapes">
+            <el-checkbox name="type" v-for="(item, index) in options.shape" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.specification')">
+          <el-checkbox-group v-model="commoditySearch.specifications">
+            <el-checkbox name="type" v-for="(item, index) in options.specification" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.style')">
+          <el-checkbox-group v-model="commoditySearch.styles">
+            <el-checkbox name="type" v-for="(item, index) in options.style" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.technique')">
+          <el-checkbox-group v-model="commoditySearch.techniques">
+            <el-checkbox name="type" v-for="(item, index) in options.technique" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.theme')">
+          <el-checkbox-group v-model="commoditySearch.themes">
+            <el-checkbox name="type" v-for="(item, index) in options.theme" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.type')">
+          <el-checkbox-group v-model="commoditySearch.types">
+            <el-checkbox name="type" v-for="(item, index) in options.type" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('commodity.use')">
+          <el-checkbox-group v-model="commoditySearch.uses">
+            <el-checkbox name="type" v-for="(item, index) in options.use" :key="index" :label="item.id" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-row>
+
+
+
+
+
+
+
 
       <el-row :gutter="0">
         <el-col :span="3">
@@ -447,13 +501,12 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="shapes[0]['zh-cn']" :label="$t('commodity.shape')">
+      <!-- <el-table-column prop="shapes[0]['zh-cn']" :label="$t('commodity.shape')">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>{{$t('lang.zh')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['ja-jp'] : '' }}</p>
-            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['fr-fr'] : '' }}</p> -->
             <p>{{$t('lang.es')}}: {{ scope.row.shapes.length ? scope.row.shapes[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.shapes.length ? scope.row.shapes[0][$i18n.locale] : $t('commodity.nothing') }}
@@ -467,7 +520,6 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.themes.length ? scope.row.themes[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.themes.length ? scope.row.themes[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.themes.length ? scope.row.themes[0]['ja-jp'] : '' }}</p>
-            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.themes.length ? scope.row.themes[0]['fr-fr'] : '' }}</p> -->
             <p>{{$t('lang.es')}}: {{ scope.row.themes.length ? scope.row.themes[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.themes.length ? scope.row.themes[0][$i18n.locale] : $t('commodity.nothing') }}
@@ -481,7 +533,6 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['ja-jp'] : '' }}</p>
-            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['fr-fr'] : '' }}</p> -->
             <p>{{$t('lang.es')}}: {{ scope.row.categorys.length ? scope.row.categorys[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.categorys.length ? scope.row.categorys[0][$i18n.locale] : $t('commodity.nothing') }}
@@ -495,14 +546,13 @@
             <p>{{$t('lang.zh')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['zh-cn'] : '' }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['en-us'] : '' }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['ja-jp'] : '' }}</p>
-            <!-- <p>{{$t('lang.fr')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['fr-fr'] : '' }}</p> -->
             <p>{{$t('lang.es')}}: {{ scope.row.techniques.length ? scope.row.techniques[0]['es-es'] : '' }}</p>
             <div slot="reference">
               {{ scope.row.techniques.length ? scope.row.techniques[0][$i18n.locale] : $t('commodity.nothing') }}
             </div>
           </el-popover>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column prop="photo" :label="$t('commodity.photo')" width="123">
         <template slot-scope="scope">
           <el-card
@@ -652,10 +702,28 @@ export default {
           max: '',
         },
         sellerId: '',
-        shapeId: '',
-        themeId: '',
+        // shapes: [],
+        // themes: [],
+        // categorys: [],
+        // techniques: [],
+
+
         categorys: [],
-        techniqueId: '',
+        classifications: [],
+        materials: [],
+        models: [],
+        places: [],
+        ruiwus: [],
+        shapes: [],
+        specifications: [],
+        styles: [],
+        techniques: [],
+        themes: [],
+        types: [],
+        uses: [],
+
+
+
         state: '',
         hots: false,
         news: false,
@@ -665,10 +733,19 @@ export default {
         },
       },
       options: {
-        shapes: [],
-        themes: [],
-        categorys: [],
-        techniques: [],
+        category: [],
+        classification: [],
+        material: [],
+        model: [],
+        place: [],
+        ruiwu: [],
+        shape: [],
+        specification: [],
+        style: [],
+        technique: [],
+        theme: [],
+        type: [],
+        use: [],
         // 0:已添加，1:售卖中，2:已售卖，3:已下架
         state: [
           {
@@ -692,30 +769,67 @@ export default {
     }
   },
   async fetch() {
-    // 形状
-    const optionsShape = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`)
-    if (optionsShape.data && optionsShape.data.length) {
-      this.options.shapes = optionsShape.data
-    }
-    // 主题
-    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`)
-    if (optionsTheme.data && optionsTheme.data.length) {
-      this.options.themes = optionsTheme.data
-    }
+
     // 类别
-    const optionsCategory = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/category`
-    )
-    if (optionsCategory.data && optionsCategory.data.length) {
-      this.options.categorys = optionsCategory.data
+    const category = await this.$axios.$get(`/api/admin/commodity/retrieve/category`)
+    if (category.data && category.data.length) {
+      this.options.category = category.data
     }
+    const classification = await this.$axios.$get(`/api/admin/commodity/retrieve/classification`)
+    if (classification.data && classification.data.length) {
+      this.options.classification = classification.data
+    }
+    const material = await this.$axios.$get(`/api/admin/commodity/retrieve/material`)
+    if (material.data && material.data.length) {
+      this.options.material = material.data
+    }
+    const model = await this.$axios.$get(`/api/admin/commodity/retrieve/model`)
+    if (model.data && model.data.length) {
+      this.options.model = model.data
+    }
+    const place = await this.$axios.$get(`/api/admin/commodity/retrieve/place`)
+    if (place.data && place.data.length) {
+      this.options.place = place.data
+    }
+    const ruiwu = await this.$axios.$get(`/api/admin/commodity/retrieve/ruiwu`)
+    if (ruiwu.data && ruiwu.data.length) {
+      this.options.ruiwu = ruiwu.data
+    }
+    const shape = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`)
+    if (shape.data && shape.data.length) {
+      this.options.shape = shape.data
+    }
+    const specification = await this.$axios.$get(`/api/admin/commodity/retrieve/specification`)
+    if (specification.data && specification.data.length) {
+      this.options.specification = specification.data
+    }
+    const style = await this.$axios.$get(`/api/admin/commodity/retrieve/style`)
+    if (style.data && style.data.length) {
+      this.options.style = style.data
+    }
+    const technique = await this.$axios.$get(`/api/admin/commodity/retrieve/technique`)
+    if (technique.data && technique.data.length) {
+      this.options.technique = technique.data
+    }
+    const theme = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`)
+    if (theme.data && theme.data.length) {
+      this.options.theme = theme.data
+    }
+    const type = await this.$axios.$get(`/api/admin/commodity/retrieve/type`)
+    if (type.data && type.data.length) {
+      this.options.type = type.data
+    }
+    const use = await this.$axios.$get(`/api/admin/commodity/retrieve/use`)
+    if (use.data && use.data.length) {
+      this.options.use = use.data
+    }
+
+
+    // 主题
+
+
     // 手法
-    const optionsTechnique = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/technique`
-    )
-    if (optionsTechnique.data && optionsTechnique.data.length) {
-      this.options.techniques = optionsTechnique.data
-    }
+
 
     // const alldata = await this.$axios.$get('/api/admin/commodity/all', {
     //   params: {
@@ -744,10 +858,40 @@ export default {
       // }
       let commodityData
       // if (isSearch) {
+      const {
+        categorys,
+        classifications,
+        materials,
+        models,
+        places,
+        ruiwus,
+        shapes,
+        specifications,
+        styles,
+        techniques,
+        themes,
+        types,
+        uses,
+        ...search
+      } = this.commoditySearch
       const searchData = await this.$axios.$get('/api/admin/commodity/search', {
         params: {
-          ...this.commoditySearch,
-          categorys: this.commoditySearch.categorys.length ? JSON.stringify(this.commoditySearch.categorys) : this.commoditySearch.categorys,
+          ...this.search,
+          // categorys: this.commoditySearch.categorys.length ? JSON.stringify(this.commoditySearch.categorys) : this.commoditySearch.categorys,
+          categorys: JSON.stringify(categorys),
+          classifications: JSON.stringify(classifications),
+          materials: JSON.stringify(materials),
+          models: JSON.stringify(models),
+          places: JSON.stringify(places),
+          ruiwus: JSON.stringify(ruiwus),
+          shapes: JSON.stringify(shapes),
+          specifications: JSON.stringify(specifications),
+          styles: JSON.stringify(styles),
+          techniques: JSON.stringify(techniques),
+          themes: JSON.stringify(themes),
+          types: JSON.stringify(types),
+          uses: JSON.stringify(uses),
+
           pageSize: this.pageSize,
           currentPage: this.currentPage,
         },

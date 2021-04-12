@@ -348,7 +348,7 @@
     </el-row>
 
     <el-row :gutter="20">
-      <el-col :span="10">
+      <el-col :span="6">
         <el-form-item
           :label="$t('commodity.width.title')"
           :prop="'width'"
@@ -369,7 +369,7 @@
           </el-input>
         </el-form-item>
       </el-col>
-      <el-col :span="10">
+      <el-col :span="6">
         <el-form-item
           :label="$t('commodity.height.title')"
           :prop="'height'"
@@ -439,7 +439,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.classifications">
+        <el-checkbox name="type" v-for="(item, index) in classifications" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.classifications"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.classification') })
@@ -455,10 +460,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "material": "材质", -->
     <el-form-item
@@ -470,7 +474,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.materials">
+        <el-checkbox name="type" v-for="(item, index) in materials" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.materials"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.material') })
@@ -486,10 +495,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "model": "款式", -->
     <el-form-item
@@ -501,7 +509,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.models">
+        <el-checkbox name="type" v-for="(item, index) in models" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.models"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.model') })
@@ -517,10 +530,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "place": "摆放", -->
     <el-form-item
@@ -532,7 +544,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.places">
+        <el-checkbox name="type" v-for="(item, index) in places" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.places"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.place') })
@@ -548,10 +565,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "ruiwu": "瑞物", -->
     <el-form-item
@@ -563,7 +579,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.ruiwus">
+        <el-checkbox name="type" v-for="(item, index) in ruiwus" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.ruiwus"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.ruiwu') })
@@ -579,10 +600,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "shape": "形状", -->
     <el-form-item
@@ -594,7 +614,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.shapes">
+        <el-checkbox name="type" v-for="(item, index) in shapes" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.shapes"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.shape') })
@@ -610,10 +635,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "specification": "规格", -->
     <el-form-item
@@ -625,7 +649,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.specifications">
+        <el-checkbox name="type" v-for="(item, index) in specifications" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.specifications"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.specification') })
@@ -641,10 +670,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "style": "风格", -->
     <el-form-item
@@ -656,7 +684,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.styles">
+        <el-checkbox name="type" v-for="(item, index) in styles" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.styles"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.style') })
@@ -672,10 +705,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "technique": "手法", -->
     <el-form-item
@@ -687,7 +719,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.techniques">
+        <el-checkbox name="type" v-for="(item, index) in techniques" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.techniques"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.technique') })
@@ -703,10 +740,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "theme": "主题", -->
     <el-form-item
@@ -718,7 +754,12 @@
             trigger: 'change',
           }"
         >
-          <el-select
+          <el-checkbox-group v-model="form.themes">
+            <el-checkbox name="type" v-for="(item, index) in themes" :key="index" :label="item" :value="item['zh-cn']">
+              {{item['zh-cn']}}
+            </el-checkbox>
+          </el-checkbox-group>
+          <!-- <el-select
             v-model="form.themes"
             :placeholder="
               $t('form.selectPlaceholder', { msg: $t('commodity.theme') })
@@ -734,10 +775,9 @@
               <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
               <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
               <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
               <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
             </el-option>
-          </el-select>
+          </el-select> -->
         </el-form-item>
     <!-- "type": "类型", -->
     <el-form-item
@@ -749,7 +789,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.types">
+        <el-checkbox name="type" v-for="(item, index) in types" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.types"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.type') })
@@ -765,10 +810,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
     <!-- "use": "用途", -->
     <el-form-item
@@ -780,7 +824,12 @@
         trigger: 'change',
       }"
     >
-      <el-select
+      <el-checkbox-group v-model="form.uses">
+        <el-checkbox name="type" v-for="(item, index) in uses" :key="index" :label="item" :value="item['zh-cn']">
+          {{item['zh-cn']}}
+        </el-checkbox>
+      </el-checkbox-group>
+      <!-- <el-select
         v-model="form.uses"
         :placeholder="
           $t('form.selectPlaceholder', { msg: $t('commodity.use') })
@@ -796,10 +845,9 @@
           <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
           <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
           <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <!-- <span>{{ $t('lang.fr') }}：{{ item['fr-fr'] }}</span> -->
           <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
         </el-option>
-      </el-select>
+      </el-select> -->
     </el-form-item>
 
 
@@ -1287,29 +1335,29 @@ export default {
         // "category": "类别",
         categorys: [this.categorys[Mock.mock(`@integer(0,${this.categorys.length - 1})`)]],
         // "classification": "分类",
-        classifications: this.classifications[Mock.mock(`@integer(0,${this.classifications.length - 1})`)].id,
+        classifications: [this.classifications[Mock.mock(`@integer(0,${this.classifications.length - 1})`)]],
         // "material": "材质",
-        materials: this.materials[Mock.mock(`@integer(0,${this.materials.length - 1})`)].id,
+        materials: [this.materials[Mock.mock(`@integer(0,${this.materials.length - 1})`)]],
         // "model": "款式",
-        models: this.models[Mock.mock(`@integer(0,${this.models.length - 1})`)].id,
+        models: [this.models[Mock.mock(`@integer(0,${this.models.length - 1})`)]],
         // "place": "摆放",
-        places: this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)].id,
+        places: [this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)]],
         // "ruiwu": "瑞物",
-        ruiwus: this.ruiwus[Mock.mock(`@integer(0,${this.ruiwus.length - 1})`)].id,
+        ruiwus: [this.ruiwus[Mock.mock(`@integer(0,${this.ruiwus.length - 1})`)]],
         // "shape": "形状",
-        shapes: this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)].id,
+        shapes: [this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)]],
         // "specification": "规格",
-        specifications: this.specifications[Mock.mock(`@integer(0,${this.specifications.length - 1})`)].id,
+        specifications: [this.specifications[Mock.mock(`@integer(0,${this.specifications.length - 1})`)]],
         // "style": "风格",
-        styles: this.styles[Mock.mock(`@integer(0,${this.styles.length - 1})`)].id,
+        styles: [this.styles[Mock.mock(`@integer(0,${this.styles.length - 1})`)]],
         // "technique": "手法",
-        techniques: this.techniques[Mock.mock(`@integer(0,${this.techniques.length - 1})`)].id,
+        techniques: [this.techniques[Mock.mock(`@integer(0,${this.techniques.length - 1})`)]],
         // "theme": "主题",
-        themes: this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)].id,
+        themes: [this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)]],
         // "type": "类型",
-        types: this.types[Mock.mock(`@integer(0,${this.types.length - 1})`)].id,
+        types: [this.types[Mock.mock(`@integer(0,${this.types.length - 1})`)]],
         // "use": "用途",
-        uses: this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)].id,
+        uses: [this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)]],
 
         photos: [],
         colors: [
@@ -1366,163 +1414,19 @@ export default {
           // 'fr-fr': '',
           'es-es': '',
         },
-        // "category": "类别",
-        // categorys: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
         categorys: [],
-        // "classification": "分类",
-        // classifications: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        classifications: "",
-        // "material": "材质",
-        // materials: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        materials: "",
-        // "model": "款式",
-        // models: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        models: "",
-        // "place": "摆放",
-        // places: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        places: "",
-        // "ruiwu": "瑞物",
-        // ruiwus: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        ruiwus: "",
-        // "shape": "形状",
-        // shapes: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        shapes: "",
-        // "specification": "规格",
-        // specifications: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        specifications: "",
-        // "style": "风格",
-        // styles: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        styles: "",
-        // "technique": "手法",
-        // techniques: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        techniques: "",
-        // "theme": "主题",
-        // themes: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        themes: "",
-        // "type": "类型",
-        // types: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        types: "",
-        // "use": "用途",
-        // uses: [
-        //   {
-        //     id: '',
-        //     'zh-cn': '',
-        //     'en-us': '',
-        //     'ja-jp': '',
-        //     // 'fr-fr': '',
-        //     'es-es': '',
-        //   },
-        // ],
-        uses: "",
-
+        classifications: [],
+        materials: [],
+        models: [],
+        places: [],
+        ruiwus: [],
+        shapes: [],
+        specifications: [],
+        styles: [],
+        techniques: [],
+        themes: [],
+        types: [],
+        uses: [],
         photos: [],
         colors: [
           {
@@ -1536,19 +1440,20 @@ export default {
       }
     },
     uploadSuccess(res, file) {
-      // console.log(res, file)
+      console.log(res, file)
       // this.imageUrl = URL.createObjectURL(file.raw);
       this.form.photos.push({
         src: res.data.src,
         url: res.data.src,
         name: file.name,
+        uid: file.uid
       })
       // console.log(this.form)
     },
     uploadRemove(file, fileList) {
       // console.log(file, fileList)
       for (const [index, item] of Object.entries(this.form.photos)) {
-        if (item.name === file.name) {
+        if (item.uid === file.uid) {
           this.form.photos.splice(index, 1)
         }
       }
