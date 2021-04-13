@@ -23,6 +23,7 @@
             class="avatar"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <div slot="tip" class="el-upload__tip">用户头像，请上传 正方形 的图片</div>
         </el-upload>
       </el-form-item>
 
@@ -282,8 +283,10 @@ export default {
   text-align: center;
 }
 .avatar {
-  width: 88px;
-  height: 88px;
+
   display: block;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
 }
 </style>

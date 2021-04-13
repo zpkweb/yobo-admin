@@ -26,7 +26,7 @@
             <el-button   @click="bannerDelete(item)">{{ $t('content.delete') }}</el-button>
           </el-col>
 
-          <el-col :span="4">
+          <el-col :span="5">
 
             <el-upload
               class="avatar-uploader"
@@ -37,6 +37,7 @@
               >
               <img v-if="item.src" :src="item.src" class="avatar">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+              <div slot="tip" class="el-upload__tip">banner图片，请上传 大于1220X510 的图片</div>
             </el-upload>
           </el-col>
           <el-col :span="4">

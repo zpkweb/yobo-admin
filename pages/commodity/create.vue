@@ -886,6 +886,7 @@
         :on-success="uploadSuccess"
       >
         <i class="el-icon-plus"></i>
+        <div slot="tip" class="el-upload__tip">艺术品图片，请上传 768X400 的图片</div>
       </el-upload>
       <el-dialog :visible.sync="dialogVisible">
         <img width="100%" :src="dialogImageUrl" alt="" />

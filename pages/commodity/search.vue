@@ -555,17 +555,17 @@
       </el-table-column> -->
       <el-table-column prop="photo" :label="$t('commodity.photo')" width="123">
         <template slot-scope="scope">
-          <el-card
-            :body-style="{ padding: '0px' }"
-            v-for="(item, index) of scope.row.photos"
-            :key="index"
-            style="margin: 10px"
-          >
-            <img :src="item.src" class="image" width="80px" height="80px" />
-            <!-- <div style="padding: 14px">
-              <span>{{ item.name }}</span>
-            </div> -->
-          </el-card>
+
+          <div class="demo-image__preview">
+            <el-image
+              style="width: 100px; height: 100px"
+              :src="scope.row.photos[0].src"
+              :preview-src-list="scope.row.photos.map((item)=>{return item.src})">
+            </el-image>
+          </div>
+
+
+
         </template>
       </el-table-column>
 

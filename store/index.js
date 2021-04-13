@@ -7,13 +7,12 @@ export const state = () => ({
       icon: 'el-icon-menu',
       // name: '用户管理',
       name: 'menu.user.title',
-      path: '/user',
       subMenu: [
         {
           icon: 'el-icon-search',
           // name: '搜索',
           name: 'menu.user.search',
-          path: '/user',
+          path: '/user/search',
           level: '0-0',
         },
         {
@@ -26,7 +25,7 @@ export const state = () => ({
               icon: 'el-icon-search',
               // name: '查找普通用户',
               name: 'menu.user.ordinary.search',
-              path: '/user/ordinary',
+              path: '/user/ordinary/search',
               level: '0-1-0',
             },
             {
@@ -56,7 +55,7 @@ export const state = () => ({
               icon: 'el-icon-search',
               // name: '查找艺术家',
               name: 'menu.user.seller.search',
-              path: '/user/seller',
+              path: '/user/seller/search',
               level: '0-2-1',
             },
             {
@@ -86,7 +85,7 @@ export const state = () => ({
               icon: 'el-icon-search',
               // name: '查找客服',
               name: 'menu.user.customerService.search',
-              path: '/user/customerService',
+              path: '/user/customerService/search',
               level: '0-3-0',
             },
             {
@@ -109,7 +108,7 @@ export const state = () => ({
               icon: 'el-icon-search',
               // name: '查找管理员',
               name: 'menu.user.admin.search',
-              path: '/user/admin',
+              path: '/user/admin/search',
               level: '0-4-0',
             },
             {
@@ -132,7 +131,7 @@ export const state = () => ({
               icon: 'el-icon-search',
               // name: '查找超级管理员',
               name: 'menu.user.superAdmin.search',
-              path: '/user/superAdmin',
+              path: '/user/superAdmin/search',
               level: '0-5-0',
             },
             {
@@ -152,13 +151,12 @@ export const state = () => ({
       icon: 'el-icon-menu',
       // name: '艺术品管理',
       name: 'menu.commodity.title',
-      path: '/commodity',
       subMenu: [
         {
           icon: 'el-icon-search',
           // name: '搜索艺术品',
           name: 'menu.commodity.search',
-          path: '/commodity',
+          path: '/commodity/search',
           level: '1-0',
         },
         {
@@ -172,7 +170,7 @@ export const state = () => ({
           icon: 'el-icon-menu',
           // name: '艺术品选项',
           name: 'menu.commodity.options.title',
-          path: '/commodity/options/category',
+          path: '/commodity/options',
           subMenu: [
 
 
@@ -277,7 +275,6 @@ export const state = () => ({
       icon: 'el-icon-menu',
       // name: '权限管理',
       name: 'menu.auth.title',
-      path: '/auth',
       subMenu: [
         {
           icon: 'el-icon-menu',
@@ -314,7 +311,6 @@ export const state = () => ({
       icon: 'el-icon-menu',
       // name: '界面管理',
       name: 'menu.page.title',
-      path: '/page',
       subMenu: [
         {
           icon: 'el-icon-menu',

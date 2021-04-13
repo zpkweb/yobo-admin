@@ -64,6 +64,7 @@
             >
               <img v-if="item.img" :src="item.img" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+              <div slot="tip" class="el-upload__tip">艺术品{{optionType[$route.params.type]}}图片，请上传 210X185 的图片</div>
             </el-upload>
           </el-form-item>
         </el-col>

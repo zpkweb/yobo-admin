@@ -15,7 +15,7 @@
       <template v-for="item in $store.state.userMenu">
         <el-submenu
           :key="item.name"
-          :index="item.path"
+          :index="item.level"
           v-if="$store.state.isRoot || item.checked"
         >
           <template slot="title">
@@ -30,7 +30,8 @@
               :key="asideitem.name"
               v-if="$store.state.isRoot || asideitem.checked"
             >
-            <nuxt-link class="nuxt-link" :to="localePath(asideitem.path)">
+
+            <nuxt-link class="nuxt-link" :to="asideitem.subMenu ? localePath(asideitem.subMenu[0].path) : localePath(asideitem.path)">
               {{ $t(asideitem.name) }}
             </nuxt-link>
             </el-menu-item>

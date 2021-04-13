@@ -89,6 +89,7 @@
             class="avatar"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <div slot="tip" class="el-upload__tip">艺术家头像，请上传正方形的图片</div>
         </el-upload>
       </el-form-item>
 
@@ -518,19 +519,21 @@ export default {
       }
     },
     handleAvatarSuccess(res, file) {
+      console.log("handleAvatarSuccess", res, file)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       this.userCreate.avatar = res.data.src
     },
     beforeAvatarUpload(file) {
+      console.log("beforeAvatarUpload", file)
       // const isJPG = file.type === 'image/jpeg';
-      const isLt2M = file.size / 1024 / 1024 < 2
+      // const isLt2M = file.size / 1024 / 1024 < 2
 
       // if (!isJPG) {
       //   this.$message.error('上传头像图片只能是 JPG 格式!');
       // }
-      if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
-      }
+      // if (!isLt2M) {
+      //   this.$message.error('上传头像图片大小不能超过 2MB!')
+      // }
       // return isJPG && isLt2M;
       // return isLt2M
     },
@@ -586,9 +589,10 @@ export default {
   text-align: center;
 }
 .avatar {
-  width: 88px;
-  height: 88px;
   display: block;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
 }
 .el-tag + .el-tag {
     margin-left: 10px;

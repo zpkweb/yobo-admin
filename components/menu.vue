@@ -9,7 +9,7 @@
     <template v-for="item in menu.subMenu">
       <template v-if="$store.state.isRoot || item.checked">
         <template v-if="item.subMenu && item.subMenu.length">
-          <el-submenu :key="item.name" :index="item.path">
+          <el-submenu  :key="item.name" :index="item.path" >
             <template slot="title">
               <i class="el-icon-menu"></i
               ><span slot="title">{{ $t(item.name) }}</span>
@@ -64,5 +64,8 @@ export default {
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+.nuxt-link-active{
+  color: #f00;
 }
 </style>

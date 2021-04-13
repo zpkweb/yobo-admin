@@ -7,21 +7,24 @@ const _a83835d8 = () => interopDefault(import('../pages/auth.vue' /* webpackChun
 const _10929447 = () => interopDefault(import('../pages/auth/identityList.vue' /* webpackChunkName: "pages/auth/identityList" */))
 const _2ba4705e = () => interopDefault(import('../pages/auth/_type.vue' /* webpackChunkName: "pages/auth/_type" */))
 const _ddf1321e = () => interopDefault(import('../pages/commodity.vue' /* webpackChunkName: "pages/commodity" */))
-const _0bed34b4 = () => interopDefault(import('../pages/commodity/index.vue' /* webpackChunkName: "pages/commodity/index" */))
 const _cd24a6ec = () => interopDefault(import('../pages/commodity/create.vue' /* webpackChunkName: "pages/commodity/create" */))
+const _bffd3c00 = () => interopDefault(import('../pages/commodity/options.vue' /* webpackChunkName: "pages/commodity/options" */))
 const _1ef38c4a = () => interopDefault(import('../pages/commodity/options/_type.vue' /* webpackChunkName: "pages/commodity/options/_type" */))
+const _1d783b36 = () => interopDefault(import('../pages/commodity/search.vue' /* webpackChunkName: "pages/commodity/search" */))
 const _4c03d416 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 const _4f3b27f0 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _ec80c30a = () => interopDefault(import('../pages/page.vue' /* webpackChunkName: "pages/page" */))
 const _9abde820 = () => interopDefault(import('../pages/page/banner.vue' /* webpackChunkName: "pages/page/banner" */))
 const _46a329b7 = () => interopDefault(import('../pages/user.vue' /* webpackChunkName: "pages/user" */))
-const _44414afa = () => interopDefault(import('../pages/user/index.vue' /* webpackChunkName: "pages/user/index" */))
-const _a0438d6c = () => interopDefault(import('../pages/user/seller/index.vue' /* webpackChunkName: "pages/user/seller/index" */))
+const _20b224a0 = () => interopDefault(import('../pages/user/search.vue' /* webpackChunkName: "pages/user/search" */))
+const _2ce51407 = () => interopDefault(import('../pages/user/seller.vue' /* webpackChunkName: "pages/user/seller" */))
 const _6447e5e6 = () => interopDefault(import('../pages/user/seller/apply.vue' /* webpackChunkName: "pages/user/seller/apply" */))
 const _0aa924a4 = () => interopDefault(import('../pages/user/seller/applyList.vue' /* webpackChunkName: "pages/user/seller/applyList" */))
 const _739d3ab4 = () => interopDefault(import('../pages/user/seller/create.vue' /* webpackChunkName: "pages/user/seller/create" */))
+const _10b06d40 = () => interopDefault(import('../pages/user/seller/search.vue' /* webpackChunkName: "pages/user/seller/search" */))
 const _9d3a04f0 = () => interopDefault(import('../pages/user/_identity/index.vue' /* webpackChunkName: "pages/user/_identity/index" */))
 const _ba9e0394 = () => interopDefault(import('../pages/user/_identity/create.vue' /* webpackChunkName: "pages/user/_identity/create" */))
+const _cb99cb5a = () => interopDefault(import('../pages/user/_identity/_identity.vue' /* webpackChunkName: "pages/user/_identity/_identity" */))
 const _0d461fcf = () => interopDefault(import('../pages/yobo.vue' /* webpackChunkName: "pages/yobo" */))
 
 // TODO: remove in Nuxt 3
@@ -56,18 +59,24 @@ export const routerOptions = {
   }, {
     path: "/commodity",
     component: _ddf1321e,
+    name: "commodity___zh-cn",
     children: [{
-      path: "",
-      component: _0bed34b4,
-      name: "commodity___zh-cn"
-    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___zh-cn"
     }, {
-      path: "options/:type?",
-      component: _1ef38c4a,
-      name: "commodity-options-type___zh-cn"
+      path: "options",
+      component: _bffd3c00,
+      name: "commodity-options___zh-cn",
+      children: [{
+        path: ":type?",
+        component: _1ef38c4a,
+        name: "commodity-options-type___zh-cn"
+      }]
+    }, {
+      path: "search",
+      component: _1d783b36,
+      name: "commodity-search___zh-cn"
     }]
   }, {
     path: "/en-us",
@@ -97,34 +106,44 @@ export const routerOptions = {
   }, {
     path: "/user",
     component: _46a329b7,
+    name: "user___zh-cn",
     children: [{
-      path: "",
-      component: _44414afa,
-      name: "user___zh-cn"
+      path: "search",
+      component: _20b224a0,
+      name: "user-search___zh-cn"
     }, {
       path: "seller",
-      component: _a0438d6c,
-      name: "user-seller___zh-cn"
-    }, {
-      path: "seller/apply",
-      component: _6447e5e6,
-      name: "user-seller-apply___zh-cn"
-    }, {
-      path: "seller/applyList",
-      component: _0aa924a4,
-      name: "user-seller-applyList___zh-cn"
-    }, {
-      path: "seller/create",
-      component: _739d3ab4,
-      name: "user-seller-create___zh-cn"
+      component: _2ce51407,
+      name: "user-seller___zh-cn",
+      children: [{
+        path: "apply",
+        component: _6447e5e6,
+        name: "user-seller-apply___zh-cn"
+      }, {
+        path: "applyList",
+        component: _0aa924a4,
+        name: "user-seller-applyList___zh-cn"
+      }, {
+        path: "create",
+        component: _739d3ab4,
+        name: "user-seller-create___zh-cn"
+      }, {
+        path: "search",
+        component: _10b06d40,
+        name: "user-seller-search___zh-cn"
+      }]
     }, {
       path: ":identity",
       component: _9d3a04f0,
       name: "user-identity___zh-cn"
     }, {
-      path: ":identity/create",
+      path: ":identity?/create",
       component: _ba9e0394,
       name: "user-identity-create___zh-cn"
+    }, {
+      path: ":identity?/:identity",
+      component: _cb99cb5a,
+      name: "user-identity-identity___zh-cn"
     }]
   }, {
     path: "/yobo",
@@ -146,18 +165,24 @@ export const routerOptions = {
   }, {
     path: "/en-us/commodity",
     component: _ddf1321e,
+    name: "commodity___en-us",
     children: [{
-      path: "",
-      component: _0bed34b4,
-      name: "commodity___en-us"
-    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___en-us"
     }, {
-      path: "options/:type?",
-      component: _1ef38c4a,
-      name: "commodity-options-type___en-us"
+      path: "options",
+      component: _bffd3c00,
+      name: "commodity-options___en-us",
+      children: [{
+        path: ":type?",
+        component: _1ef38c4a,
+        name: "commodity-options-type___en-us"
+      }]
+    }, {
+      path: "search",
+      component: _1d783b36,
+      name: "commodity-search___en-us"
     }]
   }, {
     path: "/en-us/login",
@@ -175,34 +200,44 @@ export const routerOptions = {
   }, {
     path: "/en-us/user",
     component: _46a329b7,
+    name: "user___en-us",
     children: [{
-      path: "",
-      component: _44414afa,
-      name: "user___en-us"
+      path: "search",
+      component: _20b224a0,
+      name: "user-search___en-us"
     }, {
       path: "seller",
-      component: _a0438d6c,
-      name: "user-seller___en-us"
-    }, {
-      path: "seller/apply",
-      component: _6447e5e6,
-      name: "user-seller-apply___en-us"
-    }, {
-      path: "seller/applyList",
-      component: _0aa924a4,
-      name: "user-seller-applyList___en-us"
-    }, {
-      path: "seller/create",
-      component: _739d3ab4,
-      name: "user-seller-create___en-us"
+      component: _2ce51407,
+      name: "user-seller___en-us",
+      children: [{
+        path: "apply",
+        component: _6447e5e6,
+        name: "user-seller-apply___en-us"
+      }, {
+        path: "applyList",
+        component: _0aa924a4,
+        name: "user-seller-applyList___en-us"
+      }, {
+        path: "create",
+        component: _739d3ab4,
+        name: "user-seller-create___en-us"
+      }, {
+        path: "search",
+        component: _10b06d40,
+        name: "user-seller-search___en-us"
+      }]
     }, {
       path: ":identity",
       component: _9d3a04f0,
       name: "user-identity___en-us"
     }, {
-      path: ":identity/create",
+      path: ":identity?/create",
       component: _ba9e0394,
       name: "user-identity-create___en-us"
+    }, {
+      path: ":identity?/:identity",
+      component: _cb99cb5a,
+      name: "user-identity-identity___en-us"
     }]
   }, {
     path: "/en-us/yobo",
@@ -224,18 +259,24 @@ export const routerOptions = {
   }, {
     path: "/es-es/commodity",
     component: _ddf1321e,
+    name: "commodity___es-es",
     children: [{
-      path: "",
-      component: _0bed34b4,
-      name: "commodity___es-es"
-    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___es-es"
     }, {
-      path: "options/:type?",
-      component: _1ef38c4a,
-      name: "commodity-options-type___es-es"
+      path: "options",
+      component: _bffd3c00,
+      name: "commodity-options___es-es",
+      children: [{
+        path: ":type?",
+        component: _1ef38c4a,
+        name: "commodity-options-type___es-es"
+      }]
+    }, {
+      path: "search",
+      component: _1d783b36,
+      name: "commodity-search___es-es"
     }]
   }, {
     path: "/es-es/login",
@@ -253,34 +294,44 @@ export const routerOptions = {
   }, {
     path: "/es-es/user",
     component: _46a329b7,
+    name: "user___es-es",
     children: [{
-      path: "",
-      component: _44414afa,
-      name: "user___es-es"
+      path: "search",
+      component: _20b224a0,
+      name: "user-search___es-es"
     }, {
       path: "seller",
-      component: _a0438d6c,
-      name: "user-seller___es-es"
-    }, {
-      path: "seller/apply",
-      component: _6447e5e6,
-      name: "user-seller-apply___es-es"
-    }, {
-      path: "seller/applyList",
-      component: _0aa924a4,
-      name: "user-seller-applyList___es-es"
-    }, {
-      path: "seller/create",
-      component: _739d3ab4,
-      name: "user-seller-create___es-es"
+      component: _2ce51407,
+      name: "user-seller___es-es",
+      children: [{
+        path: "apply",
+        component: _6447e5e6,
+        name: "user-seller-apply___es-es"
+      }, {
+        path: "applyList",
+        component: _0aa924a4,
+        name: "user-seller-applyList___es-es"
+      }, {
+        path: "create",
+        component: _739d3ab4,
+        name: "user-seller-create___es-es"
+      }, {
+        path: "search",
+        component: _10b06d40,
+        name: "user-seller-search___es-es"
+      }]
     }, {
       path: ":identity",
       component: _9d3a04f0,
       name: "user-identity___es-es"
     }, {
-      path: ":identity/create",
+      path: ":identity?/create",
       component: _ba9e0394,
       name: "user-identity-create___es-es"
+    }, {
+      path: ":identity?/:identity",
+      component: _cb99cb5a,
+      name: "user-identity-identity___es-es"
     }]
   }, {
     path: "/es-es/yobo",
@@ -302,18 +353,24 @@ export const routerOptions = {
   }, {
     path: "/ja-jp/commodity",
     component: _ddf1321e,
+    name: "commodity___ja-jp",
     children: [{
-      path: "",
-      component: _0bed34b4,
-      name: "commodity___ja-jp"
-    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___ja-jp"
     }, {
-      path: "options/:type?",
-      component: _1ef38c4a,
-      name: "commodity-options-type___ja-jp"
+      path: "options",
+      component: _bffd3c00,
+      name: "commodity-options___ja-jp",
+      children: [{
+        path: ":type?",
+        component: _1ef38c4a,
+        name: "commodity-options-type___ja-jp"
+      }]
+    }, {
+      path: "search",
+      component: _1d783b36,
+      name: "commodity-search___ja-jp"
     }]
   }, {
     path: "/ja-jp/login",
@@ -331,34 +388,44 @@ export const routerOptions = {
   }, {
     path: "/ja-jp/user",
     component: _46a329b7,
+    name: "user___ja-jp",
     children: [{
-      path: "",
-      component: _44414afa,
-      name: "user___ja-jp"
+      path: "search",
+      component: _20b224a0,
+      name: "user-search___ja-jp"
     }, {
       path: "seller",
-      component: _a0438d6c,
-      name: "user-seller___ja-jp"
-    }, {
-      path: "seller/apply",
-      component: _6447e5e6,
-      name: "user-seller-apply___ja-jp"
-    }, {
-      path: "seller/applyList",
-      component: _0aa924a4,
-      name: "user-seller-applyList___ja-jp"
-    }, {
-      path: "seller/create",
-      component: _739d3ab4,
-      name: "user-seller-create___ja-jp"
+      component: _2ce51407,
+      name: "user-seller___ja-jp",
+      children: [{
+        path: "apply",
+        component: _6447e5e6,
+        name: "user-seller-apply___ja-jp"
+      }, {
+        path: "applyList",
+        component: _0aa924a4,
+        name: "user-seller-applyList___ja-jp"
+      }, {
+        path: "create",
+        component: _739d3ab4,
+        name: "user-seller-create___ja-jp"
+      }, {
+        path: "search",
+        component: _10b06d40,
+        name: "user-seller-search___ja-jp"
+      }]
     }, {
       path: ":identity",
       component: _9d3a04f0,
       name: "user-identity___ja-jp"
     }, {
-      path: ":identity/create",
+      path: ":identity?/create",
       component: _ba9e0394,
       name: "user-identity-create___ja-jp"
+    }, {
+      path: ":identity?/:identity",
+      component: _cb99cb5a,
+      name: "user-identity-identity___ja-jp"
     }]
   }, {
     path: "/ja-jp/yobo",
