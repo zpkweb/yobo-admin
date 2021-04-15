@@ -1,4 +1,4 @@
-exports.ids = [14];
+exports.ids = [15];
 exports.modules = {
 
 /***/ 121:
@@ -13,7 +13,7 @@ module.exports = function (Component) {
 
 /***/ }),
 
-/***/ 141:
+/***/ 138:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23,7 +23,7 @@ module.exports = function (Component) {
 
 /***/ }),
 
-/***/ 156:
+/***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -182,7 +182,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 164:
+/***/ 162:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -287,7 +287,7 @@ var staticRenderFns = []
 var componentNormalizer = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./pages/index.vue?vue&type=custom&index=0&blockType=i18n
-var pagesvue_type_custom_index_0_blockType_i18n = __webpack_require__(141);
+var pagesvue_type_custom_index_0_blockType_i18n = __webpack_require__(138);
 
 // CONCATENATED MODULE: ./pages/index.vue
 
@@ -318,7 +318,7 @@ if (typeof pagesvue_type_custom_index_0_blockType_i18n["default"] === 'function'
 /* harmony default export */ var pages = __webpack_exports__["default"] = (component.exports);
 
 /* nuxt-component-imports */
-installComponents(component, {Chart: __webpack_require__(156).default})
+installComponents(component, {Chart: __webpack_require__(153).default})
 
 
 /***/ })

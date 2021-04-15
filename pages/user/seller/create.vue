@@ -89,7 +89,7 @@
             class="avatar"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          <div slot="tip" class="el-upload__tip">艺术家头像，请上传正方形的图片</div>
+          <div slot="tip" class="el-upload__tip">艺术家头像，请上传 正方形 的图片</div>
         </el-upload>
       </el-form-item>
 
@@ -570,30 +570,6 @@ export default {
   width: 90%;
 }
 
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 88px;
-  height: 88px;
-  line-height: 88px;
-  text-align: center;
-}
-.avatar {
-  display: block;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-}
 .el-tag + .el-tag {
     margin-left: 10px;
   }

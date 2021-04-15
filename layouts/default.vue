@@ -49,4 +49,30 @@ export default {
   line-height: 60px;
   border-top: solid 1px #e6e6e6;
 }
+
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width:188px;
+  height: 188px;
+  line-height: 188px;
+  text-align: center;
+}
+.avatar {
+  width: 188px;
+  height: 188px;
+  display: block;
+}
+
 </style>

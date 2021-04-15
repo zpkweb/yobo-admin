@@ -43,7 +43,7 @@ module.exports =
 /******/
 /******/ 		// "0" is the signal for "already loaded"
 /******/ 		if(installedChunks[chunkId] !== 0) {
-/******/ 			var chunk = require("./" + ({"0":"lang-en-US","1":"lang-es-ES","2":"lang-fr-FR","3":"lang-ja-JP","4":"lang-zh-CN","6":"pages/auth","7":"pages/auth/_type","8":"pages/auth/identityList","9":"pages/commodity","10":"pages/commodity/create","11":"pages/commodity/options","12":"pages/commodity/options/_type","13":"pages/commodity/search","14":"pages/index","15":"pages/login/index","16":"pages/page","17":"pages/page/banner","18":"pages/user","19":"pages/user/_identity/_identity","20":"pages/user/_identity/create","21":"pages/user/_identity/index","22":"pages/user/search","23":"pages/user/seller","24":"pages/user/seller/apply","25":"pages/user/seller/applyList","26":"pages/user/seller/create","27":"pages/user/seller/search","28":"pages/yobo"}[chunkId]||chunkId) + ".js");
+/******/ 			var chunk = require("./" + ({"0":"lang-en-US","1":"lang-es-ES","2":"lang-fr-FR","3":"lang-ja-JP","4":"lang-zh-CN","6":"pages/auth","7":"pages/auth/_type","8":"pages/auth/identityList","9":"pages/commodity","10":"pages/commodity/all","11":"pages/commodity/create","12":"pages/commodity/options","13":"pages/commodity/options/_type","14":"pages/commodity/search","15":"pages/index","16":"pages/login/index","17":"pages/page","18":"pages/page/banner","19":"pages/user","20":"pages/user/_identity/create","21":"pages/user/_identity/index","22":"pages/user/_identity/search","23":"pages/user/search","24":"pages/user/seller","25":"pages/user/seller/apply","26":"pages/user/seller/applyList","27":"pages/user/seller/create","28":"pages/user/seller/search","29":"pages/yobo"}[chunkId]||chunkId) + ".js");
 /******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
 /******/ 			for(var moduleId in moreModules) {
 /******/ 				modules[moduleId] = moreModules[moduleId];
@@ -47834,7 +47834,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(4);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".layout-container{min-height:100vh;display:flex;justify-content:center}.layout-header{padding:0;border-bottom:1px solid #e6e6e6}.layout-footer{line-height:60px;border-top:1px solid #e6e6e6}", ""]);
+exports.push([module.i, ".layout-container{min-height:100vh;display:flex;justify-content:center}.layout-header{padding:0;border-bottom:1px solid #e6e6e6}.layout-footer{line-height:60px;border-top:1px solid #e6e6e6}.avatar-uploader .el-upload{border:1px dashed #d9d9d9;border-radius:6px;cursor:pointer;position:relative;overflow:hidden}.avatar-uploader .el-upload:hover{border-color:#409eff}.avatar-uploader-icon{font-size:28px;color:#8c939d;width:188px;height:188px;line-height:188px;text-align:center}.avatar{width:188px;height:188px;display:block}", ""]);
 // Exports
 module.exports = exports;
 
@@ -59150,51 +59150,53 @@ if (false) {}
 
 
 
-const _a83835d8 = () => interopDefault(__webpack_require__.e(/* import() | pages/auth */ 6).then(__webpack_require__.bind(null, 157)));
+const _a83835d8 = () => interopDefault(__webpack_require__.e(/* import() | pages/auth */ 6).then(__webpack_require__.bind(null, 154)));
 
-const _10929447 = () => interopDefault(__webpack_require__.e(/* import() | pages/auth/identityList */ 8).then(__webpack_require__.bind(null, 158)));
+const _10929447 = () => interopDefault(__webpack_require__.e(/* import() | pages/auth/identityList */ 8).then(__webpack_require__.bind(null, 155)));
 
-const _2ba4705e = () => interopDefault(__webpack_require__.e(/* import() | pages/auth/_type */ 7).then(__webpack_require__.bind(null, 159)));
+const _2ba4705e = () => interopDefault(__webpack_require__.e(/* import() | pages/auth/_type */ 7).then(__webpack_require__.bind(null, 156)));
 
-const _ddf1321e = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity */ 9).then(__webpack_require__.bind(null, 160)));
+const _ddf1321e = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity */ 9).then(__webpack_require__.bind(null, 157)));
 
-const _cd24a6ec = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/create */ 10).then(__webpack_require__.bind(null, 161)));
+const _62449083 = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/all */ 10).then(__webpack_require__.bind(null, 158)));
 
-const _bffd3c00 = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/options */ 11).then(__webpack_require__.bind(null, 177)));
+const _cd24a6ec = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/create */ 11).then(__webpack_require__.bind(null, 159)));
 
-const _1ef38c4a = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/options/_type */ 12).then(__webpack_require__.bind(null, 162)));
+const _bffd3c00 = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/options */ 12).then(__webpack_require__.bind(null, 175)));
 
-const _1d783b36 = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/search */ 13).then(__webpack_require__.bind(null, 163)));
+const _1ef38c4a = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/options/_type */ 13).then(__webpack_require__.bind(null, 160)));
 
-const _4c03d416 = () => interopDefault(__webpack_require__.e(/* import() | pages/index */ 14).then(__webpack_require__.bind(null, 164)));
+const _1d783b36 = () => interopDefault(__webpack_require__.e(/* import() | pages/commodity/search */ 14).then(__webpack_require__.bind(null, 161)));
 
-const _4f3b27f0 = () => interopDefault(__webpack_require__.e(/* import() | pages/login/index */ 15).then(__webpack_require__.bind(null, 165)));
+const _4c03d416 = () => interopDefault(__webpack_require__.e(/* import() | pages/index */ 15).then(__webpack_require__.bind(null, 162)));
 
-const _ec80c30a = () => interopDefault(__webpack_require__.e(/* import() | pages/page */ 16).then(__webpack_require__.bind(null, 166)));
+const _4f3b27f0 = () => interopDefault(__webpack_require__.e(/* import() | pages/login/index */ 16).then(__webpack_require__.bind(null, 163)));
 
-const _9abde820 = () => interopDefault(__webpack_require__.e(/* import() | pages/page/banner */ 17).then(__webpack_require__.bind(null, 167)));
+const _ec80c30a = () => interopDefault(__webpack_require__.e(/* import() | pages/page */ 17).then(__webpack_require__.bind(null, 164)));
 
-const _46a329b7 = () => interopDefault(__webpack_require__.e(/* import() | pages/user */ 18).then(__webpack_require__.bind(null, 168)));
+const _9abde820 = () => interopDefault(__webpack_require__.e(/* import() | pages/page/banner */ 18).then(__webpack_require__.bind(null, 165)));
 
-const _20b224a0 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/search */ 22).then(__webpack_require__.bind(null, 169)));
+const _46a329b7 = () => interopDefault(__webpack_require__.e(/* import() | pages/user */ 19).then(__webpack_require__.bind(null, 166)));
 
-const _2ce51407 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller */ 23).then(__webpack_require__.bind(null, 178)));
+const _20b224a0 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/search */ 23).then(__webpack_require__.bind(null, 167)));
 
-const _6447e5e6 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/apply */ 24).then(__webpack_require__.bind(null, 170)));
+const _2ce51407 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller */ 24).then(__webpack_require__.bind(null, 176)));
 
-const _0aa924a4 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/applyList */ 25).then(__webpack_require__.bind(null, 171)));
+const _6447e5e6 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/apply */ 25).then(__webpack_require__.bind(null, 168)));
 
-const _739d3ab4 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/create */ 26).then(__webpack_require__.bind(null, 172)));
+const _0aa924a4 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/applyList */ 26).then(__webpack_require__.bind(null, 169)));
 
-const _10b06d40 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/search */ 27).then(__webpack_require__.bind(null, 173)));
+const _739d3ab4 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/create */ 27).then(__webpack_require__.bind(null, 170)));
 
-const _9d3a04f0 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/_identity/index */ 21).then(__webpack_require__.bind(null, 179)));
+const _10b06d40 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/seller/search */ 28).then(__webpack_require__.bind(null, 171)));
 
-const _ba9e0394 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/_identity/create */ 20).then(__webpack_require__.bind(null, 174)));
+const _9d3a04f0 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/_identity/index */ 21).then(__webpack_require__.bind(null, 177)));
 
-const _cb99cb5a = () => interopDefault(__webpack_require__.e(/* import() | pages/user/_identity/_identity */ 19).then(__webpack_require__.bind(null, 175)));
+const _ba9e0394 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/_identity/create */ 20).then(__webpack_require__.bind(null, 172)));
 
-const _0d461fcf = () => interopDefault(__webpack_require__.e(/* import() | pages/yobo */ 28).then(__webpack_require__.bind(null, 176))); // TODO: remove in Nuxt 3
+const _26bb8ce2 = () => interopDefault(__webpack_require__.e(/* import() | pages/user/_identity/search */ 22).then(__webpack_require__.bind(null, 173)));
+
+const _0d461fcf = () => interopDefault(__webpack_require__.e(/* import() | pages/yobo */ 29).then(__webpack_require__.bind(null, 174))); // TODO: remove in Nuxt 3
 
 
 const emptyFn = () => {};
@@ -59230,6 +59232,10 @@ const routerOptions = {
     component: _ddf1321e,
     name: "commodity___zh-cn",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___zh-cn"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___zh-cn"
@@ -59310,9 +59316,9 @@ const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___zh-cn"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___zh-cn"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___zh-cn"
     }]
   }, {
     path: "/yobo",
@@ -59336,6 +59342,10 @@ const routerOptions = {
     component: _ddf1321e,
     name: "commodity___en-us",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___en-us"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___en-us"
@@ -59404,9 +59414,9 @@ const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___en-us"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___en-us"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___en-us"
     }]
   }, {
     path: "/en-us/yobo",
@@ -59430,6 +59440,10 @@ const routerOptions = {
     component: _ddf1321e,
     name: "commodity___es-es",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___es-es"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___es-es"
@@ -59498,9 +59512,9 @@ const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___es-es"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___es-es"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___es-es"
     }]
   }, {
     path: "/es-es/yobo",
@@ -59524,6 +59538,10 @@ const routerOptions = {
     component: _ddf1321e,
     name: "commodity___ja-jp",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___ja-jp"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___ja-jp"
@@ -59592,9 +59610,9 @@ const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___ja-jp"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___ja-jp"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___ja-jp"
     }]
   }, {
     path: "/ja-jp/yobo",
@@ -60097,12 +60115,12 @@ var css_global = __webpack_require__(70);
 // EXTERNAL MODULE: ./assets/css/normalize.css
 var normalize = __webpack_require__(72);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=template&id=729015c4&
-var defaultvue_type_template_id_729015c4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',{staticClass:"layout-container"},[_c('el-header',{staticClass:"layout-header"},[_c('Header')],1),_vm._v(" "),_c('Nuxt'),_vm._v(" "),_c('el-footer',{staticClass:"layout-footer"},[_c('Footer')],1)],1)}
-var defaultvue_type_template_id_729015c4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=template&id=a50b92ae&
+var defaultvue_type_template_id_a50b92ae_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',{staticClass:"layout-container"},[_c('el-header',{staticClass:"layout-header"},[_c('Header')],1),_vm._v(" "),_c('Nuxt'),_vm._v(" "),_c('el-footer',{staticClass:"layout-footer"},[_c('Footer')],1)],1)}
+var defaultvue_type_template_id_a50b92ae_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./layouts/default.vue?vue&type=template&id=729015c4&
+// CONCATENATED MODULE: ./layouts/default.vue?vue&type=template&id=a50b92ae&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=script&lang=js&
 //
@@ -60156,8 +60174,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var default_component = Object(componentNormalizer["a" /* default */])(
   layouts_defaultvue_type_script_lang_js_,
-  defaultvue_type_template_id_729015c4_render,
-  defaultvue_type_template_id_729015c4_staticRenderFns,
+  defaultvue_type_template_id_a50b92ae_render,
+  defaultvue_type_template_id_a50b92ae_staticRenderFns,
   false,
   default_injectStyles,
   null,

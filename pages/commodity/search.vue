@@ -298,19 +298,13 @@
         </el-col>
 
         <el-col :span="3">
-          <el-form-item :label="$t('commodity.color.start')" prop="colors.start">
+          <el-form-item label="颜色" prop="colors">
             <el-color-picker
-              v-model="commoditySearch.colors.start"
+              v-model="commoditySearch.colors"
             ></el-color-picker>
           </el-form-item>
         </el-col>
-        <el-col :span="3">
-          <el-form-item :label="$t('commodity.color.end')" prop="colors.end">
-            <el-color-picker
-              v-model="commoditySearch.colors.end"
-            ></el-color-picker>
-          </el-form-item>
-        </el-col>
+
 
 
       </el-row>
@@ -556,7 +550,7 @@
       <el-table-column prop="photo" :label="$t('commodity.photo')" width="123">
         <template slot-scope="scope">
 
-          <div class="demo-image__preview">
+          <div class="demo-image__preview" v-if="scope.row.photos && scope.row.photos.length">
             <el-image
               style="width: 100px; height: 100px"
               :src="scope.row.photos[0].src"
@@ -579,7 +573,7 @@
           {{ scope.row.height }}
         </template>
       </el-table-column>
-      <el-table-column prop="colors" :label="$t('commodity.color.title')" width="100">
+      <el-table-column prop="colors" :label="$t('commodity.color.title')" width="140">
         <template slot-scope="scope">
           <!-- <el-popover trigger="hover" placement="top">
             <p>颜色从: {{ scope.row.colors[0] }}</p>
@@ -589,21 +583,35 @@
               :style="`width:80px;height:100px;background: -webkit-linear-gradient(${scope.row.colors[0]},${scope.row.colors[1]});`"
             ></div>
           </el-popover> -->
-          <el-tag
-            v-for="(item, index) in scope.row.colors"
-            :key="index"
+          <template v-for="(item, index) in scope.row.colors">
+            <el-tag
+
+            :key="item.startColorValue"
             disable-transitions
             style="margin-left: 10px"
-            :color="item.name"
+            :color="item.startColor"
             effect="dark"
           >
-            {{ item.name }}
+            {{ item.startColor }}
           </el-tag>
+          <el-tag
+
+            :key="item.endColorValue"
+            disable-transitions
+            style="margin-left: 10px"
+            :color="item.endColor"
+            effect="dark"
+          >
+            {{ item.endColor }}
+          </el-tag>
+          </template>
+
+
         </template>
       </el-table-column>
       <el-table-column prop="desc['zh-cn']" :label="$t('commodity.desc')" width="200">
         <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
+          <el-popover trigger="hover" placement="top"  width="400">
             <p>{{$t('lang.zh')}}: {{ scope.row.desc['zh-cn'] }}</p>
             <p>{{$t('lang.en')}}: {{ scope.row.desc['en-us'] }}</p>
             <p>{{$t('lang.ja')}}: {{ scope.row.desc['ja-jp'] }}</p>
@@ -662,6 +670,7 @@
         </template>
       </el-table-column>
     </el-table>
+
     <el-pagination
       background
       layout="prev, pager, next"
@@ -727,10 +736,7 @@ export default {
         state: '',
         hots: false,
         news: false,
-        colors: {
-          start: '#ffffff',
-          end: '#000000',
-        },
+        colors: '#fff',
       },
       options: {
         category: [],
@@ -876,7 +882,7 @@ export default {
       } = this.commoditySearch
       const searchData = await this.$axios.$get('/api/admin/commodity/search', {
         params: {
-          ...this.search,
+          ...search,
           // categorys: this.commoditySearch.categorys.length ? JSON.stringify(this.commoditySearch.categorys) : this.commoditySearch.categorys,
           categorys: JSON.stringify(categorys),
           classifications: JSON.stringify(classifications),

@@ -1,14 +1,14 @@
-exports.ids = [10];
+exports.ids = [11];
 exports.modules = {
 
-/***/ 161:
+/***/ 159:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=template&id=53787014&scoped=true&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=template&id=0895a3db&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-form',{ref:"form",attrs:{"model":_vm.form,"label-width":"108px"}},[_c('el-form-item',[(_vm.isCreate)?_c('el-button',{attrs:{"type":"primary","icon":"el-icon-circle-plus-outline"},on:{"click":function($event){return _vm.onSubmit('form')}}},[_vm._v("\n      "+_vm._s(_vm.$t('content.create'))+"\n    ")]):_c('el-button',{attrs:{"type":"primary","icon":"el-icon-check"},on:{"click":function($event){return _vm.onSubmit('form')}}},[_vm._v("\n      "+_vm._s(_vm.$t('content.update'))+"\n    ")]),_vm._v(" "),_c('el-button',{attrs:{"icon":"el-icon-check"},on:{"click":_vm.onMock}},[_vm._v("\n      "+_vm._s(_vm.$t('content.fill'))+"\n    ")]),_vm._v(" "),_c('el-button',{attrs:{"icon":"el-icon-circle-close"},on:{"click":function($event){return _vm.resetForm('form')}}},[_vm._v(_vm._s(_vm.$t('content.clear')))])],1),_vm._v(" "),_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":6}},[_c('el-form-item',{attrs:{"label":_vm.$t('langname', { lang: _vm.$t('lang.zh'), name: _vm.$t('commodity.name') }),"prop":'name.zh-cn',"rules":{
           required: true,
           message: ("" + (_vm.$t('lang.zh')) + (_vm.$t('commodity.name')) + (_vm.$t(
@@ -105,63 +105,67 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       required: false,
       message: ("" + (_vm.$t('commodity.category')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.categorys),callback:function ($$v) {_vm.$set(_vm.form, "categorys", $$v)},expression:"form.categorys"}},_vm._l((_vm.categorys),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n      "+_vm._s(item['zh-cn'])+"\n    ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.classification'),"prop":'classifications',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.categorys),callback:function ($$v) {_vm.$set(_vm.form, "categorys", $$v)},expression:"form.categorys"}},_vm._l((_vm.options.categorys),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n      "+_vm._s(_vm.categorys[index]['zh-cn'])+"\n    ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.classification'),"prop":'classifications',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.classification')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.classifications),callback:function ($$v) {_vm.$set(_vm.form, "classifications", $$v)},expression:"form.classifications"}},_vm._l((_vm.classifications),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.material'),"prop":'materials',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.classifications),callback:function ($$v) {_vm.$set(_vm.form, "classifications", $$v)},expression:"form.classifications"}},_vm._l((_vm.options.classifications),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.classifications[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.material'),"prop":'materials',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.material')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.materials),callback:function ($$v) {_vm.$set(_vm.form, "materials", $$v)},expression:"form.materials"}},_vm._l((_vm.materials),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.model'),"prop":'models',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.materials),callback:function ($$v) {_vm.$set(_vm.form, "materials", $$v)},expression:"form.materials"}},_vm._l((_vm.options.materials),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.materials[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.model'),"prop":'models',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.model')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.models),callback:function ($$v) {_vm.$set(_vm.form, "models", $$v)},expression:"form.models"}},_vm._l((_vm.models),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.place'),"prop":'places',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.models),callback:function ($$v) {_vm.$set(_vm.form, "models", $$v)},expression:"form.models"}},_vm._l((_vm.options.models),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.models[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.place'),"prop":'places',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.place')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.places),callback:function ($$v) {_vm.$set(_vm.form, "places", $$v)},expression:"form.places"}},_vm._l((_vm.places),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.ruiwu'),"prop":'ruiwus',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.places),callback:function ($$v) {_vm.$set(_vm.form, "places", $$v)},expression:"form.places"}},_vm._l((_vm.options.places),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.places[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.ruiwu'),"prop":'ruiwus',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.ruiwu')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.ruiwus),callback:function ($$v) {_vm.$set(_vm.form, "ruiwus", $$v)},expression:"form.ruiwus"}},_vm._l((_vm.ruiwus),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.shape'),"prop":'shapes',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.ruiwus),callback:function ($$v) {_vm.$set(_vm.form, "ruiwus", $$v)},expression:"form.ruiwus"}},_vm._l((_vm.options.ruiwus),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.ruiwus[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.shape'),"prop":'shapes',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.shape')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.shapes),callback:function ($$v) {_vm.$set(_vm.form, "shapes", $$v)},expression:"form.shapes"}},_vm._l((_vm.shapes),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.specification'),"prop":'specifications',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.shapes),callback:function ($$v) {_vm.$set(_vm.form, "shapes", $$v)},expression:"form.shapes"}},_vm._l((_vm.options.shapes),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.shapes[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.specification'),"prop":'specifications',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.specification')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.specifications),callback:function ($$v) {_vm.$set(_vm.form, "specifications", $$v)},expression:"form.specifications"}},_vm._l((_vm.specifications),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.style'),"prop":'styles',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.specifications),callback:function ($$v) {_vm.$set(_vm.form, "specifications", $$v)},expression:"form.specifications"}},_vm._l((_vm.options.specifications),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.specifications[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.style'),"prop":'styles',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.style')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.styles),callback:function ($$v) {_vm.$set(_vm.form, "styles", $$v)},expression:"form.styles"}},_vm._l((_vm.styles),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.technique'),"prop":'techniques',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.styles),callback:function ($$v) {_vm.$set(_vm.form, "styles", $$v)},expression:"form.styles"}},_vm._l((_vm.options.styles),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.styles[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.technique'),"prop":'techniques',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.technique')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.techniques),callback:function ($$v) {_vm.$set(_vm.form, "techniques", $$v)},expression:"form.techniques"}},_vm._l((_vm.techniques),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.theme'),"prop":'themes',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.techniques),callback:function ($$v) {_vm.$set(_vm.form, "techniques", $$v)},expression:"form.techniques"}},_vm._l((_vm.options.techniques),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.techniques[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.theme'),"prop":'themes',"rules":{
           required: false,
           message: ("" + (_vm.$t('commodity.theme')) + (_vm.$t('form.noEmpty'))),
           trigger: 'change',
-        }}},[_c('el-checkbox-group',{model:{value:(_vm.form.themes),callback:function ($$v) {_vm.$set(_vm.form, "themes", $$v)},expression:"form.themes"}},_vm._l((_vm.themes),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n            "+_vm._s(item['zh-cn'])+"\n          ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.type'),"prop":'types',"rules":{
+        }}},[_c('el-checkbox-group',{model:{value:(_vm.form.themes),callback:function ($$v) {_vm.$set(_vm.form, "themes", $$v)},expression:"form.themes"}},_vm._l((_vm.options.themes),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n            "+_vm._s(_vm.themes[index]['zh-cn'])+"\n          ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.type'),"prop":'types',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.type')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.types),callback:function ($$v) {_vm.$set(_vm.form, "types", $$v)},expression:"form.types"}},_vm._l((_vm.types),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.use'),"prop":'uses',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.types),callback:function ($$v) {_vm.$set(_vm.form, "types", $$v)},expression:"form.types"}},_vm._l((_vm.options.types),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.types[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.use'),"prop":'uses',"rules":{
       required: false,
       message: ("" + (_vm.$t('commodity.use')) + (_vm.$t('form.noEmpty'))),
       trigger: 'change',
-    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.uses),callback:function ($$v) {_vm.$set(_vm.form, "uses", $$v)},expression:"form.uses"}},_vm._l((_vm.uses),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item,"value":item['zh-cn']}},[_vm._v("\n        "+_vm._s(item['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.color.title')}},[_c('el-row',{attrs:{"gutter":10}},[_vm._l((_vm.form.colors),function(item,index){return _c('el-col',{key:index,attrs:{"span":2}},[_c('el-form-item',{attrs:{"prop":'colors.' + index + '.name',"rules":{
+    }}},[_c('el-checkbox-group',{model:{value:(_vm.form.uses),callback:function ($$v) {_vm.$set(_vm.form, "uses", $$v)},expression:"form.uses"}},_vm._l((_vm.options.uses),function(item,index){return _c('el-checkbox',{key:index,attrs:{"name":"type","label":item}},[_vm._v("\n        "+_vm._s(_vm.uses[index]['zh-cn'])+"\n      ")])}),1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.color.title')}},[_c('el-row',{attrs:{"gutter":10}},[_c('el-col',{attrs:{"span":4}},[_c('el-form-item',{attrs:{"prop":'colors[0].startColor',"label":"开始颜色","rules":{
             required: false,
             message: ("" + (_vm.$t('commodity.color.title')) + (_vm.$t('form.noEmpty'))),
             trigger: 'blur',
-          }}},[_c('el-color-picker',{model:{value:(_vm.form.colors[index].name),callback:function ($$v) {_vm.$set(_vm.form.colors[index], "name", $$v)},expression:"form.colors[index].name"}})],1)],1)}),_vm._v(" "),_c('el-col',{attrs:{"span":2,"offset":1}},[_c('el-button',{attrs:{"icon":"el-icon-circle-plus-outline"},on:{"click":_vm.addColors}})],1)],2)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.photo')}},[_c('el-upload',{attrs:{"file-list":_vm.form.photos,"action":((_vm.$config.origin) + "/api/upload/images"),"data":{ type: 'commodity' },"list-type":"picture-card","on-preview":_vm.uploadPreview,"on-remove":_vm.uploadRemove,"on-success":_vm.uploadSuccess}},[_c('i',{staticClass:"el-icon-plus"}),_vm._v(" "),_c('div',{staticClass:"el-upload__tip",attrs:{"slot":"tip"},slot:"tip"},[_vm._v("艺术品图片，请上传 768X400 的图片")])]),_vm._v(" "),_c('el-dialog',{attrs:{"visible":_vm.dialogVisible},on:{"update:visible":function($event){_vm.dialogVisible=$event}}},[_c('img',{attrs:{"width":"100%","src":_vm.dialogImageUrl,"alt":""}})])],1),_vm._v(" "),_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":24}},[_c('el-form-item',{attrs:{"label":_vm.$t('commodity.state.title'),"prop":'state'}},[_c('el-radio-group',{model:{value:(_vm.form.state),callback:function ($$v) {_vm.$set(_vm.form, "state", $$v)},expression:"form.state"}},[_c('el-radio',{attrs:{"label":0}},[_vm._v(_vm._s(_vm.$t('commodity.state.added')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":1}},[_vm._v(_vm._s(_vm.$t('commodity.state.onsale')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":2}},[_vm._v(_vm._s(_vm.$t('commodity.state.sold')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":3}},[_vm._v(_vm._s(_vm.$t('commodity.state.offline')))])],1)],1)],1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.seller')}},[_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":8}},[_c('el-input',{attrs:{"placeholder":_vm.$t('form.placeholder', { msg: _vm.$t('user.seller.id') })},model:{value:(_vm.form.sellerId),callback:function ($$v) {_vm.$set(_vm.form, "sellerId", $$v)},expression:"form.sellerId"}})],1)],1)],1)],1)}
+          }}},[_c('el-color-picker',{model:{value:(_vm.form.colors[0].startColor),callback:function ($$v) {_vm.$set(_vm.form.colors[0], "startColor", $$v)},expression:"form.colors[0].startColor"}})],1)],1),_vm._v(" "),_c('el-col',{attrs:{"span":4}},[_c('el-form-item',{attrs:{"prop":'colors[0].endColor',"label":"结束颜色","rules":{
+            required: false,
+            message: ("" + (_vm.$t('commodity.color.title')) + (_vm.$t('form.noEmpty'))),
+            trigger: 'blur',
+          }}},[_c('el-color-picker',{model:{value:(_vm.form.colors[0].endColor),callback:function ($$v) {_vm.$set(_vm.form.colors[0], "endColor", $$v)},expression:"form.colors[0].endColor"}})],1)],1)],1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.photo')}},[_c('el-upload',{attrs:{"file-list":_vm.form.photos,"action":((_vm.$config.origin) + "/api/upload/images"),"data":{ type: 'commodity' },"list-type":"picture-card","on-preview":_vm.uploadPreview,"on-remove":_vm.uploadRemove,"on-success":_vm.uploadSuccess}},[_c('i',{staticClass:"el-icon-plus"}),_vm._v(" "),_c('div',{staticClass:"el-upload__tip",attrs:{"slot":"tip"},slot:"tip"},[_vm._v("艺术品图片，请上传 768X400 比例的图片")])]),_vm._v(" "),_c('el-dialog',{attrs:{"visible":_vm.dialogVisible},on:{"update:visible":function($event){_vm.dialogVisible=$event}}},[_c('img',{attrs:{"width":"100%","src":_vm.dialogImageUrl,"alt":""}})])],1),_vm._v(" "),_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":24}},[_c('el-form-item',{attrs:{"label":_vm.$t('commodity.state.title'),"prop":'state'}},[_c('el-radio-group',{model:{value:(_vm.form.state),callback:function ($$v) {_vm.$set(_vm.form, "state", $$v)},expression:"form.state"}},[_c('el-radio',{attrs:{"label":0}},[_vm._v(_vm._s(_vm.$t('commodity.state.added')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":1}},[_vm._v(_vm._s(_vm.$t('commodity.state.onsale')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":2}},[_vm._v(_vm._s(_vm.$t('commodity.state.sold')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":3}},[_vm._v(_vm._s(_vm.$t('commodity.state.offline')))])],1)],1)],1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.seller')}},[_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":8}},[_c('el-input',{attrs:{"placeholder":_vm.$t('form.placeholder', { msg: _vm.$t('user.seller.id') })},model:{value:(_vm.form.sellerId),callback:function ($$v) {_vm.$set(_vm.form, "sellerId", $$v)},expression:"form.sellerId"}})],1)],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/commodity/create.vue?vue&type=template&id=53787014&scoped=true&
+// CONCATENATED MODULE: ./pages/commodity/create.vue?vue&type=template&id=0895a3db&scoped=true&
 
 // EXTERNAL MODULE: external "mockjs"
 var external_mockjs_ = __webpack_require__(116);
@@ -1105,153 +1109,365 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ var createvue_type_script_lang_js_ = ({
+  data() {
+    return {
+      type: '',
+      typeText: this.$t('content.create'),
+      isCreate: true,
+      form: {},
+      dialogImageUrl: '',
+      dialogVisible: false,
+      loading: false,
+      options: {
+        categorys: [],
+        classifications: [],
+        materials: [],
+        models: [],
+        places: [],
+        ruiwus: [],
+        shapes: [],
+        specifications: [],
+        styles: [],
+        techniques: [],
+        themes: [],
+        types: [],
+        uses: [],
+        // 0:已添加，1:售卖中，2:已售卖，3:已下架
+        state: [{
+          index: 0,
+          name: this.$t('commodity.state.added')
+        }, {
+          index: 1,
+          name: this.$t('commodity.state.onsale')
+        }, {
+          index: 2,
+          name: this.$t('commodity.state.sold')
+        }, {
+          index: 3,
+          name: this.$t('commodity.state.offline')
+        }]
+      },
+      // "category": "类别",
+      categorys: [],
+      // "classification": "分类",
+      classifications: [],
+      // "material": "材质",
+      materials: [],
+      // "model": "款式",
+      models: [],
+      // "place": "摆放",
+      places: [],
+      // "ruiwu": "瑞物",
+      ruiwus: [],
+      // "shape": "形状",
+      shapes: [],
+      // "specification": "规格",
+      specifications: [],
+      // "style": "风格",
+      styles: [],
+      // "technique": "手法",
+      techniques: [],
+      // "theme": "主题",
+      themes: [],
+      // "type": "类型",
+      types: [],
+      // "use": "用途",
+      uses: []
+    };
+  },
+
   async fetch() {
+    // this.isCreate = true
+    // this.reset()
+    // 类别
+    // const category = await this.$axios.$get(`/api/admin/commodity/retrieve/category`)
+    // if (category.data && category.data.length) {
+    //   // this.options.category = category.data
+    //   this.categorys = category.data;
+    //   this.options.categorys = [];
+    //   category.data.forEach((item) => {
+    //     this.options.categorys.push(item.id)
+    //   })
+    // }
+    // const classification = await this.$axios.$get(`/api/admin/commodity/retrieve/classification`)
+    // if (classification.data && classification.data.length) {
+    //   // this.options.classification = classification.data
+    //   this.classifications = classification.data;
+    //   this.options.classifications = [];
+    //   classification.data.forEach((item) => {
+    //     this.options.classifications.push(item.id)
+    //   })
+    // }
+    // const material = await this.$axios.$get(`/api/admin/commodity/retrieve/material`)
+    // if (material.data && material.data.length) {
+    //   this.options.material = material.data
+    // }
+    // const model = await this.$axios.$get(`/api/admin/commodity/retrieve/model`)
+    // if (model.data && model.data.length) {
+    //   this.options.model = model.data
+    // }
+    // const place = await this.$axios.$get(`/api/admin/commodity/retrieve/place`)
+    // if (place.data && place.data.length) {
+    //   this.options.place = place.data
+    // }
+    // const ruiwu = await this.$axios.$get(`/api/admin/commodity/retrieve/ruiwu`)
+    // if (ruiwu.data && ruiwu.data.length) {
+    //   this.options.ruiwu = ruiwu.data
+    // }
+    // const shape = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`)
+    // if (shape.data && shape.data.length) {
+    //   this.options.shape = shape.data
+    // }
+    // const specification = await this.$axios.$get(`/api/admin/commodity/retrieve/specification`)
+    // if (specification.data && specification.data.length) {
+    //   this.options.specification = specification.data
+    // }
+    // const style = await this.$axios.$get(`/api/admin/commodity/retrieve/style`)
+    // if (style.data && style.data.length) {
+    //   this.options.style = style.data
+    // }
+    // const technique = await this.$axios.$get(`/api/admin/commodity/retrieve/technique`)
+    // if (technique.data && technique.data.length) {
+    //   this.options.technique = technique.data
+    // }
+    // const theme = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`)
+    // if (theme.data && theme.data.length) {
+    //   this.options.theme = theme.data
+    // }
+    // const type = await this.$axios.$get(`/api/admin/commodity/retrieve/type`)
+    // if (type.data && type.data.length) {
+    //   this.options.type = type.data
+    // }
+    // const use = await this.$axios.$get(`/api/admin/commodity/retrieve/use`)
+    // if (use.data && use.data.length) {
+    //   this.options.use = use.data
+    // }
+    const categorys = await this.$axios.$get(`/api/admin/commodity/retrieve/category`);
+
+    if (categorys.data && categorys.data.length) {
+      this.categorys = categorys.data;
+      this.options.categorys = [];
+      categorys.data.forEach(item => {
+        this.options.categorys.push(item.id);
+      });
+    }
+
+    const classifications = await this.$axios.$get(`/api/admin/commodity/retrieve/classification`);
+
+    if (classifications.data && classifications.data.length) {
+      this.classifications = classifications.data;
+      this.options.classifications = [];
+      classifications.data.forEach(item => {
+        this.options.classifications.push(item.id);
+      });
+    }
+
+    const materials = await this.$axios.$get(`/api/admin/commodity/retrieve/material`);
+
+    if (materials.data && materials.data.length) {
+      this.materials = materials.data;
+      this.options.materials = [];
+      materials.data.forEach(item => {
+        this.options.materials.push(item.id);
+      });
+    }
+
+    const models = await this.$axios.$get(`/api/admin/commodity/retrieve/model`);
+
+    if (models.data && models.data.length) {
+      this.models = models.data;
+      this.options.models = [];
+      models.data.forEach(item => {
+        this.options.models.push(item.id);
+      });
+    }
+
+    const places = await this.$axios.$get(`/api/admin/commodity/retrieve/place`);
+
+    if (places.data && places.data.length) {
+      this.places = places.data;
+      this.options.places = [];
+      places.data.forEach(item => {
+        this.options.places.push(item.id);
+      });
+    }
+
+    const ruiwus = await this.$axios.$get(`/api/admin/commodity/retrieve/ruiwu`);
+
+    if (ruiwus.data && ruiwus.data.length) {
+      this.ruiwus = ruiwus.data;
+      this.options.ruiwus = [];
+      ruiwus.data.forEach(item => {
+        this.options.ruiwus.push(item.id);
+      });
+    }
+
+    const shapes = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`);
+
+    if (shapes.data && shapes.data.length) {
+      this.shapes = shapes.data;
+      this.options.shapes = [];
+      shapes.data.forEach(item => {
+        this.options.shapes.push(item.id);
+      });
+    }
+
+    const specifications = await this.$axios.$get(`/api/admin/commodity/retrieve/specification`);
+
+    if (specifications.data && specifications.data.length) {
+      this.specifications = specifications.data;
+      this.options.specifications = [];
+      specifications.data.forEach(item => {
+        this.options.specifications.push(item.id);
+      });
+    }
+
+    const styles = await this.$axios.$get(`/api/admin/commodity/retrieve/style`);
+
+    if (styles.data && styles.data.length) {
+      this.styles = styles.data;
+      this.options.styles = [];
+      styles.data.forEach(item => {
+        this.options.styles.push(item.id);
+      });
+    }
+
+    const techniques = await this.$axios.$get(`/api/admin/commodity/retrieve/technique`);
+
+    if (techniques.data && techniques.data.length) {
+      this.techniques = techniques.data;
+      this.options.techniques = [];
+      techniques.data.forEach(item => {
+        this.options.techniques.push(item.id);
+      });
+    }
+
+    const themes = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`);
+
+    if (themes.data && themes.data.length) {
+      this.themes = themes.data;
+      this.options.themes = [];
+      themes.data.forEach(item => {
+        this.options.themes.push(item.id);
+      });
+    }
+
+    const types = await this.$axios.$get(`/api/admin/commodity/retrieve/type`);
+
+    if (types.data && types.data.length) {
+      this.types = types.data;
+      this.options.types = [];
+      types.data.forEach(item => {
+        this.options.types.push(item.id);
+      });
+    }
+
+    const uses = await this.$axios.$get(`/api/admin/commodity/retrieve/use`);
+
+    if (uses.data && uses.data.length) {
+      this.uses = uses.data;
+      this.options.uses = [];
+      uses.data.forEach(item => {
+        this.options.uses.push(item.id);
+      });
+    }
+
+    console.log('this.options', this.options);
+  },
+
+  computed: {// // "category": "类别",
+    // categorys() {
+    //   return this.$store.state.commodity.options.categorys
+    // },
+    // // "classification": "分类",
+    // classifications() {
+    //   return this.$store.state.commodity.options.classifications
+    // },
+    // // "material": "材质",
+    // materials() {
+    //   return this.$store.state.commodity.options.materials
+    // },
+    // // "model": "款式",
+    // models() {
+    //   return this.$store.state.commodity.options.models
+    // },
+    // // "place": "摆放",
+    // places() {
+    //   return this.$store.state.commodity.options.places
+    // },
+    // // "ruiwu": "瑞物",
+    // ruiwus() {
+    //   return this.$store.state.commodity.options.ruiwus
+    // },
+    // // "shape": "形状",
+    // shapes() {
+    //   return this.$store.state.commodity.options.shapes
+    // },
+    // // "specification": "规格",
+    // specifications() {
+    //   return this.$store.state.commodity.options.specifications
+    // },
+    // // "style": "风格",
+    // styles() {
+    //   return this.$store.state.commodity.options.styles
+    // },
+    // // "technique": "手法",
+    // techniques() {
+    //   return this.$store.state.commodity.options.techniques
+    // },
+    // // "theme": "主题",
+    // themes() {
+    //   return this.$store.state.commodity.options.themes
+    // },
+    // // "type": "类型",
+    // types() {
+    //   return this.$store.state.commodity.options.types
+    // },
+    // // "use": "用途",
+    // uses() {
+    //   return this.$store.state.commodity.options.uses
+    // },
+  },
+  watch: {
+    '$route.query': '$fetch'
+  },
+  watchQuery: ['commodityId'],
+
+  async created() {
     this.isCreate = true;
-    this.reset(); // "category": "类别",
-
-    const optionsCategory = await this.$axios.$get(`/api/admin/commodity/retrieve/category`);
-
-    if (optionsCategory.data && optionsCategory.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'categorys',
-        data: optionsCategory.data
-      });
-    } // "classification": "分类",
-
-
-    const optionsClassification = await this.$axios.$get(`/api/admin/commodity/retrieve/classification`);
-
-    if (optionsClassification.data && optionsClassification.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'classifications',
-        data: optionsClassification.data
-      });
-    } // "material": "材质",
-
-
-    const optionsMaterial = await this.$axios.$get(`/api/admin/commodity/retrieve/material`);
-
-    if (optionsMaterial.data && optionsMaterial.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'materials',
-        data: optionsMaterial.data
-      });
-    } // "model": "款式",
-
-
-    const optionsModel = await this.$axios.$get(`/api/admin/commodity/retrieve/model`);
-
-    if (optionsModel.data && optionsModel.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'models',
-        data: optionsModel.data
-      });
-    } // "place": "摆放",
-
-
-    const optionsPlace = await this.$axios.$get(`/api/admin/commodity/retrieve/place`);
-
-    if (optionsPlace.data && optionsPlace.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'places',
-        data: optionsPlace.data
-      });
-    } // "ruiwu": "瑞物",
-
-
-    const optionsRuiwu = await this.$axios.$get(`/api/admin/commodity/retrieve/ruiwu`);
-
-    if (optionsRuiwu.data && optionsRuiwu.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'ruiwus',
-        data: optionsRuiwu.data
-      });
-    } // "shape": "形状",
-
-
-    const optionsShape = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`);
-
-    if (optionsShape.data && optionsShape.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'shapes',
-        data: optionsShape.data
-      });
-    } // "specification": "规格",
-
-
-    const optionsSpecification = await this.$axios.$get(`/api/admin/commodity/retrieve/specification`);
-
-    if (optionsSpecification.data && optionsSpecification.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'specifications',
-        data: optionsSpecification.data
-      });
-    } // "style": "风格",
-
-
-    const optionsStyle = await this.$axios.$get(`/api/admin/commodity/retrieve/style`);
-
-    if (optionsStyle.data && optionsStyle.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'styles',
-        data: optionsStyle.data
-      });
-    } // "technique": "手法",
-
-
-    const optionsTechnique = await this.$axios.$get(`/api/admin/commodity/retrieve/technique`);
-
-    if (optionsTechnique.data && optionsTechnique.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'techniques',
-        data: optionsTechnique.data
-      });
-    } // "theme": "主题",
-
-
-    const optionsTheme = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`);
-
-    if (optionsTheme.data && optionsTheme.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'themes',
-        data: optionsTheme.data
-      });
-    } // "type": "类型",
-
-
-    const optionsType = await this.$axios.$get(`/api/admin/commodity/retrieve/type`);
-
-    if (optionsType.data && optionsType.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'types',
-        data: optionsType.data
-      });
-    } // "use": "用途",
-
-
-    const optionsUse = await this.$axios.$get(`/api/admin/commodity/retrieve/use`);
-
-    if (optionsUse.data && optionsUse.data.length) {
-      this.$store.commit('addCommodityOpitons', {
-        type: 'uses',
-        data: optionsUse.data
-      });
-    } // console.log('this.$route.query', this.$route.query)
-
+    this.reset();
 
     if (this.$route.query && this.$route.query.commodityId) {
-      this.form.commodityId = this.$route.query.commodityId;
       const commodity = await this.$axios.$get('/api/admin/commodity/edit', {
         params: {
-          commodityId: this.form.commodityId
+          commodityId: this.$route.query.commodityId
         }
       });
 
       if (commodity.success) {
-        const commodityForm = Object.assign({}, this.form, commodity.data);
+        const commodityForm = commodity.data;
         console.log("commodityForm", commodityForm);
+        this.form.commodityId = this.$route.query.commodityId;
         this.form.state = commodityForm.state;
         this.form.width = commodityForm.width;
         this.form.height = commodityForm.height;
@@ -1276,33 +1492,231 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
           });
           this.form.photos = photos;
         } // "category": "类别",
+        // this.form.categorys = commodityForm.categorys && commodityForm.categorys.length ? commodityForm.categorys[0].id : '';
 
 
-        this.form.categorys = commodityForm.categorys && commodityForm.categorys.length ? commodityForm.categorys : []; // "classification": "分类",
+        this.form.categorys = [];
 
-        this.form.classifications = commodityForm.classifications && commodityForm.classifications.length ? commodityForm.classifications[0].id : ''; // "material": "材质",
+        if (this.categorys && this.categorys.length) {
+          if (commodityForm.categorys && commodityForm.categorys.length) {
+            commodityForm.categorys.forEach(item1 => {
+              this.categorys.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  this.form.categorys.push(item1.optionId);
+                }
+              });
+            });
+          }
+        }
 
-        this.form.materials = commodityForm.materials && commodityForm.materials.length ? commodityForm.materials[0].id : ''; // "model": "款式",
+        console.log(this.form.categorys); // "classification": "分类",
+        // this.form.classifications = commodityForm.classifications && commodityForm.classifications.length ? commodityForm.classifications[0].id : '';
 
-        this.form.models = commodityForm.models && commodityForm.models.length ? commodityForm.models[0].id : ''; // "place": "摆放",
+        this.form.classifications = [];
+        console.log("this.classifications", this.classifications);
+        console.log("commodityForm.classifications", commodityForm.classifications);
 
-        this.form.places = commodityForm.places && commodityForm.places.length ? commodityForm.places[0].id : ''; // "ruiwu": "瑞物",
+        if (this.classifications && this.classifications.length) {
+          if (commodityForm.classifications && commodityForm.classifications.length) {
+            commodityForm.classifications.forEach(item1 => {
+              this.classifications.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  console.log("item1", item1);
+                  this.form.classifications.push(item1.optionId);
+                }
+              });
+            }); // this.form.classifications = commodityForm.classifications
+          }
+        }
 
-        this.form.ruiwus = commodityForm.ruiwus && commodityForm.ruiwus.length ? commodityForm.ruiwus[0].id : ''; // "shape": "形状",
+        console.log("this.form.classifications", this.form.classifications); // "material": "材质",
+        // this.form.materials = commodityForm.materials && commodityForm.materials.length ? commodityForm.materials[0].id : '';
 
-        this.form.shapes = commodityForm.shapes && commodityForm.shapes.length ? commodityForm.shapes[0].id : ''; // "specification": "规格",
+        this.form.materials = [];
 
-        this.form.specifications = commodityForm.specifications && commodityForm.specifications.length ? commodityForm.specifications[0].id : ''; // "style": "风格",
+        if (this.materials && this.materials.length) {
+          if (commodityForm.materials && commodityForm.materials.length) {
+            commodityForm.materials.forEach(item1 => {
+              this.materials.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.materials.push(item1.optionId);
+                }
+              });
+            }); // this.form.materials = commodityForm.materials
+          }
+        } // "model": "款式",
+        // this.form.models = commodityForm.models && commodityForm.models.length ? commodityForm.models[0].id : '';
 
-        this.form.styles = commodityForm.styles && commodityForm.styles.length ? commodityForm.styles[0].id : ''; // "technique": "手法",
 
-        this.form.techniques = commodityForm.techniques && commodityForm.techniques.length ? commodityForm.techniques[0].id : ''; // "theme": "主题",
+        this.form.models = [];
 
-        this.form.themes = commodityForm.themes && commodityForm.themes.length ? commodityForm.themes[0].id : ''; // "type": "类型",
+        if (this.models && this.models.length) {
+          if (commodityForm.models && commodityForm.models.length) {
+            commodityForm.models.forEach(item1 => {
+              this.models.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.models.push(item1.optionId);
+                }
+              });
+            }); // this.form.models = commodityForm.models
+          }
+        } // "place": "摆放",
+        // this.form.places = commodityForm.places && commodityForm.places.length ? commodityForm.places[0].id : '';
 
-        this.form.types = commodityForm.types && commodityForm.types.length ? commodityForm.types[0].id : ''; // "use": "用途",
 
-        this.form.uses = commodityForm.uses && commodityForm.uses.length ? commodityForm.uses[0].id : '';
+        this.form.places = [];
+
+        if (this.places && this.places.length) {
+          if (commodityForm.places && commodityForm.places.length) {
+            commodityForm.places.forEach(item1 => {
+              this.places.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.places.push(item1.optionId);
+                }
+              });
+            }); // this.form.places = commodityForm.places
+          }
+        } // "ruiwu": "瑞物",
+        // this.form.ruiwus = commodityForm.ruiwus && commodityForm.ruiwus.length ? commodityForm.ruiwus[0].id : '';
+
+
+        this.form.ruiwus = [];
+
+        if (this.ruiwus && this.ruiwus.length) {
+          if (commodityForm.ruiwus && commodityForm.ruiwus.length) {
+            commodityForm.ruiwus.forEach(item1 => {
+              this.ruiwus.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.ruiwus.push(item1.optionId);
+                }
+              });
+            }); // this.form.ruiwus = commodityForm.ruiwus
+          }
+        } // "shape": "形状",
+        // this.form.shapes = commodityForm.shapes && commodityForm.shapes.length ? commodityForm.shapes[0].id : '';
+
+
+        this.form.shapes = [];
+
+        if (this.shapes && this.shapes.length) {
+          if (commodityForm.shapes && commodityForm.shapes.length) {
+            commodityForm.shapes.forEach(item1 => {
+              this.shapes.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.shapes.push(item1.optionId);
+                }
+              });
+            }); // this.form.shapes = commodityForm.shapes
+          }
+        } // "specification": "规格",
+        // this.form.specifications = commodityForm.specifications && commodityForm.specifications.length ? commodityForm.specifications[0].id : '';
+
+
+        this.form.specifications = [];
+
+        if (this.specifications && this.specifications.length) {
+          if (commodityForm.specifications && commodityForm.specifications.length) {
+            commodityForm.specifications.forEach(item1 => {
+              this.specifications.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.specifications.push(item1.optionId);
+                }
+              });
+            }); // this.form.specifications = commodityForm.specifications
+          }
+        } // "style": "风格",
+        // this.form.styles = commodityForm.styles && commodityForm.styles.length ? commodityForm.styles[0].id : '';
+
+
+        this.form.styles = [];
+
+        if (this.styles && this.styles.length) {
+          if (commodityForm.styles && commodityForm.styles.length) {
+            commodityForm.styles.forEach(item1 => {
+              this.styles.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.styles.push(item1.optionId);
+                }
+              });
+            }); // this.form.styles = commodityForm.styles
+          }
+        } // "technique": "手法",
+        // this.form.techniques = commodityForm.techniques && commodityForm.techniques.length ? commodityForm.techniques[0].id : '';
+
+
+        this.form.techniques = [];
+
+        if (this.techniques && this.techniques.length) {
+          if (commodityForm.techniques && commodityForm.techniques.length) {
+            commodityForm.techniques.forEach(item1 => {
+              this.techniques.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.techniques.push(item1.optionId);
+                }
+              });
+            }); // this.form.techniques = commodityForm.techniques
+          }
+        } // "theme": "主题",
+        // this.form.themes = commodityForm.themes && commodityForm.themes.length ? commodityForm.themes[0].id : '';
+
+
+        this.form.themes = [];
+
+        if (this.themes && this.themes.length) {
+          if (commodityForm.themes && commodityForm.themes.length) {
+            commodityForm.themes.forEach(item1 => {
+              this.themes.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.themes.push(item1.optionId);
+                }
+              });
+            }); // this.form.themes = commodityForm.themes
+          }
+        } // "type": "类型",
+        // this.form.types = commodityForm.types && commodityForm.types.length ? commodityForm.types[0].id : '';
+
+
+        this.form.types = [];
+
+        if (this.types && this.types.length) {
+          if (commodityForm.types && commodityForm.types.length) {
+            commodityForm.types.forEach(item1 => {
+              this.types.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.types.push(item1.optionId);
+                }
+              });
+            }); // this.form.types = commodityForm.types
+          }
+        } // "use": "用途",
+        // this.form.uses = commodityForm.uses && commodityForm.uses.length ? commodityForm.uses[0].id : '';
+
+
+        this.form.uses = [];
+
+        if (this.uses && this.uses.length) {
+          if (commodityForm.uses && commodityForm.uses.length) {
+            commodityForm.uses.forEach(item1 => {
+              this.uses.forEach(item2 => {
+                if (item1.optionId == item2.id) {
+                  // item2.optionId = item1.id;
+                  this.form.uses.push(item1.optionId);
+                }
+              });
+            }); // this.form.uses = commodityForm.uses
+          }
+        }
 
         if (commodityForm.seller) {
           this.form.sellerId = commodityForm.seller.sellerId;
@@ -1317,90 +1731,6 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
 
     console.log('this.form', this.form);
   },
-
-  data() {
-    return {
-      type: '',
-      typeText: this.$t('content.create'),
-      isCreate: true,
-      form: {},
-      dialogImageUrl: '',
-      dialogVisible: false,
-      loading: false
-    };
-  },
-
-  computed: {
-    // "category": "类别",
-    categorys() {
-      return this.$store.state.commodity.options.categorys;
-    },
-
-    // "classification": "分类",
-    classifications() {
-      return this.$store.state.commodity.options.classifications;
-    },
-
-    // "material": "材质",
-    materials() {
-      return this.$store.state.commodity.options.materials;
-    },
-
-    // "model": "款式",
-    models() {
-      return this.$store.state.commodity.options.models;
-    },
-
-    // "place": "摆放",
-    places() {
-      return this.$store.state.commodity.options.places;
-    },
-
-    // "ruiwu": "瑞物",
-    ruiwus() {
-      return this.$store.state.commodity.options.ruiwus;
-    },
-
-    // "shape": "形状",
-    shapes() {
-      return this.$store.state.commodity.options.shapes;
-    },
-
-    // "specification": "规格",
-    specifications() {
-      return this.$store.state.commodity.options.specifications;
-    },
-
-    // "style": "风格",
-    styles() {
-      return this.$store.state.commodity.options.styles;
-    },
-
-    // "technique": "手法",
-    techniques() {
-      return this.$store.state.commodity.options.techniques;
-    },
-
-    // "theme": "主题",
-    themes() {
-      return this.$store.state.commodity.options.themes;
-    },
-
-    // "type": "类型",
-    types() {
-      return this.$store.state.commodity.options.types;
-    },
-
-    // "use": "用途",
-    uses() {
-      return this.$store.state.commodity.options.uses;
-    }
-
-  },
-  watch: {
-    '$route.query': '$fetch'
-  },
-  watchQuery: ['commodityId'],
 
   mounted() {// this.list = this.states.map((item) => {
     //   return { value: `value:${item}`, label: `label:${item}` }
@@ -1423,6 +1753,7 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
               });
             });
           } else {
+            console.log("this.form", this.form);
             data = await this.$axios.$post('/api/admin/commodity/update', this.form).catch(error => {
               this.$message({
                 showClose: true,
@@ -1489,34 +1820,35 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
           'es-es': external_mockjs_default.a.mock('@integer(60, 100)')
         },
         // "category": "类别",
-        categorys: [this.categorys[external_mockjs_default.a.mock(`@integer(0,${this.categorys.length - 1})`)]],
+        categorys: [this.options.categorys[external_mockjs_default.a.mock(`@integer(0,${this.options.categorys.length - 1})`)]],
         // "classification": "分类",
-        classifications: [this.classifications[external_mockjs_default.a.mock(`@integer(0,${this.classifications.length - 1})`)]],
+        classifications: [this.options.classifications[external_mockjs_default.a.mock(`@integer(0,${this.options.classifications.length - 1})`)]],
         // "material": "材质",
-        materials: [this.materials[external_mockjs_default.a.mock(`@integer(0,${this.materials.length - 1})`)]],
+        materials: [this.options.materials[external_mockjs_default.a.mock(`@integer(0,${this.options.materials.length - 1})`)]],
         // "model": "款式",
-        models: [this.models[external_mockjs_default.a.mock(`@integer(0,${this.models.length - 1})`)]],
+        models: [this.options.models[external_mockjs_default.a.mock(`@integer(0,${this.options.models.length - 1})`)]],
         // "place": "摆放",
-        places: [this.places[external_mockjs_default.a.mock(`@integer(0,${this.places.length - 1})`)]],
+        places: [this.options.places[external_mockjs_default.a.mock(`@integer(0,${this.options.places.length - 1})`)]],
         // "ruiwu": "瑞物",
-        ruiwus: [this.ruiwus[external_mockjs_default.a.mock(`@integer(0,${this.ruiwus.length - 1})`)]],
+        ruiwus: [this.options.ruiwus[external_mockjs_default.a.mock(`@integer(0,${this.options.ruiwus.length - 1})`)]],
         // "shape": "形状",
-        shapes: [this.shapes[external_mockjs_default.a.mock(`@integer(0,${this.shapes.length - 1})`)]],
+        shapes: [this.options.shapes[external_mockjs_default.a.mock(`@integer(0,${this.options.shapes.length - 1})`)]],
         // "specification": "规格",
-        specifications: [this.specifications[external_mockjs_default.a.mock(`@integer(0,${this.specifications.length - 1})`)]],
+        specifications: [this.options.specifications[external_mockjs_default.a.mock(`@integer(0,${this.options.specifications.length - 1})`)]],
         // "style": "风格",
-        styles: [this.styles[external_mockjs_default.a.mock(`@integer(0,${this.styles.length - 1})`)]],
+        styles: [this.options.styles[external_mockjs_default.a.mock(`@integer(0,${this.options.styles.length - 1})`)]],
         // "technique": "手法",
-        techniques: [this.techniques[external_mockjs_default.a.mock(`@integer(0,${this.techniques.length - 1})`)]],
+        techniques: [this.options.techniques[external_mockjs_default.a.mock(`@integer(0,${this.options.techniques.length - 1})`)]],
         // "theme": "主题",
-        themes: [this.themes[external_mockjs_default.a.mock(`@integer(0,${this.themes.length - 1})`)]],
+        themes: [this.options.themes[external_mockjs_default.a.mock(`@integer(0,${this.options.themes.length - 1})`)]],
         // "type": "类型",
-        types: [this.types[external_mockjs_default.a.mock(`@integer(0,${this.types.length - 1})`)]],
+        types: [this.options.types[external_mockjs_default.a.mock(`@integer(0,${this.options.types.length - 1})`)]],
         // "use": "用途",
-        uses: [this.uses[external_mockjs_default.a.mock(`@integer(0,${this.uses.length - 1})`)]],
+        uses: [this.options.uses[external_mockjs_default.a.mock(`@integer(0,${this.options.uses.length - 1})`)]],
         photos: [],
         colors: [{
-          name: external_mockjs_default.a.mock('@color')
+          startColor: "#fff",
+          endColor: "#000"
         }],
         width: external_mockjs_default.a.mock('@natural(100, 300)'),
         height: external_mockjs_default.a.mock('@natural(100, 300)'),
@@ -1538,15 +1870,13 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
       this.$refs[formName].clearValidate(); // console.log(this.form)
     },
 
-    addColors() {
-      this.form.colors.push({
-        name: '#fff'
-      });
-    },
-
+    // addColors() {
+    //   this.form.colors.push({
+    //     name: '#fff',
+    //   })
+    // },
     reset() {
       this.form = {
-        commodityId: '',
         name: {
           'zh-cn': '',
           'en-us': '',
@@ -1583,7 +1913,8 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
         uses: [],
         photos: [],
         colors: [{
-          name: '#fff'
+          startColor: "#fff",
+          endColor: "#000"
         }],
         width: '',
         height: '',
@@ -1641,7 +1972,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   injectStyles,
-  "53787014",
+  "0895a3db",
   "d8dc875a"
   
 )

@@ -1,20 +1,7 @@
 <template>
   <div class="banner">
 
-    <!-- <el-upload
-      :file-list="banners"
-      action="/api/upload/images"
-      :data="{ type: 'commodity' }"
-      list-type="picture-card"
-      :on-preview="uploadPreview"
-      :on-remove="uploadRemove"
-      :on-success="uploadSuccess"
-    >
-      <i class="el-icon-plus"></i>
-    </el-upload>
-    <el-dialog :visible.sync="dialogVisible">
-      <img width="100%" :src="dialogImageUrl" alt="" />
-    </el-dialog> -->
+
     <el-form ref="form" :model="form" >
 
       <el-form-item v-for="(item, index) in form.banners" :key="index">
@@ -37,7 +24,7 @@
               >
               <img v-if="item.src" :src="item.src" class="avatar">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              <div slot="tip" class="el-upload__tip">banner图片，请上传 大于1220X510 的图片</div>
+              <div slot="tip" class="el-upload__tip">banner图片，请上传 (大于1220)X510 比例的图片</div>
             </el-upload>
           </el-col>
           <el-col :span="4">
@@ -208,17 +195,8 @@ export default {
 }
 </style>
 
-<style>
-  .avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
+<style scoped>
+
   .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;

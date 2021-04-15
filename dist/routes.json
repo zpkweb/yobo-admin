@@ -29,6 +29,13 @@
     "chunkName": "pages/commodity",
     "children": [
       {
+        "name": "commodity-all___zh-cn",
+        "path": "all",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/all.vue",
+        "chunkName": "pages/commodity/all",
+        "_name": "_62449083"
+      },
+      {
         "name": "commodity-create___zh-cn",
         "path": "create",
         "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/create.vue",
@@ -170,11 +177,11 @@
         "_name": "_ba9e0394"
       },
       {
-        "name": "user-identity-identity___zh-cn",
-        "path": ":identity?/:identity",
-        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/_identity.vue",
-        "chunkName": "pages/user/_identity/_identity",
-        "_name": "_cb99cb5a"
+        "name": "user-identity-search___zh-cn",
+        "path": ":identity?/search",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/search.vue",
+        "chunkName": "pages/user/_identity/search",
+        "_name": "_26bb8ce2"
       }
     ],
     "_name": "_46a329b7"
@@ -215,6 +222,13 @@
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity.vue",
     "chunkName": "pages/commodity",
     "children": [
+      {
+        "name": "commodity-all___en-us",
+        "path": "all",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/all.vue",
+        "chunkName": "pages/commodity/all",
+        "_name": "_62449083"
+      },
       {
         "name": "commodity-create___en-us",
         "path": "create",
@@ -336,11 +350,11 @@
         "_name": "_ba9e0394"
       },
       {
-        "name": "user-identity-identity___en-us",
-        "path": ":identity?/:identity",
-        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/_identity.vue",
-        "chunkName": "pages/user/_identity/_identity",
-        "_name": "_cb99cb5a"
+        "name": "user-identity-search___en-us",
+        "path": ":identity?/search",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/search.vue",
+        "chunkName": "pages/user/_identity/search",
+        "_name": "_26bb8ce2"
       }
     ],
     "_name": "_46a329b7"
@@ -381,6 +395,13 @@
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity.vue",
     "chunkName": "pages/commodity",
     "children": [
+      {
+        "name": "commodity-all___es-es",
+        "path": "all",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/all.vue",
+        "chunkName": "pages/commodity/all",
+        "_name": "_62449083"
+      },
       {
         "name": "commodity-create___es-es",
         "path": "create",
@@ -502,11 +523,11 @@
         "_name": "_ba9e0394"
       },
       {
-        "name": "user-identity-identity___es-es",
-        "path": ":identity?/:identity",
-        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/_identity.vue",
-        "chunkName": "pages/user/_identity/_identity",
-        "_name": "_cb99cb5a"
+        "name": "user-identity-search___es-es",
+        "path": ":identity?/search",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/search.vue",
+        "chunkName": "pages/user/_identity/search",
+        "_name": "_26bb8ce2"
       }
     ],
     "_name": "_46a329b7"
@@ -547,6 +568,13 @@
     "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity.vue",
     "chunkName": "pages/commodity",
     "children": [
+      {
+        "name": "commodity-all___ja-jp",
+        "path": "all",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/commodity/all.vue",
+        "chunkName": "pages/commodity/all",
+        "_name": "_62449083"
+      },
       {
         "name": "commodity-create___ja-jp",
         "path": "create",
@@ -668,11 +696,11 @@
         "_name": "_ba9e0394"
       },
       {
-        "name": "user-identity-identity___ja-jp",
-        "path": ":identity?/:identity",
-        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/_identity.vue",
-        "chunkName": "pages/user/_identity/_identity",
-        "_name": "_cb99cb5a"
+        "name": "user-identity-search___ja-jp",
+        "path": ":identity?/search",
+        "component": "/Users/yanshuo/Documents/zpk/github/yobo-admin/pages/user/_identity/search.vue",
+        "chunkName": "pages/user/_identity/search",
+        "_name": "_26bb8ce2"
       }
     ],
     "_name": "_46a329b7"

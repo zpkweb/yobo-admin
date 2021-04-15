@@ -7,6 +7,7 @@ const _a83835d8 = () => interopDefault(import('../pages/auth.vue' /* webpackChun
 const _10929447 = () => interopDefault(import('../pages/auth/identityList.vue' /* webpackChunkName: "pages/auth/identityList" */))
 const _2ba4705e = () => interopDefault(import('../pages/auth/_type.vue' /* webpackChunkName: "pages/auth/_type" */))
 const _ddf1321e = () => interopDefault(import('../pages/commodity.vue' /* webpackChunkName: "pages/commodity" */))
+const _62449083 = () => interopDefault(import('../pages/commodity/all.vue' /* webpackChunkName: "pages/commodity/all" */))
 const _cd24a6ec = () => interopDefault(import('../pages/commodity/create.vue' /* webpackChunkName: "pages/commodity/create" */))
 const _bffd3c00 = () => interopDefault(import('../pages/commodity/options.vue' /* webpackChunkName: "pages/commodity/options" */))
 const _1ef38c4a = () => interopDefault(import('../pages/commodity/options/_type.vue' /* webpackChunkName: "pages/commodity/options/_type" */))
@@ -24,7 +25,7 @@ const _739d3ab4 = () => interopDefault(import('../pages/user/seller/create.vue' 
 const _10b06d40 = () => interopDefault(import('../pages/user/seller/search.vue' /* webpackChunkName: "pages/user/seller/search" */))
 const _9d3a04f0 = () => interopDefault(import('../pages/user/_identity/index.vue' /* webpackChunkName: "pages/user/_identity/index" */))
 const _ba9e0394 = () => interopDefault(import('../pages/user/_identity/create.vue' /* webpackChunkName: "pages/user/_identity/create" */))
-const _cb99cb5a = () => interopDefault(import('../pages/user/_identity/_identity.vue' /* webpackChunkName: "pages/user/_identity/_identity" */))
+const _26bb8ce2 = () => interopDefault(import('../pages/user/_identity/search.vue' /* webpackChunkName: "pages/user/_identity/search" */))
 const _0d461fcf = () => interopDefault(import('../pages/yobo.vue' /* webpackChunkName: "pages/yobo" */))
 
 // TODO: remove in Nuxt 3
@@ -61,6 +62,10 @@ export const routerOptions = {
     component: _ddf1321e,
     name: "commodity___zh-cn",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___zh-cn"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___zh-cn"
@@ -141,9 +146,9 @@ export const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___zh-cn"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___zh-cn"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___zh-cn"
     }]
   }, {
     path: "/yobo",
@@ -167,6 +172,10 @@ export const routerOptions = {
     component: _ddf1321e,
     name: "commodity___en-us",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___en-us"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___en-us"
@@ -235,9 +244,9 @@ export const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___en-us"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___en-us"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___en-us"
     }]
   }, {
     path: "/en-us/yobo",
@@ -261,6 +270,10 @@ export const routerOptions = {
     component: _ddf1321e,
     name: "commodity___es-es",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___es-es"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___es-es"
@@ -329,9 +342,9 @@ export const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___es-es"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___es-es"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___es-es"
     }]
   }, {
     path: "/es-es/yobo",
@@ -355,6 +368,10 @@ export const routerOptions = {
     component: _ddf1321e,
     name: "commodity___ja-jp",
     children: [{
+      path: "all",
+      component: _62449083,
+      name: "commodity-all___ja-jp"
+    }, {
       path: "create",
       component: _cd24a6ec,
       name: "commodity-create___ja-jp"
@@ -423,9 +440,9 @@ export const routerOptions = {
       component: _ba9e0394,
       name: "user-identity-create___ja-jp"
     }, {
-      path: ":identity?/:identity",
-      component: _cb99cb5a,
-      name: "user-identity-identity___ja-jp"
+      path: ":identity?/search",
+      component: _26bb8ce2,
+      name: "user-identity-search___ja-jp"
     }]
   }, {
     path: "/ja-jp/yobo",

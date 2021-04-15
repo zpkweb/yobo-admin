@@ -64,7 +64,7 @@
             >
               <img v-if="item.img" :src="item.img" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              <div slot="tip" class="el-upload__tip">艺术品{{optionType[$route.params.type]}}图片，请上传 210X185 的图片</div>
+              <div slot="tip" class="el-upload__tip">艺术品{{optionType[$route.params.type]}}图片，请上传 210X185 比例的图片</div>
             </el-upload>
           </el-form-item>
         </el-col>
@@ -512,27 +512,5 @@ export default {
 </script>
 
 <style scoped>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 88px;
-  height: 88px;
-  line-height: 88px;
-  text-align: center;
-}
-.avatar {
-  width: 88px;
-  height: 88px;
-  display: block;
-}
+
 </style>
