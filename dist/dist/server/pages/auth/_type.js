@@ -1,24 +1,26 @@
 exports.ids = [7];
 exports.modules = {
 
-/***/ 156:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/auth/_type.vue?vue&type=template&id=5ffe10c2&scoped=true&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/auth/_type.vue?vue&type=template&id=58e59bfd&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-tree',{ref:"menuTree",attrs:{"data":_vm.menuTree,"show-checkbox":"","node-key":"level","check-on-click-node":"","default-expand-all":"","highlight-current":"","props":_vm.defaultProps},on:{"check-change":_vm.changeNodeCheck},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var node = ref.node;
 var data = ref.data;
-return _c('span',{staticClass:"custom-tree-node"},[_c('span',[_c('i',{class:data.icon}),_vm._v(_vm._s(_vm.$t(node.label)))])])}}])}),_vm._ssrNode(" "),_c('el-button',{attrs:{"type":"primary"},on:{"click":_vm.onSubmit}},[_vm._v(" "+_vm._s(_vm.$t('content.update'))+" ")])],2)}
+return _c('span',{staticClass:"custom-tree-node"},[_c('span',[_c('i',{class:data.icon}),_vm._v(_vm._s(_vm.$t(node.label)))])])}}])}),_vm._ssrNode(" "),_c('el-button',{attrs:{"type":"primary"},on:{"click":_vm.onSubmit}},[_vm._v("\n    "+_vm._s(_vm.$t('content.update'))+"\n  ")])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/auth/_type.vue?vue&type=template&id=5ffe10c2&scoped=true&
+// CONCATENATED MODULE: ./pages/auth/_type.vue?vue&type=template&id=58e59bfd&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/auth/_type.vue?vue&type=script&lang=js&
+//
+//
 //
 //
 //
@@ -71,19 +73,19 @@ var staticRenderFns = []
     }); // console.log("identity", identity.data.menu)
 
     if (identity.success) {
-      if (identity.data.menu && identity.data.menu != " ") {
+      if (identity.data.menu && identity.data.menu != ' ') {
         // console.log("Object.assign(this.$store.state.defaultMenu, JSON.parse(identity.data.menu)))", deepClone(this.$store.state.defaultMenu, JSON.parse(identity.data.menu)))
         // console.log("JSON.parse(identity.data.menu)", JSON.parse(identity.data.menu))
         // console.log("extendIdentityMenu")
-        await this.$store.commit("setIdentityMenu");
-        await this.$store.commit("extendIdentityMenu", {
+        await this.$store.commit('setIdentityMenu');
+        await this.$store.commit('extendIdentityMenu', {
           identityMenu: this.$store.state.identityMenu,
           menu: JSON.parse(identity.data.menu)
         });
       } else {
         // console.log("setIdentityMenu")
         // this.$store.getters.addRootMenu(this.$store.state.identityMenu)
-        await this.$store.commit("setIdentityMenu");
+        await this.$store.commit('setIdentityMenu');
       }
 
       this.getCheckedNodes(this.$store.state.identityMenu);
@@ -98,7 +100,7 @@ var staticRenderFns = []
 
   methods: {
     async onSubmit() {
-      console.log("JSON.stringify(this.menuTree)", JSON.stringify(this.menuTree));
+      console.log('JSON.stringify(this.menuTree)', JSON.stringify(this.menuTree));
       const identityListUpdate = await this.$axios.$post('/api/admin/identityList/update', {
         'en-us': this.$route.params.type,
         menu: JSON.stringify(this.menuTree)
@@ -182,7 +184,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   injectStyles,
-  "5ffe10c2",
+  "58e59bfd",
   "52436a32"
   
 )

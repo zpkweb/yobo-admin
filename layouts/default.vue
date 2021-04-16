@@ -64,14 +64,14 @@ export default {
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
-  width:188px;
-  height: 188px;
-  line-height: 188px;
+  width:100px;
+  height: 100px;
+  line-height: 100px;
   text-align: center;
 }
 .avatar {
-  width: 188px;
-  height: 188px;
+  width: 100px;
+  height: 100px;
   display: block;
 }
 

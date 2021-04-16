@@ -26,7 +26,6 @@
       }}</el-button>
     </el-form-item>
 
-
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
@@ -84,8 +83,7 @@
             :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
           ></el-input></el-form-item
       ></el-col>
-      <el-col :span="6"
-        >
+      <el-col :span="6">
         <!-- <el-form-item
           :label="
             $t('langname', { lang: $t('lang.fr'), name: $t('commodity.name') })
@@ -103,7 +101,7 @@
             v-model="form.name['fr-fr']"
             :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
           ></el-input> -->
-          <el-form-item
+        <el-form-item
           :label="
             $t('langname', { lang: $t('lang.es'), name: $t('commodity.name') })
           "
@@ -115,12 +113,11 @@
             )}`,
             trigger: 'blur',
           }"
-          >
+        >
           <el-input
             v-model="form.name['es-es']"
             :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
-          ></el-input>
-          </el-form-item
+          ></el-input> </el-form-item
       ></el-col>
     </el-row>
     <el-row :gutter="20">
@@ -182,8 +179,7 @@
             :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
           ></el-input></el-form-item
       ></el-col>
-      <el-col :span="6"
-        >
+      <el-col :span="6">
         <!-- <el-form-item
           :label="
             $t('langname', { lang: $t('lang.fr'), name: $t('commodity.desc') })
@@ -202,7 +198,7 @@
             type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
           ></el-input> -->
-          <el-form-item
+        <el-form-item
           :label="
             $t('langname', { lang: $t('lang.es'), name: $t('commodity.desc') })
           "
@@ -214,13 +210,12 @@
             )}`,
             trigger: 'blur',
           }"
-          >
+        >
           <el-input
             v-model="form.desc['es-es']"
             type="textarea"
             :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
-          ></el-input>
-          </el-form-item
+          ></el-input> </el-form-item
       ></el-col>
     </el-row>
     <el-row :gutter="20">
@@ -319,7 +314,7 @@
             ><template slot="append">€</template></el-input
           > -->
 
-          <el-form-item
+        <el-form-item
           :label="
             $t('langname', {
               lang: $t('lang.price.es'),
@@ -339,8 +334,7 @@
             :placeholder="$t('form.placeholder', { msg: $t('lang.price.es') })"
             ><template slot="append">€</template></el-input
           >
-          </el-form-item
-        ></el-col
+        </el-form-item></el-col
       >
       <!-- <el-col :span="6"
           ><el-input v-model="form.price['fr-fr']" placeholder="请输入法郎价格"><template slot="append">₣</template></el-input
@@ -392,7 +386,6 @@
       </el-col>
     </el-row>
 
-
     <!-- "category": "类别", -->
     <el-form-item
       :label="$t('commodity.category')"
@@ -403,34 +396,18 @@
         trigger: 'change',
       }"
     >
-
-    <el-checkbox-group v-model="form.categorys">
-      <el-checkbox name="type" v-for="(item, index) in options.categorys" :key="index" :label="item" >
-        {{categorys[index]['zh-cn']}}
-      </el-checkbox>
-    </el-checkbox-group>
-
-      <!-- <el-select
-        v-model="form.categorys"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.category') })
-        "
-        clearable
-      >
-        <el-option
+      <el-checkbox-group v-model="form.categorys">
+        <el-checkbox
+          name="type"
           v-for="(item, index) in categorys"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.categorys[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
-    <!-- "classification": "分类", -->
+
     <el-form-item
       :label="$t('commodity.classification')"
       :prop="'classifications'"
@@ -440,31 +417,16 @@
         trigger: 'change',
       }"
     >
-
       <el-checkbox-group v-model="form.classifications">
-        <el-checkbox name="type" v-for="(item, index) in options.classifications" :key="index" :label="item">
-          {{classifications[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.classifications"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.classification') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in classifications"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.classifications[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "material": "材质", -->
     <el-form-item
@@ -477,29 +439,15 @@
       }"
     >
       <el-checkbox-group v-model="form.materials">
-        <el-checkbox name="type" v-for="(item, index) in options.materials" :key="index" :label="item">
-          {{materials[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.materials"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.material') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in materials"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.materials[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "model": "款式", -->
     <el-form-item
@@ -512,29 +460,15 @@
       }"
     >
       <el-checkbox-group v-model="form.models">
-        <el-checkbox name="type" v-for="(item, index) in options.models" :key="index" :label="item">
-          {{models[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.models"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.model') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in models"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.models[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "place": "摆放", -->
     <el-form-item
@@ -547,29 +481,15 @@
       }"
     >
       <el-checkbox-group v-model="form.places">
-        <el-checkbox name="type" v-for="(item, index) in options.places" :key="index" :label="item">
-          {{places[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.places"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.place') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in places"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.places[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "ruiwu": "瑞物", -->
     <el-form-item
@@ -582,29 +502,15 @@
       }"
     >
       <el-checkbox-group v-model="form.ruiwus">
-        <el-checkbox name="type" v-for="(item, index) in options.ruiwus" :key="index" :label="item">
-          {{ruiwus[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.ruiwus"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.ruiwu') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in ruiwus"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.ruiwus[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "shape": "形状", -->
     <el-form-item
@@ -617,29 +523,15 @@
       }"
     >
       <el-checkbox-group v-model="form.shapes">
-        <el-checkbox name="type" v-for="(item, index) in options.shapes" :key="index" :label="item">
-          {{shapes[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.shapes"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.shape') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in shapes"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.shapes[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "specification": "规格", -->
     <el-form-item
@@ -652,29 +544,15 @@
       }"
     >
       <el-checkbox-group v-model="form.specifications">
-        <el-checkbox name="type" v-for="(item, index) in options.specifications" :key="index" :label="item">
-          {{specifications[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.specifications"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.specification') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in specifications"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.specifications[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "style": "风格", -->
     <el-form-item
@@ -687,29 +565,15 @@
       }"
     >
       <el-checkbox-group v-model="form.styles">
-        <el-checkbox name="type" v-for="(item, index) in options.styles" :key="index" :label="item">
-          {{styles[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.styles"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.style') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in styles"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.styles[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "technique": "手法", -->
     <el-form-item
@@ -722,65 +586,37 @@
       }"
     >
       <el-checkbox-group v-model="form.techniques">
-        <el-checkbox name="type" v-for="(item, index) in options.techniques" :key="index" :label="item">
-          {{techniques[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.techniques"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.technique') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in techniques"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.techniques[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "theme": "主题", -->
     <el-form-item
-          :label="$t('commodity.theme')"
-          :prop="'themes'"
-          :rules="{
-            required: false,
-            message: `${$t('commodity.theme')}${$t('form.noEmpty')}`,
-            trigger: 'change',
-          }"
+      :label="$t('commodity.theme')"
+      :prop="'themes'"
+      :rules="{
+        required: false,
+        message: `${$t('commodity.theme')}${$t('form.noEmpty')}`,
+        trigger: 'change',
+      }"
+    >
+      <el-checkbox-group v-model="form.themes">
+        <el-checkbox
+          name="type"
+          v-for="(item, index) in themes"
+          :key="index"
+          :label="item"
         >
-          <el-checkbox-group v-model="form.themes">
-            <el-checkbox name="type" v-for="(item, index) in options.themes" :key="index" :label="item">
-              {{themes[index]['zh-cn']}}
-            </el-checkbox>
-          </el-checkbox-group>
-          <!-- <el-select
-            v-model="form.themes"
-            :placeholder="
-              $t('form.selectPlaceholder', { msg: $t('commodity.theme') })
-            "
-            clearable
-          >
-            <el-option
-              v-for="(item, index) in themes"
-              :key="index"
-              :label="item['zh-cn']"
-              :value="item.id"
-            >
-              <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-              <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-              <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-              <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-            </el-option>
-          </el-select> -->
-        </el-form-item>
+          {{ options.themes[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
+    </el-form-item>
     <!-- "type": "类型", -->
     <el-form-item
       :label="$t('commodity.type')"
@@ -792,29 +628,15 @@
       }"
     >
       <el-checkbox-group v-model="form.types">
-        <el-checkbox name="type" v-for="(item, index) in options.types" :key="index" :label="item">
-          {{types[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.types"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.type') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in types"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.types[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
     <!-- "use": "用途", -->
     <el-form-item
@@ -827,32 +649,16 @@
       }"
     >
       <el-checkbox-group v-model="form.uses">
-        <el-checkbox name="type" v-for="(item, index) in options.uses" :key="index" :label="item">
-          {{uses[index]['zh-cn']}}
-        </el-checkbox>
-      </el-checkbox-group>
-      <!-- <el-select
-        v-model="form.uses"
-        :placeholder="
-          $t('form.selectPlaceholder', { msg: $t('commodity.use') })
-        "
-        clearable
-      >
-        <el-option
+        <el-checkbox
+          name="type"
           v-for="(item, index) in uses"
           :key="index"
-          :label="item['zh-cn']"
-          :value="item.id"
+          :label="item"
         >
-          <span>{{ $t('lang.zh') }}：{{ item['zh-cn'] }}，</span>
-          <span>{{ $t('lang.en') }}：{{ item['en-us'] }}，</span>
-          <span>{{ $t('lang.ja') }}：{{ item['ja-jp'] }}，</span>
-          <span>{{ $t('lang.es') }}：{{ item['es-es'] }}</span>
-        </el-option>
-      </el-select> -->
+          {{ options.uses[index].name }}
+        </el-checkbox>
+      </el-checkbox-group>
     </el-form-item>
-
-
 
     <el-form-item :label="$t('commodity.color.title')">
       <el-row :gutter="10">
@@ -895,6 +701,7 @@
 
     <el-form-item :label="$t('commodity.photo')">
       <el-upload
+        class="commodity-photo"
         :file-list="form.photos"
         :action="`${$config.origin}/api/upload/images`"
         :data="{ type: 'commodity' }"
@@ -902,12 +709,16 @@
         :on-preview="uploadPreview"
         :on-remove="uploadRemove"
         :on-success="uploadSuccess"
+        :before-upload="beforeUpload"
       >
         <i class="el-icon-plus"></i>
-        <div slot="tip" class="el-upload__tip">艺术品图片，请上传 768X400 比例的图片</div>
+        <div slot="tip" class="el-upload__tip">
+          艺术品图片，请上传 768X400 比例的图片，且不超过2M
+        </div>
       </el-upload>
-      <el-dialog :visible.sync="dialogVisible">
-        <img width="100%" :src="dialogImageUrl" alt="" />
+      <el-dialog :visible.sync="dialogVisible" center>
+        <img width="768px" height="400px" :src="dialogImageUrl" alt="" />
+        <p>图片尺寸：768X400</p>
       </el-dialog>
     </el-form-item>
 
@@ -927,7 +738,10 @@
     <el-form-item :label="$t('commodity.seller')">
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input v-model="form.sellerId" :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })" ></el-input>
+          <el-input
+            v-model="form.sellerId"
+            :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })"
+          ></el-input>
 
           <!-- <el-select
             v-model="form.sellerId"
@@ -949,61 +763,42 @@
         </el-col>
       </el-row>
     </el-form-item>
-
-
   </el-form>
 </template>
 <script>
 import Mock from 'mockjs'
 
 export default {
-
   data() {
     return {
       type: '',
       typeText: this.$t('content.create'),
       isCreate: true,
-      form: {
-      },
+      form: {},
 
       dialogImageUrl: '',
       dialogVisible: false,
       loading: false,
-      options: {
-        categorys: [],
-        classifications: [],
-        materials: [],
-        models: [],
-        places: [],
-        ruiwus: [],
-        shapes: [],
-        specifications: [],
-        styles: [],
-        techniques: [],
-        themes: [],
-        types: [],
-        uses: [],
-        // 0:已添加，1:售卖中，2:已售卖，3:已下架
-        state: [
-          {
-            index: 0,
-            name: this.$t('commodity.state.added')
-          },
-          {
-            index: 1,
-            name: this.$t('commodity.state.onsale')
-          },
-          {
-            index: 2,
-            name: this.$t('commodity.state.sold')
-          },
-          {
-            index: 3,
-            name: this.$t('commodity.state.offline')
-          },
-        ],
-
-      },
+      options: {},
+      // 0:已添加，1:售卖中，2:已售卖，3:已下架
+      states: [
+        {
+          index: 0,
+          name: this.$t('commodity.state.added'),
+        },
+        {
+          index: 1,
+          name: this.$t('commodity.state.onsale'),
+        },
+        {
+          index: 2,
+          name: this.$t('commodity.state.sold'),
+        },
+        {
+          index: 3,
+          name: this.$t('commodity.state.offline'),
+        },
+      ],
       // "category": "类别",
       categorys: [],
       // "classification": "分类",
@@ -1033,264 +828,9 @@ export default {
     }
   },
   async fetch() {
-    // this.isCreate = true
-    // this.reset()
-
-    // 类别
-    // const category = await this.$axios.$get(`/api/admin/commodity/retrieve/category`)
-    // if (category.data && category.data.length) {
-    //   // this.options.category = category.data
-    //   this.categorys = category.data;
-    //   this.options.categorys = [];
-    //   category.data.forEach((item) => {
-    //     this.options.categorys.push(item.id)
-    //   })
-    // }
-    // const classification = await this.$axios.$get(`/api/admin/commodity/retrieve/classification`)
-    // if (classification.data && classification.data.length) {
-    //   // this.options.classification = classification.data
-    //   this.classifications = classification.data;
-    //   this.options.classifications = [];
-    //   classification.data.forEach((item) => {
-    //     this.options.classifications.push(item.id)
-    //   })
-    // }
-    // const material = await this.$axios.$get(`/api/admin/commodity/retrieve/material`)
-    // if (material.data && material.data.length) {
-    //   this.options.material = material.data
-    // }
-    // const model = await this.$axios.$get(`/api/admin/commodity/retrieve/model`)
-    // if (model.data && model.data.length) {
-    //   this.options.model = model.data
-    // }
-    // const place = await this.$axios.$get(`/api/admin/commodity/retrieve/place`)
-    // if (place.data && place.data.length) {
-    //   this.options.place = place.data
-    // }
-    // const ruiwu = await this.$axios.$get(`/api/admin/commodity/retrieve/ruiwu`)
-    // if (ruiwu.data && ruiwu.data.length) {
-    //   this.options.ruiwu = ruiwu.data
-    // }
-    // const shape = await this.$axios.$get(`/api/admin/commodity/retrieve/shape`)
-    // if (shape.data && shape.data.length) {
-    //   this.options.shape = shape.data
-    // }
-    // const specification = await this.$axios.$get(`/api/admin/commodity/retrieve/specification`)
-    // if (specification.data && specification.data.length) {
-    //   this.options.specification = specification.data
-    // }
-    // const style = await this.$axios.$get(`/api/admin/commodity/retrieve/style`)
-    // if (style.data && style.data.length) {
-    //   this.options.style = style.data
-    // }
-    // const technique = await this.$axios.$get(`/api/admin/commodity/retrieve/technique`)
-    // if (technique.data && technique.data.length) {
-    //   this.options.technique = technique.data
-    // }
-    // const theme = await this.$axios.$get(`/api/admin/commodity/retrieve/theme`)
-    // if (theme.data && theme.data.length) {
-    //   this.options.theme = theme.data
-    // }
-    // const type = await this.$axios.$get(`/api/admin/commodity/retrieve/type`)
-    // if (type.data && type.data.length) {
-    //   this.options.type = type.data
-    // }
-    // const use = await this.$axios.$get(`/api/admin/commodity/retrieve/use`)
-    // if (use.data && use.data.length) {
-    //   this.options.use = use.data
-    // }
-
-    const categorys = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/category`
-    )
-    if (categorys.data && categorys.data.length) {
-      this.categorys = categorys.data;
-      this.options.categorys = [];
-      categorys.data.forEach((item) => {
-        this.options.categorys.push(item.id)
-      })
-    }
-    const classifications = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/classification`
-    )
-    if (classifications.data && classifications.data.length) {
-      this.classifications = classifications.data;
-      this.options.classifications = [];
-      classifications.data.forEach((item) => {
-        this.options.classifications.push(item.id)
-      })
-
-    }
-    const materials = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/material`
-    )
-    if (materials.data && materials.data.length) {
-      this.materials = materials.data;
-      this.options.materials = [];
-      materials.data.forEach((item) => {
-        this.options.materials.push(item.id)
-      })
-    }
-    const models = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/model`
-    )
-    if (models.data && models.data.length) {
-      this.models = models.data;
-      this.options.models = [];
-      models.data.forEach((item) => {
-        this.options.models.push(item.id)
-      })
-    }
-    const places = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/place`
-    )
-    if (places.data && places.data.length) {
-      this.places = places.data;
-      this.options.places = [];
-      places.data.forEach((item) => {
-        this.options.places.push(item.id)
-      })
-    }
-    const ruiwus = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/ruiwu`
-    )
-    if (ruiwus.data && ruiwus.data.length) {
-      this.ruiwus = ruiwus.data;
-      this.options.ruiwus = [];
-      ruiwus.data.forEach((item) => {
-        this.options.ruiwus.push(item.id)
-      })
-    }
-    const shapes = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/shape`
-    )
-    if (shapes.data && shapes.data.length) {
-      this.shapes = shapes.data;
-      this.options.shapes = [];
-      shapes.data.forEach((item) => {
-        this.options.shapes.push(item.id)
-      })
-    }
-    const specifications = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/specification`
-    )
-    if (specifications.data && specifications.data.length) {
-      this.specifications = specifications.data;
-      this.options.specifications = [];
-      specifications.data.forEach((item) => {
-        this.options.specifications.push(item.id)
-      })
-    }
-    const styles = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/style`
-    )
-    if (styles.data && styles.data.length) {
-      this.styles = styles.data;
-      this.options.styles = [];
-      styles.data.forEach((item) => {
-        this.options.styles.push(item.id)
-      })
-    }
-    const techniques = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/technique`
-    )
-    if (techniques.data && techniques.data.length) {
-      this.techniques = techniques.data;
-      this.options.techniques = [];
-      techniques.data.forEach((item) => {
-        this.options.techniques.push(item.id)
-      })
-    }
-    const themes = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/theme`
-    )
-    if (themes.data && themes.data.length) {
-      this.themes = themes.data;
-      this.options.themes = [];
-      themes.data.forEach((item) => {
-        this.options.themes.push(item.id)
-      })
-    }
-    const types = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/type`
-    )
-    if (types.data && types.data.length) {
-      this.types = types.data;
-      this.options.types = [];
-      types.data.forEach((item) => {
-        this.options.types.push(item.id)
-      })
-    }
-    const uses = await this.$axios.$get(
-      `/api/admin/commodity/retrieve/use`
-    )
-    if (uses.data && uses.data.length) {
-      this.uses = uses.data;
-      this.options.uses = [];
-      uses.data.forEach((item) => {
-        this.options.uses.push(item.id)
-      })
-    }
-
-
-    console.log('this.options', this.options)
-
-
+    this.options = {}
   },
-  computed: {
-    // // "category": "类别",
-    // categorys() {
-    //   return this.$store.state.commodity.options.categorys
-    // },
-    // // "classification": "分类",
-    // classifications() {
-    //   return this.$store.state.commodity.options.classifications
-    // },
-    // // "material": "材质",
-    // materials() {
-    //   return this.$store.state.commodity.options.materials
-    // },
-    // // "model": "款式",
-    // models() {
-    //   return this.$store.state.commodity.options.models
-    // },
-    // // "place": "摆放",
-    // places() {
-    //   return this.$store.state.commodity.options.places
-    // },
-    // // "ruiwu": "瑞物",
-    // ruiwus() {
-    //   return this.$store.state.commodity.options.ruiwus
-    // },
-    // // "shape": "形状",
-    // shapes() {
-    //   return this.$store.state.commodity.options.shapes
-    // },
-    // // "specification": "规格",
-    // specifications() {
-    //   return this.$store.state.commodity.options.specifications
-    // },
-    // // "style": "风格",
-    // styles() {
-    //   return this.$store.state.commodity.options.styles
-    // },
-    // // "technique": "手法",
-    // techniques() {
-    //   return this.$store.state.commodity.options.techniques
-    // },
-    // // "theme": "主题",
-    // themes() {
-    //   return this.$store.state.commodity.options.themes
-    // },
-    // // "type": "类型",
-    // types() {
-    //   return this.$store.state.commodity.options.types
-    // },
-    // // "use": "用途",
-    // uses() {
-    //   return this.$store.state.commodity.options.uses
-    // },
-  },
+  computed: {},
   watch: {
     '$route.query': '$fetch',
   },
@@ -1299,18 +839,50 @@ export default {
     this.isCreate = true
     this.reset()
 
+    const options = await this.$axios.$get(`/api/admin/commodity/options`)
+    if (options.success) {
+      this.options = options.data
 
+      // "category": "类别",
+      this.categorys = options.data.categorys.map((item) => item.id)
+      // "classification": "分类",
+      this.classifications = options.data.classifications.map((item) => item.id)
+      // "material": "材质",
+      this.materials = options.data.materials.map((item) => item.id)
+      // "model": "款式",
+      this.models = options.data.models.map((item) => item.id)
+      // "place": "摆放",
+      this.places = options.data.places.map((item) => item.id)
+      // "ruiwu": "瑞物",
+      this.ruiwus = options.data.ruiwus.map((item) => item.id)
+      // "shape": "形状",
+      this.shapes = options.data.shapes.map((item) => item.id)
+      // "specification": "规格",
+      this.specifications = options.data.specifications.map((item) => item.id)
+      // "style": "风格",
+      this.styles = options.data.styles.map((item) => item.id)
+      // "technique": "手法",
+      this.techniques = options.data.techniques.map((item) => item.id)
+      // "theme": "主题",
+      this.themes = options.data.themes.map((item) => item.id)
+      // "type": "类型",
+      this.types = options.data.types.map((item) => item.id)
+      // "use": "用途",
+      this.uses = options.data.uses.map((item) => item.id)
+    }
+
+    // await this.onCommoditySearch()
 
     if (this.$route.query && this.$route.query.commodityId) {
       const commodity = await this.$axios.$get('/api/admin/commodity/edit', {
         params: {
-          commodityId: this.$route.query.commodityId
+          commodityId: this.$route.query.commodityId,
         },
       })
 
       if (commodity.success) {
         const commodityForm = commodity.data
-        console.log("commodityForm", commodityForm)
+        console.log('commodityForm', commodityForm)
         this.form.commodityId = this.$route.query.commodityId
         this.form.state = commodityForm.state
         this.form.width = commodityForm.width
@@ -1336,221 +908,41 @@ export default {
         }
 
         // "category": "类别",
-        // this.form.categorys = commodityForm.categorys && commodityForm.categorys.length ? commodityForm.categorys[0].id : '';
-        this.form.categorys = []
-        if(this.categorys && this.categorys.length){
-            if(commodityForm.categorys && commodityForm.categorys.length){
-              commodityForm.categorys.forEach((item1) => {
-                this.categorys.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  this.form.categorys.push(item1.optionId)
-                }
-              })
-              })
-            }
-
-        }
-        console.log(this.form.categorys)
+        this.form.categorys = commodityForm.categorys.map(
+          (item) => item.optionId
+        )
         // "classification": "分类",
-        // this.form.classifications = commodityForm.classifications && commodityForm.classifications.length ? commodityForm.classifications[0].id : '';
-        this.form.classifications = []
-        console.log("this.classifications", this.classifications)
-        console.log("commodityForm.classifications", commodityForm.classifications)
-
-        if(this.classifications && this.classifications.length){
-          if(commodityForm.classifications && commodityForm.classifications.length){
-            commodityForm.classifications.forEach((item1) => {
-              this.classifications.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  console.log("item1", item1)
-                  this.form.classifications.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.classifications = commodityForm.classifications
-          }
-        }
-        console.log("this.form.classifications", this.form.classifications)
+        this.form.classifications = commodityForm.classifications.map(
+          (item) => item.optionId
+        )
         // "material": "材质",
-        // this.form.materials = commodityForm.materials && commodityForm.materials.length ? commodityForm.materials[0].id : '';
-        this.form.materials = []
-        if(this.materials && this.materials.length){
-          if(commodityForm.materials && commodityForm.materials.length){
-            commodityForm.materials.forEach((item1) => {
-              this.materials.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.materials.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.materials = commodityForm.materials
-          }
-        }
+        this.form.materials = commodityForm.materials.map(
+          (item) => item.optionId
+        )
         // "model": "款式",
-        // this.form.models = commodityForm.models && commodityForm.models.length ? commodityForm.models[0].id : '';
-        this.form.models = []
-        if(this.models && this.models.length){
-          if(commodityForm.models && commodityForm.models.length){
-            commodityForm.models.forEach((item1) => {
-              this.models.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.models.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.models = commodityForm.models
-          }
-        }
+        this.form.models = commodityForm.models.map((item) => item.optionId)
         // "place": "摆放",
-        // this.form.places = commodityForm.places && commodityForm.places.length ? commodityForm.places[0].id : '';
-        this.form.places = []
-        if(this.places && this.places.length){
-          if(commodityForm.places && commodityForm.places.length){
-            commodityForm.places.forEach((item1) => {
-              this.places.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.places.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.places = commodityForm.places
-          }
-        }
+        this.form.places = commodityForm.places.map((item) => item.optionId)
         // "ruiwu": "瑞物",
-        // this.form.ruiwus = commodityForm.ruiwus && commodityForm.ruiwus.length ? commodityForm.ruiwus[0].id : '';
-        this.form.ruiwus = []
-        if(this.ruiwus && this.ruiwus.length){
-          if(commodityForm.ruiwus && commodityForm.ruiwus.length){
-            commodityForm.ruiwus.forEach((item1) => {
-              this.ruiwus.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.ruiwus.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.ruiwus = commodityForm.ruiwus
-          }
-        }
+        this.form.ruiwus = commodityForm.ruiwus.map((item) => item.optionId)
         // "shape": "形状",
-        // this.form.shapes = commodityForm.shapes && commodityForm.shapes.length ? commodityForm.shapes[0].id : '';
-        this.form.shapes = []
-        if(this.shapes && this.shapes.length){
-          if(commodityForm.shapes && commodityForm.shapes.length){
-            commodityForm.shapes.forEach((item1) => {
-              this.shapes.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.shapes.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.shapes = commodityForm.shapes
-          }
-        }
+        this.form.shapes = commodityForm.shapes.map((item) => item.optionId)
         // "specification": "规格",
-        // this.form.specifications = commodityForm.specifications && commodityForm.specifications.length ? commodityForm.specifications[0].id : '';
-        this.form.specifications = []
-        if(this.specifications && this.specifications.length){
-          if(commodityForm.specifications && commodityForm.specifications.length){
-            commodityForm.specifications.forEach((item1) => {
-              this.specifications.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.specifications.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.specifications = commodityForm.specifications
-          }
-        }
+        this.form.specifications = commodityForm.specifications.map(
+          (item) => item.optionId
+        )
         // "style": "风格",
-        // this.form.styles = commodityForm.styles && commodityForm.styles.length ? commodityForm.styles[0].id : '';
-        this.form.styles = []
-        if(this.styles && this.styles.length){
-          if(commodityForm.styles && commodityForm.styles.length){
-            commodityForm.styles.forEach((item1) => {
-              this.styles.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.styles.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.styles = commodityForm.styles
-          }
-        }
+        this.form.styles = commodityForm.styles.map((item) => item.optionId)
         // "technique": "手法",
-        // this.form.techniques = commodityForm.techniques && commodityForm.techniques.length ? commodityForm.techniques[0].id : '';
-        this.form.techniques = []
-        if(this.techniques && this.techniques.length){
-          if(commodityForm.techniques && commodityForm.techniques.length){
-            commodityForm.techniques.forEach((item1) => {
-              this.techniques.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.techniques.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.techniques = commodityForm.techniques
-          }
-        }
+        this.form.techniques = commodityForm.techniques.map(
+          (item) => item.optionId
+        )
         // "theme": "主题",
-        // this.form.themes = commodityForm.themes && commodityForm.themes.length ? commodityForm.themes[0].id : '';
-        this.form.themes = []
-        if(this.themes && this.themes.length){
-          if(commodityForm.themes && commodityForm.themes.length){
-            commodityForm.themes.forEach((item1) => {
-              this.themes.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.themes.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.themes = commodityForm.themes
-          }
-        }
+        this.form.themes = commodityForm.themes.map((item) => item.optionId)
         // "type": "类型",
-        // this.form.types = commodityForm.types && commodityForm.types.length ? commodityForm.types[0].id : '';
-        this.form.types = []
-        if(this.types && this.types.length){
-          if(commodityForm.types && commodityForm.types.length){
-            commodityForm.types.forEach((item1) => {
-              this.types.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.types.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.types = commodityForm.types
-          }
-        }
+        this.form.types = commodityForm.types.map((item) => item.optionId)
         // "use": "用途",
-        // this.form.uses = commodityForm.uses && commodityForm.uses.length ? commodityForm.uses[0].id : '';
-        this.form.uses = []
-        if(this.uses && this.uses.length){
-          if(commodityForm.uses && commodityForm.uses.length){
-            commodityForm.uses.forEach((item1) => {
-              this.uses.forEach((item2) => {
-                if(item1.optionId == item2.id) {
-                  // item2.optionId = item1.id;
-                  this.form.uses.push(item1.optionId)
-                }
-              })
-            })
-            // this.form.uses = commodityForm.uses
-          }
-        }
-
-
-
+        this.form.uses = commodityForm.uses.map((item) => item.optionId)
 
         if (commodityForm.seller) {
           this.form.sellerId = commodityForm.seller.sellerId
@@ -1561,7 +953,6 @@ export default {
         this.typeText = this.$t('content.update')
         this.isCreate = false
       }
-
     }
     console.log('this.form', this.form)
   },
@@ -1589,7 +980,7 @@ export default {
                 })
               })
           } else {
-            console.log("this.form", this.form)
+            console.log('this.form', this.form)
             data = await this.$axios
               .$post('/api/admin/commodity/update', this.form)
               .catch((error) => {
@@ -1675,37 +1066,67 @@ export default {
         },
 
         // "category": "类别",
-        categorys: [this.options.categorys[Mock.mock(`@integer(0,${this.options.categorys.length - 1})`)]],
+        categorys: [
+          this.categorys[Mock.mock(`@integer(0,${this.categorys.length - 1})`)],
+        ],
         // "classification": "分类",
-        classifications: [this.options.classifications[Mock.mock(`@integer(0,${this.options.classifications.length - 1})`)]],
+        classifications: [
+          this.classifications[
+            Mock.mock(`@integer(0,${this.classifications.length - 1})`)
+          ],
+        ],
         // "material": "材质",
-        materials: [this.options.materials[Mock.mock(`@integer(0,${this.options.materials.length - 1})`)]],
+        materials: [
+          this.materials[Mock.mock(`@integer(0,${this.materials.length - 1})`)],
+        ],
         // "model": "款式",
-        models: [this.options.models[Mock.mock(`@integer(0,${this.options.models.length - 1})`)]],
+        models: [
+          this.models[Mock.mock(`@integer(0,${this.models.length - 1})`)],
+        ],
         // "place": "摆放",
-        places: [this.options.places[Mock.mock(`@integer(0,${this.options.places.length - 1})`)]],
+        places: [
+          this.places[Mock.mock(`@integer(0,${this.places.length - 1})`)],
+        ],
         // "ruiwu": "瑞物",
-        ruiwus: [this.options.ruiwus[Mock.mock(`@integer(0,${this.options.ruiwus.length - 1})`)]],
+        ruiwus: [
+          this.ruiwus[Mock.mock(`@integer(0,${this.ruiwus.length - 1})`)],
+        ],
         // "shape": "形状",
-        shapes: [this.options.shapes[Mock.mock(`@integer(0,${this.options.shapes.length - 1})`)]],
+        shapes: [
+          this.shapes[Mock.mock(`@integer(0,${this.shapes.length - 1})`)],
+        ],
         // "specification": "规格",
-        specifications: [this.options.specifications[Mock.mock(`@integer(0,${this.options.specifications.length - 1})`)]],
+        specifications: [
+          this.specifications[
+            Mock.mock(`@integer(0,${this.specifications.length - 1})`)
+          ],
+        ],
         // "style": "风格",
-        styles: [this.options.styles[Mock.mock(`@integer(0,${this.options.styles.length - 1})`)]],
+        styles: [
+          this.styles[Mock.mock(`@integer(0,${this.styles.length - 1})`)],
+        ],
         // "technique": "手法",
-        techniques: [this.options.techniques[Mock.mock(`@integer(0,${this.options.techniques.length - 1})`)]],
+        techniques: [
+          this.techniques[
+            Mock.mock(`@integer(0,${this.techniques.length - 1})`)
+          ],
+        ],
         // "theme": "主题",
-        themes: [this.options.themes[Mock.mock(`@integer(0,${this.options.themes.length - 1})`)]],
+        themes: [
+          this.themes[Mock.mock(`@integer(0,${this.themes.length - 1})`)],
+        ],
         // "type": "类型",
-        types: [this.options.types[Mock.mock(`@integer(0,${this.options.types.length - 1})`)]],
+        types: [this.types[Mock.mock(`@integer(0,${this.types.length - 1})`)]],
         // "use": "用途",
-        uses: [this.options.uses[Mock.mock(`@integer(0,${this.options.uses.length - 1})`)]],
+        uses: [this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)]],
 
         photos: [],
-        colors: [{
-          startColor: "#fff",
-          endColor: "#000"
-        }],
+        colors: [
+          {
+            startColor: '#fff',
+            endColor: '#000',
+          },
+        ],
         width: Mock.mock('@natural(100, 300)'),
         height: Mock.mock('@natural(100, 300)'),
         state: Mock.mock('@integer(0, 3)'),
@@ -1768,10 +1189,12 @@ export default {
         types: [],
         uses: [],
         photos: [],
-        colors: [{
-          startColor: "#fff",
-          endColor: "#000"
-        }],
+        colors: [
+          {
+            startColor: '#fff',
+            endColor: '#000',
+          },
+        ],
         width: '',
         height: '',
         state: 0,
@@ -1785,7 +1208,7 @@ export default {
         src: res.data.src,
         url: res.data.src,
         name: file.name,
-        uid: file.uid
+        uid: file.uid,
       })
       // console.log(this.form)
     },
@@ -1801,8 +1224,32 @@ export default {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
     },
-
+    beforeUpload(file) {
+      const isLt2M = file.size / 1024 / 1024 < 2
+      if (!isLt2M) {
+        this.$message.error('上传的图片大小不能超过 2MB!')
+      }
+      return isLt2M
+    },
   },
 }
 </script>
-<style scoped></style>
+<style>
+.el-upload-list--picture-card .el-upload-list__item {
+  width: 192px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.el-upload--picture-card {
+  width: 192px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.photo {
+  width: 192px;
+  height: 100px;
+}
+</style>

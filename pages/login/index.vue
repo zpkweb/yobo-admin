@@ -7,10 +7,17 @@
     label-width="80px"
     class="login"
   >
-    <h3 class="login-title">yobo {{$t('login.title')}}</h3>
+    <h3 class="login-title">yobo {{ $t('login.title') }}</h3>
 
     <el-form-item class="login-item" :label="$t('login.name')" prop="name">
-      <el-input v-model="userForm.name" :placeholder="$t('form.placeholder', { msg: `${$t('user.name')}/${$t('user.email')}` })"></el-input>
+      <el-input
+        v-model="userForm.name"
+        :placeholder="
+          $t('form.placeholder', {
+            msg: `${$t('user.name')}/${$t('user.email')}`,
+          })
+        "
+      ></el-input>
     </el-form-item>
     <el-form-item class="login-item" :label="$t('login.pass')" prop="pass">
       <el-input
@@ -20,9 +27,9 @@
       ></el-input>
     </el-form-item>
 
-    <el-button class="login-btn" @click="submitForm('userForm')"
-      >{{$t('login.login')}}</el-button
-    >
+    <el-button class="login-btn" @click="submitForm('userForm')">{{
+      $t('login.login')
+    }}</el-button>
   </el-form>
 </template>
 <script>
@@ -32,23 +39,29 @@ export default {
     return {
       userForm: {
         name: 'root',
-        pass: '123456'
+        pass: '123456',
       },
       rules: {
-        name: [{ required: true, message: '请输入用户名/邮箱/手机', trigger: 'blur' }],
+        name: [
+          {
+            required: true,
+            message: '请输入用户名/邮箱/手机',
+            trigger: 'blur',
+          },
+        ],
         pass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       },
     }
   },
   fetch() {
-    this.$store.commit("setUserMenu", [])
+    this.$store.commit('setUserMenu', [])
   },
-  mounted(){
+  mounted() {
     this.$localForage.removeItem('user')
-    window.addEventListener('keydown',this.keyDown)
+    window.addEventListener('keydown', this.keyDown)
   },
-  destroyed(){
-    window.removeEventListener('keydown',this.keyDown,false);
+  destroyed() {
+    window.removeEventListener('keydown', this.keyDown, false)
   },
   methods: {
     async submitForm(formName) {
@@ -60,14 +73,14 @@ export default {
         })
         if (login.success) {
           // 用户登录 缓存
-          console.log("login", login.data)
+          console.log('login', login.data)
           await this.$localForage.setItem('user', login.data)
           this.$store.commit('setUser', login.data)
           this.$notify({
             title: `欢迎您，${login.data.name}`,
             // message: h('i', { style: 'color: teal'}, '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案'),
             duration: 1500,
-            offset: 70
+            offset: 70,
           })
           this.$router.push(this.localePath('/'))
         } else {
@@ -82,12 +95,12 @@ export default {
         return false
       }
     },
-    keyDown(e){
-        //如果是回车则执行登录方法
-      if(e.keyCode == 13){
-        this.submitForm('userForm');
+    keyDown(e) {
+      //如果是回车则执行登录方法
+      if (e.keyCode == 13) {
+        this.submitForm('userForm')
       }
-    }
+    },
   },
 }
 </script>

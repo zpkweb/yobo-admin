@@ -153,21 +153,24 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 166:
+/***/ 178:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/user.vue?vue&type=template&id=595bfdc8&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/user.vue?vue&type=template&id=8044ba74&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-container',[_c('el-aside',{staticStyle:{"background-color":"rgb(238, 241, 246)"},attrs:{"width":"300px"}},[(_vm.$store.state.userMenu.length)?_c('Menu',{attrs:{"menu":_vm.$store.state.userMenu[0]}}):_vm._e()],1),_vm._v(" "),_c('el-main',[_c('Nuxt')],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/user.vue?vue&type=template&id=595bfdc8&
+// CONCATENATED MODULE: ./pages/user.vue?vue&type=template&id=8044ba74&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/user.vue?vue&type=script&lang=js&
+//
+//
+//
 //
 //
 //

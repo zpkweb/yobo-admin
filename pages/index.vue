@@ -47,44 +47,77 @@
 }
 </i18n>
 <template>
-
   <el-main>
     <Chart
-      :caption="$t('chart.module2', { msg1: $t('chart.user'), msg2: $t('chart.statistics') })"
-      :title="$t('chart.module3', { msg1: $t('chart.user'), msg2: $t('chart.data'), msg3: $t('chart.statistics') })"
-      :subtitle="$t('chart.module2', { msg1: $t('chart.user'), msg2: $t('chart.data') })"
-      :seriesName="$t('chart.module2', { msg1: $t('chart.user'), msg2: $t('chart.number') })"
+      :caption="
+        $t('chart.module2', {
+          msg1: $t('chart.user'),
+          msg2: $t('chart.statistics'),
+        })
+      "
+      :title="
+        $t('chart.module3', {
+          msg1: $t('chart.user'),
+          msg2: $t('chart.data'),
+          msg3: $t('chart.statistics'),
+        })
+      "
+      :subtitle="
+        $t('chart.module2', { msg1: $t('chart.user'), msg2: $t('chart.data') })
+      "
+      :seriesName="
+        $t('chart.module2', {
+          msg1: $t('chart.user'),
+          msg2: $t('chart.number'),
+        })
+      "
       :yAxis="$t('chart.user')"
-      :points='[10, 8, 6, 4, 2, 0, 6, 10]'
-
-
+      :points="[10, 8, 6, 4, 2, 0, 6, 10]"
     />
     <Chart
-      :caption="$t('chart.module2', { msg1: $t('chart.commodity'), msg2: $t('chart.statistics') })"
-      :title="$t('chart.module3', { msg1: $t('chart.commodity'), msg2: $t('chart.data'), msg3: $t('chart.statistics') })"
-      :subtitle="$t('chart.module2', { msg1: $t('chart.commodity'), msg2: $t('chart.data') })"
-      :seriesName="$t('chart.module2', { msg1: $t('chart.commodity'), msg2: $t('chart.number') })"
+      :caption="
+        $t('chart.module2', {
+          msg1: $t('chart.commodity'),
+          msg2: $t('chart.statistics'),
+        })
+      "
+      :title="
+        $t('chart.module3', {
+          msg1: $t('chart.commodity'),
+          msg2: $t('chart.data'),
+          msg3: $t('chart.statistics'),
+        })
+      "
+      :subtitle="
+        $t('chart.module2', {
+          msg1: $t('chart.commodity'),
+          msg2: $t('chart.data'),
+        })
+      "
+      :seriesName="
+        $t('chart.module2', {
+          msg1: $t('chart.commodity'),
+          msg2: $t('chart.number'),
+        })
+      "
       :yAxis="$t('chart.commodity')"
-      :points='[10, 0, 8, 2, 6, 4, 5, 5]'
-      />
-
+      :points="[10, 0, 8, 2, 6, 4, 5, 5]"
+    />
   </el-main>
 </template>
 <script>
 // "fr-fr": {
-  //   "chart": {
-  //     "user": "utilisateur",
-  //     "commodity": "ouvrages d'art",
-  //     "statistics": "statistiques",
-  //     "data": "Les données",
-  //     "number": "Quantité",
-  //     "module2": "{msg1}{msg2}",
-  //     "module3": "{msg1}{msg2}{msg3}"
-  //   }
-  // }
-export default {
-
-}
+//   "chart": {
+//     "user": "utilisateur",
+//     "commodity": "ouvrages d'art",
+//     "statistics": "statistiques",
+//     "data": "Les données",
+//     "number": "Quantité",
+//     "module2": "{msg1}{msg2}",
+//     "module3": "{msg1}{msg2}{msg3}"
+//   }
+// }
+export default {}
 </script>
 <style>
 </style>

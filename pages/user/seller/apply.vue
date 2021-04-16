@@ -7,7 +7,6 @@
       label-width="100px"
       class="user-create-form"
     >
-
       <el-form-item>
         <el-button
           v-if="isCreate"
@@ -15,16 +14,26 @@
           @click="submitForm('userCreate')"
           icon="el-icon-circle-plus-outline"
         >
-          {{$t('content.apply')}}
+          {{ $t('content.apply') }}
         </el-button>
 
-        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
-          {{$t('content.update')}}
+        <el-button
+          v-else
+          type="primary"
+          @click="submitForm('userCreate')"
+          icon="el-icon-check"
+        >
+          {{ $t('content.update') }}
         </el-button>
-        <el-button @click="onMock" icon="el-icon-check"> {{$t('content.fill')}} </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">{{$t('content.clear')}}</el-button>
+        <el-button @click="onMock" icon="el-icon-check">
+          {{ $t('content.fill') }}
+        </el-button>
+        <el-button
+          @click="resetForm('userCreate')"
+          icon="el-icon-circle-close"
+          >{{ $t('content.clear') }}</el-button
+        >
       </el-form-item>
-
 
       <el-form-item :label="$t('user.firstName')" prop="firstname">
         <el-input
@@ -165,7 +174,6 @@
         ></el-input>
       </el-form-item>
 
-
       <el-form-item prop="findUs">
         <el-input
           type="textarea"
@@ -173,13 +181,11 @@
           :placeholder="$t('user.seller.findUs')"
         ></el-input>
       </el-form-item>
-
-
     </el-form>
   </div>
 </template>
 <script>
-import Mock from 'mockjs';
+import Mock from 'mockjs'
 export default {
   watchQuery: ['sellerId'],
   data() {
@@ -230,11 +236,43 @@ export default {
         profile: '',
       },
       rules: {
-        firstname: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.firstName') }), trigger: 'blur' }],
-        lastname: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.lastName') }), trigger: 'blur' }],
-        email: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.email') }), trigger: 'blur' }],
+        firstname: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.firstName'),
+            }),
+            trigger: 'blur',
+          },
+        ],
+        lastname: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.lastName'),
+            }),
+            trigger: 'blur',
+          },
+        ],
+        email: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.email'),
+            }),
+            trigger: 'blur',
+          },
+        ],
         // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [{ required: true, message: this.$t('form.placeholder', { msg: this.$t('user.password') }), trigger: 'blur' }],
+        password: [
+          {
+            required: true,
+            message: this.$t('form.placeholder', {
+              msg: this.$t('user.password'),
+            }),
+            trigger: 'blur',
+          },
+        ],
       },
     }
   },
@@ -298,7 +336,9 @@ export default {
           if (data.success) {
             this.$message({
               showClose: true,
-              message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}${this.$t('content.success')}`,
+              message: `${this.userCreate.firstname}${
+                this.userCreate.lastname
+              }，${this.typeText}${this.$t('content.success')}`,
               type: 'success',
             })
             if (this.isCreate) {
@@ -307,7 +347,9 @@ export default {
           } else {
             this.$message({
               showClose: true,
-              message: `${this.typeText}${this.$t('content.fail')}!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${
+                data.message
+              }`,
               type: 'error',
             })
           }
@@ -321,14 +363,16 @@ export default {
       this.$refs[userCreate].resetFields()
     },
     onMock() {
-      this.userCreate= {
+      this.userCreate = {
         firstname: Mock.mock('@cfirst'),
         lastname: Mock.mock('@clast'),
         email: Mock.mock('@email'),
         phone: '',
         password: '123',
         country: Mock.mock('@county(true)'),
-        language: this.$i18n.locales.filter(i => i.code == this.$i18n.locale)[0].name,
+        language: this.$i18n.locales.filter(
+          (i) => i.code == this.$i18n.locale
+        )[0].name,
         profile: Mock.mock('@cparagraph'),
         isFullTime: '',
         onlineSell: '',
@@ -343,7 +387,7 @@ export default {
 
         findUs: '',
       }
-    }
+    },
   },
 }
 </script>

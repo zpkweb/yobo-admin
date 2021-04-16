@@ -14,8 +14,8 @@
           :action="`${$config.origin}/api/upload/images`"
           :data="{ type: 'avatar' }"
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
+          :on-success="handleSuccess"
+          :before-upload="beforeUpload"
         >
           <img
             v-if="userCreate.avatar"
@@ -23,12 +23,17 @@
             class="avatar"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          <div slot="tip" class="el-upload__tip">用户头像，请上传 正方形 比例的图片</div>
+          <div slot="tip" class="el-upload__tip">
+            用户头像，请上传 正方形 比例的图片，且不超过2M
+          </div>
         </el-upload>
       </el-form-item>
 
       <el-form-item :label="$t('user.name')" prop="name">
-        <el-input v-model="userCreate.name" :placeholder="$t('form.placeholder', { msg: $t('user.name') })"></el-input>
+        <el-input
+          v-model="userCreate.name"
+          :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
+        ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.email')" prop="email">
         <el-input
@@ -56,20 +61,31 @@
           @click="submitForm('userCreate')"
           icon="el-icon-circle-plus-outline"
         >
-          {{$t('content.create')}}
+          {{ $t('content.create') }}
         </el-button>
 
-        <el-button v-else type="primary" @click="submitForm('userCreate')" icon="el-icon-check">
-          {{$t('content.update')}}
+        <el-button
+          v-else
+          type="primary"
+          @click="submitForm('userCreate')"
+          icon="el-icon-check"
+        >
+          {{ $t('content.update') }}
         </el-button>
-        <el-button @click="onMock" icon="el-icon-check"> {{$t('content.fill')}} </el-button>
-        <el-button @click="resetForm('userCreate')" icon="el-icon-circle-close">{{$t('content.clear')}}</el-button>
+        <el-button @click="onMock" icon="el-icon-check">
+          {{ $t('content.fill') }}
+        </el-button>
+        <el-button
+          @click="resetForm('userCreate')"
+          icon="el-icon-circle-close"
+          >{{ $t('content.clear') }}</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
-import Mock from 'mockjs';
+import Mock from 'mockjs'
 
 export default {
   async fetch() {
@@ -77,7 +93,6 @@ export default {
     // this.$refs.userCreate.resetFields()
 
     if (this.$route.query && this.$route.query.userId) {
-
       this.userId = this.$route.query.userId
 
       const user = await this.$axios.$get('/api/admin/user', {
@@ -203,7 +218,9 @@ export default {
           if (data.status === 200) {
             this.$message({
               showClose: true,
-              message: `${this.userCreate.name}，${this.typeText}${this.$t('content.success')}`,
+              message: `${this.userCreate.name}，${this.typeText}${this.$t(
+                'content.success'
+              )}`,
               type: 'success',
             })
             if (this.isCreate) {
@@ -212,7 +229,9 @@ export default {
           } else {
             this.$message({
               showClose: true,
-              message: `${this.typeText}${this.$t('content.fail')}!${data.message}`,
+              message: `${this.typeText}${this.$t('content.fail')}!${
+                data.message
+              }`,
               type: 'error',
             })
           }
@@ -233,22 +252,16 @@ export default {
         password: '123',
       }
     },
-    handleAvatarSuccess(res, file) {
+    handleSuccess(res, file) {
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       this.userCreate.avatar = res.data.src
     },
-    beforeAvatarUpload(file) {
-      // const isJPG = file.type === 'image/jpeg';
+    beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2
-
-      // if (!isJPG) {
-      //   this.$message.error('上传头像图片只能是 JPG 格式!');
-      // }
       if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
+        this.$message.error('上传的图片大小不能超过 2MB!')
       }
-      // return isJPG && isLt2M;
-      // return isLt2M
+      return isLt2M
     },
   },
 }
@@ -263,5 +276,4 @@ export default {
 .user-create-form {
   width: 90%;
 }
-
 </style>

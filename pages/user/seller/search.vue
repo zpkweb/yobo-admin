@@ -52,49 +52,59 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{$t('content.search')}}</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{
+          $t('content.search')
+        }}</el-button>
       </el-form-item>
     </el-form>
 
     <el-table :data="user" border>
-      <el-table-column prop="sellerId" :label="$t('user.seller.id')" width="200">
+      <el-table-column prop="sellerId" :label="$t('user.seller.id')">
       </el-table-column>
-      <el-table-column prop="user.avatar" :label="$t('user.avatar') " width="200">
+      <el-table-column prop="user.avatar" :label="$t('user.avatar')">
         <template slot-scope="scope">
-            <img :src="scope.row.user.avatar" class="image" />
+          <img :src="scope.row.user.avatar" class="image" width="100px" />
         </template>
       </el-table-column>
-      <el-table-column prop="firstname" :label="$t('user.firstName')" width="200">
+      <el-table-column prop="firstname" :label="$t('user.firstName')">
       </el-table-column>
-      <el-table-column prop="lastname" :label="$t('user.lastName')" width="200">
+      <el-table-column prop="lastname" :label="$t('user.lastName')">
       </el-table-column>
-      <el-table-column prop="user.email" :label="$t('user.email')" width="200">
+      <el-table-column prop="user.email" :label="$t('user.email')">
       </el-table-column>
-      <el-table-column prop="user.phone" :label="$t('user.phone')" width="200">
+      <el-table-column prop="user.phone" :label="$t('user.phone')">
       </el-table-column>
 
-      <el-table-column :formatter="formatterDate" prop="user.createdDate" :label="$t('content.createdDate')" width="200">
+      <el-table-column
+        :formatter="formatterDate"
+        prop="user.createdDate"
+        :label="$t('content.createdDate')"
+      >
       </el-table-column>
-      <el-table-column prop="state" :label="$t('user.state')" width="200"> </el-table-column>
-      <el-table-column :label="$t('content.operation')">
+      <el-table-column prop="state" :label="$t('user.state')">
+      </el-table-column>
+      <el-table-column :label="$t('content.operation')" width="172">
         <template slot-scope="scope">
-          <el-button size="mini" @click="editUser(scope.$index, scope.row)" icon="el-icon-edit"
-            >{{$t('content.edit')}}</el-button
+          <el-button
+            size="mini"
+            @click="editUser(scope.$index, scope.row)"
+            icon="el-icon-edit"
+            >{{ $t('content.edit') }}</el-button
           >
           <el-popover placement="top" v-model="scope.row.visible">
-            <p>{{$t('content.deleteText')}}</p>
+            <p>{{ $t('content.deleteText') }}</p>
             <div style="text-align: right; margin: 0">
               <el-button
                 size="mini"
                 type="text"
                 @click="scope.row.visible = false"
-                >{{$t('content.cancel')}}</el-button
+                >{{ $t('content.cancel') }}</el-button
               >
               <el-button
                 type="primary"
                 size="mini"
                 @click="deleteSeller(scope.$index, scope.row)"
-                >{{$t('content.define')}}</el-button
+                >{{ $t('content.define') }}</el-button
               >
             </div>
             <el-button
@@ -102,10 +112,9 @@
               type="danger"
               icon="el-icon-delete"
               slot="reference"
-              >{{$t('content.delete')}}</el-button
+              >{{ $t('content.delete') }}</el-button
             >
           </el-popover>
-
         </template>
       </el-table-column>
     </el-table>
@@ -116,7 +125,7 @@
       :current-page="currentPage"
       :total="total"
       @current-change="changeCurrentPage"
-      style="margin-top:20px;text-align: center;"
+      style="margin-top: 20px; text-align: center"
     >
     </el-pagination>
   </div>
@@ -146,8 +155,8 @@ export default {
       params: {
         ...this.userSearch,
         currentPage: this.currentPage,
-        pageSize: this.pageSize
-      }
+        pageSize: this.pageSize,
+      },
     })
 
     // this.user = userSearch.data
@@ -159,10 +168,9 @@ export default {
       //   item.identityVisible = false
       //   return item
       // })
-      if(item.user){
-        userData.push(item);
+      if (item.user) {
+        userData.push(item)
       }
-
     })
     // console.log("searchData", userData)
     this.total = searchData.data.total
@@ -171,13 +179,16 @@ export default {
   methods: {
     // 查找用户
     async onSubmit() {
-      const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
-        params: {
-          ...this.userSearch,
-          currentPage: this.currentPage,
-          pageSize: this.pageSize
+      const searchData = await this.$axios.$get(
+        '/api/admin/user/seller/search',
+        {
+          params: {
+            ...this.userSearch,
+            currentPage: this.currentPage,
+            pageSize: this.pageSize,
+          },
         }
-      })
+      )
       this.total = searchData.data.total
       this.user = searchData.data.list
     },
@@ -187,7 +198,7 @@ export default {
       const user = await this.$axios.$get('/api/admin/user/seller/delete', {
         params: {
           sellerId: row.sellerId,
-        }
+        },
       })
       if (user.success) {
         this.user.splice(index, 1)
@@ -207,7 +218,9 @@ export default {
     },
     editUser(index, row) {
       console.log(index, row)
-      this.$router.push(this.localePath(`${this.$route.path}/create?sellerId=${row.sellerId}`))
+      this.$router.push(
+        this.localePath(`${this.$route.path}/create?sellerId=${row.sellerId}`)
+      )
     },
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')

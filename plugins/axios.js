@@ -1,9 +1,9 @@
 export default function ({ $axios, redirect, $message }) {
-  $axios.onRequest(config => {
+  $axios.onRequest((config) => {
     console.log('Making request to ' + config.url)
   })
 
-  $axios.onError(error => {
+  $axios.onError((error) => {
     const code = parseInt(error.response && error.response.status)
     // console.log("axios onError", error, code)
     // console.log("axios onError", error.response)

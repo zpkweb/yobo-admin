@@ -52,7 +52,9 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{$t('content.search')}}</el-button>
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{
+          $t('content.search')
+        }}</el-button>
       </el-form-item>
     </el-form>
 
@@ -61,31 +63,38 @@
       </el-table-column>
       <el-table-column prop="lastname" :label="$t('user.lastName')">
       </el-table-column>
-      <el-table-column prop="user.name" :label="$t('user.name')" > </el-table-column>
-      <el-table-column prop="user.email" :label="$t('user.email')"> </el-table-column>
-      <el-table-column prop="user.phone" :label="$t('user.phone')" > </el-table-column>
-
-      <el-table-column :formatter="formatterDate" prop="user.createdDate" :label="$t('content.createdDate')">
+      <el-table-column prop="user.name" :label="$t('user.name')">
+      </el-table-column>
+      <el-table-column prop="user.email" :label="$t('user.email')">
+      </el-table-column>
+      <el-table-column prop="user.phone" :label="$t('user.phone')">
       </el-table-column>
 
-      <el-table-column :label="$t('content.operation')"  width="300">
+      <el-table-column
+        :formatter="formatterDate"
+        prop="user.createdDate"
+        :label="$t('content.createdDate')"
+      >
+      </el-table-column>
+
+      <el-table-column :label="$t('content.operation')" width="182">
         <template slot-scope="scope">
-          <el-button size="mini" @click="edit(scope.$index, scope.row)" icon="el-icon-edit"
+          <!-- <el-button size="mini" @click="edit(scope.$index, scope.row)" icon="el-icon-edit"
             >{{$t('content.edit')}}</el-button
-          >
+          > -->
           <el-button
             size="mini"
             type="success"
             @click="agree(scope.$index, scope.row)"
             icon="el-icon-check"
-            >{{$t('content.agree')}}</el-button
+            >{{ $t('content.agree') }}</el-button
           >
           <el-button
             size="mini"
             type="danger"
             @click="reject(scope.$index, scope.row)"
             icon="el-icon-close"
-            >{{$t('content.reject')}}</el-button
+            >{{ $t('content.reject') }}</el-button
           >
         </template>
       </el-table-column>
@@ -97,7 +106,7 @@
       :current-page="currentPage"
       :total="total"
       @current-change="changeCurrentPage"
-      style="margin-top:20px;text-align: center;"
+      style="margin-top: 20px; text-align: center"
     >
     </el-pagination>
   </div>
@@ -127,8 +136,8 @@ export default {
       params: {
         ...this.search,
         currentPage: this.currentPage,
-        pageSize: this.pageSize
-      }
+        pageSize: this.pageSize,
+      },
     })
     this.total = searchData.data.total
     this.seller = searchData.data.list
@@ -141,8 +150,8 @@ export default {
           params: {
             ...this.search,
             currentPage: this.currentPage,
-            pageSize: this.pageSize
-          }
+            pageSize: this.pageSize,
+          },
         }
       )
       this.total = searchData.data.total
@@ -150,7 +159,9 @@ export default {
     },
     edit(index, row) {
       console.log(index, row)
-      this.$router.push(this.localePath(`/user/seller/create?sellerId=${row.sellerId}`))
+      this.$router.push(
+        this.localePath(`/user/seller/create?sellerId=${row.sellerId}`)
+      )
     },
     async agree(index, row) {
       console.log(index, row)

@@ -80,8 +80,8 @@
           :action="`${$config.origin}/api/upload/images`"
           :data="{ type: 'avatar' }"
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
+          :on-success="handleSuccess"
+          :before-upload="beforeUpload"
         >
           <img
             v-if="userCreate.avatar"
@@ -89,10 +89,11 @@
             class="avatar"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          <div slot="tip" class="el-upload__tip">艺术家头像，请上传 正方形 的图片</div>
+          <div slot="tip" class="el-upload__tip">
+            艺术家头像，请上传 正方形 的图片，且不超过2M
+          </div>
         </el-upload>
       </el-form-item>
-
 
       <el-form-item :label="$t('user.label')" prop="tags">
         <el-tag
@@ -100,8 +101,9 @@
           v-for="tag in userCreate.tags"
           closable
           :disable-transitions="false"
-          @close="handleClose(tag)">
-          {{tag}}
+          @close="handleClose(tag)"
+        >
+          {{ tag }}
         </el-tag>
         <el-input
           class="input-new-tag"
@@ -113,7 +115,9 @@
           @blur="handleInputConfirm"
         >
         </el-input>
-        <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+        <el-button v-else class="button-new-tag" size="small" @click="showInput"
+          >+ New Tag</el-button
+        >
       </el-form-item>
 
       <el-form-item :label="$t('user.firstName')" prop="firstname">
@@ -416,12 +420,11 @@ export default {
 
               // 管理员创建艺术家 /api/admin/user/register
 
-              data = await this.$axios
-                .$post('/api/admin/user/register', {
-                  identity: 'seller',
-                  typeName: this.typeOptions[this.userCreate.type].label,
-                  ...this.userCreate,
-                })
+              data = await this.$axios.$post('/api/admin/user/register', {
+                identity: 'seller',
+                typeName: this.typeOptions[this.userCreate.type].label,
+                ...this.userCreate,
+              })
 
               // data = await this.$axios.$post('/api/user/seller/apply', {
               //   identity: this.$route.params.identity,
@@ -436,7 +439,7 @@ export default {
                 ...this.userCreate,
               })
             }
-            if(data.success) {
+            if (data.success) {
               this.$message({
                 showClose: true,
                 message: `${this.userCreate.firstname}${
@@ -447,16 +450,15 @@ export default {
               if (this.isCreate) {
                 this.$refs[userCreate].resetFields()
               }
-            }else{
+            } else {
               this.$message({
-              showClose: true,
-              message: `${this.typeText}${this.$t('content.fail')}`,
-              type: 'error',
-            })
+                showClose: true,
+                message: `${this.typeText}${this.$t('content.fail')}`,
+                type: 'error',
+              })
             }
-
           } catch (error) {
-            console.log("error", error)
+            console.log('error', error)
             this.$message({
               showClose: true,
               message: `${this.typeText}${this.$t('content.fail')}`,
@@ -518,44 +520,37 @@ export default {
         findUs: '',
       }
     },
-    handleAvatarSuccess(res, file) {
-      console.log("handleAvatarSuccess", res, file)
+    handleSuccess(res, file) {
+      console.log('handleAvatarSuccess', res, file)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       this.userCreate.avatar = res.data.src
     },
-    beforeAvatarUpload(file) {
-      console.log("beforeAvatarUpload", file)
-      // const isJPG = file.type === 'image/jpeg';
-      // const isLt2M = file.size / 1024 / 1024 < 2
-
-      // if (!isJPG) {
-      //   this.$message.error('上传头像图片只能是 JPG 格式!');
-      // }
-      // if (!isLt2M) {
-      //   this.$message.error('上传头像图片大小不能超过 2MB!')
-      // }
-      // return isJPG && isLt2M;
-      // return isLt2M
+    beforeUpload(file) {
+      const isLt2M = file.size / 1024 / 1024 < 2
+      if (!isLt2M) {
+        this.$message.error('上传的图片大小不能超过 2MB!')
+      }
+      return isLt2M
     },
     handleClose(tag) {
-        this.userCreate.tags.splice(this.userCreate.tags.indexOf(tag), 1);
-      },
+      this.userCreate.tags.splice(this.userCreate.tags.indexOf(tag), 1)
+    },
 
-      showInput() {
-        this.inputVisible = true;
-        this.$nextTick(_ => {
-          this.$refs.saveTagInput.$refs.input.focus();
-        });
-      },
+    showInput() {
+      this.inputVisible = true
+      this.$nextTick((_) => {
+        this.$refs.saveTagInput.$refs.input.focus()
+      })
+    },
 
-      handleInputConfirm() {
-        let inputValue = this.inputValue;
-        if (inputValue) {
-          this.userCreate.tags.push(inputValue);
-        }
-        this.inputVisible = false;
-        this.inputValue = '';
+    handleInputConfirm() {
+      let inputValue = this.inputValue
+      if (inputValue) {
+        this.userCreate.tags.push(inputValue)
       }
+      this.inputVisible = false
+      this.inputValue = ''
+    },
   },
 }
 </script>
@@ -571,19 +566,19 @@ export default {
 }
 
 .el-tag + .el-tag {
-    margin-left: 10px;
-  }
-  .button-new-tag {
-    margin-left: 10px;
-    height: 32px;
-    line-height: 30px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .input-new-tag {
-    width: 90px;
-    margin-left: 10px;
-    vertical-align: bottom;
-  }
+  margin-left: 10px;
+}
+.button-new-tag {
+  margin-left: 10px;
+  height: 32px;
+  line-height: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.input-new-tag {
+  width: 90px;
+  margin-left: 10px;
+  vertical-align: bottom;
+}
 </style>
 

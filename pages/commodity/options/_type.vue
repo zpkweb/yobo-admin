@@ -59,12 +59,15 @@
               :action="`${$config.origin}/api/upload/images`"
               :data="{ type: optionType[$route.params.type], index }"
               :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload"
+              :on-success="handleSuccess"
+              :before-upload="beforeUpload"
             >
               <img v-if="item.img" :src="item.img" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              <div slot="tip" class="el-upload__tip">艺术品{{optionType[$route.params.type]}}图片，请上传 210X185 比例的图片</div>
+              <div slot="tip" class="el-upload__tip">
+                艺术品{{ optionType[$route.params.type] }}图片，请上传 210X185
+                比例的图片，且不超过2M
+              </div>
             </el-upload>
           </el-form-item>
         </el-col>
@@ -86,8 +89,6 @@
             </el-input>
           </el-form-item>
         </el-col>
-
-
 
         <el-col :span="3">
           <el-form-item
@@ -486,31 +487,37 @@ export default {
       }
       this.form.options.splice(index, 1, mock)
     },
-    handleAvatarSuccess(res, file, fileList) {
+    handleSuccess(res, file, fileList) {
       console.log('handleAvatarSuccess', res, file, fileList)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       // this.form.options.avatar = res.data.src
       this.form.options[res.data.index].img = res.data.src
       console.log(this.form)
     },
-    beforeAvatarUpload(file, index) {
+    beforeUpload(file, index) {
       console.log('beforeAvatarUpload', file, index)
-      // const isJPG = file.type === 'image/jpeg';
       const isLt2M = file.size / 1024 / 1024 < 2
-
-      // if (!isJPG) {
-      //   this.$message.error('上传头像图片只能是 JPG 格式!');
-      // }
       if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
+        this.$message.error('上传的图片大小不能超过 2MB!')
       }
-      // return isJPG && isLt2M;
-      // return isLt2M
+      return isLt2M
     },
   },
 }
 </script>
 
 <style scoped>
-
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 113px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.avatar {
+  width: 113px;
+  height: 100px;
+  display: block;
+}
 </style>

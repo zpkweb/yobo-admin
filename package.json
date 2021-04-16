@@ -1,6 +1,6 @@
 {
   "name": "yobo-admin",
-  "version": "1.0.0",
+  "version": "0.36",
   "private": true,
   "license": "ISC",
   "scripts": {

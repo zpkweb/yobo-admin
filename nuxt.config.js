@@ -1,27 +1,30 @@
 export default {
   buildDir: 'dist',
   env: {
-    baseUrl: process.env.ORIGIN || 'http://localhost:7001'
+    baseUrl: process.env.ORIGIN || 'http://localhost:7001',
+    // baseUrl: "http://39.105.190.188:7001"
   },
   dev: process.env.NODE_ENV !== 'prod',
   publicRuntimeConfig: {
-    v: "v0.31",
-    origin: process.env.ORIGIN ||  'http://localhost:7001'
+    v: 'v0.31',
+    origin: process.env.ORIGIN || 'http://localhost:7001',
+    // origin: "http://39.105.190.188:7001"
   },
   server: {
     port: 3080, // default: 3000
-    host: '0.0.0.0' // default: localhost
+    host: '0.0.0.0', // default: localhost
   },
   proxy: {
     '/api': {
       target: process.env.ORIGIN || 'http://localhost:7001',
-      changeOrigin: true,
-    }
+      // target: "http://39.105.190.188:7001",
+      // changeOrigin: true,
+    },
   },
   // router: {
   //   base: '/admin/'
   // },
-  // Global page headers (https://go.nuxtjs.dev/config-head)
+  // Global page headers (https://go.nuxtjs.dev/config-head)Í
   head: {
     title: 'yobo-admin',
     meta: [
@@ -33,18 +36,17 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['element-ui/lib/theme-chalk/index.css', '~/assets/css/global', '~/assets/css/normalize'],
+  css: [
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/css/global',
+    '~/assets/css/normalize',
+  ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    '@/plugins/element-ui',
-    '@/plugins/axios'
-],
+  plugins: ['@/plugins/element-ui', '@/plugins/axios'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: [
-    '~/components',
-],
+  components: ['~/components'],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -60,7 +62,7 @@ export default {
     'nuxt-i18n',
     'nuxt-highcharts',
     '@nuxtjs/moment',
-    '@nuxtjs/localforage'
+    '@nuxtjs/localforage',
   ],
 
   highcharts: {
@@ -68,10 +70,8 @@ export default {
   },
 
   axios: {
-    proxy: true
+    proxy: true,
   },
-
-
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
@@ -84,17 +84,17 @@ export default {
       {
         code: 'zh-cn',
         name: '中文',
-        file: 'zh-CN.js'
+        file: 'zh-CN.js',
       },
       {
         code: 'en-us',
         name: 'English',
-        file: 'en-US.js'
+        file: 'en-US.js',
       },
       {
         code: 'ja-jp',
         name: 'にほんご',
-        file: 'ja-JP.js'
+        file: 'ja-JP.js',
       },
       // {
       //   code: 'fr-fr',
@@ -104,8 +104,8 @@ export default {
       {
         code: 'es-es',
         name: 'Español',
-        file: 'es-ES.js'
-      }
+        file: 'es-ES.js',
+      },
     ],
     defaultLocale: 'zh-cn',
     vueI18nLoader: true,
@@ -114,8 +114,8 @@ export default {
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      onlyOnRoot: true,  // recommended
+      onlyOnRoot: true, // recommended
     },
-    silentTranslationWarn: true
-  }
+    silentTranslationWarn: true,
+  },
 }

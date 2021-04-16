@@ -49,7 +49,7 @@
       >
       </el-table-column>
 
-      <el-table-column :label="$t('content.operation')">
+      <el-table-column :label="$t('content.operation')" width="172">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -193,7 +193,6 @@ export default {
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formatterDate(row, column, cellValue, index) {
-
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
     changeCurrentPage(val) {

@@ -23,7 +23,12 @@
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.identity')">
-        <el-select v-model="userSearch.identity" :placeholder="$t('form.selectPlaceholder', { msg: $t('user.identity') })">
+        <el-select
+          v-model="userSearch.identity"
+          :placeholder="
+            $t('form.selectPlaceholder', { msg: $t('user.identity') })
+          "
+        >
           <el-option
             v-for="item in identityOptions"
             :key="item.ename"
@@ -34,9 +39,9 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit" icon="el-icon-search"
-          >{{$t('content.search')}}</el-button
-        >
+        <el-button type="primary" @click="onSubmit" icon="el-icon-search">{{
+          $t('content.search')
+        }}</el-button>
       </el-form-item>
     </el-form>
 
@@ -139,14 +144,14 @@
         </template>
       </el-table-column> -->
 
-      <el-table-column :label="$t('content.operation')">
+      <el-table-column :label="$t('content.operation')" width="172">
         <template slot-scope="scope">
           <div v-if="scope.row.isEdit">
             <el-button
               size="mini"
               @click="cancelEditUser(scope.$index, scope.row)"
               icon="el-icon-close"
-              >{{$t('content.cancel')}}</el-button
+              >{{ $t('content.cancel') }}</el-button
             >
             <span>
               <el-button
@@ -154,7 +159,7 @@
                 type="success"
                 icon="el-icon-check"
                 @click="updateUser(scope.$index, scope.row)"
-                >{{$t('content.update')}}</el-button
+                >{{ $t('content.update') }}</el-button
               >
             </span>
           </div>
@@ -163,23 +168,23 @@
               size="mini"
               icon="el-icon-edit"
               @click="editUser(scope.$index, scope.row)"
-              >{{$t('content.edit')}}</el-button
+              >{{ $t('content.edit') }}</el-button
             >
 
             <el-popover placement="top" v-model="scope.row.visible">
-              <p>{{$t('content.deleteText')}}</p>
+              <p>{{ $t('content.deleteText') }}</p>
               <div style="text-align: right; margin: 0">
                 <el-button
                   size="mini"
                   type="text"
                   @click="scope.row.visible = false"
-                  >{{$t('content.cancel')}}</el-button
+                  >{{ $t('content.cancel') }}</el-button
                 >
                 <el-button
                   type="primary"
                   size="mini"
                   @click="removeUser(scope.$index, scope.row)"
-                  >{{$t('content.define')}}</el-button
+                  >{{ $t('content.define') }}</el-button
                 >
               </div>
 
@@ -188,7 +193,7 @@
                 type="danger"
                 icon="el-icon-delete"
                 slot="reference"
-                >{{$t('content.delete')}}</el-button
+                >{{ $t('content.delete') }}</el-button
               >
             </el-popover>
           </div>
@@ -203,10 +208,9 @@
       :current-page="currentPage"
       :total="total"
       @current-change="changeCurrentPage"
-      style="margin-top:20px;text-align: center;"
+      style="margin-top: 20px; text-align: center"
     >
     </el-pagination>
-
   </div>
 </template>
 <script>
@@ -269,7 +273,7 @@ export default {
         currentPage: this.currentPage,
       },
     })
-    console.log("userSearch", userSearch)
+    console.log('userSearch', userSearch)
     this.total = userSearch.data.total
     let userData = userSearch.data.list.map((item) => {
       item.isEdit = false
@@ -372,20 +376,23 @@ export default {
       if (data.success) {
         this.$message({
           showClose: true,
-          message: `${row.name}，${this.$t('content.update')}${this.$t('content.success')}`,
+          message: `${row.name}，${this.$t('content.update')}${this.$t(
+            'content.success'
+          )}`,
           type: 'success',
         })
         this.user[index].isEdit = false
       } else {
         this.$message({
           showClose: true,
-          message: `${this.$t('content.update')}${this.$t('content.fail')}!${data.message}`,
+          message: `${this.$t('content.update')}${this.$t('content.fail')}!${
+            data.message
+          }`,
           type: 'error',
         })
       }
     },
     formatterDate(row, column, cellValue, index) {
-
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
     changeCurrentPage(val) {
