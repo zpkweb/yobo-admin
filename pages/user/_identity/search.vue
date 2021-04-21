@@ -29,7 +29,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="onSubmit">{{
+        <el-button type="primary" icon="el-icon-search" @click="onSubmit(currentPage)">{{
           $t('content.search')
         }}</el-button>
       </el-form-item>
@@ -132,7 +132,7 @@ export default {
         phone: '',
       },
       currentPage: 1,
-      pageSize: 8,
+      pageSize: 10,
       total: 0,
     }
   },
@@ -141,14 +141,14 @@ export default {
   },
   methods: {
     // 查找用户
-    async onSubmit() {
+    async onSubmit(currentPage) {
       const userSearch = await this.$axios.$get('/api/admin/user/search', {
         params: {
           identity: this.$route.params.identity,
           name: this.userSearch.name,
           email: this.userSearch.email,
           phone: this.userSearch.phone,
-          currentPage: this.currentPage,
+          currentPage: currentPage,
           pageSize: this.pageSize,
         },
       })
@@ -195,9 +195,8 @@ export default {
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
-    changeCurrentPage(val) {
-      this.currentPage = val
-      this.onSubmit()
+    changeCurrentPage(currentPage) {
+      this.onSubmit(currentPage)
     },
   },
 }

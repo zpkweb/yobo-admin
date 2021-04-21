@@ -110,7 +110,7 @@
           </el-form-item>
         </el-col>
 
-        <el-col :span="5">
+        <!-- <el-col :span="5">
           <el-form-item :label="$t('commodity.width.title')" prop="width.min">
             <el-input
               v-model="commoditySearch.width.min"
@@ -131,9 +131,9 @@
               clearable
             ></el-input>
           </el-form-item>
-        </el-col>
+        </el-col> -->
 
-        <el-col :span="5">
+        <!-- <el-col :span="5">
           <el-form-item :label="$t('commodity.height.title')" prop="height.min">
             <el-input
               v-model="commoditySearch.height.min"
@@ -154,7 +154,7 @@
               clearable
             ></el-input>
           </el-form-item>
-        </el-col>
+        </el-col> -->
       </el-row>
 
       <el-row>
@@ -991,11 +991,11 @@ export default {
       this.options = options.data
     }
 
-    await this.onCommoditySearch()
+    await this.onCommoditySearch(this.currentPage)
   },
   methods: {
     // 搜索
-    async onCommoditySearch() {
+    async onCommoditySearch(currentPage) {
       console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
       // let isSearch = false
       // for (let [key, value] of Object.entries(this.commoditySearch)) {
@@ -1006,42 +1006,69 @@ export default {
       // }
       let commodityData
       // if (isSearch) {
-      const {
-        categorys,
-        classifications,
-        materials,
-        models,
-        places,
-        ruiwus,
-        shapes,
-        specifications,
-        styles,
-        techniques,
-        themes,
-        types,
-        uses,
-        ...search
-      } = this.commoditySearch
-      const searchData = await this.$axios.$get('/api/admin/commodity/search', {
+      // const {
+      //   categorys,
+      //   classifications,
+      //   materials,
+      //   models,
+      //   places,
+      //   ruiwus,
+      //   shapes,
+      //   specifications,
+      //   styles,
+      //   techniques,
+      //   themes,
+      //   types,
+      //   uses,
+
+      // } = this.commoditySearch
+      let price = '';
+      if(this.commoditySearch.price.min && this.commoditySearch.price.max){
+        price = `${this.commoditySearch.price.min},${this.commoditySearch.price.max}`
+      }else if(this.commoditySearch.price.min){
+        price = `0,${this.commoditySearch.price.min}`
+      }else if(this.commoditySearch.price.max){
+        price = `0,${this.commoditySearch.price.max}`
+      }
+
+      const searchData = await this.$axios.$get('/api/admin/commodity/searchs', {
         params: {
-          ...search,
+          // ...search,
+          id: this.commoditySearch.id,
+          commodityId: this.commoditySearch.commodityId,
+          sellerId: this.commoditySearch.sellerId,
+          price: price,
           // categorys: this.commoditySearch.categorys.length ? JSON.stringify(this.commoditySearch.categorys) : this.commoditySearch.categorys,
-          categorys: JSON.stringify(categorys),
-          classifications: JSON.stringify(classifications),
-          materials: JSON.stringify(materials),
-          models: JSON.stringify(models),
-          places: JSON.stringify(places),
-          ruiwus: JSON.stringify(ruiwus),
-          shapes: JSON.stringify(shapes),
-          specifications: JSON.stringify(specifications),
-          styles: JSON.stringify(styles),
-          techniques: JSON.stringify(techniques),
-          themes: JSON.stringify(themes),
-          types: JSON.stringify(types),
-          uses: JSON.stringify(uses),
+          // categorys: JSON.stringify(categorys),
+          // classifications: JSON.stringify(classifications),
+          // materials: JSON.stringify(materials),
+          // models: JSON.stringify(models),
+          // places: JSON.stringify(places),
+          // ruiwus: JSON.stringify(ruiwus),
+          // shapes: JSON.stringify(shapes),
+          // specifications: JSON.stringify(specifications),
+          // styles: JSON.stringify(styles),
+          // techniques: JSON.stringify(techniques),
+          // themes: JSON.stringify(themes),
+          // types: JSON.stringify(types),
+          // uses: JSON.stringify(uses),
+
+          categorys: this.commoditySearch.categorys.toString(),
+          classifications: this.commoditySearch.classifications.toString(),
+          materials: this.commoditySearch.materials.toString(),
+          models: this.commoditySearch.models.toString(),
+          places: this.commoditySearch.places.toString(),
+          ruiwus: this.commoditySearch.ruiwus.toString(),
+          shapes: this.commoditySearch.shapes.toString(),
+          specifications: this.commoditySearch.specifications.toString(),
+          styles: this.commoditySearch.styles.toString(),
+          techniques: this.commoditySearch.techniques.toString(),
+          themes: this.commoditySearch.themes.toString(),
+          types: this.commoditySearch.types.toString(),
+          uses: this.commoditySearch.uses.toString(),
 
           pageSize: this.pageSize,
-          currentPage: this.currentPage,
+          currentPage: currentPage,
         },
       })
       // console.log('searchData', searchData)
@@ -1102,9 +1129,8 @@ export default {
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
-    changeCurrentPage(val) {
-      this.currentPage = val
-      this.onCommoditySearch()
+    changeCurrentPage(currentPage) {
+      this.onCommoditySearch(currentPage)
     },
   },
 }

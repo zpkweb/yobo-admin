@@ -1,18 +1,24 @@
 export default {
   buildDir: 'dist',
+  dev: process.env.NODE_ENV !== 'production',
   env: {
     baseUrl: process.env.ORIGIN || 'http://localhost:7001',
     // baseUrl: "http://39.105.190.188:7001"
   },
-  dev: process.env.NODE_ENV !== 'prod',
   publicRuntimeConfig: {
-    v: 'v0.31',
+    v: 'v0.37',
     origin: process.env.ORIGIN || 'http://localhost:7001',
     // origin: "http://39.105.190.188:7001"
+    // axios: {
+    //   baseURL: process.env.ORIGIN || 'http://localhost:7001'
+    // }
   },
   server: {
     port: 3080, // default: 3000
     host: '0.0.0.0', // default: localhost
+  },
+  axios: {
+    proxy: true,
   },
   proxy: {
     '/api': {
@@ -67,10 +73,6 @@ export default {
 
   highcharts: {
     /* module options */
-  },
-
-  axios: {
-    proxy: true,
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

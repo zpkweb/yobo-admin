@@ -430,11 +430,11 @@ export default {
   //   await this.onCommoditySearch()
   // },
   async created() {
-    await this.onCommoditySearch()
+    await this.onCommoditySearch(this.currentPage)
   },
   methods: {
     // 搜索
-    async onCommoditySearch() {
+    async onCommoditySearch(currentPage) {
       console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
       // let isSearch = false
       // for (let [key, value] of Object.entries(this.commoditySearch)) {
@@ -480,7 +480,7 @@ export default {
           uses: JSON.stringify(uses),
 
           pageSize: this.pageSize,
-          currentPage: this.currentPage,
+          currentPage: currentPage,
         },
       })
       // console.log('searchData', searchData)
@@ -541,9 +541,8 @@ export default {
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
-    changeCurrentPage(val) {
-      this.currentPage = val
-      this.onCommoditySearch()
+    changeCurrentPage(currentPage) {
+      this.onCommoditySearch(currentPage)
     },
   },
 }
