@@ -402,7 +402,7 @@ export default {
         state: '',
         hots: false,
         news: false,
-        colors: '#fff',
+        colors: '#ffffff',
       },
       options: {},
       // 0:已添加，1:售卖中，2:已售卖，3:已下架

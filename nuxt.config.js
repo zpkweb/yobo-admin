@@ -3,15 +3,14 @@ export default {
   dev: process.env.NODE_ENV !== 'production',
   env: {
     baseUrl: process.env.ORIGIN || 'http://localhost:7001',
-    // baseUrl: "http://39.105.190.188:7001"
   },
   publicRuntimeConfig: {
     v: 'v0.37',
-    origin: process.env.ORIGIN || 'http://localhost:7001',
-    // origin: "http://39.105.190.188:7001"
-    // axios: {
-    //   baseURL: process.env.ORIGIN || 'http://localhost:7001'
-    // }
+    axios: {
+      baseURL: process.env.ORIGIN || 'http://localhost:7001'
+    },
+    origin: process.env.ORIGIN || 'http://localhost:7001'
+
   },
   server: {
     port: 3080, // default: 3000
@@ -23,7 +22,6 @@ export default {
   proxy: {
     '/api': {
       target: process.env.ORIGIN || 'http://localhost:7001',
-      // target: "http://39.105.190.188:7001",
       // changeOrigin: true,
     },
   },

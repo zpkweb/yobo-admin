@@ -1123,8 +1123,8 @@ export default {
         photos: [],
         colors: [
           {
-            startColor: '#fff',
-            endColor: '#000',
+            startColor: '#ffffff',
+            endColor: '#000000',
           },
         ],
         width: Mock.mock('@natural(100, 300)'),
@@ -1147,11 +1147,7 @@ export default {
       this.$refs[formName].clearValidate()
       // console.log(this.form)
     },
-    // addColors() {
-    //   this.form.colors.push({
-    //     name: '#fff',
-    //   })
-    // },
+
     reset() {
       this.form = {
         name: {
@@ -1191,8 +1187,8 @@ export default {
         photos: [],
         colors: [
           {
-            startColor: '#fff',
-            endColor: '#000',
+            startColor: '#ffffff',
+            endColor: '#000000',
           },
         ],
         width: '',

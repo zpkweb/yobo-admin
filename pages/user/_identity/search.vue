@@ -184,7 +184,7 @@ export default {
       // eslint-disable-next-line no-console
       console.log(index, row)
       this.$router.push(
-        this.localePath(`${this.$route.path}/create?userId=${row.userId}`)
+        this.localePath(`/user/${this.$route.params.identity}/create?userId=${row.userId}`)
       )
     },
     handleDelete(index, row) {
