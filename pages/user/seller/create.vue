@@ -50,6 +50,7 @@
             type="primary"
             icon="el-icon-circle-plus-outline"
             @click="submitForm('userCreate')"
+            :loading="isSubmit"
           >
             {{ $t('content.create') }}
           </el-button>
@@ -59,6 +60,7 @@
             type="primary"
             icon="el-icon-check"
             @click="submitForm('userCreate')"
+            :loading="isSubmit"
           >
             {{ $t('content.update') }}
           </el-button>
@@ -295,6 +297,7 @@ export default {
       }
     }
     return {
+      isSubmit: false,
       type: 'create', // create edit
       inputVisible: false,
       inputValue: '',
@@ -412,7 +415,8 @@ export default {
     submitForm(userCreate) {
       this.$refs[userCreate].validate(async (valid) => {
         if (valid) {
-          let data
+          let data;
+          this.isSubmit = true;
           try {
             if (this.isCreate) {
               // 用户申请成为艺术家 /api/user/seller/apply
@@ -439,6 +443,8 @@ export default {
                 ...this.userCreate,
               })
             }
+            this.isSubmit = false;
+
             if (data.success) {
               this.$message({
                 showClose: true,

@@ -1,51 +1,51 @@
 <template>
   <div>
-    <el-form :inline="true" :model="userSearch" class="user-search">
+    <el-form :inline="true" :model="sellerSearch" class="user-search">
       <el-form-item :label="$t('user.firstName')">
         <el-input
-          v-model="userSearch.firstname"
+          v-model="sellerSearch.firstname"
           :placeholder="$t('form.placeholder', { msg: $t('user.firstName') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.lastName')">
         <el-input
-          v-model="userSearch.lastname"
+          v-model="sellerSearch.lastname"
           :placeholder="$t('form.placeholder', { msg: $t('user.lastName') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.label')">
         <el-input
-          v-model="userSearch.label"
+          v-model="sellerSearch.label"
           :placeholder="$t('form.placeholder', { msg: $t('user.label') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.gender')">
         <el-input
-          v-model="userSearch.gender"
+          v-model="sellerSearch.gender"
           :placeholder="$t('form.placeholder', { msg: $t('user.gender') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.country')">
         <el-input
-          v-model="userSearch.country"
+          v-model="sellerSearch.country"
           :placeholder="$t('form.placeholder', { msg: $t('user.country') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.state')">
         <el-input
-          v-model="userSearch.state"
+          v-model="sellerSearch.state"
           :placeholder="$t('form.placeholder', { msg: $t('user.state') })"
           clearable
         ></el-input>
       </el-form-item>
       <el-form-item :label="$t('user.seller.id')">
         <el-input
-          v-model="userSearch.sellerId"
+          v-model="sellerSearch.sellerId"
           :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })"
           clearable
         ></el-input>
@@ -57,8 +57,7 @@
         }}</el-button>
       </el-form-item>
     </el-form>
-
-    <el-table :data="user" border>
+    <el-table  :data="seller" border>
       <el-table-column prop="sellerId" :label="$t('user.seller.id')">
       </el-table-column>
       <el-table-column prop="user.avatar" :label="$t('user.avatar')">
@@ -134,8 +133,8 @@
 export default {
   data() {
     return {
-      user: [],
-      userSearch: {
+      seller: [],
+      sellerSearch: {
         firstname: '',
         lastname: '',
         email: '',
@@ -153,28 +152,30 @@ export default {
   async fetch() {
     let searchData = await this.$axios.$get('/api/admin/user/seller/search', {
       params: {
-        ...this.userSearch,
+        ...this.sellerSearch,
         currentPage: this.currentPage,
         pageSize: this.pageSize,
       },
     })
-
-    // this.user = userSearch.data
-    let userData = []
+    console.log("searchData", searchData)
+    let sellerData = []
     searchData.data.list.forEach((item) => {
       item.visible = false
-      // item.isEdit = false
-      // item.identitys = item.identitys.map((item) => {
-      //   item.identityVisible = false
-      //   return item
-      // })
-      if (item.user) {
-        userData.push(item)
+      if (!item.user) {
+        item.user = {
+          avatar: '',
+          createdDate: '',
+          name: '',
+          email: '',
+          phone: '',
+          userId: '',
+        }
       }
+      sellerData.push(item)
     })
-    // console.log("searchData", userData)
+    console.log("searchData", sellerData)
     this.total = searchData.data.total
-    this.user = userData
+    this.seller = sellerData
   },
   methods: {
     // 查找用户
@@ -183,14 +184,31 @@ export default {
         '/api/admin/user/seller/search',
         {
           params: {
-            ...this.userSearch,
+            ...this.sellerSearch,
             currentPage: currentPage,
             pageSize: this.pageSize,
           },
         }
       )
+
+      let sellerDataFormat = []
+      searchData.data.list.forEach((item) => {
+        item.visible = false
+        if (!item.user) {
+          item.user = {
+            avatar: '',
+            createdDate: '',
+            name: '',
+            email: '',
+            phone: '',
+            userId: '',
+          }
+        }
+        sellerDataFormat.push(item)
+      })
+
       this.total = searchData.data.total
-      this.user = searchData.data.list
+      this.seller = sellerDataFormat
     },
     // 删除用户
     async deleteSeller(index, row) {
@@ -201,7 +219,7 @@ export default {
         },
       })
       if (user.success) {
-        this.user.splice(index, 1)
+        this.seller.splice(index, 1)
 
         this.$message({
           showClose: true,

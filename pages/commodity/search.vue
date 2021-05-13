@@ -6,6 +6,7 @@
       ref="commoditySearch"
       class="commodity-search"
       label-width="80px"
+      label-position="left"
     >
       <el-row :gutter="0">
         <el-col :span="6">
@@ -157,9 +158,15 @@
         </el-col> -->
       </el-row>
 
-      <el-row>
-        <el-form-item :label="$t('commodity.category')">
-          <el-checkbox-group v-model="commoditySearch.categorys">
+
+        <!-- <el-form-item :label="$t('commodity.category')" > -->
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.category')}}</sapn>
+          </el-col>
+          <el-col :span="22">
+          <el-checkbox-group style="float: left;" v-model="commoditySearch.categorys">
             <el-checkbox
               name="type"
               v-for="(item, index) in options.categorys"
@@ -170,10 +177,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.classification')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.classification')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.classifications">
             <el-checkbox
               name="type"
@@ -185,10 +199,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.material')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.material')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.materials">
             <el-checkbox
               name="type"
@@ -200,10 +221,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.model')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.model')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.models">
             <el-checkbox
               name="type"
@@ -215,10 +243,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.place')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.place')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.places">
             <el-checkbox
               name="type"
@@ -230,10 +265,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.ruiwu')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.ruiwu')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.ruiwus">
             <el-checkbox
               name="type"
@@ -245,10 +287,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.shape')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.shape')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.shapes">
             <el-checkbox
               name="type"
@@ -260,10 +309,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.specification')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.specification')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.specifications">
             <el-checkbox
               name="type"
@@ -275,10 +331,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.style')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.style')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.styles">
             <el-checkbox
               name="type"
@@ -290,10 +353,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.technique')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.technique')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.techniques">
             <el-checkbox
               name="type"
@@ -305,10 +375,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.theme')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.theme')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.themes">
             <el-checkbox
               name="type"
@@ -320,10 +397,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.type')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.type')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.types">
             <el-checkbox
               name="type"
@@ -335,10 +419,17 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
-      <el-row>
-        <el-form-item :label="$t('commodity.use')">
+
+
+        <el-form-item class="form-commodity-item">
+          <el-row>
+          <el-col class="form-commodity-item-label">
+            <sapn>{{$t('commodity.use')}}</sapn>
+          </el-col>
+          <el-col :span="22">
           <el-checkbox-group v-model="commoditySearch.uses">
             <el-checkbox
               name="type"
@@ -350,8 +441,10 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          </el-col>
+          </el-row>
         </el-form-item>
-      </el-row>
+
 
       <el-row :gutter="0">
         <el-col :span="3">
@@ -1022,6 +1115,9 @@ export default {
           id: this.commoditySearch.id,
           commodityId: this.commoditySearch.commodityId,
           sellerId: this.commoditySearch.sellerId,
+          name: this.commoditySearch.name,
+          desc: this.commoditySearch.desc,
+          state: this.commoditySearch.state,
           price: price,
           colors: this.commoditySearch.colors,
           // categorys: this.commoditySearch.categorys.length ? JSON.stringify(this.commoditySearch.categorys) : this.commoditySearch.categorys,
@@ -1122,7 +1218,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style  scoped>
 .el-header {
   background-color: #b3c0d1;
   color: #333;
@@ -1132,6 +1228,27 @@ export default {
 .el-aside {
   color: #333;
 }
+
+
+.form-commodity-item{
+  width: 100%;
+
+}
+.form-commodity-item-label{
+  width: 80px;
+  padding: 0 12px 0 0;
+  text-align: left;
+  vertical-align: middle;
+  float: left;
+  font-size: 14px;
+  color: #606266;
+  line-height: 40px;
+  padding: 0 12px 0 0;
+  box-sizing: border-box;
+}
+.el-form-item__content{
+    width: 100%;
+  }
 </style>
 
 <style>
@@ -1184,4 +1301,9 @@ export default {
   text-overflow: ellipsis; /*设置超出部分使用省略号*/
   white-space: nowrap;
 }
+
+.el-form--inline .form-commodity-item .el-form-item__content{
+  width: 100%;
+}
+
 </style>

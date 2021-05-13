@@ -6,6 +6,7 @@
         type="primary"
         icon="el-icon-circle-plus-outline"
         @click="onSubmit('form')"
+        :loading="isSubmit"
       >
         {{ $t('content.create') }}
       </el-button>
@@ -15,6 +16,7 @@
         type="primary"
         icon="el-icon-check"
         @click="onSubmit('form')"
+        :loading="isSubmit"
       >
         {{ $t('content.update') }}
       </el-button>
@@ -825,6 +827,7 @@ export default {
       types: [],
       // "use": "用途",
       uses: [],
+      isSubmit: false
     }
   },
   async fetch() {
@@ -966,11 +969,13 @@ export default {
       console.log('submit!', this.form)
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          let data
+          let data;
+          this.isSubmit = true;
           if (this.isCreate) {
             data = await this.$axios
               .$post('/api/admin/commodity/create', this.form)
               .catch((error) => {
+                this.isSubmit = false;
                 this.$message({
                   showClose: true,
                   message: `${this.typeText}${this.$t('content.fail')}! ${
@@ -984,6 +989,7 @@ export default {
             data = await this.$axios
               .$post('/api/admin/commodity/update', this.form)
               .catch((error) => {
+                this.isSubmit = false;
                 this.$message({
                   showClose: true,
                   message: `${this.typeText}${this.$t('content.fail')}! ${
@@ -993,7 +999,7 @@ export default {
                 })
               })
           }
-
+          this.isSubmit = false;
           // console.log('data', data)
           if (data.status === 200) {
             this.$message({
