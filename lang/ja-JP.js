@@ -93,6 +93,7 @@ export default {
     "type": "タイプ",
     "seller": {
       "id": "アーティスト Id",
+      "banner": "banner",
       "isFullTime": "あなたはフルタイムのプロのアーティストですか？",
       "onlineSell": "オンラインで販売された作品の何パーセントが占めていますか？",
       "sold": "過去1年間に何点の作品を販売しましたか？",

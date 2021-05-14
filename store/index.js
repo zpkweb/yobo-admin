@@ -44,19 +44,20 @@ export const state = () => ({
           name: 'menu.user.seller.title',
           path: '/user/seller',
           subMenu: [
-            {
-              icon: 'el-icon-search',
-              // name: '申请列表',
-              name: 'menu.user.seller.applyList',
-              path: '/user/seller/applyList',
-              level: '0-2-0',
-            },
+
             {
               icon: 'el-icon-search',
               // name: '查找艺术家',
               name: 'menu.user.seller.search',
               path: '/user/seller/search',
               level: '0-2-1',
+            },
+            {
+              icon: 'el-icon-search',
+              // name: '申请列表',
+              name: 'menu.user.seller.applyList',
+              path: '/user/seller/applyList',
+              level: '0-2-0',
             },
             {
               icon: 'el-icon-circle-plus-outline',

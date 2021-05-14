@@ -75,6 +75,30 @@
         </el-col>
       </el-row>
 
+      <el-form-item :label="$t('user.seller.banner')" prop="avatar">
+        <el-upload
+          v-model="userCreate.banner"
+          class="avatar-uploader"
+          :action="`${$config.origin}/api/upload/images`"
+          :data="{ type: 'sellerBanner' }"
+          :show-file-list="false"
+          :on-success="handleSellerBannerSuccess"
+          :before-upload="beforeUpload"
+        >
+          <img
+            v-if="userCreate.banner"
+            :src="userCreate.banner"
+            class="seller-banner"
+          />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <div slot="tip" class="el-upload__tip">
+            艺术家背景图片，请上传 (大于1220)X510 比例的图片，且不超过2M
+          </div>
+        </el-upload>
+      </el-form-item>
+
+
+
       <el-form-item :label="$t('user.avatar')" prop="avatar">
         <el-upload
           v-model="userCreate.avatar"
@@ -341,6 +365,7 @@ export default {
         state: 1,
         type: 0,
         avatar: '',
+        banner: '',
         tags: [],
         firstname: '',
         lastname: '',
@@ -428,6 +453,8 @@ export default {
                 identity: 'seller',
                 typeName: this.typeOptions[this.userCreate.type].label,
                 ...this.userCreate,
+              }).catch((err) => {
+                this.isSubmit = false;
               })
 
               // data = await this.$axios.$post('/api/user/seller/apply', {
@@ -441,6 +468,8 @@ export default {
               data = await this.$axios.$post('/api/admin/user/seller/update', {
                 typeName: this.typeOptions[this.userCreate.type].label,
                 ...this.userCreate,
+              }).catch((err) => {
+                this.isSubmit = false;
               })
             }
             this.isSubmit = false;
@@ -531,6 +560,11 @@ export default {
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       this.userCreate.avatar = res.data.src
     },
+    handleSellerBannerSuccess(res, file) {
+      console.log('handleAvatarSuccess', res, file)
+      // this.userCreate.avatar = URL.createObjectURL(file.raw);
+      this.userCreate.banner = res.data.src
+    },
     beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2
       if (!isLt2M) {
@@ -586,5 +620,22 @@ export default {
   margin-left: 10px;
   vertical-align: bottom;
 }
+
+
+
+.seller-banner-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 239px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.seller-banner {
+  width: 239px;
+  height: 100px;
+  display: block;
+}
+
 </style>
 

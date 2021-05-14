@@ -1011,6 +1011,7 @@ export default {
               // this.$refs[formName].resetFields()
               this.resetForm('form')
             }
+            window.location.reload();
           } else {
             this.$message({
               showClose: true,
@@ -1127,6 +1128,7 @@ export default {
         uses: [this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)]],
 
         photos: [],
+        removePhotos: [],
         colors: [
           {
             startColor: '#ffffff',
@@ -1191,6 +1193,7 @@ export default {
         types: [],
         uses: [],
         photos: [],
+        removePhotos: [],
         colors: [
           {
             startColor: '#ffffff',
@@ -1218,6 +1221,10 @@ export default {
       // console.log(file, fileList)
       for (const [index, item] of Object.entries(this.form.photos)) {
         if (item.uid === file.uid) {
+
+          if(this.form.photos[index] && this.form.photos[index].id){
+            this.form.removePhotos.push(this.form.photos[index])
+          }
           this.form.photos.splice(index, 1)
         }
       }

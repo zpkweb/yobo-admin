@@ -98,6 +98,7 @@ export default {
     "type": "类型",
     "seller": {
       "id": "艺术家Id",
+      "banner": "背景图片",
       "isFullTime": "您是一个全职的专业艺术家么？",
       "onlineSell": "售出的作品中，网上售出的比例占多少？",
       "sold": "您在过去一年里售出多少件自己的作品？",

@@ -83,6 +83,7 @@ export default {
     "type": "Type",
     "seller": {
       "id": "Artiste Id",
+      "banner": "banner",
       "isFullTime": "Êtes-vous un artiste professionnel à plein temps?",
       "onlineSell": "Parmi les œuvres vendues, quel pourcentage vendez-vous en ligne?",
       "sold": "Combien de vos œuvres avez-vous vendues au cours de l'année écoulée?",
