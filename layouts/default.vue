@@ -51,14 +51,14 @@ export default {
 }
 
 
-.avatar-uploader .el-upload {
+.el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
-.avatar-uploader .el-upload:hover {
+.el-upload:hover {
   border-color: #409eff;
 }
 .avatar-uploader-icon {

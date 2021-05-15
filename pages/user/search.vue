@@ -22,7 +22,7 @@
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item :label="$t('user.identity')">
+      <!-- <el-form-item :label="$t('user.identity')">
         <el-select
           v-model="userSearch.identity"
           :placeholder="
@@ -37,7 +37,7 @@
           >
           </el-option>
         </el-select>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item>
         <el-button type="primary" @click="onSubmit(currentPage)" icon="el-icon-search">{{
           $t('content.search')
@@ -46,6 +46,13 @@
     </el-form>
 
     <el-table :data="user" border>
+      <el-table-column prop="avatar" :label="$t('user.avatar')" width="122">
+        <template slot-scope="scope">
+            <img v-if="scope.row.avatar" :src="scope.row.avatar" class="image" width="100px" height="100px" />
+
+        </template>
+      </el-table-column>
+
       <el-table-column prop="name" :label="$t('user.name')">
         <template slot-scope="scope">
           <el-input
@@ -146,7 +153,38 @@
 
       <el-table-column :label="$t('content.operation')" width="172">
         <template slot-scope="scope">
-          <div v-if="scope.row.isEdit">
+          <el-button
+              size="mini"
+              icon="el-icon-edit"
+              @click="editUser(scope.$index, scope.row)"
+              >{{ $t('content.edit') }}</el-button
+            >
+            <el-popover placement="top" v-model="scope.row.visible">
+              <p>{{ $t('content.deleteText') }}</p>
+              <div style="text-align: right; margin: 0">
+                <el-button
+                  size="mini"
+                  type="text"
+                  @click="scope.row.visible = false"
+                  >{{ $t('content.cancel') }}</el-button
+                >
+                <el-button
+                  type="primary"
+                  size="mini"
+                  @click="removeUser(scope.$index, scope.row)"
+                  >{{ $t('content.define') }}</el-button
+                >
+              </div>
+
+              <el-button
+                size="mini"
+                type="danger"
+                icon="el-icon-delete"
+                slot="reference"
+                >{{ $t('content.delete') }}</el-button
+              >
+            </el-popover>
+          <!-- <div v-if="scope.row.isEdit">
             <el-button
               size="mini"
               @click="cancelEditUser(scope.$index, scope.row)"
@@ -196,7 +234,7 @@
                 >{{ $t('content.delete') }}</el-button
               >
             </el-popover>
-          </div>
+          </div> -->
         </template>
       </el-table-column>
     </el-table>
@@ -258,10 +296,10 @@ export default {
     }
   },
   async fetch() {
-    const identitysData = await this.$axios.$get('/api/admin/identityList')
-    if (identitysData.success) {
-      this.identitys = identitysData.data
-    }
+    // const identitysData = await this.$axios.$get('/api/admin/identityList')
+    // if (identitysData.success) {
+    //   this.identitys = identitysData.data
+    // }
 
     const userSearch = await this.$axios.$get('/api/admin/user/search', {
       params: {
@@ -278,10 +316,10 @@ export default {
     let userData = userSearch.data.list.map((item) => {
       item.isEdit = false
       item.visible = false
-      item.identitys = item.identitys.map((item) => {
-        item.identityVisible = false
-        return item
-      })
+      // item.identitys = item.identitys.map((item) => {
+      //   item.identityVisible = false
+      //   return item
+      // })
       return item
     })
     this.user = userData
@@ -358,8 +396,9 @@ export default {
     editUser(index, row) {
       console.log(index, row)
       // const identity = row.identitys[0].ename;
-      // this.$router.push(`/user/${identity}/create?userId=${row.userId}`)
-      this.user[index].isEdit = true
+      this.$router.push(`/user/create?userId=${row.userId}`)
+      // this.user[index].isEdit = true
+
     },
     cancelEditUser(index, row) {
       this.user[index].isEdit = false

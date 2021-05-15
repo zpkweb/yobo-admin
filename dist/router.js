@@ -16,16 +16,21 @@ const _4c03d416 = () => interopDefault(import('../pages/index.vue' /* webpackChu
 const _4f3b27f0 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _ec80c30a = () => interopDefault(import('../pages/page.vue' /* webpackChunkName: "pages/page" */))
 const _9abde820 = () => interopDefault(import('../pages/page/banner.vue' /* webpackChunkName: "pages/page/banner" */))
+const _1d73ae6b = () => interopDefault(import('../pages/seller.vue' /* webpackChunkName: "pages/seller" */))
+const _5bea254a = () => interopDefault(import('../pages/seller/apply.vue' /* webpackChunkName: "pages/seller/apply" */))
+const _7042e7d0 = () => interopDefault(import('../pages/seller/create.vue' /* webpackChunkName: "pages/seller/create" */))
+const _17651308 = () => interopDefault(import('../pages/seller/search.vue' /* webpackChunkName: "pages/seller/search" */))
 const _46a329b7 = () => interopDefault(import('../pages/user.vue' /* webpackChunkName: "pages/user" */))
+const _6b9c5f04 = () => interopDefault(import('../pages/user/create.vue' /* webpackChunkName: "pages/user/create" */))
+const _bfab086e = () => interopDefault(import('../pages/user/identity/index.vue' /* webpackChunkName: "pages/user/identity/index" */))
 const _20b224a0 = () => interopDefault(import('../pages/user/search.vue' /* webpackChunkName: "pages/user/search" */))
 const _2ce51407 = () => interopDefault(import('../pages/user/seller.vue' /* webpackChunkName: "pages/user/seller" */))
 const _6447e5e6 = () => interopDefault(import('../pages/user/seller/apply.vue' /* webpackChunkName: "pages/user/seller/apply" */))
 const _0aa924a4 = () => interopDefault(import('../pages/user/seller/applyList.vue' /* webpackChunkName: "pages/user/seller/applyList" */))
 const _739d3ab4 = () => interopDefault(import('../pages/user/seller/create.vue' /* webpackChunkName: "pages/user/seller/create" */))
 const _10b06d40 = () => interopDefault(import('../pages/user/seller/search.vue' /* webpackChunkName: "pages/user/seller/search" */))
-const _9d3a04f0 = () => interopDefault(import('../pages/user/_identity/index.vue' /* webpackChunkName: "pages/user/_identity/index" */))
-const _ba9e0394 = () => interopDefault(import('../pages/user/_identity/create.vue' /* webpackChunkName: "pages/user/_identity/create" */))
-const _26bb8ce2 = () => interopDefault(import('../pages/user/_identity/search.vue' /* webpackChunkName: "pages/user/_identity/search" */))
+const _e64d6fd6 = () => interopDefault(import('../pages/user/identity/create.vue' /* webpackChunkName: "pages/user/identity/create" */))
+const _10e3d6c1 = () => interopDefault(import('../pages/user/identity/search.vue' /* webpackChunkName: "pages/user/identity/search" */))
 const _0d461fcf = () => interopDefault(import('../pages/yobo.vue' /* webpackChunkName: "pages/yobo" */))
 
 // TODO: remove in Nuxt 3
@@ -109,10 +114,35 @@ export const routerOptions = {
       name: "page-banner___zh-cn"
     }]
   }, {
+    path: "/seller",
+    component: _1d73ae6b,
+    name: "seller___zh-cn",
+    children: [{
+      path: "apply",
+      component: _5bea254a,
+      name: "seller-apply___zh-cn"
+    }, {
+      path: "create",
+      component: _7042e7d0,
+      name: "seller-create___zh-cn"
+    }, {
+      path: "search",
+      component: _17651308,
+      name: "seller-search___zh-cn"
+    }]
+  }, {
     path: "/user",
     component: _46a329b7,
     name: "user___zh-cn",
     children: [{
+      path: "create",
+      component: _6b9c5f04,
+      name: "user-create___zh-cn"
+    }, {
+      path: "identity",
+      component: _bfab086e,
+      name: "user-identity___zh-cn"
+    }, {
       path: "search",
       component: _20b224a0,
       name: "user-search___zh-cn"
@@ -138,16 +168,12 @@ export const routerOptions = {
         name: "user-seller-search___zh-cn"
       }]
     }, {
-      path: ":identity",
-      component: _9d3a04f0,
-      name: "user-identity___zh-cn"
-    }, {
-      path: ":identity?/create",
-      component: _ba9e0394,
+      path: "identity/create",
+      component: _e64d6fd6,
       name: "user-identity-create___zh-cn"
     }, {
-      path: ":identity?/search",
-      component: _26bb8ce2,
+      path: "identity/search",
+      component: _10e3d6c1,
       name: "user-identity-search___zh-cn"
     }]
   }, {
@@ -207,10 +233,35 @@ export const routerOptions = {
       name: "page-banner___en-us"
     }]
   }, {
+    path: "/en-us/seller",
+    component: _1d73ae6b,
+    name: "seller___en-us",
+    children: [{
+      path: "apply",
+      component: _5bea254a,
+      name: "seller-apply___en-us"
+    }, {
+      path: "create",
+      component: _7042e7d0,
+      name: "seller-create___en-us"
+    }, {
+      path: "search",
+      component: _17651308,
+      name: "seller-search___en-us"
+    }]
+  }, {
     path: "/en-us/user",
     component: _46a329b7,
     name: "user___en-us",
     children: [{
+      path: "create",
+      component: _6b9c5f04,
+      name: "user-create___en-us"
+    }, {
+      path: "identity",
+      component: _bfab086e,
+      name: "user-identity___en-us"
+    }, {
       path: "search",
       component: _20b224a0,
       name: "user-search___en-us"
@@ -236,16 +287,12 @@ export const routerOptions = {
         name: "user-seller-search___en-us"
       }]
     }, {
-      path: ":identity",
-      component: _9d3a04f0,
-      name: "user-identity___en-us"
-    }, {
-      path: ":identity?/create",
-      component: _ba9e0394,
+      path: "identity/create",
+      component: _e64d6fd6,
       name: "user-identity-create___en-us"
     }, {
-      path: ":identity?/search",
-      component: _26bb8ce2,
+      path: "identity/search",
+      component: _10e3d6c1,
       name: "user-identity-search___en-us"
     }]
   }, {
@@ -305,10 +352,35 @@ export const routerOptions = {
       name: "page-banner___es-es"
     }]
   }, {
+    path: "/es-es/seller",
+    component: _1d73ae6b,
+    name: "seller___es-es",
+    children: [{
+      path: "apply",
+      component: _5bea254a,
+      name: "seller-apply___es-es"
+    }, {
+      path: "create",
+      component: _7042e7d0,
+      name: "seller-create___es-es"
+    }, {
+      path: "search",
+      component: _17651308,
+      name: "seller-search___es-es"
+    }]
+  }, {
     path: "/es-es/user",
     component: _46a329b7,
     name: "user___es-es",
     children: [{
+      path: "create",
+      component: _6b9c5f04,
+      name: "user-create___es-es"
+    }, {
+      path: "identity",
+      component: _bfab086e,
+      name: "user-identity___es-es"
+    }, {
       path: "search",
       component: _20b224a0,
       name: "user-search___es-es"
@@ -334,16 +406,12 @@ export const routerOptions = {
         name: "user-seller-search___es-es"
       }]
     }, {
-      path: ":identity",
-      component: _9d3a04f0,
-      name: "user-identity___es-es"
-    }, {
-      path: ":identity?/create",
-      component: _ba9e0394,
+      path: "identity/create",
+      component: _e64d6fd6,
       name: "user-identity-create___es-es"
     }, {
-      path: ":identity?/search",
-      component: _26bb8ce2,
+      path: "identity/search",
+      component: _10e3d6c1,
       name: "user-identity-search___es-es"
     }]
   }, {
@@ -403,10 +471,35 @@ export const routerOptions = {
       name: "page-banner___ja-jp"
     }]
   }, {
+    path: "/ja-jp/seller",
+    component: _1d73ae6b,
+    name: "seller___ja-jp",
+    children: [{
+      path: "apply",
+      component: _5bea254a,
+      name: "seller-apply___ja-jp"
+    }, {
+      path: "create",
+      component: _7042e7d0,
+      name: "seller-create___ja-jp"
+    }, {
+      path: "search",
+      component: _17651308,
+      name: "seller-search___ja-jp"
+    }]
+  }, {
     path: "/ja-jp/user",
     component: _46a329b7,
     name: "user___ja-jp",
     children: [{
+      path: "create",
+      component: _6b9c5f04,
+      name: "user-create___ja-jp"
+    }, {
+      path: "identity",
+      component: _bfab086e,
+      name: "user-identity___ja-jp"
+    }, {
       path: "search",
       component: _20b224a0,
       name: "user-search___ja-jp"
@@ -432,16 +525,12 @@ export const routerOptions = {
         name: "user-seller-search___ja-jp"
       }]
     }, {
-      path: ":identity",
-      component: _9d3a04f0,
-      name: "user-identity___ja-jp"
-    }, {
-      path: ":identity?/create",
-      component: _ba9e0394,
+      path: "identity/create",
+      component: _e64d6fd6,
       name: "user-identity-create___ja-jp"
     }, {
-      path: ":identity?/search",
-      component: _26bb8ce2,
+      path: "identity/search",
+      component: _10e3d6c1,
       name: "user-identity-search___ja-jp"
     }]
   }, {

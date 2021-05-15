@@ -3,8 +3,8 @@
     <!-- <Aside v-if="$store.state.userMenu.length" :menu="$store.state.userMenu[1]" /> -->
     <el-aside width="300px" style="background-color: rgb(238, 241, 246)">
       <Menu
-        v-if="$store.state.userMenu.length"
-        :menu="$store.state.userMenu[1]"
+        v-if="$store.state.userMenu.commodity"
+        :menu="$store.state.userMenu.commodity"
       />
     </el-aside>
     <el-main>

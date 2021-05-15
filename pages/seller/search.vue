@@ -366,7 +366,7 @@ export default {
     editUser(index, row) {
       console.log(index, row)
       this.$router.push(
-        this.localePath(`/user/seller/create?sellerId=${row.sellerId}`)
+        this.localePath(`/seller/create?sellerId=${row.sellerId}`)
       )
     },
     formatterDate(row, column, cellValue, index) {

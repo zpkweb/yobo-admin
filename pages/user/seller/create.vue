@@ -4,48 +4,13 @@
       ref="userCreate"
       :model="userCreate"
       :rules="rules"
-      label-width="100px"
+      label-width="90px"
       class="user-create-form"
     >
       <el-row :gutter="20">
-        <el-col :span="8">
-          <el-form-item :label="$t('user.state')" prop="identity">
-            <el-select
-              v-model="userCreate.state"
-              :placeholder="
-                $t('form.selectPlaceholder', { msg: $t('user.state') })
-              "
-            >
-              <el-option
-                v-for="item in stateOptions"
-                :key="item.value"
-                :label="`${item.value} ${item.label}`"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="8">
-          <el-form-item :label="$t('user.type')" prop="identity">
-            <el-select
-              v-model="userCreate.type"
-              :placeholder="
-                $t('form.selectPlaceholder', { msg: $t('user.type') })
-              "
-            >
-              <el-option
-                v-for="item in typeOptions"
-                :key="item.value"
-                :label="`${item.value} ${item.label}`"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="8">
-          <el-button
+        <el-col :span="24">
+          <el-form-item>
+            <el-button
             v-if="isCreate"
             type="primary"
             icon="el-icon-circle-plus-outline"
@@ -72,13 +37,69 @@
             @click="resetForm('userCreate')"
             >{{ $t('content.clear') }}</el-button
           >
+          </el-form-item>
+
         </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="24">
+          <el-form-item :label="$t('user.state')" prop="identity">
+            <!-- <el-select
+              v-model="userCreate.state"
+              :placeholder="
+                $t('form.selectPlaceholder', { msg: $t('user.state') })
+              "
+            >
+              <el-option
+                v-for="item in stateOptions"
+                :key="item.value"
+                :label="`${item.value} ${item.label}`"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select> -->
+            <el-radio-group v-model="userCreate.state">
+              <el-radio   :label="item.value" v-for="item in stateOptions" :key="item.value">{{item.label}}</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+
+
+
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="24">
+          <el-form-item :label="$t('user.type')" prop="identity">
+            <!-- <el-select
+              v-model="userCreate.type"
+              :placeholder="
+                $t('form.selectPlaceholder', { msg: $t('user.type') })
+              "
+            >
+              <el-option
+                v-for="item in typeOptions"
+                :key="item.value"
+                :label="`${item.value} ${item.label}`"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select> -->
+            <el-radio-group v-model="userCreate.type">
+              <el-radio   :label="item.value" v-for="item in typeOptions" :key="item.value">{{item.label}}</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-form-item :label="$t('user.seller.choice')" prop="choice">
+          <el-switch v-model="userCreate.choice"></el-switch>
+        </el-form-item>
       </el-row>
 
       <el-form-item :label="$t('user.seller.banner')" prop="avatar">
         <el-upload
           v-model="userCreate.banner"
-          class="avatar-uploader"
+          class="banner-uploader"
           :action="`${$config.origin}/api/upload/images`"
           :data="{ type: 'sellerBanner' }"
           :show-file-list="false"
@@ -90,7 +111,7 @@
             :src="userCreate.banner"
             class="seller-banner"
           />
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <i v-else class="el-icon-plus seller-banner-uploader-icon"></i>
           <div slot="tip" class="el-upload__tip">
             艺术家背景图片，请上传 (大于1220)X510 比例的图片，且不超过2M
           </div>
@@ -331,33 +352,33 @@ export default {
       // 状态：0: 审核, 1: 通过, 2: 拒绝, 3: 禁用, 4: 注销
       stateOptions: [
         {
-          value: '0',
+          value: 0,
           label: this.$t('content.audit'),
         },
         {
-          value: '1',
+          value: 1,
           label: this.$t('content.agree'),
         },
         {
-          value: '2',
+          value: 2,
           label: this.$t('content.reject'),
         },
         {
-          value: '3',
+          value: 3,
           label: this.$t('content.disable'),
         },
         {
-          value: '4',
+          value: 4,
           label: this.$t('content.logoff'),
         },
       ],
       typeOptions: [
         {
-          value: '0',
+          value: 0,
           label: this.$t('user.seller.typeOptions.painter'),
         },
         {
-          value: '1',
+          value: 1,
           label: this.$t('user.seller.typeOptions.sculptor'),
         },
       ],
@@ -366,6 +387,7 @@ export default {
         type: 0,
         avatar: '',
         banner: '',
+        choice: false,
         tags: [],
         firstname: '',
         lastname: '',

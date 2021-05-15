@@ -6,7 +6,8 @@ export default {
   "menu": {
     "user": {
       "title": "用户管理",
-      "search": "搜索",
+      "search": "搜索用户",
+      "create": "添加用户",
       "ordinary": {
         "title": "普通用户",
         "search": "查找普通用户",
@@ -14,7 +15,7 @@ export default {
       },
       "seller": {
         "title": "艺术家",
-        "applyList": "申请列表",
+        "applyList": "艺术家申请列表",
         "search": "查找艺术家",
         "apply": "用户申请",
         "create": "添加艺术家"
@@ -34,6 +35,12 @@ export default {
         "search": "查找超级管理员",
         "create": "添加超级管理员"
       }
+    },
+    "seller": {
+      "title": "艺术家管理",
+      "search": "搜索艺术家",
+      "create": "添加艺术家",
+      "apply": "艺术家申请列表"
     },
     "commodity": {
       "title": "艺术品管理",
@@ -83,36 +90,47 @@ export default {
   "user": {
     "avatar": "头像",
     "name": "姓名",
-    "firstName": "姓氏",
-    "lastName": "名字",
+
     "email": "邮箱",
     "phone": "手机",
     "password": "密码",
     "identity": "用户身份",
-    "label": "标签",
-    "gender": "性别",
-    "country": "国家",
-    "language": "语言",
-    "profile": "个人简介",
-    "state": "状态",
-    "type": "类型",
+
     "seller": {
       "id": "艺术家Id",
-      "banner": "背景图片",
-      "isFullTime": "您是一个全职的专业艺术家么？",
-      "onlineSell": "售出的作品中，网上售出的比例占多少？",
-      "sold": "您在过去一年里售出多少件自己的作品？",
-      "channel": "如果您在网上售出过作品，是通过什么渠道呢？",
-      "gallery": "如有其他画廊已合作，是哪一家（方便我们更全面了解您）",
-      "medium": "主要媒介",
-      "galleryInfo": "您是画廊代表人吗？请告知您的画廊名称，城市，国家",
-      "recommend": "最值得一看的展览/画廊/机构名称，城市，国家",
-      "prize": "最引人注目的奖项/奖项名称，获得年份",
-      "website": "连接到网站",
-      "findUs": "您是如何发现我们的",
+      "firstName": "姓氏",
+      "lastName": "名字",
+      "state": "状态",
+      "type": "类型",
+      "tags": "标签",
+      "label": "标签",
+      "gender": "性别",
+      "country": "国家",
+      "banner": "艺术家主页背景图片",
+      "choice": "精选",
+      "metadata": {
+        "language": "语言",
+        "profile": "个人简介",
+        "isFullTime": "您是一个全职的专业艺术家么？",
+        "onlineSell": "售出的作品中，网上售出的比例占多少？",
+        "sold": "您在过去一年里售出多少件自己的作品？",
+        "channel": "如果您在网上售出过作品，是通过什么渠道呢？",
+        "gallery": "如有其他画廊已合作，是哪一家（方便我们更全面了解您）",
+        "medium": "主要媒介",
+        "galleryInfo": "您是画廊代表人吗？请告知您的画廊名称，城市，国家",
+        "recommend": "最值得一看的展览/画廊/机构名称，城市，国家",
+        "prize": "最引人注目的奖项/奖项名称，获得年份",
+        "website": "连接到网站",
+        "findUs": "您是如何发现我们的",
+      },
+
       "typeOptions": {
         "painter": "画家",
         "sculptor": "雕塑家"
+      },
+      "choiceOptions": {
+        "true": "是",
+        "false" : "否"
       }
     }
   },
@@ -133,7 +151,7 @@ export default {
     "success": "成功",
     "apply": "申请",
     "audit": "审核",
-    "agree": "同意",
+    "agree": "通过",
     "reject": "拒绝",
     "disable": "禁用",
     "logoff": "注销",

@@ -4,8 +4,8 @@
 
     <el-aside width="300px" style="background-color: rgb(238, 241, 246)">
       <Menu
-        v-if="$store.state.userMenu.length"
-        :menu="$store.state.userMenu[2]"
+        v-if="$store.state.userMenu.auth"
+        :menu="$store.state.userMenu.auth"
       />
     </el-aside>
 

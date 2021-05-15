@@ -2,8 +2,9 @@ export const state = () => ({
   counter: 0,
   isRoot: false,
   userMenuActive: null,
-  defaultMenu: [
-    {
+  defaultMenu: {
+    user: {
+      level: '0',
       icon: 'el-icon-menu',
       // name: '用户管理',
       name: 'menu.user.title',
@@ -16,139 +17,173 @@ export const state = () => ({
           level: '0-0',
         },
         {
-          icon: 'el-icon-menu',
-          // name: '普通用户',
-          name: 'menu.user.ordinary.title',
-          path: '/user/ordinary',
-          subMenu: [
-            {
-              icon: 'el-icon-search',
-              // name: '查找普通用户',
-              name: 'menu.user.ordinary.search',
-              path: '/user/ordinary/search',
-              level: '0-1-0',
-            },
-            {
-              icon: 'el-icon-circle-plus-outline',
-              // name: '添加普通用户',
-              name: 'menu.user.ordinary.create',
-              path: '/user/ordinary/create',
-              level: '0-1-1',
-            },
-          ],
+          icon: 'el-icon-circle-plus-outline',
+          // name: '搜索',
+          name: 'menu.user.create',
+          path: '/user/create',
           level: '0-1',
         },
-        {
-          icon: 'el-icon-menu',
-          // name: '艺术家',
-          name: 'menu.user.seller.title',
-          path: '/user/seller',
-          subMenu: [
 
-            {
-              icon: 'el-icon-search',
-              // name: '查找艺术家',
-              name: 'menu.user.seller.search',
-              path: '/user/seller/search',
-              level: '0-2-1',
-            },
-            {
-              icon: 'el-icon-search',
-              // name: '申请列表',
-              name: 'menu.user.seller.applyList',
-              path: '/user/seller/applyList',
-              level: '0-2-0',
-            },
-            {
-              icon: 'el-icon-circle-plus-outline',
-              // name: '用户申请',
-              name: 'menu.user.seller.apply',
-              path: '/user/seller/apply',
-              level: '0-2-2',
-            },
-            {
-              icon: 'el-icon-circle-plus-outline',
-              // name: '添加艺术家',
-              name: 'menu.user.seller.create',
-              path: '/user/seller/create',
-              level: '0-2-3',
-            },
-          ],
-          level: '0-2',
-        },
-        {
-          icon: 'el-icon-menu',
-          // name: '客服',
-          name: 'menu.user.customerService.title',
-          path: '/user/customerService',
-          subMenu: [
-            {
-              icon: 'el-icon-search',
-              // name: '查找客服',
-              name: 'menu.user.customerService.search',
-              path: '/user/customerService/search',
-              level: '0-3-0',
-            },
-            {
-              icon: 'el-icon-circle-plus-outline',
-              // name: '添加客服',
-              name: 'menu.user.customerService.create',
-              path: '/user/customerService/create',
-              level: '0-3-1',
-            },
-          ],
-          level: '0-3',
-        },
-        {
-          icon: 'el-icon-menu',
-          // name: '管理员',
-          name: 'menu.user.admin.title',
-          path: '/user/admin',
-          subMenu: [
-            {
-              icon: 'el-icon-search',
-              // name: '查找管理员',
-              name: 'menu.user.admin.search',
-              path: '/user/admin/search',
-              level: '0-4-0',
-            },
-            {
-              icon: 'el-icon-circle-plus-outline',
-              // name: '添加管理员',
-              name: 'menu.user.admin.create',
-              path: '/user/admin/create',
-              level: '0-4-1',
-            },
-          ],
-          level: '0-4',
-        },
-        {
-          icon: 'el-icon-menu',
-          // name: '超级管理员',
-          name: 'menu.user.superAdmin.title',
-          path: '/user/superAdmin',
-          subMenu: [
-            {
-              icon: 'el-icon-search',
-              // name: '查找超级管理员',
-              name: 'menu.user.superAdmin.search',
-              path: '/user/superAdmin/search',
-              level: '0-5-0',
-            },
-            {
-              icon: 'el-icon-circle-plus-outline',
-              // name: '添加超级管理员',
-              name: 'menu.user.superAdmin.create',
-              path: '/user/superAdmin/create',
-              level: '0-5-1',
-            },
-          ],
-          level: '0-5',
-        },
+        // {
+        //   icon: 'el-icon-menu',
+        //   // name: '普通用户',
+        //   name: 'menu.user.ordinary.title',
+        //   path: '/user/ordinary',
+        //   subMenu: [
+        //     {
+        //       icon: 'el-icon-search',
+        //       // name: '查找普通用户',
+        //       name: 'menu.user.ordinary.search',
+        //       path: '/user/ordinary/search',
+        //       level: '0-1-0',
+        //     },
+        //     {
+        //       icon: 'el-icon-circle-plus-outline',
+        //       // name: '添加普通用户',
+        //       name: 'menu.user.ordinary.create',
+        //       path: '/user/ordinary/create',
+        //       level: '0-1-1',
+        //     },
+        //   ],
+        //   level: '0-1',
+        // },
+        // {
+        //   icon: 'el-icon-menu',
+        //   // name: '艺术家',
+        //   name: 'menu.user.seller.title',
+        //   path: '/user/seller',
+        //   subMenu: [
+
+        //     {
+        //       icon: 'el-icon-search',
+        //       // name: '查找艺术家',
+        //       name: 'menu.user.seller.search',
+        //       path: '/user/seller/search',
+        //       level: '0-2-1',
+        //     },
+        //     {
+        //       icon: 'el-icon-search',
+        //       // name: '申请列表',
+        //       name: 'menu.user.seller.applyList',
+        //       path: '/user/seller/applyList',
+        //       level: '0-2-0',
+        //     },
+        //     // {
+        //     //   icon: 'el-icon-circle-plus-outline',
+        //     //   // name: '用户申请',
+        //     //   name: 'menu.user.seller.apply',
+        //     //   path: '/user/seller/apply',
+        //     //   level: '0-2-2',
+        //     // },
+        //     {
+        //       icon: 'el-icon-circle-plus-outline',
+        //       // name: '添加艺术家',
+        //       name: 'menu.user.seller.create',
+        //       path: '/user/seller/create',
+        //       level: '0-2-3',
+        //     },
+        //   ],
+        //   level: '0-2',
+        // },
+        // {
+        //   icon: 'el-icon-menu',
+        //   // name: '客服',
+        //   name: 'menu.user.customerService.title',
+        //   path: '/user/customerService',
+        //   subMenu: [
+        //     {
+        //       icon: 'el-icon-search',
+        //       // name: '查找客服',
+        //       name: 'menu.user.customerService.search',
+        //       path: '/user/customerService/search',
+        //       level: '0-3-0',
+        //     },
+        //     {
+        //       icon: 'el-icon-circle-plus-outline',
+        //       // name: '添加客服',
+        //       name: 'menu.user.customerService.create',
+        //       path: '/user/customerService/create',
+        //       level: '0-3-1',
+        //     },
+        //   ],
+        //   level: '0-3',
+        // },
+        // {
+        //   icon: 'el-icon-menu',
+        //   // name: '管理员',
+        //   name: 'menu.user.admin.title',
+        //   path: '/user/admin',
+        //   subMenu: [
+        //     {
+        //       icon: 'el-icon-search',
+        //       // name: '查找管理员',
+        //       name: 'menu.user.admin.search',
+        //       path: '/user/admin/search',
+        //       level: '0-4-0',
+        //     },
+        //     {
+        //       icon: 'el-icon-circle-plus-outline',
+        //       // name: '添加管理员',
+        //       name: 'menu.user.admin.create',
+        //       path: '/user/admin/create',
+        //       level: '0-4-1',
+        //     },
+        //   ],
+        //   level: '0-4',
+        // },
+        // {
+        //   icon: 'el-icon-menu',
+        //   // name: '超级管理员',
+        //   name: 'menu.user.superAdmin.title',
+        //   path: '/user/superAdmin',
+        //   subMenu: [
+        //     {
+        //       icon: 'el-icon-search',
+        //       // name: '查找超级管理员',
+        //       name: 'menu.user.superAdmin.search',
+        //       path: '/user/superAdmin/search',
+        //       level: '0-5-0',
+        //     },
+        //     {
+        //       icon: 'el-icon-circle-plus-outline',
+        //       // name: '添加超级管理员',
+        //       name: 'menu.user.superAdmin.create',
+        //       path: '/user/superAdmin/create',
+        //       level: '0-5-1',
+        //     },
+        //   ],
+        //   level: '0-5',
+        // },
       ],
-      level: '0',
+
     },
-    {
+    seller: {
+      level: '4',
+      icon: 'el-icon-menu',
+      name: 'menu.seller.title',
+      subMenu: [
+        {
+          icon: 'el-icon-search',
+          name: 'menu.seller.search',
+          path: '/seller/search',
+          level: '4-0',
+        },
+        {
+          icon: 'el-icon-circle-plus-outline',
+          name: 'menu.seller.create',
+          path: '/seller/create',
+          level: '4-1',
+        },
+        {
+          icon: 'el-icon-circle-plus-outline',
+          name: 'menu.seller.apply',
+          path: '/seller/apply',
+          level: '4-2',
+        },
+      ]
+    },
+    commodity: {
+      level: '1',
       icon: 'el-icon-menu',
       // name: '艺术品管理',
       name: 'menu.commodity.title',
@@ -270,9 +305,10 @@ export const state = () => ({
           level: '1-2',
         },
       ],
-      level: '1',
+
     },
-    {
+    auth: {
+      level: '2',
       icon: 'el-icon-menu',
       // name: '权限管理',
       name: 'menu.auth.title',
@@ -306,9 +342,10 @@ export const state = () => ({
           level: '2-3',
         },
       ],
-      level: '2',
+
     },
-    {
+    page: {
+      level: '3',
       icon: 'el-icon-menu',
       // name: '界面管理',
       name: 'menu.page.title',
@@ -321,9 +358,10 @@ export const state = () => ({
           level: '3-0',
         },
       ],
-      level: '3',
+
     },
-  ],
+
+  },
 
   userMenu: [],
   identityMenu: [],
@@ -381,6 +419,7 @@ export const state = () => ({
       index: 90,
     },
   ],
+
   user: null
 })
 export const getters = {

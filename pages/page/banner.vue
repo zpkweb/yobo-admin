@@ -4,16 +4,22 @@
       <el-form-item v-for="(item, index) in form.banners" :key="index">
         <el-row :gutter="20">
           <el-col :span="3">
-            <el-button v-if="item.state" @click="bannerUpdate(item)">{{
-              $t('content.update')
-            }}</el-button>
-            <el-button v-else @click="bannerCreate(item)">{{
-              $t('content.create')
-            }}</el-button>
-
-            <el-button @click="bannerDelete(item)">{{
+            <template v-if="item.state">
+              <el-button  @click="bannerUpdate(item)">{{
+                $t('content.update')
+              }}</el-button>
+              <el-button @click="bannerDelete(item)">{{
               $t('content.delete')
             }}</el-button>
+            </template>
+            <template v-else>
+              <el-button @click="bannerCreate(item)">{{
+                $t('content.create')
+              }}</el-button>
+            </template>
+
+
+
           </el-col>
 
           <el-col :span="5">
@@ -28,7 +34,7 @@
               <img v-if="item.src" :src="item.src" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               <div slot="tip" class="el-upload__tip">
-                banner图片，请上传 (大于1220)X510 比例的图片，且不超过2M
+                首页banner图片，请上传 (大于1220)X510 比例的图片，且不超过2M
               </div>
             </el-upload>
           </el-col>
@@ -100,14 +106,10 @@ export default {
         desc: item.desc,
       })
       if (banners.success) {
-        item.state = 1
-        this.form.banners.push({
-          state: 0,
-          src: '',
-          title: '',
-          subTitle: '',
-          desc: '',
-        })
+        item.state = 1;
+        item.bannerId = banners.data.generatedMaps[0].bannerId;
+
+        this.form.banners.push(this.defaultBanner)
         this.$message({
           showClose: true,
           message: `${this.$t('content.create')}${this.$t('content.success')}`,
@@ -142,6 +144,7 @@ export default {
       }
     },
     async bannerDelete(item) {
+
       const banners = await this.$axios.$post(`/api/admin/page/banner/delete`, {
         bannerId: item.bannerId,
       })

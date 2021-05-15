@@ -45,7 +45,8 @@ export default {
   methods: {
     change() {
       // console.log('change route', this.$route.path)
-      this.active = this.$route.path
+      this.active = this.$route.path;
+
     },
     handleSelect(key, keyPath) {
       // console.log('handleSelect', key, keyPath)
