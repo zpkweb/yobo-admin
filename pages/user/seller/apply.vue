@@ -284,7 +284,7 @@ export default {
       console.log('create', this.$route.query)
       this.sellerId = this.$route.query.sellerId
 
-      const user = await this.$axios.$get('/api/admin/user/seller', {
+      const user = await this.$axios.$get('/api/admin/seller', {
         params: {
           sellerId: this.sellerId,
         },
@@ -328,7 +328,7 @@ export default {
             // })
           } else {
             data = await this.$axios.$post(
-              '/api/admin/user/seller/update',
+              '/api/admin/seller/update',
               this.userCreate
             )
           }

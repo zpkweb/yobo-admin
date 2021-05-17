@@ -279,7 +279,7 @@ export default {
 
   },
   async fetch() {
-    let searchData = await this.$axios.$get('/api/admin/user/seller/search', {
+    let searchData = await this.$axios.$get('/api/admin/seller/search', {
       params: {
         ...this.sellerSearch,
         currentPage: this.currentPage,
@@ -310,7 +310,7 @@ export default {
     // 查找用户
     async onSubmit(currentPage) {
       const searchData = await this.$axios.$get(
-        '/api/admin/user/seller/search',
+        '/api/admin/seller/search',
         {
           params: {
             ...this.sellerSearch,
@@ -342,7 +342,7 @@ export default {
     // 删除用户
     async deleteSeller(index, row) {
       console.log('deleteSeller', row)
-      const user = await this.$axios.$get('/api/admin/user/seller/delete', {
+      const user = await this.$axios.$get('/api/admin/seller/delete', {
         params: {
           sellerId: row.sellerId,
         },

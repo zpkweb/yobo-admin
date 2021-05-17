@@ -1,19 +1,18 @@
 <template>
   <div class="user-create">
     <el-form
-      ref="userCreate"
-      :model="userCreate"
-      :rules="rules"
+      ref="sellerData"
+      :model="sellerData"
       label-width="90px"
       class="user-create-form"
     >
-    <el-container>
-      <el-header>
-        <el-button
+      <el-container>
+        <el-header>
+          <el-button
             v-if="isCreate"
             type="primary"
             icon="el-icon-circle-plus-outline"
-            @click="submitForm('userCreate')"
+            @click="submitForm('sellerData')"
             :loading="isSubmit"
           >
             {{ $t('content.create') }}
@@ -23,7 +22,7 @@
             v-else
             type="primary"
             icon="el-icon-check"
-            @click="submitForm('userCreate')"
+            @click="submitForm('sellerData')"
             :loading="isSubmit"
           >
             {{ $t('content.update') }}
@@ -33,32 +32,41 @@
           </el-button>
           <el-button
             icon="el-icon-circle-close"
-            @click="resetForm('userCreate')"
+            @click="resetForm('sellerData')"
             >{{ $t('content.clear') }}</el-button
           >
-      </el-header>
-    </el-container>
-      <!-- <el-row>
-        <el-col :span="24">
+        </el-header>
+      </el-container>
 
-        </el-col>
-      </el-row> -->
+      <el-form-item :label="`关联${$t('user.userId')}`" prop="userId">
+        <el-input
+          v-model="sellerData.userId"
+          :placeholder="$t('form.placeholder', { msg: $t('user.userId') })"
+        ></el-input>
+      </el-form-item>
 
       <el-collapse v-model="activeCollapses" @change="handleChange">
-        <el-collapse-item title="用户信息" name="0">
-          <el-form-item :label="$t('user.avatar')" prop="avatar">
+        <!-- <el-collapse-item title="关联用户" name="0">
+          <el-form-item :label="$t('user.userId')" prop="userId">
+            <el-input
+              v-model="sellerData.user.userId"
+              :placeholder="$t('form.placeholder', { msg: $t('user.userId') })"
+            ></el-input>
+          </el-form-item> -->
+
+          <!-- <el-form-item :label="$t('user.avatar')" prop="avatar">
             <el-upload
-              v-model="userCreate.avatar"
+              v-model="sellerData.user.avatar"
               class="avatar-uploader"
               :action="`${$config.origin}/api/upload/images`"
               :data="{ type: 'avatar' }"
               :show-file-list="false"
-              :on-success="handleSuccess"
+              :on-success="handleUserAvatarSuccess"
               :before-upload="beforeUpload"
             >
               <img
-                v-if="userCreate.avatar"
-                :src="userCreate.avatar"
+                v-if="sellerData.user.avatar"
+                :src="sellerData.user.avatar"
                 class="avatar"
               />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -67,42 +75,43 @@
               </div>
             </el-upload>
           </el-form-item>
+
           <el-form-item :label="$t('user.name')" prop="name">
             <el-input
-              v-model="userCreate.name"
+              v-model="sellerData.user.name"
               :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
             ></el-input>
           </el-form-item>
 
-          <el-form-item :label="$t('user.email')" prop="email">
+          <el-form-item :label="$t('user.email')" prop="email" >
             <el-input
-              v-model="userCreate.email"
+              v-model="sellerData.user.email"
               :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
             ></el-input>
           </el-form-item>
           <el-form-item :label="$t('user.phone')" prop="phone">
             <el-input
-              v-model="userCreate.phone"
+              v-model="sellerData.user.phone"
               :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
             ></el-input>
           </el-form-item>
 
-          <el-form-item :label="$t('user.password')" prop="password">
+          <el-form-item :label="$t('user.password')" prop="password" >
             <el-input
-              v-model="userCreate.password"
+              v-model="sellerData.user.password"
               :placeholder="
                 $t('form.placeholder', { msg: $t('user.password') })
               "
             ></el-input>
-          </el-form-item>
+          </el-form-item> -->
         </el-collapse-item>
 
         <el-collapse-item title="艺术家信息" name="1">
           <el-row :gutter="20">
             <el-col :span="24">
-              <el-form-item :label="$t('user.state')" prop="identity">
+              <el-form-item :label="$t('user.seller.state')" prop="identity">
                 <!-- <el-select
-                v-model="userCreate.state"
+                v-model="sellerData.state"
                 :placeholder="
                   $t('form.selectPlaceholder', { msg: $t('user.state') })
                 "
@@ -115,7 +124,7 @@
                 >
                 </el-option>
               </el-select> -->
-                <el-radio-group v-model="userCreate.state">
+                <el-radio-group v-model="sellerData.seller.state">
                   <el-radio
                     :label="item.value"
                     v-for="item in stateOptions"
@@ -128,9 +137,9 @@
           </el-row>
           <el-row :gutter="20">
             <el-col :span="24">
-              <el-form-item :label="$t('user.type')" prop="identity">
+              <el-form-item :label="$t('user.seller.type')" prop="identity">
                 <!-- <el-select
-                v-model="userCreate.type"
+                v-model="sellerData.type"
                 :placeholder="
                   $t('form.selectPlaceholder', { msg: $t('user.type') })
                 "
@@ -143,7 +152,7 @@
                 >
                 </el-option>
               </el-select> -->
-                <el-radio-group v-model="userCreate.type">
+                <el-radio-group v-model="sellerData.seller.type">
                   <el-radio
                     :label="item.value"
                     v-for="item in typeOptions"
@@ -156,12 +165,12 @@
           </el-row>
           <el-row>
             <el-form-item :label="$t('user.seller.choice')" prop="choice">
-              <el-switch v-model="userCreate.choice"></el-switch>
+              <el-switch v-model="sellerData.seller.choice"></el-switch>
             </el-form-item>
           </el-row>
           <el-form-item :label="$t('user.seller.banner')" prop="avatar">
             <el-upload
-              v-model="userCreate.banner"
+              v-model="sellerData.seller.banner"
               class="banner-uploader"
               :action="`${$config.origin}/api/upload/images`"
               :data="{ type: 'sellerBanner' }"
@@ -170,8 +179,8 @@
               :before-upload="beforeUpload"
             >
               <img
-                v-if="userCreate.banner"
-                :src="userCreate.banner"
+                v-if="sellerData.seller.banner"
+                :src="sellerData.seller.banner"
                 class="seller-banner"
               />
               <i v-else class="el-icon-plus seller-banner-uploader-icon"></i>
@@ -181,10 +190,10 @@
             </el-upload>
           </el-form-item>
 
-          <el-form-item :label="$t('user.label')" prop="tags">
+          <el-form-item :label="$t('user.seller.label')" prop="tags">
             <el-tag
               :key="tag"
-              v-for="tag in userCreate.tags"
+              v-for="tag in sellerData.seller.tags"
               closable
               :disable-transitions="false"
               @close="handleClose(tag)"
@@ -209,34 +218,34 @@
               >+ New Tag</el-button
             >
           </el-form-item>
-          <el-form-item :label="$t('user.firstName')" prop="firstname">
+          <el-form-item :label="$t('user.seller.firstName')" prop="firstname">
             <el-input
-              v-model="userCreate.firstname"
+              v-model="sellerData.seller.firstname"
               :placeholder="
-                $t('form.placeholder', { msg: $t('user.firstName') })
+                $t('form.placeholder', { msg: $t('user.seller.firstName') })
               "
             ></el-input>
           </el-form-item>
-          <el-form-item :label="$t('user.lastName')" prop="lastname">
+          <el-form-item :label="$t('user.seller.lastName')" prop="lastname">
             <el-input
-              v-model="userCreate.lastname"
+              v-model="sellerData.seller.lastname"
               :placeholder="
-                $t('form.placeholder', { msg: $t('user.lastName') })
+                $t('form.placeholder', { msg: $t('user.seller.lastName') })
               "
             ></el-input>
           </el-form-item>
 
-          <el-form-item :label="$t('user.gender')" prop="gender">
+          <el-form-item :label="$t('user.seller.gender')" prop="gender">
             <el-input
-              v-model="userCreate.gender"
-              :placeholder="$t('form.placeholder', { msg: $t('user.gender') })"
+              v-model="sellerData.seller.gender"
+              :placeholder="$t('form.placeholder', { msg: $t('user.seller.gender') })"
             ></el-input>
           </el-form-item>
 
-          <el-form-item :label="$t('user.country')" prop="country">
+          <el-form-item :label="$t('user.seller.country')" prop="country">
             <el-input
-              v-model="userCreate.country"
-              :placeholder="$t('form.placeholder', { msg: $t('user.country') })"
+              v-model="sellerData.seller.country"
+              :placeholder="$t('form.placeholder', { msg: $t('user.seller.country') })"
             ></el-input>
           </el-form-item>
         </el-collapse-item>
@@ -244,9 +253,11 @@
         <el-collapse-item title="艺术家其他信息" name="2">
           <el-form-item prop="language">
             <el-input
-              v-model="userCreate.language"
+              v-model="sellerData.metadata.language"
               :placeholder="
-                $t('form.placeholder', { msg: $t('user.language') })
+                $t('form.placeholder', {
+                  msg: $t('user.seller.metadata.language'),
+                })
               "
             ></el-input>
           </el-form-item>
@@ -254,237 +265,241 @@
           <el-form-item prop="profile">
             <el-input
               type="textarea"
-              v-model="userCreate.profile"
-              :placeholder="$t('form.placeholder', { msg: $t('user.profile') })"
+              v-model="sellerData.metadata.profile"
+              :placeholder="
+                $t('form.placeholder', {
+                  msg: $t('user.seller.metadata.profile'),
+                })
+              "
             ></el-input>
           </el-form-item>
           <el-form-item prop="isFullTime">
             <el-input
               type="textarea"
-              v-model="userCreate.isFullTime"
-              :placeholder="$t('user.seller.isFullTime')"
+              v-model="sellerData.metadata.isFullTime"
+              :placeholder="$t('user.seller.metadata.isFullTime')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="onlineSell">
             <el-input
               type="textarea"
-              v-model="userCreate.onlineSell"
-              :placeholder="$t('user.seller.onlineSell')"
+              v-model="sellerData.metadata.onlineSell"
+              :placeholder="$t('user.seller.metadata.onlineSell')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="sold">
             <el-input
               type="textarea"
-              v-model="userCreate.sold"
-              :placeholder="$t('user.seller.sold')"
+              v-model="sellerData.metadata.sold"
+              :placeholder="$t('user.seller.metadata.sold')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="channel">
             <el-input
               type="textarea"
-              v-model="userCreate.channel"
-              :placeholder="$t('user.seller.channel')"
+              v-model="sellerData.metadata.channel"
+              :placeholder="$t('user.seller.metadata.channel')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="gallery">
             <el-input
               type="textarea"
-              v-model="userCreate.gallery"
-              :placeholder="$t('user.seller.gallery')"
+              v-model="sellerData.metadata.gallery"
+              :placeholder="$t('user.seller.metadata.gallery')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="medium">
             <el-input
               type="textarea"
-              v-model="userCreate.medium"
-              :placeholder="$t('user.seller.medium')"
+              v-model="sellerData.metadata.medium"
+              :placeholder="$t('user.seller.metadata.medium')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="galleryInfo">
             <el-input
               type="textarea"
-              v-model="userCreate.galleryInfo"
-              :placeholder="$t('user.seller.galleryInfo')"
+              v-model="sellerData.metadata.galleryInfo"
+              :placeholder="$t('user.seller.metadata.galleryInfo')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="recommend">
             <el-input
               type="textarea"
-              v-model="userCreate.recommend"
-              :placeholder="$t('user.seller.recommend')"
+              v-model="sellerData.metadata.recommend"
+              :placeholder="$t('user.seller.metadata.recommend')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="prize">
             <el-input
               type="textarea"
-              v-model="userCreate.prize"
-              :placeholder="$t('user.seller.prize')"
+              v-model="sellerData.metadata.prize"
+              :placeholder="$t('user.seller.metadata.prize')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="website">
             <el-input
               type="textarea"
-              v-model="userCreate.website"
-              :placeholder="$t('user.seller.website')"
+              v-model="sellerData.metadata.website"
+              :placeholder="$t('user.seller.metadata.website')"
             ></el-input>
           </el-form-item>
 
           <el-form-item prop="findUs">
             <el-input
               type="textarea"
-              v-model="userCreate.findUs"
-              :placeholder="$t('user.seller.findUs')"
+              v-model="sellerData.metadata.findUs"
+              :placeholder="$t('user.seller.metadata.findUs')"
             ></el-input>
           </el-form-item>
         </el-collapse-item>
+
         <el-collapse-item title="艺术家工作室" name="3">
-          <el-form-item :label="$t('user.seller.banner')" prop="avatar">
+          <el-form-item :label="$t('user.seller.studio.banner')" prop="avatar">
             <el-upload
-              v-model="userCreate.banner"
+              v-model="sellerData.studio.banner"
               class="banner-uploader"
               :action="`${$config.origin}/api/upload/images`"
               :data="{ type: 'sellerBanner' }"
               :show-file-list="false"
-              :on-success="handleSellerBannerSuccess"
+              :on-success="handleStudioBannerSuccess"
               :before-upload="beforeUpload"
             >
               <img
-                v-if="userCreate.banner"
-                :src="userCreate.banner"
+                v-if="sellerData.studio.banner"
+                :src="sellerData.studio.banner"
                 class="seller-banner"
               />
               <i v-else class="el-icon-plus seller-banner-uploader-icon"></i>
               <div slot="tip" class="el-upload__tip">
-                艺术家背景图片，请上传 (大于1220)X510 比例的图片，且不超过2M
+                工作室背景图片，请上传 (大于1220)X510 比例的图片，且不超过2M
               </div>
             </el-upload>
           </el-form-item>
 
-          <el-form-item :label="$t('seller.studio.name')" prop="studio.name">
+          <el-form-item
+            :label="$t('user.seller.studio.name')"
+            prop="studio.name"
+          >
             <el-input
-              v-model="userCreate.studio.name"
-              :placeholder="$t('form.placeholder', { msg: $t('studio.name') })"
+              v-model="sellerData.studio.name"
+              :placeholder="
+                $t('form.placeholder', { msg: $t('user.seller.studio.name') })
+              "
             ></el-input>
           </el-form-item>
-          <el-row>
-            <el-col :span='8'>
-              <el-form-item :label="$t('seller.studio.video')" prop="studio.video">
-                <el-input
-                  v-model="userCreate.studio.video"
-                  :placeholder="$t('form.placeholder', { msg: $t('studio.video') })"
-                ></el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span='8'>
-              <el-form-item :label="$t('seller.studio.introduce')" prop="studio.introduce">
-                <el-input
-                  v-model="userCreate.studio.introduce"
-                  :placeholder="$t('form.placeholder', { msg: $t('studio.introduce') })"
-                ></el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span='8'>
-              <el-form-item :label="$t('seller.studio.photo')" prop="studio.photo">
+
+          <!-- <p>视频，图片，文字，</p> -->
+
+          <el-form-item
+            :label="$t('user.seller.studio.video')"
+            prop="studio.video"
+          >
+            <el-input
+              v-model="sellerData.studio.video"
+              :placeholder="
+                $t('form.placeholder', { msg: $t('user.seller.studio.video') })
+              "
+            ></el-input>
+          </el-form-item>
+          <el-form-item
+            :label="$t('user.seller.studio.photo')"
+            prop="studio.photo"
+          >
             <el-upload
-              v-model="userCreate.banner"
+              v-model="sellerData.studio.photo"
               class="banner-uploader"
               :action="`${$config.origin}/api/upload/images`"
               :data="{ type: 'sellerBanner' }"
               :show-file-list="false"
-              :on-success="handleSellerBannerSuccess"
+              :on-success="handleStudioPhotoSuccess"
               :before-upload="beforeUpload"
             >
               <img
-                v-if="userCreate.banner"
-                :src="userCreate.banner"
+                v-if="sellerData.studio.photo"
+                :src="sellerData.studio.photo"
                 class="seller-banner"
               />
               <i v-else class="el-icon-plus seller-banner-uploader-icon"></i>
               <div slot="tip" class="el-upload__tip">
-                艺术家背景图片，请上传 (大于1220)X510 比例的图片，且不超过2M
+                工作室图片，请上传  比例的图片，且不超过2M
               </div>
             </el-upload>
           </el-form-item>
-            </el-col>
-          </el-row>
-
-
-
-
-
-
-
-
-
+          <el-form-item
+            :label="$t('user.seller.studio.introduce')"
+            prop="studio.introduce"
+          >
+            <el-input
+              v-model="sellerData.studio.introduce"
+              :placeholder="
+                $t('form.placeholder', {
+                  msg: $t('user.seller.studio.introduce'),
+                })
+              "
+            ></el-input>
+          </el-form-item>
         </el-collapse-item>
 
         <el-collapse-item title="艺术家履历" name="4">
           <el-tabs v-model="tabsActive" @tab-click="handleClick">
-            <el-tab-pane label="用户管理" name="first">
+            <el-tab-pane
+              :label="tabItem.label"
+              :name="tabItem.name"
+              v-for="tabItem in tabsResume"
+              :key="tabItem.name"
+            >
+              <!-- <el-form-item > -->
+              <el-row
+                :gutter="20"
+                v-for="(item, index) in sellerData.resume[tabItem.name]"
+                :key="index"
+              >
+                <el-col :span="10">
+                  <template v-if="item.state">
+                    <!-- <el-button @click="resumeUpdate(tabItem.name, item)"
+                      >{{ $t('content.update') }}{{ tabItem.label }}</el-button
+                    > -->
+                    <el-button @click="resumeDelete(tabItem.name, item)"
+                      >{{ $t('content.delete') }}{{ tabItem.label }}</el-button
+                    >
+                  </template>
+                  <template v-else>
+                    <el-button @click="resumeCreate(tabItem.name, item)"
+                      >{{ $t('content.create') }}{{ tabItem.label }}</el-button
+                    >
+                  </template>
+                </el-col>
 
-              <!-- <el-form-item v-for="(item, index) in seller.resume" :key="index">
-                <el-row :gutter="20">
-                  <el-col :span="3">
-                    <template v-if="item.state">
-                      <el-button  @click="bannerUpdate(item)">{{
-                        $t('content.update')
-                      }}</el-button>
-                      <el-button @click="bannerDelete(item)">{{
-                      $t('content.delete')
-                    }}</el-button>
-                    </template>
-                    <template v-else>
-                      <el-button @click="bannerCreate(item)">{{
-                        $t('content.create')
-                      }}</el-button>
-                    </template>
+                <el-col :span="6">
+                  <el-input
+                    v-model="item.yarn"
+                    :placeholder="`请输入${tabItem.label}年份`"
+                  ></el-input>
+                </el-col>
 
-
-
-                  </el-col>
-
-                  <el-col :span="4">
-                    <el-input
-                      v-model="item.title"
-                      type="textarea"
-                      :placeholder="
-                        $t('form.placeholder', { msg: $t('content.title') })
-                      "
-                    ></el-input>
-                  </el-col>
-                  <el-col :span="4">
-                    <el-input
-                      v-model="item.subTitle"
-                      type="textarea"
-                      :placeholder="
-                        $t('form.placeholder', { msg: $t('content.subTitle') })
-                      "
-                    ></el-input>
-                  </el-col>
-                  <el-col :span="4">
-                    <el-input
-                      v-model="item.desc"
-                      type="textarea"
-                      :placeholder="$t('form.placeholder', { msg: $t('content.desc') })"
-                    ></el-input>
-                  </el-col>
-                </el-row>
-              </el-form-item> -->
+                <el-col :span="6">
+                  <el-input
+                    v-model="item.resume"
+                    type="textarea"
+                    :placeholder="`请输入${tabItem.label}事件`"
+                  ></el-input>
+                </el-col>
+              </el-row>
+              <!-- </el-form-item> -->
             </el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+            <!-- <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
             <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+            <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane> -->
           </el-tabs>
-
         </el-collapse-item>
       </el-collapse>
     </el-form>
@@ -496,21 +511,21 @@ export default {
   watchQuery: ['sellerId'],
   data() {
     var validateEmail = (rule, value, callback) => {
-      if (!value && !this.userCreate.phone) {
+      if (!value && !this.sellerData.phone) {
         callback(new Error('邮箱和电话必须输入一项'))
       } else {
-        if (!this.userCreate.phone) {
-          this.$refs.userCreate.clearValidate('phone')
+        if (!this.sellerData.phone) {
+          this.$refs.sellerData.clearValidate('phone')
         }
         callback()
       }
     }
     var validatePhone = (rule, value, callback) => {
-      if (!this.userCreate.email && !value) {
+      if (!this.sellerData.email && !value) {
         callback(new Error('邮箱和电话必须输入一项'))
       } else {
-        if (!this.userCreate.email) {
-          this.$refs.userCreate.clearValidate('email')
+        if (!this.sellerData.email) {
+          this.$refs.sellerData.clearValidate('email')
         }
         callback()
       }
@@ -556,22 +571,23 @@ export default {
           label: this.$t('user.seller.typeOptions.sculptor'),
         },
       ],
-      userCreate: {
-        user: {
-          avatar: '',
-          name: '',
-          email: '',
-          phone: '',
-          password: '',
-        },
+      sellerData: {
+        userId: '6671040f-a7d9-404c-b54f-1b4615fc13a8',
+        // user: {
+        //   avatar: '',
+        //   name: '',
+        //   email: '',
+        //   phone: '',
+        //   password: '',
+        // },
         seller: {
-          state: '',
-          type: '',
+          state: 1,
+          type: 0,
           choice: false,
           banner: '',
           tags: [],
           firstname: '',
-          lastName: '',
+          lastname: '',
           gender: '',
           country: '',
         },
@@ -591,89 +607,147 @@ export default {
           profile: '',
         },
         studio: {
+          banner: '',
           name: '',
           introduce: '',
           video: '',
           photo: '',
         },
-        resume: [
-          {
-            yarn: '',
-            resume: '',
-          }
-        ],
-
-
+        resume: {
+          prize: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+          individua: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+          organizing: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+          publish: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+        },
       },
-      rules: {
-        // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
-        // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-        email: [
-          {
-            required: true,
-            message: this.$t('form.placeholder', {
-              msg: this.$t('user.email'),
-            }),
-            trigger: 'blur',
-          },
-        ],
-        // phone: [{ validator: validatePhone, trigger: 'blur' }],
-        password: [
-          {
-            required: true,
-            message: this.$t('form.placeholder', {
-              msg: this.$t('user.password'),
-            }),
-            trigger: 'blur',
-          },
-        ],
-      },
+      // rules: {
+      //   // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
+      //   // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
+      //   user: [{
+      //     email: [{
+      //       required: true,
+      //       message: this.$t('form.placeholder', {
+      //         msg: this.$t('user.email'),
+      //       }),
+      //       trigger: 'blur',
+      //     },],
+
+      //   },{
+      //     password: [{
+      //       required: true,
+      //       message: this.$t('form.placeholder', {
+      //         msg: this.$t('user.password'),
+      //       }),
+      //       trigger: 'blur',
+      //     },],
+      //   }
+      //   ]
+
+      //   // phone: [{ validator: validatePhone, trigger: 'blur' }],
+
+      // },
       activeCollapses: ['0', '1', '3', '4'],
-      tabsActive: "first"
+      tabsResume: [
+        {
+          name: 'prize',
+          label: '奖项',
+        },
+        {
+          name: 'individua',
+          label: '个展',
+        },
+        {
+          name: 'organizing',
+          label: '组展',
+        },
+        {
+          name: 'publish',
+          label: '发表',
+        },
+      ],
+      tabsActive: 'prize',
     }
   },
   async fetch() {
-    // console.log('fetch this.$refs.userCreate', this.$refs.userCreate)
-    // this.$refs.userCreate.resetFields()
+    // console.log('fetch this.$refs.sellerData', this.$refs.sellerData)
+    // this.$refs.sellerData.resetFields()
 
     if (this.$route.query && this.$route.query.sellerId) {
-      this.sellerId = this.$route.query.sellerId
-      const user = await this.$axios.$get('/api/admin/user/seller', {
+      this.sellerId = this.$route.query.sellerId;
+      const sellerResult = await this.$axios.$get('/api/admin/seller/edit', {
         params: {
           sellerId: this.sellerId,
         },
       })
-      if (user.success) {
-        this.userCreate = Object.assign(this.userCreate, {
-          ...user.data,
-          ...user.data.user,
-          ...user.data.metadata,
-        })
+      console.log("user", sellerResult)
+      if (sellerResult.success) {
+        const { user, seller, metadata, studio, resume } = sellerResult.data;
+        console.log(resume)
+        this.sellerData = {
+          userId: user ? user.userId : '',
+          seller,
+          metadata,
+          studio,
+          resume
+        }
         this.type = 'edit'
         this.typeText = this.$t('content.update')
         this.isCreate = false
-        this.rules.password[0].required = false
+        // this.rules.user.password[0].required = false
       }
     }
   },
+  created() {
+    console.log(JSON.stringify(this.sellerData.resume))
+
+  },
   methods: {
-    submitForm(userCreate) {
-      this.$refs[userCreate].validate(async (valid) => {
+    submitForm(sellerData) {
+      this.$refs[sellerData].validate(async (valid) => {
         if (valid) {
-          let data
-          this.isSubmit = true
+          let data;
+          this.isSubmit = true;
+
+          console.log(this.sellerData)
+          console.log(this.typeOptions[this.sellerData.seller.type])
+          // return;
+
           try {
             if (this.isCreate) {
               // 用户申请成为艺术家 /api/user/seller/apply
-              // data = await this.$axios.$post('/api/user/seller/apply', this.userCreate)
+              // data = await this.$axios.$post('/api/user/seller/apply', this.sellerData)
 
               // 管理员创建艺术家 /api/admin/user/register
-
+              // const { resume } = this.sellerData;
               data = await this.$axios
-                .$post('/api/admin/user/register', {
-                  identity: 'seller',
-                  typeName: this.typeOptions[this.userCreate.type].label,
-                  ...this.userCreate,
+                .$post('/api/admin/seller/create', {
+                  // identity: 'seller',
+                  // typeName: this.sellerData.seller.type ? this.typeOptions[this.sellerData.seller.type].label : '',
+                  ...this.sellerData,
                 })
                 .catch((err) => {
                   this.isSubmit = false
@@ -681,16 +755,16 @@ export default {
 
               // data = await this.$axios.$post('/api/user/seller/apply', {
               //   identity: this.$route.params.identity,
-              //   name: this.userCreate.name,
-              //   email: this.userCreate.email,
-              //   phone: this.userCreate.phone,
-              //   password: this.userCreate.password,
+              //   name: this.sellerData.name,
+              //   email: this.sellerData.email,
+              //   phone: this.sellerData.phone,
+              //   password: this.sellerData.password,
               // })
             } else {
               data = await this.$axios
-                .$post('/api/admin/user/seller/update', {
-                  typeName: this.typeOptions[this.userCreate.type].label,
-                  ...this.userCreate,
+                .$post('/api/admin/seller/update', {
+                  // typeName: this.typeOptions[this.sellerData.type].label,
+                  ...this.sellerData,
                 })
                 .catch((err) => {
                   this.isSubmit = false
@@ -701,18 +775,18 @@ export default {
             if (data.success) {
               this.$message({
                 showClose: true,
-                message: `${this.userCreate.firstname}${
-                  this.userCreate.lastname
+                message: `${this.sellerData.seller.firstname}${
+                  this.sellerData.seller.lastname
                 }，${this.typeText}${this.$t('content.success')}`,
                 type: 'success',
               })
               if (this.isCreate) {
-                this.$refs[userCreate].resetFields()
+                this.$refs[sellerData].resetFields()
               }
             } else {
               this.$message({
                 showClose: true,
-                message: `${this.typeText}${this.$t('content.fail')}`,
+                message: `${this.typeText}${this.$t('content.fail')}, ${data.message}`,
                 type: 'error',
               })
             }
@@ -727,11 +801,11 @@ export default {
           // if (data.success) {
           //   this.$message({
           //     showClose: true,
-          //     message: `${this.userCreate.firstname}${this.userCreate.lastname}，${this.typeText}成功`,
+          //     message: `${this.sellerData.firstname}${this.sellerData.lastname}，${this.typeText}成功`,
           //     type: 'success',
           //   })
           //   if (this.isCreate) {
-          //     this.$refs[userCreate].resetFields()
+          //     this.$refs[sellerData].resetFields()
           //   }
           // } else {
           //   this.$message({
@@ -746,48 +820,101 @@ export default {
         }
       })
     },
-    resetForm(userCreate) {
-      this.$refs[userCreate].resetFields()
+    resetForm(sellerData) {
+      this.$refs[sellerData].resetFields()
     },
     onMock() {
-      this.userCreate = {
-        avatar: '',
-        state: 1,
-        type: 0,
-        tags: [],
-        firstname: Mock.mock('@cfirst'),
-        lastname: Mock.mock('@clast'),
-        email: Mock.mock('@email'),
-        phone: '',
-        password: '123',
-        country: Mock.mock('@province'),
-        language: this.$i18n.locales.filter(
-          (i) => i.code == this.$i18n.locale
-        )[0].name,
-        profile: Mock.mock('@cparagraph'),
-        isFullTime: '',
-        onlineSell: '',
-        sold: '',
-        channel: '',
-        gallery: '',
-        medium: '',
-        galleryInfo: '',
-        recommend: '',
-        prize: '',
-        website: '',
+      const firstname = Mock.mock('@cfirst');
+      const lastname = Mock.mock('@cfirst');
+      this.sellerData = {
+        userId: '6671040f-a7d9-404c-b54f-1b4615fc13a8',
+        // user: {
 
-        findUs: '',
+        //   avatar: '',
+        //   name: firstname+lastname,
+        //   email: Mock.mock('@email'),
+        //   phone: '',
+        //   password: '',
+        // },
+        seller: {
+          state: 1,
+          type: 0,
+          choice: false,
+          banner: '',
+          tags: [],
+          firstname: firstname,
+          lastname: lastname,
+          gender: '',
+          country: Mock.mock('@province'),
+        },
+        metadata: {
+          language: '',
+          findUs: '',
+          isFullTime: '',
+          onlineSell: '',
+          sold: '',
+          channel: '',
+          gallery: '',
+          medium: '',
+          galleryInfo: '',
+          recommend: '',
+          prize: '',
+          website: '',
+          profile: '',
+        },
+        studio: {
+          banner: '',
+          name: '',
+          introduce: '',
+          video: '',
+          photo: '',
+        },
+        resume: {
+          prize: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+          individua: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+          organizing: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+          publish: [
+            {
+              state: 0,
+              yarn: '',
+              resume: '',
+            },
+          ],
+        },
+
+
       }
     },
-    handleSuccess(res, file) {
-      console.log('handleAvatarSuccess', res, file)
-      // this.userCreate.avatar = URL.createObjectURL(file.raw);
-      this.userCreate.avatar = res.data.src
+    handleUserAvatarSuccess(res, file) {
+      // this.sellerData.avatar = URL.createObjectURL(file.raw);
+      this.sellerData.user.avatar = res.data.src
     },
     handleSellerBannerSuccess(res, file) {
-      console.log('handleAvatarSuccess', res, file)
-      // this.userCreate.avatar = URL.createObjectURL(file.raw);
-      this.userCreate.banner = res.data.src
+      this.sellerData.seller.banner = res.data.src
+    },
+    handleStudioBannerSuccess(res, file) {
+      this.sellerData.studio.banner = res.data.src
+    },
+    handleStudioPhotoSuccess(res, file) {
+      this.sellerData.studio.photo = res.data.src
     },
     beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2
@@ -797,7 +924,7 @@ export default {
       return isLt2M
     },
     handleClose(tag) {
-      this.userCreate.tags.splice(this.userCreate.tags.indexOf(tag), 1)
+      this.sellerData.tags.splice(this.sellerData.tags.indexOf(tag), 1)
     },
 
     showInput() {
@@ -810,14 +937,100 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue
       if (inputValue) {
-        this.userCreate.tags.push(inputValue)
+        this.sellerData.seller.tags.push(inputValue)
       }
       this.inputVisible = false
       this.inputValue = ''
     },
     handleClick(tab, event) {
-      console.log(tab, event);
-    }
+      console.log(tab, event)
+    },
+    handleChange(val) {
+      console.log(val)
+    },
+    async resumeCreate(type, item) {
+      console.log(this.sellerData.resume[type], type, item)
+      item.state = 1;
+      this.sellerData.resume[type].push({
+        state: 0,
+        yarn: '',
+        resume: '',
+      })
+      return;
+
+      const banners = await this.$axios.$post(`/api/admin/page/banner`, {
+        src: item.src,
+        title: item.title,
+        subTitle: item.subTitle,
+        desc: item.desc,
+      })
+      if (banners.success) {
+        item.state = 1
+        item.bannerId = banners.data.generatedMaps[0].bannerId
+
+        this.form.banners.push(this.defaultBanner)
+        this.$message({
+          showClose: true,
+          message: `${this.$t('content.create')}${this.$t('content.success')}`,
+          type: 'success',
+        })
+      } else {
+        this.$message({
+          showClose: true,
+          message: `${this.$t('content.create')}${this.$t('content.fail')}`,
+          type: 'error',
+        })
+      }
+    },
+    async resumeUpdate(type, item) {
+      item.state = 1
+      return;
+
+      const banners = await this.$axios.$post(
+        `/api/admin/page/banner/update`,
+        item
+      )
+      if (banners.success) {
+        item.state = 1
+        this.$message({
+          showClose: true,
+          message: `${this.$t('content.update')}${this.$t('content.success')}`,
+          type: 'success',
+        })
+      } else {
+        this.$message({
+          showClose: true,
+          message: `${this.$t('content.update')}${this.$t('content.fail')}`,
+          type: 'error',
+        })
+      }
+    },
+    async resumeDelete(type, index) {
+      this.sellerData.resume[type].splice(index, 1)
+      return;
+
+      const banners = await this.$axios.$post(`/api/admin/page/banner/delete`, {
+        bannerId: item.bannerId,
+      })
+      if (banners.success) {
+        for (let [index, element] of Object.entries(this.form.banners)) {
+          if (item.bannerId === element.bannerId) {
+            this.form.banners.splice(index, 1)
+          }
+        }
+        this.$message({
+          showClose: true,
+          message: `${this.$t('content.delete')}${this.$t('content.success')}`,
+          type: 'success',
+        })
+      } else {
+        this.$message({
+          showClose: true,
+          message: `${this.$t('content.delete')}${this.$t('content.fail')}`,
+          type: 'error',
+        })
+      }
+    },
   },
 }
 </script>

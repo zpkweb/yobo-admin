@@ -132,7 +132,7 @@ export default {
     }
   },
   async fetch() {
-    const searchData = await this.$axios.$get('/api/admin/user/seller/search', {
+    const searchData = await this.$axios.$get('/api/admin/seller/search', {
       params: {
         ...this.search,
         currentPage: this.currentPage,
@@ -145,7 +145,7 @@ export default {
   methods: {
     async onSubmit(currentPage) {
       const searchData = await this.$axios.$get(
-        '/api/admin/user/seller/search',
+        '/api/admin/seller/search',
         {
           params: {
             ...this.search,
@@ -167,7 +167,7 @@ export default {
       console.log(index, row)
       // setState
       const seller = await this.$axios.$post(
-        '/api/admin/user/seller/setState',
+        '/api/admin/seller/setState',
         {
           sellerId: row.sellerId,
           state: 1,
@@ -180,7 +180,7 @@ export default {
       console.log(index, row)
       // setState
       const seller = await this.$axios.$post(
-        '/api/admin/user/seller/setState',
+        '/api/admin/seller/setState',
         {
           sellerId: row.sellerId,
           state: 2,

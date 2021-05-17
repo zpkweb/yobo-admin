@@ -88,6 +88,7 @@ export default {
     "selectPlaceholder": "请选择{msg}",
   },
   "user": {
+    "userId": "用户Id ",
     "avatar": "头像",
     "name": "姓名",
 
@@ -123,7 +124,13 @@ export default {
         "website": "连接到网站",
         "findUs": "您是如何发现我们的",
       },
-
+      "studio": {
+        "banner": "工作室背景图片",
+        "name": "工作室名称",
+        "video": "工作室视频",
+        "photo": "工作室图片",
+        "introduce": "工作室简介",
+      },
       "typeOptions": {
         "painter": "画家",
         "sculptor": "雕塑家"

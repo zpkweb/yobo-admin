@@ -28,6 +28,35 @@
       }}</el-button>
     </el-form-item>
 
+    <el-form-item :label="`关联${$t('commodity.seller')}Id`">
+      <el-row :gutter="20">
+        <el-col :span="8">
+          <el-input
+            v-model="form.sellerId"
+            :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })"
+          ></el-input>
+
+          <!-- <el-select
+            v-model="form.sellerId"
+            filterable
+            remote
+            reserve-keyword
+            :placeholder="
+              $t('form.placeholder', { msg: $t('commodity.sellerId') })
+            "
+          > -->
+          <!-- <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option> -->
+          <!-- </el-select> -->
+        </el-col>
+      </el-row>
+    </el-form-item>
+
     <el-row :gutter="20">
       <el-col :span="6">
         <el-form-item
@@ -737,34 +766,7 @@
       </el-col>
     </el-row>
 
-    <el-form-item :label="$t('commodity.seller')">
-      <el-row :gutter="20">
-        <el-col :span="8">
-          <el-input
-            v-model="form.sellerId"
-            :placeholder="$t('form.placeholder', { msg: $t('user.seller.id') })"
-          ></el-input>
 
-          <!-- <el-select
-            v-model="form.sellerId"
-            filterable
-            remote
-            reserve-keyword
-            :placeholder="
-              $t('form.placeholder', { msg: $t('commodity.sellerId') })
-            "
-          > -->
-          <!-- <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option> -->
-          <!-- </el-select> -->
-        </el-col>
-      </el-row>
-    </el-form-item>
   </el-form>
 </template>
 <script>

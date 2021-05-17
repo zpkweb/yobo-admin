@@ -46,6 +46,20 @@
     </el-form>
 
     <el-table :data="user" border>
+      <el-table-column prop="userId" :label="$t('user.userId')">
+        <template slot-scope="scope">
+          <el-input
+            v-model="scope.row.userId"
+            :placeholder="$t('form.placeholder', { msg: $t('user.userId') })"
+            clearable
+            v-if="scope.row.isEdit"
+          ></el-input>
+          <span v-else>
+            {{ scope.row.userId }}
+          </span>
+        </template>
+      </el-table-column>
+
       <el-table-column prop="avatar" :label="$t('user.avatar')" width="122">
         <template slot-scope="scope">
             <img v-if="scope.row.avatar" :src="scope.row.avatar" class="image" width="100px" height="100px" />

@@ -440,7 +440,7 @@ export default {
 
     if (this.$route.query && this.$route.query.sellerId) {
       this.sellerId = this.$route.query.sellerId
-      const user = await this.$axios.$get('/api/admin/user/seller', {
+      const user = await this.$axios.$get('/api/admin/seller', {
         params: {
           sellerId: this.sellerId,
         },
@@ -487,7 +487,7 @@ export default {
               //   password: this.userCreate.password,
               // })
             } else {
-              data = await this.$axios.$post('/api/admin/user/seller/update', {
+              data = await this.$axios.$post('/api/admin/seller/update', {
                 typeName: this.typeOptions[this.userCreate.type].label,
                 ...this.userCreate,
               }).catch((err) => {
