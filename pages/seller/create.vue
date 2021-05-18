@@ -38,72 +38,52 @@
         </el-header>
       </el-container>
 
-      <el-form-item :label="`关联${$t('user.userId')}`" prop="userId">
+      <!-- <el-form-item :label="`关联${$t('user.userId')}`" prop="userId">
+
         <el-input
-          v-model="sellerData.userId"
+          v-model="sellerData.user.userId"
           :placeholder="$t('form.placeholder', { msg: $t('user.userId') })"
+          style="width:320px;"
         ></el-input>
-      </el-form-item>
+        <el-button type="primary" @click="selectUserBtn">选择用户</el-button>
 
-      <el-collapse v-model="activeCollapses" @change="handleChange">
-        <!-- <el-collapse-item title="关联用户" name="0">
-          <el-form-item :label="$t('user.userId')" prop="userId">
-            <el-input
-              v-model="sellerData.user.userId"
-              :placeholder="$t('form.placeholder', { msg: $t('user.userId') })"
-            ></el-input>
-          </el-form-item> -->
+      </el-form-item> -->
 
-          <!-- <el-form-item :label="$t('user.avatar')" prop="avatar">
-            <el-upload
-              v-model="sellerData.user.avatar"
-              class="avatar-uploader"
-              :action="`${$config.origin}/api/upload/images`"
-              :data="{ type: 'avatar' }"
-              :show-file-list="false"
-              :on-success="handleUserAvatarSuccess"
-              :before-upload="beforeUpload"
-            >
-              <img
+      <el-collapse v-model="activeCollapses" >
+        <el-collapse-item title="关联用户" name="0">
+          <el-form-item  prop="userId">
+            <el-button type="primary" @click="selectUserBtn">选择用户</el-button>
+          </el-form-item>
+
+
+          <el-form-item :label="$t('user.avatar')" prop="avatar" >
+            <img
                 v-if="sellerData.user.avatar"
                 :src="sellerData.user.avatar"
                 class="avatar"
               />
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              <div slot="tip" class="el-upload__tip">
-                艺术家头像，请上传 正方形 的图片，且不超过2M
-              </div>
-            </el-upload>
           </el-form-item>
 
           <el-form-item :label="$t('user.name')" prop="name">
             <el-input
               v-model="sellerData.user.name"
-              :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
+              disabled
             ></el-input>
           </el-form-item>
 
           <el-form-item :label="$t('user.email')" prop="email" >
             <el-input
               v-model="sellerData.user.email"
-              :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
+              disabled
             ></el-input>
           </el-form-item>
           <el-form-item :label="$t('user.phone')" prop="phone">
             <el-input
               v-model="sellerData.user.phone"
-              :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
+              disabled
             ></el-input>
           </el-form-item>
 
-          <el-form-item :label="$t('user.password')" prop="password" >
-            <el-input
-              v-model="sellerData.user.password"
-              :placeholder="
-                $t('form.placeholder', { msg: $t('user.password') })
-              "
-            ></el-input>
-          </el-form-item> -->
         </el-collapse-item>
 
         <el-collapse-item title="艺术家信息" name="1">
@@ -374,7 +354,7 @@
               :before-upload="beforeUpload"
             >
               <img
-                v-if="sellerData.studio.banner"
+                v-if="sellerData.studio && sellerData.studio.banner"
                 :src="sellerData.studio.banner"
                 class="seller-banner"
               />
@@ -424,7 +404,7 @@
               :before-upload="beforeUpload"
             >
               <img
-                v-if="sellerData.studio.photo"
+                v-if="sellerData.studio && sellerData.studio.photo"
                 :src="sellerData.studio.photo"
                 class="seller-banner"
               />
@@ -463,32 +443,44 @@
                 v-for="(item, index) in sellerData.resume[tabItem.name]"
                 :key="index"
               >
-                <el-col :span="10">
-                  <template v-if="item.state">
-                    <!-- <el-button @click="resumeUpdate(tabItem.name, item)"
-                      >{{ $t('content.update') }}{{ tabItem.label }}</el-button
-                    > -->
-                    <el-button @click="resumeDelete(tabItem.name, item)"
+                <el-col :span="4">
+                  <el-button @click="resumeDelete(tabItem.name, item)"
                       >{{ $t('content.delete') }}{{ tabItem.label }}</el-button
                     >
-                  </template>
-                  <template v-else>
-                    <el-button @click="resumeCreate(tabItem.name, item)"
-                      >{{ $t('content.create') }}{{ tabItem.label }}</el-button
-                    >
-                  </template>
                 </el-col>
 
-                <el-col :span="6">
+                <el-col :span="4">
                   <el-input
-                    v-model="item.yarn"
+                    v-model="item.year"
                     :placeholder="`请输入${tabItem.label}年份`"
                   ></el-input>
                 </el-col>
 
-                <el-col :span="6">
+                <el-col :span="10">
                   <el-input
                     v-model="item.resume"
+                    type="textarea"
+                    :placeholder="`请输入${tabItem.label}事件`"
+                  ></el-input>
+                </el-col>
+              </el-row>
+
+              <el-row :gutter="20">
+                <el-col :span="4">
+                  <el-button @click="resumeCreate(tabItem.name)"
+                      >{{ $t('content.create') }}{{ tabItem.label }}</el-button
+                    >
+                </el-col>
+                <el-col :span="4">
+                  <el-input
+                    v-model="defaultResume[tabItem.name].year"
+                    :placeholder="`请输入${tabItem.label}年份`"
+                  ></el-input>
+                </el-col>
+
+                <el-col :span="10">
+                  <el-input
+                    v-model="defaultResume[tabItem.name].resume"
                     type="textarea"
                     :placeholder="`请输入${tabItem.label}事件`"
                   ></el-input>
@@ -503,6 +495,148 @@
         </el-collapse-item>
       </el-collapse>
     </el-form>
+
+    <el-dialog
+  title="选择用户"
+  :visible.sync="dialogVisible"
+  width="80%"
+  >
+  <el-form :inline="true" :model="userSearch" class="user-search">
+    <el-form-item :label="$t('user.name')">
+      <el-input
+        v-model="userSearch.name"
+        :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
+        clearable
+      ></el-input>
+    </el-form-item>
+    <el-form-item :label="$t('user.email')">
+      <el-input
+        v-model="userSearch.email"
+        :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
+        clearable
+      ></el-input>
+    </el-form-item>
+    <el-form-item :label="$t('user.phone')">
+      <el-input
+        v-model="userSearch.phone"
+        :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
+        clearable
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item>
+      <el-button type="primary" @click="userSearchSubmit(userPagination.currentPage)" icon="el-icon-search">{{
+        $t('content.search')
+      }}</el-button>
+    </el-form-item>
+  </el-form>
+
+  <el-table :data="user" border>
+      <el-table-column prop="userId" :label="$t('user.userId')">
+        <template slot-scope="scope">
+          <el-input
+            v-model="scope.row.userId"
+            :placeholder="$t('form.placeholder', { msg: $t('user.userId') })"
+            clearable
+            v-if="scope.row.isEdit"
+          ></el-input>
+          <span v-else>
+            {{ scope.row.userId }}
+          </span>
+        </template>
+      </el-table-column>
+
+      <el-table-column prop="avatar" :label="$t('user.avatar')" width="122">
+        <template slot-scope="scope">
+            <img v-if="scope.row.avatar" :src="scope.row.avatar" class="image" width="100px" height="100px" />
+
+        </template>
+      </el-table-column>
+
+      <el-table-column prop="name" :label="$t('user.name')">
+        <template slot-scope="scope">
+          <el-input
+            v-model="scope.row.name"
+            :placeholder="$t('form.placeholder', { msg: $t('user.name') })"
+            clearable
+            v-if="scope.row.isEdit"
+          ></el-input>
+          <span v-else>
+            {{ scope.row.name }}
+          </span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="email" :label="$t('user.email')">
+        <template slot-scope="scope">
+          <el-input
+            v-model="scope.row.email"
+            :placeholder="$t('form.placeholder', { msg: $t('user.email') })"
+            clearable
+            v-if="scope.row.isEdit"
+          ></el-input>
+          <span class="table-column-span" v-else>
+            {{ scope.row.email }}
+          </span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="phone" :label="$t('user.phone')">
+        <template slot-scope="scope">
+          <el-input
+            v-model="scope.row.phone"
+            :placeholder="$t('form.placeholder', { msg: $t('user.phone') })"
+            clearable
+            v-if="scope.row.isEdit"
+          ></el-input>
+          <span class="table-column-span" v-else>
+            {{ scope.row.phone }}
+          </span>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        prop="createdDate"
+        :label="$t('content.createdDate')"
+        :formatter="formatterDate"
+      >
+      </el-table-column>
+
+
+
+      <el-table-column :label="$t('content.operation')" width="172">
+        <template slot-scope="scope">
+          <template v-if="scope.row.seller">
+            用户已关联艺术家 {{scope.row.seller.firstname}}{{scope.row.seller.lastname}}
+          </template>
+          <template v-else>
+            <el-button type="danger" v-if="sellerData.user && sellerData.user.userId == scope.row.userId"  @click="sellerData.user = '';dialogVisible = false">
+              取消
+            </el-button>
+            <el-button type="primary" v-else @click="sellerData.user = scope.row;dialogVisible = false">
+              选择
+            </el-button>
+          </template>
+
+        </template>
+      </el-table-column>
+    </el-table>
+
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="userPagination.pageSize"
+      :current-page="userPagination.currentPage"
+      :total="userPagination.total"
+      @current-change="changeUserCurrentPage"
+      style="margin-top: 20px; text-align: center"
+    >
+    </el-pagination>
+
+  <!-- <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span> -->
+</el-dialog>
+
   </div>
 </template>
 <script>
@@ -531,6 +665,19 @@ export default {
       }
     }
     return {
+      dialogVisible: false,
+      userSearch: {
+        name: '',
+        email: '',
+        phone: '',
+        identity: '',
+      },
+      userPagination: {
+        currentPage: 1,
+        pageSize: 5,
+        total: 0,
+      },
+      user: [],
       isSubmit: false,
       type: 'create', // create edit
       inputVisible: false,
@@ -561,6 +708,7 @@ export default {
           label: this.$t('content.logoff'),
         },
       ],
+
       typeOptions: [
         {
           value: 0,
@@ -572,14 +720,14 @@ export default {
         },
       ],
       sellerData: {
-        userId: '6671040f-a7d9-404c-b54f-1b4615fc13a8',
-        // user: {
-        //   avatar: '',
-        //   name: '',
-        //   email: '',
-        //   phone: '',
-        //   password: '',
-        // },
+
+        user: {
+          userId: '',
+          avatar: '',
+          name: '',
+          email: '',
+          phone: '',
+        },
         seller: {
           state: 1,
           type: 0,
@@ -615,62 +763,50 @@ export default {
         },
         resume: {
           prize: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
           individua: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
           organizing: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
           publish: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
         },
       },
-      // rules: {
-      //   // firstname: [{ required: true, message: '请输入姓氏', trigger: 'blur' }],
-      //   // lastname: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-      //   user: [{
-      //     email: [{
-      //       required: true,
-      //       message: this.$t('form.placeholder', {
-      //         msg: this.$t('user.email'),
-      //       }),
-      //       trigger: 'blur',
-      //     },],
-
-      //   },{
-      //     password: [{
-      //       required: true,
-      //       message: this.$t('form.placeholder', {
-      //         msg: this.$t('user.password'),
-      //       }),
-      //       trigger: 'blur',
-      //     },],
-      //   }
-      //   ]
-
-      //   // phone: [{ validator: validatePhone, trigger: 'blur' }],
-
-      // },
-      activeCollapses: ['0', '1', '3', '4'],
+      defaultResume: {
+        prize: {
+          year: '',
+          resume: '',
+        },
+        individua: {
+          year: '',
+          resume: '',
+        },
+        organizing: {
+          year: '',
+          resume: '',
+        },
+        publish: {
+          year: '',
+          resume: '',
+        },
+      },
+      activeCollapses: ['0', '1', '2', '3', '4'],
       tabsResume: [
         {
           name: 'prize',
@@ -705,15 +841,12 @@ export default {
       })
       console.log("user", sellerResult)
       if (sellerResult.success) {
-        const { user, seller, metadata, studio, resume } = sellerResult.data;
-        console.log(resume)
-        this.sellerData = {
-          userId: user ? user.userId : '',
-          seller,
-          metadata,
-          studio,
-          resume
-        }
+
+
+        this.sellerData = Object.assign(this.sellerData, sellerResult.data);
+
+
+        console.log(this.sellerData)
         this.type = 'edit'
         this.typeText = this.$t('content.update')
         this.isCreate = false
@@ -781,7 +914,11 @@ export default {
                 type: 'success',
               })
               if (this.isCreate) {
-                this.$refs[sellerData].resetFields()
+                // this.$refs[sellerData].resetFields()
+                this.isCreate = false;
+                this.$router.push({ query: {
+                  sellerId: data.data.sellerId
+                } })
               }
             } else {
               this.$message({
@@ -823,19 +960,51 @@ export default {
     resetForm(sellerData) {
       this.$refs[sellerData].resetFields()
     },
+    async selectUserBtn() {
+      // if(this.user && !this.user.length) {
+        this.userPagination.currentPage = 1;
+        await this.userSearchSubmit(1);
+      // }
+      this.dialogVisible = true;
+    },
+    // 查找用户
+    async userSearchSubmit(currentPage) {
+
+
+        const userSearch = await this.$axios.$get('/api/admin/user/search', {
+          params: {
+            identity: this.userSearch.identity,
+            name: this.userSearch.name,
+            email: this.userSearch.email,
+            phone: this.userSearch.phone,
+            pageSize: this.userPagination.pageSize,
+            currentPage: currentPage,
+          },
+        })
+        this.userPagination.total = userSearch.data.total
+        this.user = userSearch.data.list
+
+    },
+    changeUserCurrentPage(currentPage) {
+      this.userSearchSubmit(currentPage)
+    },
+
+    formatterDate(row, column, cellValue, index) {
+      return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
+    },
     onMock() {
       const firstname = Mock.mock('@cfirst');
       const lastname = Mock.mock('@cfirst');
       this.sellerData = {
-        userId: '6671040f-a7d9-404c-b54f-1b4615fc13a8',
-        // user: {
 
-        //   avatar: '',
-        //   name: firstname+lastname,
-        //   email: Mock.mock('@email'),
-        //   phone: '',
-        //   password: '',
-        // },
+        user: {
+          userId: '',
+          avatar: '',
+          name: '',
+          email: '',
+          phone: '',
+          password: '',
+        },
         seller: {
           state: 1,
           type: 0,
@@ -871,32 +1040,28 @@ export default {
         },
         resume: {
           prize: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
           individua: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
           organizing: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
           publish: [
-            {
-              state: 0,
-              yarn: '',
-              resume: '',
-            },
+            // {
+            //   year: '',
+            //   resume: '',
+            // },
           ],
         },
 
@@ -945,91 +1110,27 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event)
     },
-    handleChange(val) {
-      console.log(val)
-    },
+
     async resumeCreate(type, item) {
       console.log(this.sellerData.resume[type], type, item)
-      item.state = 1;
       this.sellerData.resume[type].push({
-        state: 0,
-        yarn: '',
+        year: this.defaultResume[type].year,
+        resume: this.defaultResume[type].resume,
+      })
+      this.defaultResume[type] = {
+        year: '',
         resume: '',
-      })
+      }
       return;
 
-      const banners = await this.$axios.$post(`/api/admin/page/banner`, {
-        src: item.src,
-        title: item.title,
-        subTitle: item.subTitle,
-        desc: item.desc,
-      })
-      if (banners.success) {
-        item.state = 1
-        item.bannerId = banners.data.generatedMaps[0].bannerId
 
-        this.form.banners.push(this.defaultBanner)
-        this.$message({
-          showClose: true,
-          message: `${this.$t('content.create')}${this.$t('content.success')}`,
-          type: 'success',
-        })
-      } else {
-        this.$message({
-          showClose: true,
-          message: `${this.$t('content.create')}${this.$t('content.fail')}`,
-          type: 'error',
-        })
-      }
     },
-    async resumeUpdate(type, item) {
-      item.state = 1
-      return;
 
-      const banners = await this.$axios.$post(
-        `/api/admin/page/banner/update`,
-        item
-      )
-      if (banners.success) {
-        item.state = 1
-        this.$message({
-          showClose: true,
-          message: `${this.$t('content.update')}${this.$t('content.success')}`,
-          type: 'success',
-        })
-      } else {
-        this.$message({
-          showClose: true,
-          message: `${this.$t('content.update')}${this.$t('content.fail')}`,
-          type: 'error',
-        })
-      }
-    },
     async resumeDelete(type, index) {
       this.sellerData.resume[type].splice(index, 1)
       return;
 
-      const banners = await this.$axios.$post(`/api/admin/page/banner/delete`, {
-        bannerId: item.bannerId,
-      })
-      if (banners.success) {
-        for (let [index, element] of Object.entries(this.form.banners)) {
-          if (item.bannerId === element.bannerId) {
-            this.form.banners.splice(index, 1)
-          }
-        }
-        this.$message({
-          showClose: true,
-          message: `${this.$t('content.delete')}${this.$t('content.success')}`,
-          type: 'success',
-        })
-      } else {
-        this.$message({
-          showClose: true,
-          message: `${this.$t('content.delete')}${this.$t('content.fail')}`,
-          type: 'error',
-        })
-      }
+
     },
   },
 }

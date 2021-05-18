@@ -119,8 +119,7 @@
       </el-form-item>
     </el-form>
     <el-table  :data="seller" border>
-      <el-table-column prop="sellerId" :label="$t('user.seller.id')" width="180">
-      </el-table-column>
+
       <el-table-column prop="banner" :label="$t('user.seller.banner')" width="200">
         <template slot-scope="scope">
           <div style="width: 180px; height: 100px; overflow-x: auto;">
@@ -307,7 +306,7 @@ export default {
     this.seller = sellerData
   },
   methods: {
-    // 查找用户
+    // 查找艺术家
     async onSubmit(currentPage) {
       const searchData = await this.$axios.$get(
         '/api/admin/seller/search',

@@ -46,7 +46,7 @@
     </el-form>
 
     <el-table :data="user" border>
-      <el-table-column prop="userId" :label="$t('user.userId')">
+      <!-- <el-table-column prop="userId" :label="$t('user.userId')">
         <template slot-scope="scope">
           <el-input
             v-model="scope.row.userId"
@@ -58,7 +58,7 @@
             {{ scope.row.userId }}
           </span>
         </template>
-      </el-table-column>
+      </el-table-column> -->
 
       <el-table-column prop="avatar" :label="$t('user.avatar')" width="122">
         <template slot-scope="scope">
