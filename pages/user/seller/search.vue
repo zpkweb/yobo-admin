@@ -286,7 +286,7 @@ export default {
         pageSize: this.pageSize,
       },
     })
-    console.log("searchData", searchData)
+    // console.log("searchData", searchData)
     let sellerData = []
     searchData.data.list.forEach((item) => {
       item.visible = false
@@ -302,7 +302,7 @@ export default {
       }
       sellerData.push(item)
     })
-    console.log("searchData", sellerData)
+    // console.log("searchData", sellerData)
     this.total = searchData.data.total
     this.seller = sellerData
   },
@@ -341,7 +341,7 @@ export default {
     },
     // 删除用户
     async deleteSeller(index, row) {
-      console.log('deleteSeller', row)
+      // console.log('deleteSeller', row)
       const user = await this.$axios.$get('/api/admin/seller/delete', {
         params: {
           sellerId: row.sellerId,
@@ -364,7 +364,7 @@ export default {
       }
     },
     editUser(index, row) {
-      console.log(index, row)
+      // console.log(index, row)
       this.$router.push(
         this.localePath(`/user/seller/create?sellerId=${row.sellerId}`)
       )

@@ -191,6 +191,7 @@ export default {
     "theme": "主题",
     "type": "类型",
     "use": "用途",
+    "choice": "精选",
     "price": {
       "title": "价格",
       "min": "最低价格",

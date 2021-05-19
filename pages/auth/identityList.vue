@@ -36,7 +36,7 @@ export default {
   },
   async fetch() {
     const identityList = await this.$axios.$get('/api/admin/identityList')
-    console.log('identityList', identityList.data)
+    // console.log('identityList', identityList.data)
     if (identityList.success) {
       this.identityList = identityList.data
     } else {
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     createIdentityList() {
-      console.log('createIdentityList')
+      // console.log('createIdentityList')
     },
   },
 }

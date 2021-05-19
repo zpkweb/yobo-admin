@@ -467,7 +467,7 @@ export const mutations = {
     state.userMenu = payload
   },
   setRootMenu(state, payload) {
-    console.log('state', state)
+    // console.log('state', state)
     payload.data.map((item, itemIndex) => {
       item.checked = 1
       item.level =

@@ -100,7 +100,7 @@ export default {
           userId: this.userId,
         },
       }).catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
 
       if (user.success) {
@@ -247,7 +247,7 @@ export default {
             })
           }
         } else {
-          console.log('error submit!!')
+          // console.log('error submit!!')
           return false
         }
       })

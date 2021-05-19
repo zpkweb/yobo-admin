@@ -158,13 +158,13 @@ export default {
       this.seller = searchData.data.list
     },
     edit(index, row) {
-      console.log(index, row)
+      // console.log(index, row)
       this.$router.push(
         this.localePath(`/user/seller/create?sellerId=${row.sellerId}`)
       )
     },
     async agree(index, row) {
-      console.log(index, row)
+      // console.log(index, row)
       // setState
       const seller = await this.$axios.$post(
         '/api/admin/seller/setState',
@@ -173,11 +173,11 @@ export default {
           state: 1,
         }
       )
-      console.log('seller', seller)
+      // console.log('seller', seller)
       this.seller.splice(index, 1)
     },
     async reject(index, row) {
-      console.log(index, row)
+      // console.log(index, row)
       // setState
       const seller = await this.$axios.$post(
         '/api/admin/seller/setState',
@@ -186,7 +186,7 @@ export default {
           state: 2,
         }
       )
-      console.log('seller', seller)
+      // console.log('seller', seller)
       this.seller.splice(index, 1)
     },
     formatterDate(row, column, cellValue, index) {

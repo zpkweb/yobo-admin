@@ -163,10 +163,10 @@
         <el-form-item class="form-commodity-item">
           <el-row>
           <el-col class="form-commodity-item-label">
-            <s>{{$t('commodity.category')}}</s pan>
+            <span>{{$t('commodity.category')}}</span>
           </el-col>
           <el-col :span="22">
-          <el-checkbox-group style="float: left;" v-model="commoditySearch.categorys">
+          <el-checkbox-group v-model="commoditySearch.categorys">
             <el-checkbox
               name="type"
               v-for="(item, index) in options.categorys"
@@ -1074,8 +1074,8 @@ export default {
   methods: {
     // 搜索
     async onCommoditySearch(currentPage) {
-      console.log(currentPage)
-      console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
+      // console.log(currentPage)
+      // console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
       // let isSearch = false
       // for (let [key, value] of Object.entries(this.commoditySearch)) {
       //   if (value) {

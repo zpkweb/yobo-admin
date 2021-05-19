@@ -281,7 +281,7 @@ export default {
     // this.$refs.userCreate.resetFields()
 
     if (this.$route.query && this.$route.query.sellerId) {
-      console.log('create', this.$route.query)
+      // console.log('create', this.$route.query)
       this.sellerId = this.$route.query.sellerId
 
       const user = await this.$axios.$get('/api/admin/seller', {
@@ -289,7 +289,7 @@ export default {
           sellerId: this.sellerId,
         },
       })
-      console.log('find user', user)
+      // console.log('find user', user)
       if (user.success) {
         this.userCreate = Object.assign(this.userCreate, {
           ...user.data,
@@ -354,7 +354,7 @@ export default {
             })
           }
         } else {
-          console.log('error submit!!')
+          // console.log('error submit!!')
           return false
         }
       })

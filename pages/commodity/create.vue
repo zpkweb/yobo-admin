@@ -53,6 +53,44 @@
           </template>
         </el-collapse-item>
         <el-collapse-item title="艺术品信息" name="1">
+
+          <el-row :gutter="20">
+            <el-col :span="24">
+              <el-form-item
+                :label="$t('commodity.state.title')"
+                :prop="'state'"
+              >
+                <el-radio-group v-model="form.state">
+                  <el-radio :label="0">{{
+                    $t('commodity.state.added')
+                  }}</el-radio>
+                  <el-radio :label="1">{{
+                    $t('commodity.state.onsale')
+                  }}</el-radio>
+                  <el-radio :label="2">{{
+                    $t('commodity.state.sold')
+                  }}</el-radio>
+                  <el-radio :label="3">{{
+                    $t('commodity.state.offline')
+                  }}</el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </el-col>
+          </el-row>
+
+          <el-row :gutter="20">
+            <el-col :span="24">
+              <el-form-item
+                :label="$t('commodity.choice')"
+                :prop="'choice'"
+              >
+                <el-switch v-model="form.choice"></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+
+
+
           <el-row :gutter="20">
             <el-col :span="6">
               <el-form-item
@@ -516,29 +554,8 @@
             </el-dialog>
           </el-form-item>
 
-          <el-row :gutter="20">
-            <el-col :span="24">
-              <el-form-item
-                :label="$t('commodity.state.title')"
-                :prop="'state'"
-              >
-                <el-radio-group v-model="form.state">
-                  <el-radio :label="0">{{
-                    $t('commodity.state.added')
-                  }}</el-radio>
-                  <el-radio :label="1">{{
-                    $t('commodity.state.onsale')
-                  }}</el-radio>
-                  <el-radio :label="2">{{
-                    $t('commodity.state.sold')
-                  }}</el-radio>
-                  <el-radio :label="3">{{
-                    $t('commodity.state.offline')
-                  }}</el-radio>
-                </el-radio-group>
-              </el-form-item>
-            </el-col>
-          </el-row>
+
+
         </el-collapse-item>
         <el-collapse-item title="艺术品选项" name="2">
           <!-- "category": "类别", -->
@@ -817,7 +834,7 @@
         </el-collapse-item>
       </el-collapse>
     </el-form>
-    <el-dialog title="选择艺术家" :visible.sync="dialogVisible" width="80%">
+    <el-dialog title="选择艺术家" :visible.sync="dialogVisible" width="80%" top='2vh'>
       <el-form :inline="true" :model="sellerSearch" class="user-search">
         <el-form-item :label="$t('user.seller.firstName')">
           <el-input
@@ -909,6 +926,7 @@
             </el-option>
           </el-select>
         </el-form-item>
+
         <el-form-item :label="$t('user.seller.choice')">
           <!-- <el-input
           v-model="sellerSearch.choice"
@@ -1264,12 +1282,13 @@ export default {
 
       if (commodity.success) {
         const commodityForm = commodity.data
-        console.log('commodityForm', commodityForm)
+        // console.log('commodityForm', commodityForm)
         this.form.commodityId = this.$route.query.commodityId
 
         this.form.state = commodityForm.state
         this.form.width = commodityForm.width
         this.form.height = commodityForm.height
+        this.form.choice = commodityForm.choice
         this.form.colors = commodityForm.colors
 
         if (commodityForm.name) {
@@ -1337,7 +1356,7 @@ export default {
         this.isCreate = false
       }
     }
-    console.log('this.form', this.form)
+    // console.log('this.form', this.form)
   },
   mounted() {
     // this.list = this.states.map((item) => {
@@ -1346,7 +1365,7 @@ export default {
   },
   methods: {
     onSubmit(formName) {
-      console.log('submit!', this.form)
+      // console.log('submit!', this.form)
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           let data
@@ -1365,7 +1384,7 @@ export default {
                 })
               })
           } else {
-            console.log('this.form', this.form)
+            // console.log('this.form', this.form)
             data = await this.$axios
               .$post('/api/admin/commodity/update', this.form)
               .catch((error) => {
@@ -1523,10 +1542,11 @@ export default {
         ],
         width: Mock.mock('@natural(100, 300)'),
         height: Mock.mock('@natural(100, 300)'),
+        choice: 0,
         state: Mock.mock('@integer(0, 3)'),
         seller: this.form.seller,
       }
-      console.log('createCommodityMock', createCommodityMock)
+      // console.log('createCommodityMock', createCommodityMock)
       this.form = createCommodityMock
 
       this.type = 'create'
@@ -1588,12 +1608,13 @@ export default {
         ],
         width: '',
         height: '',
+        choice: 0,
         state: 0,
         sellerId: '',
       }
     },
     uploadSuccess(res, file) {
-      console.log(res, file)
+      // console.log(res, file)
       // this.imageUrl = URL.createObjectURL(file.raw);
       this.form.photos.push({
         src: res.data.src,
@@ -1631,7 +1652,7 @@ export default {
         params: {
           ...this.sellerSearch,
           currentPage: currentPage,
-          pageSize: this.pageSize,
+          pageSize: this.sellerPagination.pageSize,
         },
       })
 

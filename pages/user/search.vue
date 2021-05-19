@@ -325,7 +325,7 @@ export default {
         currentPage: this.currentPage,
       },
     })
-    console.log('userSearch', userSearch)
+    // console.log('userSearch', userSearch)
     this.total = userSearch.data.total
     let userData = userSearch.data.list.map((item) => {
       item.isEdit = false
@@ -360,7 +360,7 @@ export default {
     },
     // 删除用户
     async removeUser(index, row) {
-      console.log('removeUser', row)
+      // console.log('removeUser', row)
       const user = await this.$axios.$get('/api/admin/user/remove', {
         params: {
           userId: row.userId,
@@ -384,7 +384,7 @@ export default {
     },
     // 删除用户身份
     async deleteUserIdentity(index, row, itemIndex, item) {
-      console.log('deleteUserIdentity', index, row, itemIndex, item)
+      // console.log('deleteUserIdentity', index, row, itemIndex, item)
       const user = await this.$axios.$get('/api/admin/user/identity/delete', {
         params: {
           identity: item.ename,
@@ -408,7 +408,7 @@ export default {
       }
     },
     editUser(index, row) {
-      console.log(index, row)
+      // console.log(index, row)
       // const identity = row.identitys[0].ename;
       this.$router.push(`/user/create?userId=${row.userId}`)
       // this.user[index].isEdit = true
@@ -418,14 +418,14 @@ export default {
       this.user[index].isEdit = false
     },
     async updateUser(index, row) {
-      console.log('updateUser', index, row)
+      // console.log('updateUser', index, row)
       const data = await this.$axios.$post('/api/admin/user/update', {
         userId: row.userId,
         name: row.name,
         email: row.email,
         phone: row.phone,
       })
-      console.log('data', data)
+      // console.log('data', data)
       if (data.success) {
         this.$message({
           showClose: true,

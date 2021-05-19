@@ -182,14 +182,14 @@ export default {
     },
     editUser(index, row) {
       // eslint-disable-next-line no-console
-      console.log(index, row)
+      // console.log(index, row)
       this.$router.push(
         this.localePath(`/user/${this.$route.params.identity}/create?userId=${row.userId}`)
       )
     },
     handleDelete(index, row) {
       // eslint-disable-next-line no-console
-      console.log(index, row)
+      // console.log(index, row)
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formatterDate(row, column, cellValue, index) {

@@ -76,10 +76,10 @@ export default {
   },
   methods: {
     async onSubmit() {
-      console.log(
-        'JSON.stringify(this.menuTree)',
-        JSON.stringify(this.menuTree)
-      )
+      // console.log(
+      //   'JSON.stringify(this.menuTree)',
+      //   JSON.stringify(this.menuTree)
+      // )
       const identityListUpdate = await this.$axios
         .$post('/api/admin/identityList/update', {
           'en-us': this.$route.params.type,
@@ -94,7 +94,7 @@ export default {
             type: 'error',
           })
         })
-      console.log(identityListUpdate)
+      // console.log(identityListUpdate)
       if (identityListUpdate.success) {
         this.$message({
           showClose: true,

@@ -189,11 +189,11 @@ export default {
       this.dialogVisible = true
     },
     handleSuccess(res, file, fileList) {
-      console.log('handleAvatarSuccess', res, file, fileList)
+      // console.log('handleAvatarSuccess', res, file, fileList)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       // this.form.options.avatar = res.data.src
       this.form.banners[res.data.index].src = res.data.src
-      console.log(this.form)
+      // console.log(this.form)
     },
     beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2

@@ -435,7 +435,7 @@ export default {
   methods: {
     // 搜索
     async onCommoditySearch(currentPage) {
-      console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
+      // console.log('onCommoditySearch', JSON.stringify(this.commoditySearch))
       // let isSearch = false
       // for (let [key, value] of Object.entries(this.commoditySearch)) {
       //   if (value) {

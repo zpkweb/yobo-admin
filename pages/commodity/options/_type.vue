@@ -313,7 +313,7 @@ export default {
       })
     },
     async createOption(item, index) {
-      console.log('createOptions', item)
+      // console.log('createOptions', item)
       let isValidate = true
       this.$refs['form'].validateField(
         [
@@ -362,7 +362,7 @@ export default {
       }
     },
     async updateOption(item) {
-      console.log('updateOption', item)
+      // console.log('updateOption', item)
       if (!item.id) {
         this.form.options.splice(index, 1)
         return
@@ -488,14 +488,14 @@ export default {
       this.form.options.splice(index, 1, mock)
     },
     handleSuccess(res, file, fileList) {
-      console.log('handleAvatarSuccess', res, file, fileList)
+      // console.log('handleAvatarSuccess', res, file, fileList)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       // this.form.options.avatar = res.data.src
       this.form.options[res.data.index].img = res.data.src
-      console.log(this.form)
+      // console.log(this.form)
     },
     beforeUpload(file, index) {
-      console.log('beforeAvatarUpload', file, index)
+      // console.log('beforeAvatarUpload', file, index)
       const isLt2M = file.size / 1024 / 1024 < 2
       if (!isLt2M) {
         this.$message.error('上传的图片大小不能超过 2MB!')

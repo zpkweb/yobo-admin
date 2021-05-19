@@ -73,7 +73,7 @@ export default {
         })
         if (login.success) {
           // 用户登录 缓存
-          console.log('login', login.data)
+          // console.log('login', login.data)
           await this.$localForage.setItem('user', login.data)
           this.$store.commit('setUser', login.data)
           this.$notify({
@@ -91,7 +91,7 @@ export default {
           })
         }
       } else {
-        console.log('error submit!!')
+        // console.log('error submit!!')
         return false
       }
     },

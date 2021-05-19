@@ -515,7 +515,7 @@ export default {
               })
             }
           } catch (error) {
-            console.log('error', error)
+            // console.log('error', error)
             this.$message({
               showClose: true,
               message: `${this.typeText}${this.$t('content.fail')}`,
@@ -539,7 +539,7 @@ export default {
           //   })
           // }
         } else {
-          console.log('error submit!!')
+          // console.log('error submit!!')
           return false
         }
       })
@@ -578,12 +578,12 @@ export default {
       }
     },
     handleSuccess(res, file) {
-      console.log('handleAvatarSuccess', res, file)
+      // console.log('handleAvatarSuccess', res, file)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       this.userCreate.avatar = res.data.src
     },
     handleSellerBannerSuccess(res, file) {
-      console.log('handleAvatarSuccess', res, file)
+      // console.log('handleAvatarSuccess', res, file)
       // this.userCreate.avatar = URL.createObjectURL(file.raw);
       this.userCreate.banner = res.data.src
     },

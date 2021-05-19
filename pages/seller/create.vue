@@ -148,6 +148,7 @@
               <el-switch v-model="sellerData.seller.choice"></el-switch>
             </el-form-item>
           </el-row>
+
           <el-form-item :label="$t('user.seller.banner')" prop="avatar">
             <el-upload
               v-model="sellerData.seller.banner"
@@ -839,14 +840,14 @@ export default {
           sellerId: this.sellerId,
         },
       })
-      console.log("user", sellerResult)
+      // console.log("user", sellerResult)
       if (sellerResult.success) {
 
 
         this.sellerData = Object.assign(this.sellerData, sellerResult.data);
 
 
-        console.log(this.sellerData)
+        // console.log(this.sellerData)
         this.type = 'edit'
         this.typeText = this.$t('content.update')
         this.isCreate = false
@@ -855,7 +856,7 @@ export default {
     }
   },
   created() {
-    console.log(JSON.stringify(this.sellerData.resume))
+    // console.log(JSON.stringify(this.sellerData.resume))
 
   },
   methods: {
@@ -865,8 +866,8 @@ export default {
           let data;
           this.isSubmit = true;
 
-          console.log(this.sellerData)
-          console.log(this.typeOptions[this.sellerData.seller.type])
+          // console.log(this.sellerData)
+          // console.log(this.typeOptions[this.sellerData.seller.type])
           // return;
 
           try {
@@ -928,7 +929,7 @@ export default {
               })
             }
           } catch (error) {
-            console.log('error', error)
+            // console.log('error', error)
             this.$message({
               showClose: true,
               message: `${this.typeText}${this.$t('content.fail')}`,
@@ -952,7 +953,7 @@ export default {
           //   })
           // }
         } else {
-          console.log('error submit!!')
+          // console.log('error submit!!')
           return false
         }
       })
@@ -1108,11 +1109,11 @@ export default {
       this.inputValue = ''
     },
     handleClick(tab, event) {
-      console.log(tab, event)
+      // console.log(tab, event)
     },
 
     async resumeCreate(type, item) {
-      console.log(this.sellerData.resume[type], type, item)
+      // console.log(this.sellerData.resume[type], type, item)
       this.sellerData.resume[type].push({
         year: this.defaultResume[type].year,
         resume: this.defaultResume[type].resume,
@@ -1136,15 +1137,15 @@ export default {
 }
 </script>
 <style scoped>
-.user-create {
+/* .user-create {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .user-create-form {
-  width: 90%;
-}
+  width: 100%;
+} */
 
 .el-tag + .el-tag {
   margin-left: 10px;
