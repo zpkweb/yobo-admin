@@ -130,6 +130,9 @@ __webpack_require__.r(__webpack_exports__);
         "findUs": "您是如何发现我们的"
       },
       "studio": {
+        "ccId": "ccId",
+        "siteId": "siteId",
+        "videoPhoto": "视频封面图片",
         "banner": "工作室背景图片",
         "name": "工作室名称",
         "video": "工作室视频",

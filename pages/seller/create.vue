@@ -55,7 +55,7 @@
             <el-button type="primary" @click="selectUserBtn">选择用户</el-button>
           </el-form-item>
 
-
+        <template v-if="sellerData.user.name || sellerData.user.email">
           <el-form-item :label="$t('user.avatar')" prop="avatar" >
             <img
                 v-if="sellerData.user.avatar"
@@ -83,6 +83,7 @@
               disabled
             ></el-input>
           </el-form-item>
+        </template>
 
         </el-collapse-item>
 
@@ -349,7 +350,7 @@
               v-model="sellerData.studio.banner"
               class="banner-uploader"
               :action="`${$config.origin}/api/upload/images`"
-              :data="{ type: 'sellerBanner' }"
+              :data="{ type: 'sellerStudioBanner' }"
               :show-file-list="false"
               :on-success="handleStudioBannerSuccess"
               :before-upload="beforeUpload"
@@ -377,8 +378,71 @@
               "
             ></el-input>
           </el-form-item>
-
+          <p style="color:red;">以下内容显示规则：ccId + siteId + 封面图 > 视频链接 > 图片 > 文字 </p>
           <!-- <p>视频，图片，文字，</p> -->
+          <!-- https://video.zbgedu.com/example?isShowConfig=false&ccId=61AA76B5334118229C33DC5901307461&siteId=E5DD260925A6084B -->
+
+          <el-form-item
+            :label="$t('user.seller.studio.ccId')"
+            prop="studio.ccId"
+          >
+            <el-input
+              v-model="sellerData.studio.ccId"
+              :placeholder="
+                $t('form.placeholder', { msg: $t('user.seller.studio.ccId') })
+              "
+            ></el-input>
+            <div class="el-upload__tip">
+              ccId  示例：61AA76B5334118229C33DC5901307461
+            </div>
+
+          </el-form-item>
+
+
+
+          <el-form-item
+            :label="$t('user.seller.studio.siteId')"
+            prop="studio.siteId"
+          >
+            <el-input
+              v-model="sellerData.studio.siteId"
+              :placeholder="
+                $t('form.placeholder', { msg: $t('user.seller.studio.siteId') })
+              "
+            ></el-input>
+            <div class="el-upload__tip">
+              siteId  E5DD260925A6084B
+            </div>
+          </el-form-item>
+
+
+          <el-form-item
+            :label="$t('user.seller.studio.videoPhoto')"
+            prop="studio.videoPhoto"
+          >
+            <el-upload
+              v-model="sellerData.studio.videoPhoto"
+              class="banner-uploader"
+              :action="`${$config.origin}/api/upload/images`"
+              :data="{ type: 'sellerStudioVideoImg' }"
+              :show-file-list="false"
+              :on-success="handleStudioVideoPhotoSuccess"
+              :before-upload="beforeUpload"
+            >
+              <img
+                v-if="sellerData.studio && sellerData.studio.videoPhoto"
+                :src="sellerData.studio.videoPhoto"
+                class="seller-banner"
+              />
+              <i v-else class="el-icon-plus seller-banner-uploader-icon"></i>
+              <div slot="tip" class="el-upload__tip">
+                视频封面图片，请上传 600X250 比例的图片，且不超过2M
+              </div>
+            </el-upload>
+          </el-form-item>
+
+
+
 
           <el-form-item
             :label="$t('user.seller.studio.video')"
@@ -390,7 +454,12 @@
                 $t('form.placeholder', { msg: $t('user.seller.studio.video') })
               "
             ></el-input>
+            <div class="el-upload__tip">
+              工作室视频，暂时支持http格式的视频。例如：http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4
+            </div>
           </el-form-item>
+
+
           <el-form-item
             :label="$t('user.seller.studio.photo')"
             prop="studio.photo"
@@ -399,7 +468,7 @@
               v-model="sellerData.studio.photo"
               class="banner-uploader"
               :action="`${$config.origin}/api/upload/images`"
-              :data="{ type: 'sellerBanner' }"
+              :data="{ type: 'sellerStudioPhoto' }"
               :show-file-list="false"
               :on-success="handleStudioPhotoSuccess"
               :before-upload="beforeUpload"
@@ -411,7 +480,7 @@
               />
               <i v-else class="el-icon-plus seller-banner-uploader-icon"></i>
               <div slot="tip" class="el-upload__tip">
-                工作室图片，请上传  比例的图片，且不超过2M
+                工作室图片，请上传 600X250 比例的图片，且不超过2M
               </div>
             </el-upload>
           </el-form-item>
@@ -1081,6 +1150,9 @@ export default {
     },
     handleStudioPhotoSuccess(res, file) {
       this.sellerData.studio.photo = res.data.src
+    },
+    handleStudioVideoPhotoSuccess(res, file) {
+      this.sellerData.studio.videoPhoto = res.data.src
     },
     beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2

@@ -54,6 +54,13 @@
         ></el-input>
       </el-form-item>
 
+      <el-form-item :label="$t('user.identity')" prop="identityList">
+        <el-checkbox-group v-model="identityListCheck">
+          <el-checkbox :label="item.value" v-for="item in identityLists" :key="item">{{item.label}}</el-checkbox>
+        </el-checkbox-group>
+      </el-form-item>
+
+
       <el-form-item>
         <el-button
           v-if="isCreate"
@@ -105,9 +112,10 @@ export default {
 
       if (user.success) {
         this.userCreate = Object.assign(this.userCreate, user.data)
+        this.identityListCheck = user.data.identityList;
         this.type = 'edit'
         this.typeText = this.$t('content.update')
-        this.isCreate = false
+        this.isCreate = false;
         this.rules.password[0].required = false
       }else{
 
@@ -185,7 +193,16 @@ export default {
         //     trigger: 'change',
         //   },
         // ],
+
       },
+      identityLists: [{
+        label: '管理员',
+        value: 2
+      }, {
+        label: '客服',
+        value: 3
+      }],
+      identityListCheck: []
     }
   },
   // watchQuery: ['userId','sellerId'],
@@ -196,7 +213,18 @@ export default {
     submitForm(userCreate) {
       this.$refs[userCreate].validate(async (valid) => {
         if (valid) {
-          let data
+          let data;
+          if(this.identityListCheck && this.identityListCheck.length) {
+            for(let item of this.identityLists) {
+              let check = false;
+              for(let checkItem of this.identityListCheck) {
+                if(item.value == checkItem) {
+                  check = true;
+                }
+              }
+              item.check = check;
+            }
+          }
           if (this.isCreate) {
             data = await this.$axios
               .$post('/api/admin/user/register', {
@@ -206,6 +234,7 @@ export default {
                 email: this.userCreate.email,
                 phone: this.userCreate.phone,
                 password: this.userCreate.password,
+                identityList: this.identityLists,
               })
               .catch((error) => {
                 this.$message({
@@ -224,6 +253,8 @@ export default {
               email: this.userCreate.email,
               phone: this.userCreate.phone,
               password: this.userCreate.password,
+              identityList: this.identityLists,
+
             })
           }
           if (data.status === 200) {

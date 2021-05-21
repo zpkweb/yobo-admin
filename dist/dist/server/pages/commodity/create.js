@@ -51,7 +51,7 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=template&id=09291e19&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/commodity/create.vue?vue&type=template&id=719d035a&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-form',{ref:"form",attrs:{"model":_vm.form,"label-width":"108px"}},[_c('el-form-item',[(_vm.isCreate)?_c('el-button',{attrs:{"type":"primary","icon":"el-icon-circle-plus-outline","loading":_vm.isSubmit},on:{"click":function($event){return _vm.onSubmit('form')}}},[_vm._v("\n        "+_vm._s(_vm.$t('content.create'))+"\n      ")]):_c('el-button',{attrs:{"type":"primary","icon":"el-icon-check","loading":_vm.isSubmit},on:{"click":function($event){return _vm.onSubmit('form')}}},[_vm._v("\n        "+_vm._s(_vm.$t('content.update'))+"\n      ")]),_vm._v(" "),_c('el-button',{attrs:{"icon":"el-icon-check"},on:{"click":_vm.onMock}},[_vm._v("\n        "+_vm._s(_vm.$t('content.fill'))+"\n      ")]),_vm._v(" "),_c('el-button',{attrs:{"icon":"el-icon-circle-close"},on:{"click":function($event){return _vm.resetForm('form')}}},[_vm._v(_vm._s(_vm.$t('content.clear')))])],1),_vm._v(" "),_c('el-collapse',{model:{value:(_vm.activeCollapses),callback:function ($$v) {_vm.activeCollapses=$$v},expression:"activeCollapses"}},[_c('el-collapse-item',{attrs:{"title":"关联艺术家 ","name":"0"}},[_c('el-form-item',[_c('el-button',{attrs:{"type":"primary"},on:{"click":_vm.selectSellerBtn}},[_vm._v("选择艺术家")])],1),_vm._v(" "),(_vm.form.seller)?[_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":6}},[_c('el-form-item',{attrs:{"label":_vm.$t('user.seller.firstName')}},[_c('el-input',{attrs:{"disabled":""},model:{value:(_vm.form.seller.firstname),callback:function ($$v) {_vm.$set(_vm.form.seller, "firstname", $$v)},expression:"form.seller.firstname"}})],1)],1),_vm._v(" "),_c('el-col',{attrs:{"span":6}},[_c('el-form-item',{attrs:{"label":_vm.$t('user.seller.lastName')}},[_c('el-input',{attrs:{"disabled":""},model:{value:(_vm.form.seller.lastname),callback:function ($$v) {_vm.$set(_vm.form.seller, "lastname", $$v)},expression:"form.seller.lastname"}})],1)],1)],1)]:_vm._e()],2),_vm._v(" "),_c('el-collapse-item',{attrs:{"title":"艺术品信息","name":"1"}},[_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":24}},[_c('el-form-item',{attrs:{"label":_vm.$t('commodity.state.title'),"prop":'state'}},[_c('el-radio-group',{model:{value:(_vm.form.state),callback:function ($$v) {_vm.$set(_vm.form, "state", $$v)},expression:"form.state"}},[_c('el-radio',{attrs:{"label":0}},[_vm._v(_vm._s(_vm.$t('commodity.state.added')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":1}},[_vm._v(_vm._s(_vm.$t('commodity.state.onsale')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":2}},[_vm._v(_vm._s(_vm.$t('commodity.state.sold')))]),_vm._v(" "),_c('el-radio',{attrs:{"label":3}},[_vm._v(_vm._s(_vm.$t('commodity.state.offline')))])],1)],1)],1)],1),_vm._v(" "),_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":24}},[_c('el-form-item',{attrs:{"label":_vm.$t('commodity.choice'),"prop":'choice'}},[_c('el-switch',{model:{value:(_vm.form.choice),callback:function ($$v) {_vm.$set(_vm.form, "choice", $$v)},expression:"form.choice"}})],1)],1)],1),_vm._v(" "),_c('el-row',{attrs:{"gutter":20}},[_c('el-col',{attrs:{"span":6}},[_c('el-form-item',{attrs:{"label":_vm.$t('langname', {
                   lang: _vm.$t('lang.zh'),
                   name: _vm.$t('commodity.name'),
@@ -186,7 +186,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
                     'form.noEmpty'
                   ))),
                   trigger: 'blur',
-                }}},[_c('el-color-picker',{model:{value:(_vm.form.colors[0].endColor),callback:function ($$v) {_vm.$set(_vm.form.colors[0], "endColor", $$v)},expression:"form.colors[0].endColor"}})],1)],1)],1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.photo')}},[_c('el-upload',{staticClass:"commodity-photo",attrs:{"file-list":_vm.form.photos,"action":((_vm.$config.origin) + "/api/upload/images"),"data":{ type: 'commodity' },"list-type":"picture-card","on-preview":_vm.uploadPreview,"on-remove":_vm.uploadRemove,"on-success":_vm.uploadSuccess,"before-upload":_vm.beforeUpload}},[_c('i',{staticClass:"el-icon-plus"}),_vm._v(" "),_c('div',{staticClass:"el-upload__tip",attrs:{"slot":"tip"},slot:"tip"},[_vm._v("\n              艺术品图片，请上传 768X400 比例的图片，且不超过2M\n            ")])]),_vm._v(" "),_c('el-dialog',{attrs:{"visible":_vm.dialogVisible,"center":""},on:{"update:visible":function($event){_vm.dialogVisible=$event}}},[_c('img',{attrs:{"width":"768px","height":"400px","src":_vm.dialogImageUrl,"alt":""}}),_vm._v(" "),_c('p',[_vm._v("图片尺寸：768X400")])])],1)],1),_vm._v(" "),_c('el-collapse-item',{attrs:{"title":"艺术品选项","name":"2"}},[_c('el-form-item',{attrs:{"label":_vm.$t('commodity.category'),"prop":'category',"rules":{
+                }}},[_c('el-color-picker',{model:{value:(_vm.form.colors[0].endColor),callback:function ($$v) {_vm.$set(_vm.form.colors[0], "endColor", $$v)},expression:"form.colors[0].endColor"}})],1)],1)],1)],1),_vm._v(" "),_c('el-form-item',{attrs:{"label":_vm.$t('commodity.photo')}},[_c('el-upload',{staticClass:"commodity-photo",attrs:{"file-list":_vm.form.photos,"action":((_vm.$config.origin) + "/api/upload/images"),"data":{ type: 'commodity' },"list-type":"picture-card","on-preview":_vm.uploadPreview,"on-remove":_vm.uploadRemove,"on-success":_vm.uploadSuccess,"before-upload":_vm.beforeUpload}},[_c('i',{staticClass:"el-icon-plus"}),_vm._v(" "),_c('div',{staticClass:"el-upload__tip",attrs:{"slot":"tip"},slot:"tip"},[_vm._v("\n              艺术品图片，请上传 768X400 比例的图片，且不超过2M\n            ")])]),_vm._v(" "),_c('el-dialog',{attrs:{"visible":_vm.dialogUploadVisible,"center":""},on:{"update:visible":function($event){_vm.dialogUploadVisible=$event}}},[_c('img',{attrs:{"width":"768px","height":"400px","src":_vm.dialogImageUrl,"alt":""}}),_vm._v(" "),_c('p',[_vm._v("图片尺寸：768X400")])])],1)],1),_vm._v(" "),_c('el-collapse-item',{attrs:{"title":"艺术品选项","name":"2"}},[_c('el-form-item',{attrs:{"label":_vm.$t('commodity.category'),"prop":'category',"rules":{
             required: false,
             message: ("" + (_vm.$t('commodity.category')) + (_vm.$t('form.noEmpty'))),
             trigger: 'change',
@@ -244,7 +244,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/commodity/create.vue?vue&type=template&id=09291e19&
+// CONCATENATED MODULE: ./pages/commodity/create.vue?vue&type=template&id=719d035a&
 
 // EXTERNAL MODULE: external "mockjs"
 var external_mockjs_ = __webpack_require__(116);
@@ -1364,6 +1364,7 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
       form: {},
       dialogImageUrl: '',
       dialogVisible: false,
+      dialogUploadVisible: false,
       loading: false,
       options: {},
       // 0:已添加，1:售卖中，2:已售卖，3:已下架
@@ -1438,7 +1439,6 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
         value: false,
         label: this.$t('user.seller.choiceOptions.false')
       }],
-      dialogVisible: false,
       seller: [],
       sellerSearch: {
         firstname: '',
@@ -1809,7 +1809,7 @@ var external_mockjs_default = /*#__PURE__*/__webpack_require__.n(external_mockjs
 
     uploadPreview(file) {
       this.dialogImageUrl = file.url;
-      this.dialogVisible = true;
+      this.dialogUploadVisible = true;
     },
 
     beforeUpload(file) {

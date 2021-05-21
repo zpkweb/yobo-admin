@@ -57,7 +57,7 @@
               v-model="item.img"
               class="avatar-uploader"
               :action="`${$config.origin}/api/upload/images`"
-              :data="{ type: optionType[$route.params.type], index }"
+              :data="{ type: `commodity-option-${$route.params.type}`, index }"
               :show-file-list="false"
               :on-success="handleSuccess"
               :before-upload="beforeUpload"

@@ -548,7 +548,7 @@
                 艺术品图片，请上传 768X400 比例的图片，且不超过2M
               </div>
             </el-upload>
-            <el-dialog :visible.sync="dialogVisible" center>
+            <el-dialog :visible.sync="dialogUploadVisible" center>
               <img width="768px" height="400px" :src="dialogImageUrl" alt="" />
               <p>图片尺寸：768X400</p>
             </el-dialog>
@@ -1114,6 +1114,7 @@ export default {
 
       dialogImageUrl: '',
       dialogVisible: false,
+      dialogUploadVisible: false,
       loading: false,
       options: {},
       // 0:已添加，1:售卖中，2:已售卖，3:已下架
@@ -1205,7 +1206,6 @@ export default {
           label: this.$t('user.seller.choiceOptions.false'),
         },
       ],
-      dialogVisible: false,
       seller: [],
       sellerSearch: {
         firstname: '',
@@ -1637,7 +1637,7 @@ export default {
     },
     uploadPreview(file) {
       this.dialogImageUrl = file.url
-      this.dialogVisible = true
+      this.dialogUploadVisible = true
     },
     beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2
