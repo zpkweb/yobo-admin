@@ -830,6 +830,9 @@ export default {
           introduce: '',
           video: '',
           photo: '',
+          ccId: '',
+          siteId: '',
+          videoPhoto: ''
         },
         resume: {
           prize: [
@@ -930,12 +933,29 @@ export default {
   },
   methods: {
     submitForm(sellerData) {
+      if(!this.sellerData.seller.firstname){
+        this.$message({
+          showClose: true,
+          message: "请输入姓氏",
+          type: 'error',
+        })
+        return;
+      }
+      if(!this.sellerData.seller.lastname){
+        this.$message({
+          showClose: true,
+          message: "请输入名字",
+          type: 'error',
+        })
+        return;
+      }
+
       this.$refs[sellerData].validate(async (valid) => {
         if (valid) {
           let data;
           this.isSubmit = true;
 
-          // console.log(this.sellerData)
+          console.log(this.sellerData)
           // console.log(this.typeOptions[this.sellerData.seller.type])
           // return;
 
