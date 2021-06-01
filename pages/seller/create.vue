@@ -245,7 +245,7 @@
           </el-form-item>
 
           <el-form-item prop="profile">
-            <el-input
+            <!-- <el-input
               type="textarea"
               v-model="sellerData.metadata.profile"
               :placeholder="
@@ -253,8 +253,23 @@
                   msg: $t('user.seller.metadata.profile'),
                 })
               "
-            ></el-input>
+            ></el-input> -->
+
+            <div class="quill-editor"
+              :content="sellerData.metadata.profile"
+              @change="onEditorChange($event)"
+              @blur="onEditorBlur($event)"
+              @focus="onEditorFocus($event)"
+              @ready="onEditorReady($event)"
+              v-quill:myQuillEditor="editorOption">
+            </div>
+
+
           </el-form-item>
+
+
+
+
           <el-form-item prop="isFullTime">
             <el-input
               type="textarea"
@@ -735,6 +750,18 @@ export default {
       }
     }
     return {
+        editorOption: {
+          placeholder: this.$t('form.placeholder', {
+                  msg: this.$t('user.seller.metadata.profile'),
+                }),
+          // some quill options
+          modules: {
+            toolbar: [
+              ['bold', 'italic', 'underline', 'strike'],
+              ['blockquote', 'code-block']
+            ]
+          },
+        },
       dialogVisible: false,
       userSearch: {
         name: '',
@@ -1225,6 +1252,20 @@ export default {
 
 
     },
+    onEditorBlur(editor) {
+        console.log('editor blur!', editor)
+      },
+      onEditorFocus(editor) {
+        console.log('editor focus!', editor)
+      },
+      onEditorReady(editor) {
+        console.log('editor ready!', editor)
+      },
+      onEditorChange({ editor, html, text }) {
+        console.log('editor change!', editor, html, text)
+        // this.content = html
+        this.sellerData.metadata.profile = html;
+      }
   },
 }
 </script>

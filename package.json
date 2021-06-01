@@ -17,13 +17,15 @@
     "@nuxt/http": "^0.6.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "caniuse-lite": "^1.0.30001232",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "ky": "^0.25.0",
     "ky-universal": "^0.8.2",
     "nuxt": "^2.14.6",
     "nuxt-highcharts": "^1.0.3",
-    "nuxt-i18n": "^6.16.0"
+    "nuxt-i18n": "^6.16.0",
+    "vue-quill-editor": "^3.0.6"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

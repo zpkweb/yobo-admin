@@ -44,10 +44,15 @@ export default {
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/global',
     '~/assets/css/normalize',
+
+
+    'quill/dist/quill.snow.css',
+    'quill/dist/quill.bubble.css',
+    'quill/dist/quill.core.css'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/element-ui', '@/plugins/axios'],
+  plugins: ['@/plugins/element-ui', '@/plugins/axios', { src: '@/plugins/vue-quill-editor', ssr: false }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: ['~/components'],
