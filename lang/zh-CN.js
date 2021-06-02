@@ -180,6 +180,7 @@ export default {
     "sellerId": "艺术家Id",
     "name": "名称",
     "desc": "描述",
+    "details": "描述",
     "seller": "艺术家",
     "category": "类别",
     "classification": "分类",

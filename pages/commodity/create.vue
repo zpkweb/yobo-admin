@@ -307,6 +307,118 @@
                 ></el-input> </el-form-item
             ></el-col>
           </el-row>
+
+          <el-row :gutter="20">
+            <el-col :span="6">
+              <el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.zh'),
+                    name: $t('commodity.details'),
+                  })
+                "
+                :prop="'details.zh-cn'"
+                :rules="{
+                  required: true,
+                  message: `${$t('lang.zh')}${$t('commodity.details')}${$t(
+                    'form.noEmpty'
+                  )}`,
+                  trigger: 'blur',
+                }"
+              >
+                <el-input
+                  v-model="form.details['zh-cn']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.zh') })"
+                ></el-input></el-form-item
+            ></el-col>
+            <el-col :span="6"
+              ><el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.en'),
+                    name: $t('commodity.details'),
+                  })
+                "
+                :prop="'details.en-us'"
+                :rules="{
+                  required: true,
+                  message: `${$t('lang.en')}${$t('commodity.details')}${$t(
+                    'form.noEmpty'
+                  )}`,
+                  trigger: 'blur',
+                }"
+                ><el-input
+                  v-model="form.details['en-us']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.en') })"
+                ></el-input></el-form-item
+            ></el-col>
+            <el-col :span="6"
+              ><el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.ja'),
+                    name: $t('commodity.details'),
+                  })
+                "
+                :prop="'details.ja-jp'"
+                :rules="{
+                  required: true,
+                  message: `${$t('lang.ja')}${$t('commodity.details')}${$t(
+                    'form.noEmpty'
+                  )}`,
+                  trigger: 'blur',
+                }"
+                ><el-input
+                  v-model="form.details['ja-jp']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
+                ></el-input></el-form-item
+            ></el-col>
+            <el-col :span="6">
+              <!-- <el-form-item
+          :label="
+            $t('langname', { lang: $t('lang.fr'), name: $t('commodity.details') })
+          "
+          :prop="'details.fr-fr'"
+          :rules="{
+            required: true,
+            message: `${$t('lang.fr')}${$t('commodity.details')}${$t(
+              'form.noEmpty'
+            )}`,
+            trigger: 'blur',
+          }"
+          >
+          <el-input
+            v-model="form.details['fr-fr']"
+            type="textarea"
+            :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
+          ></el-input> -->
+              <el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.es'),
+                    name: $t('commodity.details'),
+                  })
+                "
+                :prop="'details.es-es'"
+                :rules="{
+                  required: true,
+                  message: `${$t('lang.es')}${$t('commodity.details')}${$t(
+                    'form.noEmpty'
+                  )}`,
+                  trigger: 'blur',
+                }"
+              >
+                <el-input
+                  v-model="form.details['es-es']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
+                ></el-input> </el-form-item
+            ></el-col>
+          </el-row>
+
           <el-row :gutter="20">
             <el-col :span="6">
               <el-form-item
@@ -1110,7 +1222,62 @@ export default {
       type: '',
       typeText: this.$t('content.create'),
       isCreate: true,
-      form: {},
+      form: {
+        name: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
+        desc: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
+        details: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
+        price: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
+        categorys: [],
+        classifications: [],
+        materials: [],
+        models: [],
+        places: [],
+        ruiwus: [],
+        shapes: [],
+        specifications: [],
+        styles: [],
+        techniques: [],
+        themes: [],
+        types: [],
+        uses: [],
+        photos: [],
+        removePhotos: [],
+        colors: [
+          {
+            startColor: '#ffffff',
+            endColor: '#000000',
+          },
+        ],
+        width: '',
+        height: '',
+        choice: 0,
+        state: 0,
+        sellerId: '',
+      },
 
       dialogImageUrl: '',
       dialogVisible: false,
@@ -1227,18 +1394,10 @@ export default {
       },
     }
   },
-  // async fetch() {
-  //   this.options = {}
-  // },
-  computed: {},
-  // watch: {
-  //   '$route.query': '$fetch',
-  // },
-  watchQuery: ['commodityId'],
-  async created() {
+  async fetch() {
     this.isCreate = true
     this.reset()
-
+    // this.options = {}
     const options = await this.$axios.$get(`/api/admin/commodity/options`)
     if (options.success) {
       this.options = options.data
@@ -1271,8 +1430,6 @@ export default {
       this.uses = options.data.uses.map((item) => item.id)
     }
 
-    // await this.onCommoditySearch()
-
     if (this.$route.query && this.$route.query.commodityId) {
       const commodity = await this.$axios.$get('/api/admin/commodity/edit', {
         params: {
@@ -1296,6 +1453,9 @@ export default {
         }
         if (commodityForm.desc) {
           this.form.desc = commodityForm.desc
+        }
+        if (commodityForm.details) {
+          this.form.details = commodityForm.details
         }
         if (commodityForm.price) {
           this.form.price = commodityForm.price
@@ -1356,6 +1516,20 @@ export default {
         this.isCreate = false
       }
     }
+  },
+  computed: {},
+  watch: {
+    '$route.query': '$fetch',
+  },
+  watchQuery: ['commodityId'],
+  async created() {
+
+
+
+
+    // await this.onCommoditySearch()
+
+
     // console.log('this.form', this.form)
   },
   mounted() {
@@ -1469,6 +1643,13 @@ export default {
           // 'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
           'es-es': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
+        details: {
+          'zh-cn': Mock.mock('@cparagraph(1,3)'),
+          'en-us': Mock.mock('@paragraph(1,3)'),
+          'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
+          // 'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+          'es-es': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+        },
         price: {
           'zh-cn': Mock.mock('@integer(60, 100)'),
           'en-us': Mock.mock('@integer(60, 100)'),
@@ -1572,6 +1753,13 @@ export default {
           'es-es': '',
         },
         desc: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
+        details: {
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
