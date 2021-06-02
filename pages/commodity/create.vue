@@ -548,7 +548,7 @@
                 艺术品图片，请上传 768X400 比例的图片，且不超过2M
               </div>
             </el-upload>
-            <el-dialog :visible.sync="dialogUploadVisible" center>
+            <el-dialog :visible.sync="dialogUploadVisible" center class="commodity-photo-dialog">
               <img width="768px" height="400px" :src="dialogImageUrl" alt="" />
               <p>图片尺寸：768X400</p>
             </el-dialog>
@@ -1707,5 +1707,8 @@ export default {
 .photo {
   width: 192px;
   height: 100px;
+}
+.commodity-photo-dialog .el-dialog{
+  width: 818px;
 }
 </style>

@@ -112,6 +112,10 @@
         ></el-input>
       </el-form-item>
 
+      <el-form-item prop="news" :label="$t('commodity.news')">
+        <el-switch v-model="sellerSearch.news"> </el-switch>
+      </el-form-item>
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit(currentPage)" icon="el-icon-search">{{
           $t('content.search')
@@ -225,7 +229,8 @@ export default {
         country: '',
         type: '',
         state: '',
-        choice: ''
+        choice: '',
+        news: 'false'
       },
       currentPage: 1,
       pageSize: 10,
