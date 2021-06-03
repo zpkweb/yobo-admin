@@ -317,14 +317,7 @@
                     name: $t('commodity.details'),
                   })
                 "
-                :prop="'details.zh-cn'"
-                :rules="{
-                  required: true,
-                  message: `${$t('lang.zh')}${$t('commodity.details')}${$t(
-                    'form.noEmpty'
-                  )}`,
-                  trigger: 'blur',
-                }"
+
               >
                 <el-input
                   v-model="form.details['zh-cn']"
@@ -340,14 +333,7 @@
                     name: $t('commodity.details'),
                   })
                 "
-                :prop="'details.en-us'"
-                :rules="{
-                  required: true,
-                  message: `${$t('lang.en')}${$t('commodity.details')}${$t(
-                    'form.noEmpty'
-                  )}`,
-                  trigger: 'blur',
-                }"
+
                 ><el-input
                   v-model="form.details['en-us']"
                   type="textarea"
@@ -362,14 +348,7 @@
                     name: $t('commodity.details'),
                   })
                 "
-                :prop="'details.ja-jp'"
-                :rules="{
-                  required: true,
-                  message: `${$t('lang.ja')}${$t('commodity.details')}${$t(
-                    'form.noEmpty'
-                  )}`,
-                  trigger: 'blur',
-                }"
+
                 ><el-input
                   v-model="form.details['ja-jp']"
                   type="textarea"
@@ -377,24 +356,7 @@
                 ></el-input></el-form-item
             ></el-col>
             <el-col :span="6">
-              <!-- <el-form-item
-          :label="
-            $t('langname', { lang: $t('lang.fr'), name: $t('commodity.details') })
-          "
-          :prop="'details.fr-fr'"
-          :rules="{
-            required: true,
-            message: `${$t('lang.fr')}${$t('commodity.details')}${$t(
-              'form.noEmpty'
-            )}`,
-            trigger: 'blur',
-          }"
-          >
-          <el-input
-            v-model="form.details['fr-fr']"
-            type="textarea"
-            :placeholder="$t('form.placeholder', { msg: $t('lang.fr') })"
-          ></el-input> -->
+
               <el-form-item
                 :label="
                   $t('langname', {
@@ -402,14 +364,7 @@
                     name: $t('commodity.details'),
                   })
                 "
-                :prop="'details.es-es'"
-                :rules="{
-                  required: true,
-                  message: `${$t('lang.es')}${$t('commodity.details')}${$t(
-                    'form.noEmpty'
-                  )}`,
-                  trigger: 'blur',
-                }"
+
               >
                 <el-input
                   v-model="form.details['es-es']"
@@ -418,6 +373,75 @@
                 ></el-input> </el-form-item
             ></el-col>
           </el-row>
+
+
+          <el-row :gutter="20">
+            <el-col :span="6">
+              <el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.zh'),
+                    name: $t('commodity.postage'),
+                  })
+                "
+
+              >
+                <el-input
+                  v-model="form.postage['zh-cn']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.zh') })"
+                ></el-input></el-form-item
+            ></el-col>
+            <el-col :span="6"
+              ><el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.en'),
+                    name: $t('commodity.postage'),
+                  })
+                "
+
+                ><el-input
+                  v-model="form.postage['en-us']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.en') })"
+                ></el-input></el-form-item
+            ></el-col>
+            <el-col :span="6"
+              ><el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.ja'),
+                    name: $t('commodity.postage'),
+                  })
+                "
+
+                ><el-input
+                  v-model="form.postage['ja-jp']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.ja') })"
+                ></el-input></el-form-item
+            ></el-col>
+            <el-col :span="6">
+
+              <el-form-item
+                :label="
+                  $t('langname', {
+                    lang: $t('lang.es'),
+                    name: $t('commodity.postage'),
+                  })
+                "
+
+              >
+                <el-input
+                  v-model="form.postage['es-es']"
+                  type="textarea"
+                  :placeholder="$t('form.placeholder', { msg: $t('lang.es') })"
+                ></el-input> </el-form-item
+            ></el-col>
+          </el-row>
+
+
 
           <el-row :gutter="20">
             <el-col :span="6">
@@ -664,6 +688,138 @@
               <img width="768px" height="400px" :src="dialogImageUrl" alt="" />
               <p>图片尺寸：768X400</p>
             </el-dialog>
+          </el-form-item>
+
+          <el-form-item :label="$t('commodity.video')">
+            {{form.videos}}
+            <el-card class="box-card" v-if="form.videos" v-for="(item, index) in form.videos" :key="index">
+              <div slot="header" class="clearfix">
+                <el-button style="float: left; padding: 3px 0" type="text" v-if="editVideoIndex !== index" @click="editVideoIndex = index">编辑视频</el-button>
+                <el-button style="float: left; padding: 3px 0" type="text" v-else @click="editVideoIndex = null">取消编辑</el-button>
+
+                <el-button style="float: left; padding: 3px 0" type="text" @click="commodityRemoveVideo(index)">删除视频</el-button>
+              </div>
+
+              <el-form-item
+                class="text item"
+                :label="$t('commodity.ccId')"
+              >
+                <el-input
+                  v-model="item.ccId"
+                  :disabled="editVideoIndex == index ? false : true"
+                ></el-input>
+              </el-form-item>
+
+              <el-form-item
+                class="text item"
+                :label="$t('commodity.siteId')"
+              >
+                <el-input
+                  v-model="item.siteId"
+                  :disabled="editVideoIndex == index ? false : true"
+                ></el-input>
+
+              </el-form-item>
+              <el-form-item
+                class="text item"
+                :label="$t('commodity.videoPhoto')"
+              >
+                <template v-if="editVideoIndex == index">
+                  <el-upload
+                    v-model="item.videoPhoto"
+                    class="banner-uploader"
+                    :action="`${$config.origin}/api/upload/images`"
+                    :data="{ type: 'sellerStudioVideoImg' }"
+                    :show-file-list="false"
+                    :on-success="handleVideoPhotoSuccess"
+                    :before-upload="beforeUpload"
+                  >
+                    <img
+                      v-if="item && item.videoPhoto"
+                      :src="item.videoPhoto"
+                      class="video-photo"
+                    />
+                    <i v-else class="el-icon-plus video-photo-uploader-icon"></i>
+                    <div slot="tip" class="el-upload__tip">
+                      视频封面图片，请上传 768X400 比例的图片，且不超过2M
+                    </div>
+                  </el-upload>
+                </template>
+                <template v-else>
+                  <img
+                    v-if="item && item.videoPhoto"
+                    :src="item.videoPhoto"
+                    class="video-photo"
+                  />
+                </template>
+
+                </el-upload>
+              </el-form-item>
+            </el-card>
+
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <el-button style="float: left; padding: 3px 0" type="text" @click="commodityAddVideo">添加视频</el-button>
+              </div>
+                <el-form-item
+                  class="text item"
+                  :label="$t('commodity.ccId')"
+                >
+                  <el-input
+                    v-model="defaultVideo.ccId"
+                    :placeholder="
+                      $t('form.placeholder', { msg: $t('commodity.ccId') })
+                    "
+                  ></el-input>
+                  <div class="el-upload__tip">
+                    ccId  示例：61AA76B5334118229C33DC5901307461
+                  </div>
+
+                </el-form-item>
+
+
+
+                <el-form-item
+                  class="text item"
+                  :label="$t('commodity.siteId')"
+                >
+                  <el-input
+                    v-model="defaultVideo.siteId"
+                    :placeholder="
+                      $t('form.placeholder', { msg: $t('commodity.siteId') })
+                    "
+                  ></el-input>
+                  <div class="el-upload__tip">
+                    siteId  E5DD260925A6084B
+                  </div>
+                </el-form-item>
+
+
+                <el-form-item
+                  class="text item"
+                  :label="$t('commodity.videoPhoto')"
+                >
+                  <el-upload
+                    v-model="defaultVideo.videoPhoto"
+                    class="banner-uploader"
+                    :action="`${$config.origin}/api/upload/images`"
+                    :data="{ type: 'sellerStudioVideoImg' }"
+                    :show-file-list="false"
+                    :on-success="handleDefaultVideoPhotoSuccess"
+                    :before-upload="beforeUpload"
+                  >
+                    <img
+                      v-if="defaultVideo && defaultVideo.videoPhoto"
+                      :src="defaultVideo.videoPhoto"
+                      class="video-photo"
+                    />
+                    <i v-else class="el-icon-plus video-photo-uploader-icon"></i>
+                    <div slot="tip" class="el-upload__tip">
+                      视频封面图片，请上传 768X400 比例的图片，且不超过2M
+                    </div>
+                  </el-upload>
+                </el-form-item>
+            </el-card>
           </el-form-item>
 
 
@@ -1222,6 +1378,13 @@ export default {
       type: '',
       typeText: this.$t('content.create'),
       isCreate: true,
+      defaultVideo: {
+        video: '',
+        ccId: '',
+        siteId: '',
+        videoPhoto: ''
+      },
+      editVideoIndex: null,
       form: {
         name: {
           'zh-cn': '',
@@ -1238,6 +1401,13 @@ export default {
           'es-es': '',
         },
         details: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
+        postage: {
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
@@ -1266,6 +1436,8 @@ export default {
         uses: [],
         photos: [],
         removePhotos: [],
+        videos: [],
+        removeVideos: [],
         colors: [
           {
             startColor: '#ffffff',
@@ -1457,16 +1629,24 @@ export default {
         if (commodityForm.details) {
           this.form.details = commodityForm.details
         }
+        if (commodityForm.postage) {
+          this.form.postage = commodityForm.postage
+        }
         if (commodityForm.price) {
           this.form.price = commodityForm.price
         }
 
-        if (commodityForm.photos) {
+        if (commodityForm.photos && commodityForm.photos.length) {
           const photos = commodityForm.photos.map((item) => {
             item.url = item.src
             return item
           })
           this.form.photos = photos
+        }
+
+        if (commodityForm.videos && commodityForm.videos.length) {
+
+          this.form.videos = commodityForm.videos
         }
 
         // "category": "类别",
@@ -1650,6 +1830,13 @@ export default {
           // 'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
           'es-es': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
         },
+        postage: {
+          'zh-cn': Mock.mock('@cparagraph(1,3)'),
+          'en-us': Mock.mock('@paragraph(1,3)'),
+          'ja-jp': 'ゼロ,いち,に,さん,し,ご,ろく,しち,はち,きゅう,じゅう',
+          // 'fr-fr': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+          'es-es': 'zéro,un,deux,trois,quatre,cinq,six,sept,huit,neuf,dix',
+        },
         price: {
           'zh-cn': Mock.mock('@integer(60, 100)'),
           'en-us': Mock.mock('@integer(60, 100)'),
@@ -1715,6 +1902,8 @@ export default {
 
         photos: [],
         removePhotos: [],
+        videos: [],
+        removeVideos: [],
         colors: [
           {
             startColor: '#ffffff',
@@ -1766,6 +1955,13 @@ export default {
           // 'fr-fr': '',
           'es-es': '',
         },
+        postage: {
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          // 'fr-fr': '',
+          'es-es': '',
+        },
         price: {
           'zh-cn': '',
           'en-us': '',
@@ -1788,6 +1984,8 @@ export default {
         uses: [],
         photos: [],
         removePhotos: [],
+        videos: [],
+        removeVideos: [],
         colors: [
           {
             startColor: '#ffffff',
@@ -1811,6 +2009,13 @@ export default {
         uid: file.uid,
       })
       // console.log(this.form)
+    },
+    handleVideoPhotoSuccess(res, file) {
+      // this.form.videos[index]videoPhoto = res.data.src
+      this.form.videos[this.editVideoIndex].videoPhoto = res.data.src;
+    },
+    handleDefaultVideoPhotoSuccess(res, file) {
+      this.defaultVideo.videoPhoto = res.data.src
     },
     uploadRemove(file, fileList) {
       // console.log(file, fileList)
@@ -1875,6 +2080,22 @@ export default {
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
+    commodityAddVideo() {
+      this.form.videos.push(Object.assign({}, this.defaultVideo));
+      this.defaultVideo = {
+        video: '',
+        ccId: '',
+        siteId: '',
+        videoPhoto: ''
+      }
+    },
+    commodityRemoveVideo(index) {
+      if(this.form.videos[index].id){
+        this.form.removeVideos.push(Object.assign({}, this.form.videos[index]))
+      }
+
+      this.form.videos.splice(index, 1);
+    }
   },
 }
 </script>
@@ -1898,5 +2119,43 @@ export default {
 }
 .commodity-photo-dialog .el-dialog{
   width: 818px;
+}
+</style>
+
+<style scoped>
+  .text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+
+  .box-card {
+    margin: 20px;
+  }
+
+
+  .video-photo-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 239px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.video-photo {
+  width: 239px;
+  height: 100px;
+  display: block;
 }
 </style>
