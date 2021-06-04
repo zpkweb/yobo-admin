@@ -244,25 +244,41 @@
             ></el-input>
           </el-form-item>
 
-          <el-form-item prop="profile">
-            <!-- <el-input
-              type="textarea"
-              v-model="sellerData.metadata.profile"
-              :placeholder="
-                $t('form.placeholder', {
-                  msg: $t('user.seller.metadata.profile'),
-                })
-              "
-            ></el-input> -->
+          <el-form-item>
+            <el-row :gutter="20">
+              <el-col :span="6">
+                <div class="quill-editor"
+                  :content="sellerData.metadata.profileZhcn"
+                  @change="onEditorChangeZhcn($event, 'zhcn')"
+                  v-quill:myQuillEditorZhcn="editorOptionZhcn">
+                </div>
+              </el-col>
 
-            <div class="quill-editor"
-              :content="sellerData.metadata.profile"
-              @change="onEditorChange($event)"
-              @blur="onEditorBlur($event)"
-              @focus="onEditorFocus($event)"
-              @ready="onEditorReady($event)"
-              v-quill:myQuillEditor="editorOption">
-            </div>
+              <el-col :span="6">
+                <div class="quill-editor"
+                  :content="sellerData.metadata.profileEnus"
+                  @change="onEditorChangeEnus($event, 'enus')"
+                  v-quill:myQuillEditorEnus="editorOptionEnus">
+                </div>
+              </el-col>
+
+              <el-col :span="6">
+                <div class="quill-editor"
+                  :content="sellerData.metadata.profileJajp"
+                  @change="onEditorChangeJajp($event, 'jajp')"
+                  v-quill:myQuillEditorJajp="editorOptionJajp">
+                </div>
+              </el-col>
+
+              <el-col :span="6">
+                <div class="quill-editor"
+                  :content="sellerData.metadata.profileEses"
+                  @change="onEditorChangeEses($event, 'eses')"
+                  v-quill:myQuillEditorEses="editorOptionEses">
+                </div>
+              </el-col>
+            </el-row>
+
 
 
           </el-form-item>
@@ -527,6 +543,7 @@
                 :gutter="20"
                 v-for="(item, index) in sellerData.resume[tabItem.name]"
                 :key="index"
+                style="margin-bottom: 20px"
               >
                 <el-col :span="4">
                   <el-button @click="resumeDelete(tabItem.name, item)"
@@ -534,42 +551,133 @@
                     >
                 </el-col>
 
-                <el-col :span="4">
+                <el-col :span="4" v-if="item.zhcn">
                   <el-input
-                    v-model="item.year"
-                    :placeholder="`请输入${tabItem.label}年份`"
+                    v-model="item.zhcn.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.zh')}${tabItem.label}年份` })"
+                  ></el-input>
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="item.zhcn.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.zh')}${tabItem.label}事件` })"
+                  ></el-input>
+                </el-col>
+                <el-col :span="4" v-if="item.enus">
+                  <el-input
+                    v-model="item.enus.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.en')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="item.enus.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.en')}${tabItem.label}事件` })"
+                  ></el-input>
+                </el-col>
+                <el-col :span="4" v-if="item.jajp">
+                  <el-input
+                    v-model="item.jajp.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.ja')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="item.jajp.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.ja')}${tabItem.label}事件` })"
+                  ></el-input>
+                </el-col>
+                <el-col :span="4" v-if="item.eses">
+                  <el-input
+                    v-model="item.eses.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.es')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="item.eses.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.es')}${tabItem.label}事件` })"
                   ></el-input>
                 </el-col>
 
-                <el-col :span="10">
-                  <el-input
-                    v-model="item.resume"
-                    type="textarea"
-                    :placeholder="`请输入${tabItem.label}事件`"
-                  ></el-input>
-                </el-col>
+
               </el-row>
 
-              <el-row :gutter="20">
+              <el-row :gutter="20" >
                 <el-col :span="4">
                   <el-button @click="resumeCreate(tabItem.name)"
                       >{{ $t('content.create') }}{{ tabItem.label }}</el-button
                     >
                 </el-col>
-                <el-col :span="4">
+                <!-- <el-col :span="4">
                   <el-input
                     v-model="defaultResume[tabItem.name].year"
                     :placeholder="`请输入${tabItem.label}年份`"
                   ></el-input>
-                </el-col>
-
-                <el-col :span="10">
                   <el-input
                     v-model="defaultResume[tabItem.name].resume"
                     type="textarea"
                     :placeholder="`请输入${tabItem.label}事件`"
                   ></el-input>
+                </el-col> -->
+                <el-col :span="4" >
+
+                  <el-input
+                    v-model="defaultResume[tabItem.name].zhcn.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.zh')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="defaultResume[tabItem.name].zhcn.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.zh')}${tabItem.label}事件` })"
+                  ></el-input>
                 </el-col>
+                <el-col :span="4" >
+                  <el-input
+                    v-model="defaultResume[tabItem.name].enus.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.en')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="defaultResume[tabItem.name].enus.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.en')}${tabItem.label}事件` })"
+                  ></el-input>
+                </el-col>
+                <el-col :span="4" >
+                  <el-input
+                    v-model="defaultResume[tabItem.name].jajp.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.ja')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="defaultResume[tabItem.name].jajp.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.ja')}${tabItem.label}事件` })"
+                  ></el-input>
+                </el-col>
+                <el-col :span="4" >
+                  <el-input
+                    v-model="defaultResume[tabItem.name].eses.year"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.es')}${tabItem.label}年份` })"
+                  ></el-input>
+
+                  <el-input
+                    style="margin-top: 10px;"
+                    v-model="defaultResume[tabItem.name].eses.resume"
+                    type="textarea"
+                    :placeholder="$t('form.placeholder', { msg: `${$t('lang.es')}${tabItem.label}事件` })"
+                  ></el-input>
+                </el-col>
+
+
               </el-row>
               <!-- </el-form-item> -->
             </el-tab-pane>
@@ -750,9 +858,9 @@ export default {
       }
     }
     return {
-        editorOption: {
+        editorOptionZhcn: {
           placeholder: this.$t('form.placeholder', {
-                  msg: this.$t('user.seller.metadata.profile'),
+                  msg: `${this.$t('lang.zh')}${this.$t('user.seller.metadata.profile')}`,
                 }),
           // some quill options
           modules: {
@@ -762,6 +870,43 @@ export default {
             ]
           },
         },
+        editorOptionEnus: {
+          placeholder: this.$t('form.placeholder', {
+                  msg: `${this.$t('lang.en')}${this.$t('user.seller.metadata.profile')}`,
+                }),
+          // some quill options
+          modules: {
+            toolbar: [
+              ['bold', 'italic', 'underline', 'strike'],
+              ['blockquote', 'code-block']
+            ]
+          },
+        },
+        editorOptionJajp: {
+          placeholder: this.$t('form.placeholder', {
+                  msg: `${this.$t('lang.ja')}${this.$t('user.seller.metadata.profile')}`,
+                }),
+          // some quill options
+          modules: {
+            toolbar: [
+              ['bold', 'italic', 'underline', 'strike'],
+              ['blockquote', 'code-block']
+            ]
+          },
+        },
+        editorOptionEses: {
+          placeholder: this.$t('form.placeholder', {
+                  msg: `${this.$t('lang.zh')}${this.$t('user.seller.metadata.profile')}`,
+                }),
+          // some quill options
+          modules: {
+            toolbar: [
+              ['bold', 'italic', 'underline', 'strike'],
+              ['blockquote', 'code-block']
+            ]
+          },
+        },
+
       dialogVisible: false,
       userSearch: {
         name: '',
@@ -849,7 +994,10 @@ export default {
           recommend: '',
           prize: '',
           website: '',
-          profile: '',
+          profileZhcn: '',
+          profileEnus: '',
+          profileJajp: '',
+          profileEses: '',
         },
         studio: {
           banner: '',
@@ -864,47 +1012,121 @@ export default {
         resume: {
           prize: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
           individua: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
           organizing: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
           publish: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
         },
       },
       defaultResume: {
-        prize: {
+        prize:
+            {
+              zhcn: {
           year: '',
           resume: '',
         },
-        individua: {
+              enus: {
           year: '',
           resume: '',
         },
-        organizing: {
+              jajp: {
           year: '',
           resume: '',
         },
-        publish: {
+              eses: {
+          year: '',
+          resume: '',
+        }
+            }
+          ,
+        individua:
+            {
+              zhcn: {
           year: '',
           resume: '',
         },
+              enus: {
+          year: '',
+          resume: '',
+        },
+              jajp: {
+          year: '',
+          resume: '',
+        },
+              eses: {
+          year: '',
+          resume: '',
+        }
+            }
+          ,
+        organizing:
+            {
+              zhcn: {
+          year: '',
+          resume: '',
+        },
+              enus: {
+          year: '',
+          resume: '',
+        },
+              jajp: {
+          year: '',
+          resume: '',
+        },
+              eses: {
+          year: '',
+          resume: '',
+        }
+            }
+          ,
+        publish:
+            {
+              zhcn: {
+          year: '',
+          resume: '',
+        },
+              enus: {
+          year: '',
+          resume: '',
+        },
+              jajp: {
+          year: '',
+          resume: '',
+        },
+              eses: {
+          year: '',
+          resume: '',
+        }
+            }
+          ,
+
+
       },
       activeCollapses: ['0', '1', '2', '3', '4'],
       tabsResume: [
@@ -1146,7 +1368,10 @@ export default {
           recommend: '',
           prize: '',
           website: '',
-          profile: '',
+          profileZhcn: '',
+          profileEnus: '',
+          profileJajp: '',
+          profileEses: '',
         },
         studio: {
           banner: '',
@@ -1158,27 +1383,35 @@ export default {
         resume: {
           prize: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
           individua: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
           organizing: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
           publish: [
             // {
-            //   year: '',
-            //   resume: '',
-            // },
+            //   zhcn: '',
+            //   enus: '',
+            //   jajp: '',
+            //   eses: ''
+            // }
           ],
         },
 
@@ -1233,39 +1466,58 @@ export default {
 
     async resumeCreate(type, item) {
       // console.log(this.sellerData.resume[type], type, item)
-      this.sellerData.resume[type].push({
-        year: this.defaultResume[type].year,
-        resume: this.defaultResume[type].resume,
-      })
+      this.sellerData.resume[type].push(this.defaultResume[type])
       this.defaultResume[type] = {
-        year: '',
-        resume: '',
-      }
+              zhcn: {
+          year: '',
+          resume: '',
+        },
+              enus: {
+          year: '',
+          resume: '',
+        },
+              jajp: {
+          year: '',
+          resume: '',
+        },
+              eses: {
+          year: '',
+          resume: '',
+        }
+            }
+
       return;
 
 
     },
 
-    async resumeDelete(type, index) {
+    async resumeDelete(type,  index) {
       this.sellerData.resume[type].splice(index, 1)
       return;
 
 
     },
-    onEditorBlur(editor) {
-        console.log('editor blur!', editor)
-      },
-      onEditorFocus(editor) {
-        console.log('editor focus!', editor)
-      },
-      onEditorReady(editor) {
-        console.log('editor ready!', editor)
-      },
-      onEditorChange({ editor, html, text }) {
-        console.log('editor change!', editor, html, text)
+
+      onEditorChangeZhcn({ editor, html, text }, type) {
+        console.log('editor change!', editor, html, text, type)
         // this.content = html
-        this.sellerData.metadata.profile = html;
-      }
+        this.sellerData.metadata.profileZhcn = html;
+      },
+    onEditorChangeEnus({ editor, html, text }, type) {
+        console.log('editor change!', editor, html, text, type)
+        // this.content = html
+        this.sellerData.metadata.profileEnus = html;
+      },
+      onEditorChangeJajp({ editor, html, text }, type) {
+        console.log('editor change!', editor, html, text, type)
+        // this.content = html
+        this.sellerData.metadata.profileJajp = html;
+      },
+      onEditorChangeEses({ editor, html, text }, type) {
+        console.log('editor change!', editor, html, text, type)
+        // this.content = html
+        this.sellerData.metadata.profileEses = html;
+      },
   },
 }
 </script>
