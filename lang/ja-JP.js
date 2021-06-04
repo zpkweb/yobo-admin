@@ -184,7 +184,8 @@ export default {
       "added": "追加",
       "onsale": "発売中",
       "sold": "販売済み",
-      "offline": "削除されました"
+      "offline": "削除されました",
+      "notsale": "非販売",
     },
     "nothing": "番号"
   },

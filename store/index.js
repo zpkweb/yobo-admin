@@ -352,10 +352,15 @@ export const state = () => ({
       subMenu: [
         {
           icon: 'el-icon-menu',
-          // name: '轮播图权限',
           name: 'menu.page.banner',
           path: '/page/banner',
           level: '3-0',
+        },
+        {
+          icon: 'el-icon-menu',
+          name: 'menu.page.message',
+          path: '/page/message',
+          level: '3-1',
         },
       ],
 

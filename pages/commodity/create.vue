@@ -73,6 +73,9 @@
                   <el-radio :label="3">{{
                     $t('commodity.state.offline')
                   }}</el-radio>
+                  <el-radio :label="4">{{
+                    $t('commodity.state.notsale')
+                  }}</el-radio>
                 </el-radio-group>
               </el-form-item>
             </el-col>
@@ -1474,6 +1477,10 @@ export default {
           index: 3,
           name: this.$t('commodity.state.offline'),
         },
+        {
+          index: 4,
+          name: this.$t('commodity.state.notsale'),
+        },
       ],
       // "category": "类别",
       categorys: [],
@@ -1534,6 +1541,7 @@ export default {
           value: '4',
           label: this.$t('content.logoff'),
         },
+
       ],
       choiceOptions: [
         {

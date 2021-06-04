@@ -16,6 +16,7 @@ const _4c03d416 = () => interopDefault(import('../pages/index.vue' /* webpackChu
 const _4f3b27f0 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _ec80c30a = () => interopDefault(import('../pages/page.vue' /* webpackChunkName: "pages/page" */))
 const _9abde820 = () => interopDefault(import('../pages/page/banner.vue' /* webpackChunkName: "pages/page/banner" */))
+const _3c83e71a = () => interopDefault(import('../pages/page/message.vue' /* webpackChunkName: "pages/page/message" */))
 const _1d73ae6b = () => interopDefault(import('../pages/seller.vue' /* webpackChunkName: "pages/seller" */))
 const _5bea254a = () => interopDefault(import('../pages/seller/apply.vue' /* webpackChunkName: "pages/seller/apply" */))
 const _7042e7d0 = () => interopDefault(import('../pages/seller/create.vue' /* webpackChunkName: "pages/seller/create" */))
@@ -112,6 +113,10 @@ export const routerOptions = {
       path: "banner",
       component: _9abde820,
       name: "page-banner___zh-cn"
+    }, {
+      path: "message",
+      component: _3c83e71a,
+      name: "page-message___zh-cn"
     }]
   }, {
     path: "/seller",
@@ -231,6 +236,10 @@ export const routerOptions = {
       path: "banner",
       component: _9abde820,
       name: "page-banner___en-us"
+    }, {
+      path: "message",
+      component: _3c83e71a,
+      name: "page-message___en-us"
     }]
   }, {
     path: "/en-us/seller",
@@ -350,6 +359,10 @@ export const routerOptions = {
       path: "banner",
       component: _9abde820,
       name: "page-banner___es-es"
+    }, {
+      path: "message",
+      component: _3c83e71a,
+      name: "page-message___es-es"
     }]
   }, {
     path: "/es-es/seller",
@@ -469,6 +482,10 @@ export const routerOptions = {
       path: "banner",
       component: _9abde820,
       name: "page-banner___ja-jp"
+    }, {
+      path: "message",
+      component: _3c83e71a,
+      name: "page-message___ja-jp"
     }]
   }, {
     path: "/ja-jp/seller",

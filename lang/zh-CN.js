@@ -71,8 +71,9 @@ export default {
       "identityList": "用户身份列表"
     },
     "page": {
-      "title": "页面管理",
-      "banner": "轮播图"
+      "title": "官网管理",
+      "banner": "轮播图",
+      "message": "消息"
     }
   },
   "login": {
@@ -230,7 +231,8 @@ export default {
       "added": "已添加",
       "onsale": "售卖中",
       "sold": "已售卖",
-      "offline": "已下架"
+      "offline": "已下架",
+      "notsale": "非售卖",
     },
     "nothing": "暂无"
   },
@@ -248,6 +250,17 @@ export default {
       "es": "欧元",
     }
   },
+  "message": {
+    "message": "消息",
+    "email": "邮箱",
+    "title": "标题",
+    "content": "内容",
+    "question": "问题",
+    "href": "链接",
+    "createdDate": "创建日期",
+    "reply": "回复",
+    "addressee": "收件人"
+  }
 
 
 

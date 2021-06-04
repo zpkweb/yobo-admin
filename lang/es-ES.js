@@ -192,7 +192,8 @@ export default {
       "added": "adicional",
       "onsale": "En venta",
       "sold": "Vendido",
-      "offline": "Ha sido removido"
+      "offline": "Ha sido removido",
+      "notsale": "No vender",
     },
     "nothing": "No"
   },

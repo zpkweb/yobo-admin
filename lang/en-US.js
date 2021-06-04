@@ -183,7 +183,8 @@ export default {
       "added": "added",
       "onsale": "On Sale",
       "sold": "Sold",
-      "offline": "offline"
+      "offline": "offline",
+      "notsale": "not sale",
     },
     "nothing": "Nothing"
 

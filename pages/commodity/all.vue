@@ -423,6 +423,10 @@ export default {
           index: 3,
           name: this.$t('commodity.state.offline'),
         },
+        {
+          index: 4,
+          name: this.$t('commodity.state.notsale'),
+        },
       ],
     }
   },
