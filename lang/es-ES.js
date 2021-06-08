@@ -85,6 +85,7 @@ export default {
     "name": "Nombre",
     "firstName": "Apellido",
     "lastName": "primer nombre",
+    "searchName": "拼音/英文",
     "email": "buzón",
     "phone": "Teléfono móvil",
     "password": "contraseña",

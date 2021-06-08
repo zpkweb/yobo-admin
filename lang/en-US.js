@@ -79,6 +79,7 @@ export default {
     "name": "Name",
     "firstName": "surname",
     "lastName": "First Name",
+    "searchName": "拼音/英文",
     "email": "Mailbox",
     "phone": "Mobile",
     "password": "Password",

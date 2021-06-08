@@ -70,6 +70,7 @@ export default {
     "name": "Nom",
     "firstName": "Nom de famille",
     "lastName": "Prénom",
+    "searchName": "拼音/英文",
     "email": "Boîte aux lettres",
     "phone": "Mobile",
     "password": "Password",

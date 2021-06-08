@@ -694,7 +694,6 @@
           </el-form-item>
 
           <el-form-item :label="$t('commodity.video')">
-            {{form.videos}}
             <el-card class="box-card" v-if="form.videos" v-for="(item, index) in form.videos" :key="index">
               <div slot="header" class="clearfix">
                 <el-button style="float: left; padding: 3px 0" type="text" v-if="editVideoIndex !== index" @click="editVideoIndex = index">编辑视频</el-button>

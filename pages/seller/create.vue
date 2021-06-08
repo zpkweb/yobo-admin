@@ -217,6 +217,16 @@
             ></el-input>
           </el-form-item>
 
+          <el-form-item :label="$t('user.seller.searchName')" prop="searchName">
+            <el-input
+              v-model="sellerData.seller.searchName"
+              :placeholder="
+                $t('form.placeholder', { msg: $t('user.seller.searchName') })
+              "
+            ></el-input>
+          </el-form-item>
+
+
           <el-form-item :label="$t('user.seller.gender')" prop="gender">
             <el-input
               v-model="sellerData.seller.gender"
@@ -978,6 +988,7 @@ export default {
           tags: [],
           firstname: '',
           lastname: '',
+          searchName: '',
           gender: '',
           country: '',
         },
@@ -1352,6 +1363,7 @@ export default {
           tags: [],
           firstname: firstname,
           lastname: lastname,
+          searchName: firstname,
           gender: '',
           country: Mock.mock('@province'),
         },

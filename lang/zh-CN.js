@@ -102,6 +102,7 @@ export default {
       "id": "艺术家Id",
       "firstName": "姓氏",
       "lastName": "名字",
+      "searchName": "拼音/英文",
       "state": "状态",
       "type": "类型",
       "tags": "标签",

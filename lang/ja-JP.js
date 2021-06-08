@@ -80,6 +80,7 @@ export default {
     "name": "名前",
     "firstName": "苗字",
     "lastName": "ファーストネーム",
+    "searchName": "拼音/英文",
     "email": "メールボックス",
     "phone": "携帯電話",
     "password": "パスワード",
