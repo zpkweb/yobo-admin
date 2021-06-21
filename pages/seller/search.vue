@@ -167,7 +167,7 @@
       </el-table-column>
 
 
-      <el-table-column :label="$t('content.operation')" width="172" fixed="right">
+      <el-table-column :label="$t('content.operation')" width="172" >
         <template slot-scope="scope">
           <el-button
             size="mini"

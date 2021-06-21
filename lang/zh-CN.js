@@ -227,6 +227,7 @@ export default {
     },
     "show": "展开",
     "photo": "图片",
+    "images": "封面图",
     "state": {
       "title": "状态",
       "added": "已添加",

@@ -1215,7 +1215,7 @@ export default {
           let data;
           this.isSubmit = true;
 
-          console.log(this.sellerData)
+          // console.log(this.sellerData)
           // console.log(this.typeOptions[this.sellerData.seller.type])
           // return;
 
@@ -1511,22 +1511,22 @@ export default {
     },
 
       onEditorChangeZhcn({ editor, html, text }, type) {
-        console.log('editor change!', editor, html, text, type)
+        // console.log('editor change!', editor, html, text, type)
         // this.content = html
         this.sellerData.metadata.profileZhcn = html;
       },
     onEditorChangeEnus({ editor, html, text }, type) {
-        console.log('editor change!', editor, html, text, type)
+        // console.log('editor change!', editor, html, text, type)
         // this.content = html
         this.sellerData.metadata.profileEnus = html;
       },
       onEditorChangeJajp({ editor, html, text }, type) {
-        console.log('editor change!', editor, html, text, type)
+        // console.log('editor change!', editor, html, text, type)
         // this.content = html
         this.sellerData.metadata.profileJajp = html;
       },
       onEditorChangeEses({ editor, html, text }, type) {
-        console.log('editor change!', editor, html, text, type)
+        // console.log('editor change!', editor, html, text, type)
         // this.content = html
         this.sellerData.metadata.profileEses = html;
       },

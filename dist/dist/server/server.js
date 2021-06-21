@@ -61989,7 +61989,7 @@ external_vue_default.a.use(element_ui_common_default.a, {
     console.log('Making request to ' + config.url);
   });
   $axios.onError(error => {
-    console.log("axios onError", error);
+    // console.log("axios onError", error)
     const code = parseInt(error.response && error.response.status); // console.log("axios onError", error.response)
     // console.log(error.response.status)
 

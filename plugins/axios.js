@@ -4,7 +4,7 @@ export default function ({ $axios, redirect, $message }) {
   })
 
   $axios.onError((error) => {
-    console.log("axios onError", error)
+    // console.log("axios onError", error)
     const code = parseInt(error.response && error.response.status)
     // console.log("axios onError", error.response)
     // console.log(error.response.status)

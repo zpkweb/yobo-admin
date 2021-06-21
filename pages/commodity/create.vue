@@ -21,7 +21,7 @@
         >
           {{ $t('content.update') }}
         </el-button>
-        <el-button icon="el-icon-check" @click="onMock">
+        <el-button v-if="isCreate" icon="el-icon-check" @click="onMock">
           {{ $t('content.fill') }}
         </el-button>
         <el-button icon="el-icon-circle-close" @click="resetForm('form')">{{
@@ -668,6 +668,28 @@
           </el-button>
         </el-col> -->
             </el-row>
+          </el-form-item>
+
+          <el-form-item :label="$t('commodity.images')">
+            <el-upload
+              v-model="form.images"
+              class="banner-uploader"
+              :action="`${$config.origin}/api/upload/images`"
+              :data="{ type: 'commodityImages' }"
+              :show-file-list="false"
+              :on-success="handleCommodityImagesSuccess"
+              :before-upload="beforeUpload"
+            >
+              <img
+                v-if="form.images"
+                :src="form.images"
+                class="commodity-images"
+              />
+              <i v-else class="el-icon-plus commodity-images-uploader-icon"></i>
+              <div slot="tip" class="el-upload__tip">
+                艺术品封面图片，请上传 正方形 比例的图片，且不超过2M
+              </div>
+            </el-upload>
           </el-form-item>
 
           <el-form-item :label="$t('commodity.photo')">
@@ -1436,6 +1458,7 @@ export default {
         themes: [],
         types: [],
         uses: [],
+        images: '',
         photos: [],
         removePhotos: [],
         videos: [],
@@ -1643,6 +1666,11 @@ export default {
           this.form.price = commodityForm.price
         }
 
+        if (commodityForm.images) {
+          this.form.images = commodityForm.images;
+        }
+
+
         if (commodityForm.photos && commodityForm.photos.length) {
           const photos = commodityForm.photos.map((item) => {
             item.url = item.src
@@ -1770,6 +1798,7 @@ export default {
             if (this.isCreate) {
               // this.$refs[formName].resetFields()
               // this.resetForm('form')
+
               this.isCreate = false
               this.$router.push({
                 query: {
@@ -1907,6 +1936,7 @@ export default {
         // "use": "用途",
         uses: [this.uses[Mock.mock(`@integer(0,${this.uses.length - 1})`)]],
 
+        images: '',
         photos: [],
         removePhotos: [],
         videos: [],
@@ -1928,7 +1958,8 @@ export default {
 
       this.type = 'create'
       this.typeText = this.$t('content.create')
-      this.isCreate = true
+      this.isCreate = true;
+
     },
     resetForm(formName) {
       this.reset()
@@ -1989,7 +2020,9 @@ export default {
         themes: [],
         types: [],
         uses: [],
+        images: '',
         photos: [],
+
         removePhotos: [],
         videos: [],
         removeVideos: [],
@@ -2020,6 +2053,9 @@ export default {
     handleVideoPhotoSuccess(res, file) {
       // this.form.videos[index]videoPhoto = res.data.src
       this.form.videos[this.editVideoIndex].videoPhoto = res.data.src;
+    },
+    handleCommodityImagesSuccess(res, file) {
+      this.form.images = res.data.src;
     },
     handleDefaultVideoPhotoSuccess(res, file) {
       this.defaultVideo.videoPhoto = res.data.src
@@ -2152,7 +2188,7 @@ export default {
   }
 
 
-  .video-photo-uploader-icon {
+.video-photo-uploader-icon {
   font-size: 28px;
   color: #8c939d;
   width: 239px;
@@ -2163,6 +2199,20 @@ export default {
 .video-photo {
   width: 239px;
   height: 100px;
+  display: block;
+}
+
+.commodity-images-uploader-icon{
+  font-size: 28px;
+  color: #8c939d;
+  width: 225px;
+  height: 225px;
+  line-height: 225px;
+  text-align: center;
+}
+.commodity-images {
+  width: 225px;
+  height: 225px;
   display: block;
 }
 </style>
