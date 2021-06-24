@@ -38,7 +38,13 @@
       <el-table-column prop="content" :label="$t('message.content')">
       </el-table-column>
 
-      <el-table-column prop="href" :label="$t('message.href')"></el-table-column>
+      <el-table-column prop="href" :label="$t('message.href')">
+
+          <template slot-scope="scope">
+            <el-link :href="href" target="_blank">{{ scope.row.href }}</el-link>
+          </template>
+
+      </el-table-column>
       <el-table-column prop="createdDate" :label="$t('message.createdDate')" :formatter="formatterDate"></el-table-column>
 
       <el-table-column :label="$t('content.operation')" width="172">

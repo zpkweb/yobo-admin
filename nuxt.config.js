@@ -5,7 +5,7 @@ export default {
     baseUrl: process.env.ORIGIN || 'http://localhost:7001',
   },
   publicRuntimeConfig: {
-    v: 'v0.37',
+    v: 'v0.62',
     axios: {
       baseURL: process.env.ORIGIN || 'http://localhost:7001'
     },
