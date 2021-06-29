@@ -64,8 +64,10 @@ export default {
       "identityList": "Lista de identidad de usuario"
     },
     "page": {
-      "title": "Gestión de páginas",
-      "banner": "Carrusel"
+      "title": "官网管理",
+      "banner": "轮播图",
+      "message": "消息",
+      "information": "资讯"
     }
   },
   "login": {

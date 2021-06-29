@@ -63,6 +63,12 @@ export default {
       "superAdmin": "スーパー管理者権限",
       "identityList": "ユーザーIDリスト"
     },
+    "page": {
+      "title": "官网管理",
+      "banner": "轮播图",
+      "message": "消息",
+      "information": "资讯"
+    }
   },
   "login": {
     "title": "舞台裏の管理",

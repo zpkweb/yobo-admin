@@ -365,6 +365,26 @@ export const state = () => ({
       ],
 
     },
+    information: {
+      level: '5',
+      icon: 'el-icon-menu',
+      // name: '资讯管理',
+      name: 'menu.information.title',
+      subMenu: [
+        {
+          icon: 'el-icon-search',
+          name: 'menu.information.search',
+          path: '/information/search',
+          level: '5-0',
+        },
+        {
+          icon: 'el-icon-circle-plus-outline',
+          name: 'menu.information.create',
+          path: '/information/create',
+          level: '5-1',
+        }
+      ]
+    }
 
   },
 

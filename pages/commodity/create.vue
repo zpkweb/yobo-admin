@@ -687,7 +687,7 @@
               />
               <i v-else class="el-icon-plus commodity-images-uploader-icon"></i>
               <div slot="tip" class="el-upload__tip">
-                艺术品封面图片，请上传 正方形 比例的图片，且不超过2M
+                艺术品封面图片，请上传 256X261 比例的图片，且不超过2M
               </div>
             </el-upload>
           </el-form-item>

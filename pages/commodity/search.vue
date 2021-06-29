@@ -448,12 +448,12 @@
 
       <el-row :gutter="0">
         <!-- <el-col :span="3">
-          <el-form-item :label="$t('commodity.hots')" prop="hots">
+          <el-form-item :label="$t('content.hots')" prop="hots">
             <el-switch v-model="commoditySearch.hots"> </el-switch>
           </el-form-item>
         </el-col> -->
         <el-col :span="3">
-          <el-form-item :label="$t('commodity.news')" prop="news">
+          <el-form-item :label="$t('content.news')" prop="news">
             <el-switch v-model="commoditySearch.news"> </el-switch>
           </el-form-item>
         </el-col>
@@ -1034,7 +1034,7 @@ export default {
 
         state: '',
         hots: false,
-        news: false,
+        news: true,
         colors: '',
       },
       options: {

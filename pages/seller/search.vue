@@ -112,7 +112,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item prop="news" :label="$t('commodity.news')">
+      <el-form-item prop="news" :label="$t('content.news')">
         <el-switch v-model="sellerSearch.news"> </el-switch>
       </el-form-item>
 
@@ -230,7 +230,7 @@ export default {
         type: '',
         state: '',
         choice: '',
-        news: 'false'
+        news: true
       },
       currentPage: 1,
       pageSize: 10,

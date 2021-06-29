@@ -22,6 +22,11 @@
           clearable
         ></el-input>
       </el-form-item>
+
+      <el-form-item prop="news" :label="$t('content.news')">
+        <el-switch v-model="userSearch.news"> </el-switch>
+      </el-form-item>
+
       <!-- <el-form-item :label="$t('user.identity')">
         <el-select
           v-model="userSearch.identity"
@@ -278,6 +283,7 @@ export default {
         email: '',
         phone: '',
         identity: '',
+        news: true
       },
       identitys: [],
       identityOptions: [
@@ -317,10 +323,7 @@ export default {
 
     const userSearch = await this.$axios.$get('/api/admin/user/search', {
       params: {
-        identity: this.userSearch.identity,
-        name: this.userSearch.name,
-        email: this.userSearch.email,
-        phone: this.userSearch.phone,
+        ...this.userSearch,
         pageSize: this.pageSize,
         currentPage: this.currentPage,
       },
@@ -343,10 +346,7 @@ export default {
     async onSubmit(currentPage) {
       const userSearch = await this.$axios.$get('/api/admin/user/search', {
         params: {
-          identity: this.userSearch.identity,
-          name: this.userSearch.name,
-          email: this.userSearch.email,
-          phone: this.userSearch.phone,
+          ...this.userSearch,
           pageSize: this.pageSize,
           currentPage: currentPage,
         },

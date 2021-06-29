@@ -13,6 +13,9 @@ const _bffd3c00 = () => interopDefault(import('../pages/commodity/options.vue' /
 const _1ef38c4a = () => interopDefault(import('../pages/commodity/options/_type.vue' /* webpackChunkName: "pages/commodity/options/_type" */))
 const _1d783b36 = () => interopDefault(import('../pages/commodity/search.vue' /* webpackChunkName: "pages/commodity/search" */))
 const _4c03d416 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _02f47270 = () => interopDefault(import('../pages/information.vue' /* webpackChunkName: "pages/information" */))
+const _6ef8f7aa = () => interopDefault(import('../pages/information/create.vue' /* webpackChunkName: "pages/information/create" */))
+const _4c8e12d7 = () => interopDefault(import('../pages/information/search.vue' /* webpackChunkName: "pages/information/search" */))
 const _4f3b27f0 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _ec80c30a = () => interopDefault(import('../pages/page.vue' /* webpackChunkName: "pages/page" */))
 const _9abde820 = () => interopDefault(import('../pages/page/banner.vue' /* webpackChunkName: "pages/page/banner" */))
@@ -97,6 +100,19 @@ export const routerOptions = {
     path: "/es-es",
     component: _4c03d416,
     name: "index___es-es"
+  }, {
+    path: "/information",
+    component: _02f47270,
+    name: "information___zh-cn",
+    children: [{
+      path: "create",
+      component: _6ef8f7aa,
+      name: "information-create___zh-cn"
+    }, {
+      path: "search",
+      component: _4c8e12d7,
+      name: "information-search___zh-cn"
+    }]
   }, {
     path: "/ja-jp",
     component: _4c03d416,
@@ -225,6 +241,19 @@ export const routerOptions = {
       name: "commodity-search___en-us"
     }]
   }, {
+    path: "/en-us/information",
+    component: _02f47270,
+    name: "information___en-us",
+    children: [{
+      path: "create",
+      component: _6ef8f7aa,
+      name: "information-create___en-us"
+    }, {
+      path: "search",
+      component: _4c8e12d7,
+      name: "information-search___en-us"
+    }]
+  }, {
     path: "/en-us/login",
     component: _4f3b27f0,
     name: "login___en-us"
@@ -348,6 +377,19 @@ export const routerOptions = {
       name: "commodity-search___es-es"
     }]
   }, {
+    path: "/es-es/information",
+    component: _02f47270,
+    name: "information___es-es",
+    children: [{
+      path: "create",
+      component: _6ef8f7aa,
+      name: "information-create___es-es"
+    }, {
+      path: "search",
+      component: _4c8e12d7,
+      name: "information-search___es-es"
+    }]
+  }, {
     path: "/es-es/login",
     component: _4f3b27f0,
     name: "login___es-es"
@@ -469,6 +511,19 @@ export const routerOptions = {
       path: "search",
       component: _1d783b36,
       name: "commodity-search___ja-jp"
+    }]
+  }, {
+    path: "/ja-jp/information",
+    component: _02f47270,
+    name: "information___ja-jp",
+    children: [{
+      path: "create",
+      component: _6ef8f7aa,
+      name: "information-create___ja-jp"
+    }, {
+      path: "search",
+      component: _4c8e12d7,
+      name: "information-search___ja-jp"
     }]
   }, {
     path: "/ja-jp/login",

@@ -74,6 +74,11 @@ export default {
       "title": "官网管理",
       "banner": "轮播图",
       "message": "消息"
+    },
+    "information": {
+      "title": "资讯管理",
+      "search": "查找资讯",
+      "create": "添加资讯"
     }
   },
   "login": {
@@ -174,7 +179,9 @@ export default {
     "example": "示例",
     "title": "标题",
     "subTitle": "子标题",
-    "desc": "详情"
+    "desc": "详情",
+    "hots": "最热",
+    "news": "最新",
   },
   "commodity": {
     "id": "id",
@@ -218,8 +225,7 @@ export default {
       "min": "最小高度",
       "max": "最大高度",
     },
-    "hots": "最热",
-    "news": "最新",
+
     "color": {
       "title": "颜色",
       "start": "开始颜色",
@@ -262,6 +268,11 @@ export default {
     "createdDate": "创建日期",
     "reply": "回复",
     "addressee": "收件人"
+  },
+  "information": {
+    "title": "标题",
+    "isTop": "置顶",
+
   }
 
 

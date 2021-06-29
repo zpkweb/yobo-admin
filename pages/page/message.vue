@@ -18,7 +18,7 @@
       </el-form-item>
 
 
-      <el-form-item prop="news" :label="$t('commodity.news')">
+      <el-form-item prop="news" :label="$t('content.news')">
         <el-switch v-model="messageSearch.news"> </el-switch>
       </el-form-item>
 
@@ -41,7 +41,7 @@
       <el-table-column prop="href" :label="$t('message.href')">
 
           <template slot-scope="scope">
-            <el-link :href="href" target="_blank">{{ scope.row.href }}</el-link>
+            <el-link  @click="openHref(scope.row.href)">{{ scope.row.href }}</el-link>
           </template>
 
       </el-table-column>
@@ -149,7 +149,7 @@ export default {
       messageSearch: {
         title: '',
         content: '',
-        news: false
+        news: true
       },
       message: [],
       pagination: {
@@ -257,6 +257,9 @@ export default {
         this.replyContent = html ? true : false;
         this.dialogMessage.replyContent = html;
       },
+    openHref(href) {
+      window.open(href, '_blank')
+    }
   },
 }
 </script>
