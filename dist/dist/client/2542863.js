@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[33],{499:function(t,n,e){"use strict";e.r(n);var l=e(14),component=Object(l.a)({},(function(){var t=this.$createElement,n=this._self._c||t;return n("div",[n("h3",[this._v("艺术家")]),this._v(" "),n("Nuxt")],1)}),[],!1,null,null,null);n.default=component.exports}}]);

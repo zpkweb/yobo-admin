@@ -2123,6 +2123,7 @@ export default {
     formatterDate(row, column, cellValue, index) {
       return this.$moment(cellValue).format('YYYY-MM-DD HH:mm:ss')
     },
+
     commodityAddVideo() {
       this.form.videos.push(Object.assign({}, this.defaultVideo));
       this.defaultVideo = {
@@ -2142,7 +2143,7 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped>
 .el-upload-list--picture-card .el-upload-list__item {
   width: 192px;
   height: 100px;
@@ -2174,14 +2175,7 @@ export default {
     margin-bottom: 18px;
   }
 
-  .clearfix:before,
-  .clearfix:after {
-    display: table;
-    content: "";
-  }
-  .clearfix:after {
-    clear: both
-  }
+
 
   .box-card {
     margin: 20px;

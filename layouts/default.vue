@@ -75,4 +75,17 @@ export default {
   display: block;
 }
 
+
+.quill-editor{
+  height: 300px;
+}
+
+.clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
 </style>

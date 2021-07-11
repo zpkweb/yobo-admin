@@ -78,7 +78,12 @@ export default {
     "information": {
       "title": "资讯管理",
       "search": "查找资讯",
-      "create": "添加资讯"
+      "create": "添加资讯",
+      "video": {
+        "title": "资讯视频管理",
+        "search": "查找资讯视频",
+        "create": "添加资讯视频",
+      }
     }
   },
   "login": {

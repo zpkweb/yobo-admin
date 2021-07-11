@@ -16,6 +16,8 @@ const _4c03d416 = () => interopDefault(import('../pages/index.vue' /* webpackChu
 const _02f47270 = () => interopDefault(import('../pages/information.vue' /* webpackChunkName: "pages/information" */))
 const _6ef8f7aa = () => interopDefault(import('../pages/information/create.vue' /* webpackChunkName: "pages/information/create" */))
 const _4c8e12d7 = () => interopDefault(import('../pages/information/search.vue' /* webpackChunkName: "pages/information/search" */))
+const _4e20a8ff = () => interopDefault(import('../pages/information/video/create.vue' /* webpackChunkName: "pages/information/video/create" */))
+const _5ba990aa = () => interopDefault(import('../pages/information/video/search.vue' /* webpackChunkName: "pages/information/video/search" */))
 const _4f3b27f0 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _ec80c30a = () => interopDefault(import('../pages/page.vue' /* webpackChunkName: "pages/page" */))
 const _9abde820 = () => interopDefault(import('../pages/page/banner.vue' /* webpackChunkName: "pages/page/banner" */))
@@ -112,6 +114,14 @@ export const routerOptions = {
       path: "search",
       component: _4c8e12d7,
       name: "information-search___zh-cn"
+    }, {
+      path: "video/create",
+      component: _4e20a8ff,
+      name: "information-video-create___zh-cn"
+    }, {
+      path: "video/search",
+      component: _5ba990aa,
+      name: "information-video-search___zh-cn"
     }]
   }, {
     path: "/ja-jp",
@@ -252,6 +262,14 @@ export const routerOptions = {
       path: "search",
       component: _4c8e12d7,
       name: "information-search___en-us"
+    }, {
+      path: "video/create",
+      component: _4e20a8ff,
+      name: "information-video-create___en-us"
+    }, {
+      path: "video/search",
+      component: _5ba990aa,
+      name: "information-video-search___en-us"
     }]
   }, {
     path: "/en-us/login",
@@ -388,6 +406,14 @@ export const routerOptions = {
       path: "search",
       component: _4c8e12d7,
       name: "information-search___es-es"
+    }, {
+      path: "video/create",
+      component: _4e20a8ff,
+      name: "information-video-create___es-es"
+    }, {
+      path: "video/search",
+      component: _5ba990aa,
+      name: "information-video-search___es-es"
     }]
   }, {
     path: "/es-es/login",
@@ -524,6 +550,14 @@ export const routerOptions = {
       path: "search",
       component: _4c8e12d7,
       name: "information-search___ja-jp"
+    }, {
+      path: "video/create",
+      component: _4e20a8ff,
+      name: "information-video-create___ja-jp"
+    }, {
+      path: "video/search",
+      component: _5ba990aa,
+      name: "information-video-search___ja-jp"
     }]
   }, {
     path: "/ja-jp/login",

@@ -564,7 +564,7 @@ export default {
     this.reset();
     if (this.$route.query && this.$route.query.informationId) {
       this.isCreate = false;
-      const information = await this.$axios.$get('/api/admin/information/detail', {
+      const information = await this.$axios.$get('/api/admin/information/edit', {
         params: {
           informationId: this.$route.query.informationId,
         },
