@@ -814,7 +814,7 @@
                     "
                   ></el-input>
                   <div class="el-upload__tip">
-                    siteId  E5DD260925A6084B
+                    siteId 示例：E5DD260925A6084B
                   </div>
                 </el-form-item>
 

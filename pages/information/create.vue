@@ -198,290 +198,57 @@
           </el-form-item>
         </el-collapse-item>
         <el-collapse-item title="视频 " name="2">
-          <el-card class="box-card" v-if="form.videos" v-for="(item, index) in form.videos" :key="index">
-              <div slot="header" class="clearfix">
-                <template v-if="editVideoIndex !== index">
-                  <el-button style="float: left; padding: 3px 0" type="text"  @click="editVideoIndex = index">编辑视频</el-button>
-                  <el-button style="float: left; padding: 3px 0" type="text" @click="commodityRemoveVideo(index)">删除视频</el-button>
-                </template>
+          <el-card class="box-card" v-for="(item, index) in form.videos" :key="item.id">
+            <div slot="header" class="clearfix">
+              <el-button style="padding: 3px 0" type="text" @click="editVideo(index, item)">编辑视频</el-button>
+              <el-button style="padding: 3px 0; color: #F56C6C;" type="text" @click="deleteVideo(index, item)">删除视频</el-button>
+            </div>
+            <div class="text item">
+              标题: {{item['zh-cn']}}
+            </div>
+            <div class="text item">
+              ccId: {{item.ccId}}
+            </div>
+            <div class="text item">
+              siteId: {{item.siteId}}
+            </div>
+            <div class="text item">
+              视频封面图片:
+              <br />
+              <img v-if="item.videoPhoto" :src="item.videoPhoto" width="768" height="400" />
+            </div>
+          </el-card>
 
-                <el-button style="float: left; padding: 3px 0" type="text" v-else @click="editVideoIndex = null">编辑完成</el-button>
-
-
-              </div>
-
-              <el-row :gutter="20">
-                  <el-col :span="6">
-                    <el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.zh'),
-                          name: $t('content.title'),
-                        })
-                      "
-                    >
-                      <el-input
-                        v-model="item['zh-cn']"
-                        :disabled="editVideoIndex == index ? false : true"
-                      ></el-input
-                    ></el-form-item>
-                  </el-col>
-                  <el-col :span="6">
-                    <el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.en'),
-                          name: $t('content.title'),
-                        })
-                      "
-                      ><el-input
-                        v-model="item['en-us']"
-                        :disabled="editVideoIndex == index ? false : true"
-                      ></el-input></el-form-item
-                  ></el-col>
-                  <el-col :span="6"
-                    ><el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.ja'),
-                          name: $t('content.title'),
-                        })
-                      "
-
-                      ><el-input
-                        v-model="item['ja-jp']"
-                        :disabled="editVideoIndex == index ? false : true"
-                      ></el-input></el-form-item
-                  ></el-col>
-                  <el-col :span="6">
-                    <el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.es'),
-                          name: $t('content.title'),
-                        })
-                      "
-
-                    >
-                      <el-input
-                        v-model="item['es-es']"
-                        :disabled="editVideoIndex == index ? false : true"
-                      ></el-input> </el-form-item
-                  ></el-col>
-                </el-row>
-
-              <el-form-item
-                class="text item"
-                :label="$t('commodity.ccId')"
-              >
-                <el-input
-                  v-model="item.ccId"
-                  :disabled="editVideoIndex == index ? false : true"
-                ></el-input>
-              </el-form-item>
-
-              <el-form-item
-                class="text item"
-                :label="$t('commodity.siteId')"
-              >
-                <el-input
-                  v-model="item.siteId"
-                  :disabled="editVideoIndex == index ? false : true"
-                ></el-input>
-
-              </el-form-item>
-              <el-form-item
-                class="text item"
-                :label="$t('commodity.videoPhoto')"
-              >
-                <template v-if="editVideoIndex == index">
-                  <el-upload
-                    v-model="item.videoPhoto"
-                    class="banner-uploader"
-                    :action="`${$config.origin}/api/upload/images`"
-                    :data="{ type: 'sellerStudioVideoImg' }"
-                    :show-file-list="false"
-                    :on-success="handleVideoPhotoSuccess"
-                    :before-upload="beforeUpload"
-                  >
-                    <img
-                      v-if="item && item.videoPhoto"
-                      :src="item.videoPhoto"
-                      class="video-photo"
-                    />
-                    <i v-else class="el-icon-plus video-photo-uploader-icon"></i>
-                    <div slot="tip" class="el-upload__tip">
-                      视频封面图片，请上传 768X400 比例的图片，且不超过2M
-                    </div>
-                  </el-upload>
-                </template>
-                <template v-else>
-                  <img
-                    v-if="item && item.videoPhoto"
-                    :src="item.videoPhoto"
-                    class="video-photo"
-                  />
-                </template>
-
-                </el-upload>
-              </el-form-item>
-            </el-card>
-
-            <el-card class="box-card">
-              <div slot="header" class="clearfix">
-                <el-button style="float: left; padding: 3px 0" type="text" @click="commodityAddVideo">添加视频</el-button>
-              </div>
-
-                <el-row :gutter="20">
-                  <el-col :span="6">
-                    <el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.zh'),
-                          name: $t('content.title'),
-                        })
-                      "
-                    >
-                      <el-input
-                        v-model="defaultVideo['zh-cn']"
-                        :placeholder="$t('form.placeholder', { msg: `${$t('lang.zh')}${$t('content.title')}` })"
-                      ></el-input
-                    ></el-form-item>
-                  </el-col>
-                  <el-col :span="6">
-                    <el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.en'),
-                          name: $t('content.title'),
-                        })
-                      "
-                      ><el-input
-                        v-model="defaultVideo['en-us']"
-                        :placeholder="$t('form.placeholder', { msg: `${$t('lang.en')}${$t('content.title')}` })"
-                      ></el-input></el-form-item
-                  ></el-col>
-                  <el-col :span="6"
-                    ><el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.ja'),
-                          name: $t('content.title'),
-                        })
-                      "
-
-                      ><el-input
-                        v-model="defaultVideo['ja-jp']"
-                        :placeholder="$t('form.placeholder', { msg: `${$t('lang.ja')}${$t('content.title')}` })"
-                      ></el-input></el-form-item
-                  ></el-col>
-                  <el-col :span="6">
-                    <el-form-item
-                      :label="
-                        $t('langname', {
-                          lang: $t('lang.es'),
-                          name: $t('content.title'),
-                        })
-                      "
-
-                    >
-                      <el-input
-                        v-model="defaultVideo['es-es']"
-                        :placeholder="$t('form.placeholder', { msg: `${$t('lang.es')}${$t('content.title')}` })"
-                      ></el-input> </el-form-item
-                  ></el-col>
-                </el-row>
-
-
-                <el-form-item
-                  class="text item"
-                  :label="$t('commodity.ccId')"
-                >
-                  <el-input
-                    v-model="defaultVideo.ccId"
-                    :placeholder="
-                      $t('form.placeholder', { msg: $t('commodity.ccId') })
-                    "
-                  ></el-input>
-                  <div class="el-upload__tip">
-                    ccId  示例：61AA76B5334118229C33DC5901307461
-                  </div>
-
-                </el-form-item>
-
-
-
-                <el-form-item
-                  class="text item"
-                  :label="$t('commodity.siteId')"
-                >
-                  <el-input
-                    v-model="defaultVideo.siteId"
-                    :placeholder="
-                      $t('form.placeholder', { msg: $t('commodity.siteId') })
-                    "
-                  ></el-input>
-                  <div class="el-upload__tip">
-                    siteId  E5DD260925A6084B
-                  </div>
-                </el-form-item>
-
-
-                <el-form-item
-                  class="text item"
-                  :label="$t('commodity.videoPhoto')"
-                >
-                  <el-upload
-                    v-model="defaultVideo.videoPhoto"
-                    class="banner-uploader"
-                    :action="`${$config.origin}/api/upload/images`"
-                    :data="{ type: 'sellerStudioVideoImg' }"
-                    :show-file-list="false"
-                    :on-success="handleDefaultVideoPhotoSuccess"
-                    :before-upload="beforeUpload"
-                  >
-                    <img
-                      v-if="defaultVideo && defaultVideo.videoPhoto"
-                      :src="defaultVideo.videoPhoto"
-                      class="video-photo"
-                    />
-                    <i v-else class="el-icon-plus video-photo-uploader-icon"></i>
-                    <div slot="tip" class="el-upload__tip">
-                      视频封面图片，请上传 768X400 比例的图片，且不超过2M
-                    </div>
-                  </el-upload>
-                </el-form-item>
-
-            </el-card>
+          <el-form-item>
+            <el-button type="primary" @click="addVideo">添加视频</el-button>
+          </el-form-item>
         </el-collapse-item>
       </el-collapse>
     </el-form>
+    <el-dialog
+      :title="dialogVideoTitle"
+      :visible.sync="showVideo"
+      :close="dialogVideoClose"
+      width="80%"
+    >
+      <Video v-if="showVideo" :dialogVideoData="dialogVideoData" v-on:createDialogVideo="createDialogVideo" v-on:editDialogVideo="editDialogVideo" ></Video>
+    </el-dialog>
+
+
   </div>
 </template>
 <script>
 import Mock from 'mockjs'
+import Video from './video/create';
 export default {
+  components: {
+    Video
+  },
   data() {
     return {
+
       isCreate: this.$route.query.informationId ? true : false,
       isSubmit: false,
-
-      defaultVideo: {
-        'zh-cn': '',
-        'en-us': '',
-        'ja-jp': '',
-        'es-es': '',
-        video: '',
-        ccId: '',
-        siteId: '',
-        videoPhoto: '',
-        detail: {
-          'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'es-es': ''
-        }
-      },
       editVideoIndex: null,
       form: {
         isTop: false,
@@ -500,8 +267,10 @@ export default {
           'es-es': '',
         },
         videos: [],
-        removeVideos: [],
+        removeVideos: []
+
       },
+      videos: [],
       activeCollapses: ['0', '1', '2', '3', '4'],
       editorOptionZhcn: {
         placeholder: this.$t('form.placeholder', {
@@ -551,7 +320,34 @@ export default {
           ],
         },
       },
+      showVideo: false,
 
+      dialogVideoTitle: "添加视频",
+      dialogVideoData: {
+        isTop: false,
+        id: '',
+        videoId: '',
+        video: '',
+        ccId: '',
+        siteId: '',
+        videoPhoto: '',
+        name: {
+
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          'es-es': '',
+        },
+        desc: {
+          id: '',
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          'es-es': '',
+        },
+        videos: [],
+        removeVideos: [],
+      }
 
     }
   },
@@ -755,25 +551,7 @@ export default {
       }
       return isLt2M
     },
-    commodityAddVideo() {
-      this.form.videos.push(Object.assign({}, this.defaultVideo));
-      this.defaultVideo = {
-        'zh-cn': '',
-        'en-us': '',
-        'ja-jp': '',
-        'es-es': '',
-        video: '',
-        ccId: '',
-        siteId: '',
-        videoPhoto: '',
-        detail: {
-          'zh-cn': '',
-          'en-us': '',
-          'ja-jp': '',
-          'es-es': ''
-        }
-      }
-    },
+
     commodityRemoveVideo(index) {
 
       if(this.form.videos[index].id){
@@ -781,6 +559,106 @@ export default {
       }
 
       this.form.videos.splice(index, 1);
+    },
+    addVideo() {
+      this.dialogVideoTitle = "添加视频";
+      this.dialogVideoData = {
+        isTop: false,
+        id: '',
+        videoId: '',
+        video: '',
+        ccId: '',
+        siteId: '',
+        videoPhoto: '',
+        name: {
+
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          'es-es': '',
+        },
+        desc: {
+          id: '',
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          'es-es': '',
+        },
+        videos: [],
+        removeVideos: [],
+      };
+      console.log("添加视频", this.dialogVideoData)
+      this.showVideo = true;
+    },
+
+    editVideo(index, data) {
+      this.dialogVideoTitle = "编辑视频";
+      this.dialogVideoIndex = index;
+      this.dialogVideoData = {
+        isTop: false,
+        id: data.id,
+        videoId: data.videoId,
+        video: '',
+        ccId: data.ccId,
+        siteId: data.siteId,
+        videoPhoto: data.videoPhoto,
+        name: {
+          'zh-cn': data['zh-cn'],
+          'en-us': data['en-us'],
+          'ja-jp': data['ja-jp'],
+          'es-es': data['es-es'],
+        },
+        desc: {
+          id: '',
+          'zh-cn': data.desc ? data.desc['zh-cn'] : '',
+          'en-us': data.desc ? data.desc['en-us'] : '',
+          'ja-jp': data.desc ? data.desc['ja-jp'] : '',
+          'es-es': data.desc ? data.desc['es-es'] : '',
+        },
+        videos: [],
+        removeVideos: [],
+      };
+      this.showVideo = true;
+    },
+    createDialogVideo(data) {
+      this.form.videos.push(data);
+      this.showVideo = false;
+    },
+    editDialogVideo(data) {
+      console.log("editDialogVideo", data)
+      this.form.videos[this.dialogVideoIndex] = data;
+      this.showVideo = false;
+    },
+    deleteVideo(index, data) {
+      this.form.removeVideos.push(Object.assign({}, this.form.videos[index]))
+      this.form.videos.splice(index, 1)
+    },
+    dialogVideoClose() {
+      this.dialogVideoData = {
+        isTop: false,
+        id: '',
+        videoId: '',
+        video: '',
+        ccId: '',
+        siteId: '',
+        videoPhoto: '',
+        name: {
+
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          'es-es': '',
+        },
+        desc: {
+          id: '',
+          'zh-cn': '',
+          'en-us': '',
+          'ja-jp': '',
+          'es-es': '',
+        },
+        videos: [],
+        removeVideos: [],
+      };
     }
   },
 }

@@ -3,7 +3,7 @@
     <el-form :inline="true" :model="search" class="user-search">
       <el-form-item :label="$t('information.title')">
         <el-input
-          v-model="search.name"
+          v-model="search.title"
           :placeholder="$t('form.placeholder', { msg: $t('information.title') })"
           clearable
         ></el-input>
@@ -63,7 +63,7 @@
                 <el-button
                   type="primary"
                   size="mini"
-                  @click="delete(scope.$index, scope.row)"
+                  @click="deleteInformationVideo(scope.$index, scope.row)"
                   >{{ $t('content.define') }}</el-button
                 >
               </div>
@@ -103,7 +103,7 @@ export default {
   data() {
     return {
       search: {
-        name: '',
+        title: '',
         news: true,
       },
       information: [],
@@ -115,7 +115,7 @@ export default {
     }
   },
   async fetch() {
-    let informationData = await this.$axios.$get('/api/admin/information', {
+    let informationData = await this.$axios.$get('/api/admin/information/video', {
       params: {
         news: this.search.news,
         currentPage: this.pagination.currentPage,
@@ -132,7 +132,7 @@ export default {
   methods: {
     async onSearch(currentPage) {
       this.pagination.currentPage = currentPage;
-      let searchData = await this.$axios.$get('/api/admin/information/search', {
+      let searchData = await this.$axios.$get('/api/admin/information/video/search', {
         params: {
           ...this.search,
           currentPage: currentPage,
@@ -149,14 +149,20 @@ export default {
       this.onSearch(currentPage)
     },
     editor(index, row) {
-      this.$router.push(`/information/create?informationId=${row.informationId}`)
+      this.$router.push(`/information/video/create?videoId=${row.videoId}`)
     },
-    async delete(index, row) {
-      let deleteData = await this.$axios.$post('/api/admin/information/delete', {
-        informationId: row.informationId,
+    async deleteInformationVideo(index, row) {
+      let deleteData = await this.$axios.$post('/api/admin/information/video/delete', {
+        videoId: row.videoId,
       })
       if(deleteData.success) {
         this.information.splice(index, 1)
+      }else{
+        this.$message({
+          showClose: true,
+          message: deleteData.message,
+          type: 'error',
+        })
       }
     },
     formatterDate(row, column, cellValue, index) {

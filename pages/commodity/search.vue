@@ -177,6 +177,15 @@
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
+          <!-- <el-select v-model="commoditySearch.categorys" multiple placeholder="请选择">
+            <el-option
+              v-for="(item, index) in options.categorys"
+              :key="index"
+              :label="item.id"
+              :value="item.name">
+              {{ item.name }}
+            </el-option>
+          </el-select> -->
           </el-col>
           </el-row>
         </el-form-item>

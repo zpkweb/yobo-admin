@@ -383,18 +383,18 @@ export const state = () => ({
           path: '/information/create',
           level: '5-1',
         },
-        {
-          icon: 'el-icon-search',
-          name: 'menu.information.video.search',
-          path: '/information/video/search',
-          level: '5-2',
-        },
-        {
-          icon: 'el-icon-circle-plus-outline',
-          name: 'menu.information.video.create',
-          path: '/information/video/create',
-          level: '5-3',
-        }
+        // {
+        //   icon: 'el-icon-search',
+        //   name: 'menu.information.video.search',
+        //   path: '/information/video/search',
+        //   level: '5-2',
+        // },
+        // {
+        //   icon: 'el-icon-circle-plus-outline',
+        //   name: 'menu.information.video.create',
+        //   path: '/information/video/create',
+        //   level: '5-3',
+        // }
       ]
     }
 

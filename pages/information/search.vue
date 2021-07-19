@@ -63,7 +63,7 @@
                 <el-button
                   type="primary"
                   size="mini"
-                  @click="delete(scope.$index, scope.row)"
+                  @click="deleteInformation(scope.$index, scope.row)"
                   >{{ $t('content.define') }}</el-button
                 >
               </div>
@@ -151,7 +151,7 @@ export default {
     editor(index, row) {
       this.$router.push(`/information/create?informationId=${row.informationId}`)
     },
-    async delete(index, row) {
+    async deleteInformation(index, row) {
       let deleteData = await this.$axios.$post('/api/admin/information/delete', {
         informationId: row.informationId,
       })
