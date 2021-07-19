@@ -123,6 +123,20 @@
         <el-collapse-item title="视频内容 " name="1">
           <el-form-item
             class="text item"
+            :label="$t('commodity.isTop')"
+          >
+            <!-- <el-input
+              v-model="form.isTop"
+              :placeholder="
+                $t('form.placeholder', { msg: $t('commodity.isTop') })
+              "
+            ></el-input> -->
+            <el-switch v-model="form.isTop"> </el-switch>
+
+          </el-form-item>
+
+          <el-form-item
+            class="text item"
             :label="$t('commodity.ccId')"
           >
             <el-input
@@ -153,7 +167,6 @@
               siteId 示例：E5DD260925A6084B
             </div>
           </el-form-item>
-
 
           <el-form-item
             class="text item"
@@ -400,9 +413,25 @@ export default {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           let data
-          this.isSubmit = true
+          this.isSubmit = true;
+          let detail;
+          if(this.form.desc){
+            if(this.form.desc['zh-cn']
+            || this.form.desc['en-us']
+            || this.form.desc['ja-jp']
+            || this.form.desc['es-es']
+            ) {
+              detail = JSON.stringify({
+                  'zh-cn': this.form.desc['zh-cn'],
+                  'en-us': this.form.desc['en-us'],
+                  'ja-jp': this.form.desc['ja-jp'],
+                  'es-es': this.form.desc['es-es'],
+                })
+            }
+          }
           data = await this.$axios
             .$post('/api/admin/information/video', {
+              isTop: this.form.isTop,
               'zh-cn': this.form.name['zh-cn'],
               'en-us': this.form.name['en-us'],
               'ja-jp': this.form.name['ja-jp'],
@@ -410,12 +439,7 @@ export default {
               ccId: this.form.ccId,
               siteId: this.form.siteId,
               videoPhoto: this.form.videoPhoto,
-              detail: JSON.stringify({
-                "zh-cn": this.form.desc['zh-cn'],
-                "en-us": this.form.desc['en-us'],
-                "ja-jp": this.form.desc['ja-jp'],
-                "es-es": this.form.desc['es-es'],
-              })
+              detail
             })
             .catch((error) => {
               this.isSubmit = false
@@ -441,7 +465,7 @@ export default {
             //     videoId: data.videoId,
             //   },
             // })
-            this.reset();
+            // this.reset();
             this.$emit("createDialogVideo", data.data)
           } else {
             this.$message({
@@ -459,10 +483,29 @@ export default {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           let data
-          this.isSubmit = true
+          this.isSubmit = true;
+          let detail;
+          if(this.form.desc){
+            if(this.form.desc.id
+            || this.form.desc['zh-cn']
+            || this.form.desc['en-us']
+            || this.form.desc['ja-jp']
+            || this.form.desc['es-es']
+            ) {
+              detail = JSON.stringify({
+                  id: this.form.desc.id,
+                  'zh-cn': this.form.desc['zh-cn'],
+                  'en-us': this.form.desc['en-us'],
+                  'ja-jp': this.form.desc['ja-jp'],
+                  'es-es': this.form.desc['es-es'],
+                })
+            }
+          }
+
           data = await this.$axios
             .$post('/api/admin/information/video/update', {
               id: this.form.id,
+              isTop: this.form.isTop,
               videoId: this.form.videoId,
               'zh-cn': this.form.name['zh-cn'],
               'en-us': this.form.name['en-us'],
@@ -471,13 +514,7 @@ export default {
               ccId: this.form.ccId,
               siteId: this.form.siteId,
               videoPhoto: this.form.videoPhoto,
-              detail: {
-                id: this.form.desc.id,
-                'zh-cn': this.form.desc['zh-cn'],
-                'en-us': this.form.desc['en-us'],
-                'ja-jp': this.form.desc['ja-jp'],
-                'es-es': this.form.desc['es-es'],
-              }
+              detail
             })
             .catch((error) => {
               this.isSubmit = false
@@ -551,6 +588,12 @@ export default {
     onMock() {
       const createCommodityMock = {
         isTop: false,
+        id: '',
+        videoId: '',
+        video: '',
+        ccId: '',
+        siteId: '',
+        videoPhoto: '',
         name: {
           'zh-cn': Mock.mock('@ctitle(2, 8)'),
           'en-us': Mock.mock('@title(2)'),

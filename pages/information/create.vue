@@ -215,7 +215,7 @@
             <div class="text item">
               视频封面图片:
               <br />
-              <img v-if="item.videoPhoto" :src="item.videoPhoto" width="768" height="400" />
+              <img v-if="item.videoPhoto" :src="item.videoPhoto" width="210" height="105" />
             </div>
           </el-card>
 
@@ -571,7 +571,6 @@ export default {
         siteId: '',
         videoPhoto: '',
         name: {
-
           'zh-cn': '',
           'en-us': '',
           'ja-jp': '',
@@ -595,7 +594,7 @@ export default {
       this.dialogVideoTitle = "编辑视频";
       this.dialogVideoIndex = index;
       this.dialogVideoData = {
-        isTop: false,
+        isTop: data.isTop,
         id: data.id,
         videoId: data.videoId,
         video: '',
